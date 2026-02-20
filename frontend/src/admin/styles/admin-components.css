@@ -18,6 +18,20 @@
 }
 
 /* ============================
+   THEME TOGGLE FIX
+   ============================ */
+/* Override fixed positioning in admin context - button sits in flex topbar */
+.admin-root .auth-theme-toggle {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+/* ============================
    ADMIN SKELETON OVERLAY
    ============================ */
 .admin-root .admin-skeleton-overlay {
