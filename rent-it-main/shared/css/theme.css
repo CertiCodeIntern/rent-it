@@ -1,0 +1,608 @@
+/* ============================================================
+   RENTIT THEME MODULE
+   Global CSS Variables & Dark/Light Theme System
+   
+   Design Principles:
+   - No Pure Black (#000000) - Use rich dark blue-grey
+   - No Pure White (#FFFFFF) - Use off-white with subtle tint
+   - RentIt Blue (#013A63) as brand foundation
+   - Orange (#FB7012) as split-complementary accent
+   ============================================================ */
+
+/* ============================
+   LIGHT THEME (Default)
+   ============================ */
+:root {
+    /* === BRAND COLORS (Immutable) === */
+    --brand-primary: #013A63;           /* RentIt Blue - Foundation */
+    --brand-primary-light: #014F86;     /* Lighter blue for gradients */
+    --brand-primary-dark: #012A4A;      /* Darker blue for depth */
+    
+    /* === ACCENT COLORS (Split-Complementary to Blue) === */
+    --accent: #E67E22;                  /* Softer burnt orange for Light Mode */
+    --accent-hover: #D35400;            /* Darker on hover */
+    --accent-light: #FFAA60;            /* Light orange for backgrounds */
+    --accent-soft: #FFA970;             /* Soft orange for backgrounds */
+    --accent-muted: rgba(230, 126, 34, 0.15);
+    
+    /* === SEMANTIC BACKGROUND COLORS === */
+    /* No pure white - use off-white with subtle blue tint */
+    --bg-primary: #F8FAFC;              /* Off-white page background */
+    --bg-secondary: #F1F5F9;            /* Slightly darker sections */
+    --bg-tertiary: #E2E8F0;             /* Cards, inputs background */
+    --bg-card: #FFFFFF;                 /* Cards pop slightly */
+    --bg-elevated: #FFFFFF;             /* Elevated surfaces */
+    
+    /* Navigation & Header */
+    --nav-bg: #013A63;                  /* RentIt Blue nav */
+    --nav-bg-scroll: rgba(1, 58, 99, 0.98);
+    
+    /* Hero Section - Dark gradient (always dark for impact) */
+    --hero-top: #0A1628;
+    --hero-bottom: #013A63;
+    
+    /* Panels & Dropdowns */
+    --panel-bg: #1e293b;
+    --panel-border: rgba(255, 255, 255, 0.1);
+    
+    /* Footer */
+    --footer-bg: #0F172A;
+    --footer-text: #CBD5E1;
+    
+    /* === TEXT COLORS - No pure black === */
+    --text-primary: #0F172A;            /* Rich dark blue-grey */
+    --text-secondary: #334155;          /* Muted text */
+    --text-tertiary: #64748B;           /* Subtle text */
+    --text-muted: #94A3B8;              /* Very muted */
+    --text-inverse: #F8FAFC;            /* Light text on dark bg */
+    --text-on-nav: #FFFFFF;             /* Text on nav/header */
+    
+    /* === BORDERS === */
+    --border-light: #E2E8F0;
+    --border-medium: #CBD5E1;
+    --border-dark: rgba(255, 255, 255, 0.1);
+    --border-color: #E2E8F0;            /* Default border color */
+    
+    /* === STATUS COLORS === */
+    --success: #10B981;
+    --success-bg: #D1FAE5;
+    --warning: #F59E0B;
+    --warning-bg: #FEF3C7;
+    --danger: #EF4444;
+    --danger-bg: #FEE2E2;
+    --info: #3B82F6;
+    --info-bg: #DBEAFE;
+    
+    /* === STRUCTURAL === */
+    /* Hybrid Container System */
+    --container-width: 1440px;          /* Landing pages - constrained for readability */
+    --container-width-fluid: calc(100% - 40px);  /* Dashboard pages - fluid for functionality */
+    --container-width-auth: 500px;      /* Auth pages - focused and narrow */
+    --gutter: 20px;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    
+    /* === TRANSITIONS === */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease;
+    --transition-speed: 0.3s;
+    --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    
+    /* === SHADOWS === */
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 4px 20px rgba(15, 23, 42, 0.06);
+    --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.1);
+    --shadow-xl: 0 20px 60px rgba(15, 23, 42, 0.12);
+    --shadow-card: 0 2px 8px rgba(15, 23, 42, 0.08);
+    --shadow-elevated: 0 8px 30px rgba(15, 23, 42, 0.12);
+    
+    /* === LEGACY ALIASES (Compatibility) === */
+    --nav-primary: var(--nav-bg);
+    --text: var(--text-inverse);
+    --card-bg: var(--bg-card);
+    --section-light: var(--bg-secondary);
+    --panel: var(--panel-bg);
+    
+    /* === SECTION CONTENT COLORS (Theme-aware) === */
+    --section-title: #0F172A;           /* Section titles - rich dark */
+    --section-text: #64748B;            /* Section body text */
+    --card-title: #0F172A;              /* Card titles */
+    --card-text: #64748B;               /* Card body text */
+    --icon-fill: #0F172A;               /* Icon fills in sections */
+    --tab-text: #64748B;                /* Tab inactive text */
+    --tab-border: #E2E8F0;              /* Tab borders */
+    
+    /* === HEADING COLORS (Theme-aware - replaces brand-primary for content) === */
+    --heading-primary: #013A63;         /* Primary headings - brand blue in light */
+    --heading-secondary: #014F86;       /* Secondary headings */
+    
+    /* === PAGE HEADER (Banner gradient for inner pages) === */
+    --page-header-start: #013A63;       /* Gradient start */
+    --page-header-end: #014F86;         /* Gradient end */
+    
+    /* === DROPDOWN COLORS === */
+    --dropdown-bg: #FFFFFF;
+    --dropdown-border: rgba(0, 0, 0, 0.1);
+    --dropdown-divider: rgba(0, 0, 0, 0.06);
+    --dropdown-hover: rgba(0, 0, 0, 0.04);
+    --dropdown-text: #0F172A;
+    --dropdown-text-muted: #64748B;
+    --dropdown-unread-bg: rgba(251, 112, 18, 0.08);
+}
+
+/* ============================
+   DARK THEME
+   ============================ */
+[data-theme="dark"] {
+    /* Backgrounds - Rich dark with blue undertone (No pure black) */
+    --bg-primary: #0F172A;              /* Rich dark navy */
+    --bg-secondary: #1E293B;            /* Slightly lighter */
+    --bg-tertiary: #334155;             /* For inputs, etc. */
+    --bg-card: #1E293B;                 /* Cards in dark mode */
+    --bg-elevated: #243447;             /* Elevated surfaces */
+    
+    /* Section backgrounds - for light sections in landing page */
+    --section-light: #1E293B;           /* "Light" sections become dark */
+    --card-bg: #1E293B;                 /* Card backgrounds */
+    
+    /* Text Colors - Soft off-whites (No pure white) */
+    --text-primary: #F1F5F9;            /* Primary text - off-white */
+    --text-secondary: #CBD5E1;          /* Secondary text */
+    --text-tertiary: #94A3B8;           /* Tertiary text */
+    --text-muted: #64748B;              /* Muted text */
+    
+    /* Section content colors - replaces hardcoded #0A1628 */
+    --section-title: #F1F5F9;           /* Section titles in dark mode */
+    --section-text: #CBD5E1;            /* Section body text */
+    --card-title: #F1F5F9;              /* Card titles */
+    --card-text: #94A3B8;               /* Card body text */
+    
+    /* Heading colors - light in dark mode */
+    --heading-primary: #F1F5F9;         /* Primary headings - light in dark mode */
+    --heading-secondary: #CBD5E1;       /* Secondary headings */
+
+    /* Brand overrides for dark readability */
+    --brand-primary: #5B9BD5;           /* Lighter blue for dark mode */
+    --brand-primary-light: #7CB3E0;     /* Visible on dark backgrounds */
+    --brand-primary-dark: #4A8BC2;      /* Depth variant dark mode */
+    
+    /* Borders */
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-medium: rgba(255, 255, 255, 0.12);
+    --border-color: rgba(255, 255, 255, 0.08);
+    
+    /* Tab styling */
+    --tab-text: #94A3B8;
+    --tab-border: rgba(255, 255, 255, 0.1);
+    --icon-fill: #F1F5F9;
+    
+    /* Panel adjustments */
+    --panel-bg: #1E293B;
+    --panel-border: rgba(255, 255, 255, 0.08);
+    
+    /* Shadows - More subtle in dark mode */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.35);
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-elevated: 0 8px 30px rgba(0, 0, 0, 0.4);
+    
+    /* Accent colors - Vibrant in dark mode for better visibility */
+    --accent: #FB7012;                  /* Vibrant Orange for Dark Mode */
+    --accent-hover: #FF8534;            /* Lighter on hover */
+    --accent-muted: rgba(251, 112, 18, 0.2);
+    
+    /* Status colors with dark mode adjustments */
+    --success-bg: rgba(16, 185, 129, 0.15);
+    --warning-bg: rgba(245, 158, 11, 0.15);
+    --danger-bg: rgba(239, 68, 68, 0.15);
+    --info-bg: rgba(59, 130, 246, 0.15);
+    
+    /* Page header - Slightly lighter gradient in dark mode */
+    --page-header-start: #1E293B;
+    --page-header-end: #334155;
+    
+    /* Dropdown colors - Dark mode */
+    --dropdown-bg: #1E293B;
+    --dropdown-border: rgba(255, 255, 255, 0.1);
+    --dropdown-divider: rgba(255, 255, 255, 0.06);
+    --dropdown-hover: rgba(255, 255, 255, 0.04);
+    --dropdown-text: #F1F5F9;
+    --dropdown-text-muted: #94A3B8;
+    --dropdown-unread-bg: rgba(251, 112, 18, 0.12);
+}
+
+/* ============================
+   THEME TOGGLE BUTTON STYLES
+   ============================ */
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-on-nav);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Auth Theme Toggle - Positioned in top-right corner */
+.auth-theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+}
+
+.auth-theme-toggle:hover {
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.auth-theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Light Mode: Show Moon, Hide Sun */
+.theme-toggle .sun-icon,
+.auth-theme-toggle .sun-icon {
+    position: absolute;
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-toggle .moon-icon,
+.auth-theme-toggle .moon-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+/* Dark Mode: Show Sun, Hide Moon */
+[data-theme="dark"] .theme-toggle .sun-icon,
+[data-theme="dark"] .auth-theme-toggle .sun-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon,
+[data-theme="dark"] .auth-theme-toggle .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+/* ============================
+   Page Skeleton Overlay
+   ============================ */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.page-skeleton-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-primary);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.page-skeleton-overlay.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.page-skeleton-shell {
+    width: min(1180px, 100%);
+    display: grid;
+    grid-template-columns: minmax(220px, 260px) 1fr;
+    gap: 20px;
+}
+
+.page-skeleton-sidebar {
+    background: var(--nav-bg);
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg);
+    padding: 22px 18px;
+    display: grid;
+    gap: 20px;
+}
+
+.page-skeleton-main {
+    display: grid;
+    gap: 16px;
+}
+
+.page-skeleton-topbar,
+.page-skeleton-card {
+    background: var(--bg-card);
+    border-radius: 18px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    padding: 18px 20px;
+    display: grid;
+    gap: 14px;
+}
+
+.page-skeleton-topbar {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+.page-skeleton-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 24px 6px;
+}
+
+.page-skeleton-loader > span:not(.page-skeleton-spinner) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.page-skeleton-spinner {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 3px solid rgba(15, 23, 42, 0.15);
+    border-top-color: var(--accent);
+    animation: spin 0.75s linear infinite;
+}
+
+[data-theme="dark"] .page-skeleton-spinner {
+    border-color: rgba(248, 250, 252, 0.15);
+    border-top-color: var(--accent);
+}
+
+.page-skeleton-loader::after {
+    content: '';
+    width: 180px;
+    height: 8px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(15, 23, 42, 0.08), rgba(15, 23, 42, 0.30), rgba(15, 23, 42, 0.08));
+    background-size: 200% 100%;
+    animation: shimmer 1.1s linear infinite;
+}
+
+[data-theme="dark"] .page-skeleton-loader::after {
+    background: linear-gradient(90deg, rgba(248, 250, 252, 0.08), rgba(248, 250, 252, 0.30), rgba(248, 250, 252, 0.08));
+    background-size: 200% 100%;
+    animation: shimmer 1.1s linear infinite;
+}
+
+.skeleton-shape,
+.page-skeleton-line,
+.page-skeleton-pill,
+.page-skeleton-circle {
+    background: linear-gradient(90deg, rgba(15, 23, 42, 0.08), rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.08));
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+    border-radius: 999px;
+}
+
+[data-theme="dark"] .skeleton-shape,
+[data-theme="dark"] .page-skeleton-line,
+[data-theme="dark"] .page-skeleton-pill,
+[data-theme="dark"] .page-skeleton-circle {
+    background: linear-gradient(90deg, rgba(248, 250, 252, 0.08), rgba(248, 250, 252, 0.18), rgba(248, 250, 252, 0.08));
+}
+
+.page-skeleton-logo {
+    height: 26px;
+    width: 120px;
+}
+
+.page-skeleton-nav {
+    display: grid;
+    gap: 10px;
+}
+
+.page-skeleton-user {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.page-skeleton-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.page-skeleton-table {
+    display: grid;
+    gap: 10px;
+}
+
+.page-skeleton-row {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr 0.8fr;
+    gap: 10px;
+}
+
+.page-skeleton-block {
+    height: 12px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.page-skeleton-pill {
+    height: 32px;
+    width: 140px;
+    border-radius: 12px;
+}
+
+.w-80 { width: 80%; }
+.w-70 { width: 70%; }
+.w-60 { width: 60%; }
+.w-50 { width: 50%; }
+.w-40 { width: 40%; }
+.w-35 { width: 35%; }
+.w-30 { width: 30%; }
+.w-25 { width: 25%; }
+.w-20 { width: 20%; }
+
+@media (max-width: 900px) {
+    .page-skeleton-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .page-skeleton-sidebar {
+        display: none;
+    }
+}
+
+/* Marketing page skeleton layout */
+.page-skeleton-overlay[data-skeleton="marketing"] {
+    align-items: flex-start;
+}
+
+.page-skeleton-marketing {
+    width: min(1180px, 100%);
+    display: grid;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.marketing-topbar {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    padding: 14px 18px;
+}
+
+.marketing-logo {
+    width: 90px;
+    height: 18px;
+}
+
+.marketing-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.marketing-pill {
+    height: 12px;
+    width: 70px;
+}
+
+.marketing-cta {
+    height: 28px;
+    width: 110px;
+    border-radius: 12px;
+}
+
+.marketing-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+    align-items: center;
+}
+
+.marketing-hero-text {
+    background: var(--bg-card);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    padding: 24px;
+    display: grid;
+    gap: 14px;
+}
+
+.marketing-line {
+    height: 14px;
+}
+
+.marketing-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.marketing-button {
+    height: 36px;
+    width: 120px;
+    border-radius: 14px;
+}
+
+.marketing-hero-media {
+    height: 240px;
+    border-radius: 20px;
+}
+
+.marketing-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.marketing-card {
+    height: 140px;
+    border-radius: 18px;
+}
+
+@media (max-width: 960px) {
+    .marketing-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .marketing-cards {
+        grid-template-columns: 1fr;
+    }
+}

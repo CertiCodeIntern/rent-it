@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Rentals — CertiCode</title>
+
+  <!-- Link to external CSS (placed in css/rentals.css) -->
+  <link rel="stylesheet" href="css/rentals.css" />
+</head>
+<body>
+
+  <!-- =========================
+       HEADER (EDIT: site brand, nav links, CTA)
+       ========================= -->
+  <header class="header" role="banner">
+    <div class="header-inner container">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <!-- Hamburger for mobile -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu" title="Menu">
+          <!-- simple hamburger icon (SVG) -->
+          <svg width="22" height="14" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="2" rx="1" fill="white"></rect>
+            <rect y="7" width="24" height="2" rx="1" fill="white"></rect>
+            <rect y="14" width="24" height="2" rx="1" fill="white"></rect>
+          </svg>
+        </button>
+
+        <div class="brand">
+        <div class="logo-drawer">
+          <img src="src/images/rIT_logo_tp.png" alt="rIT logo" />
+        </div>
+        <div class="brand-name">CertiCode</div>
+      </div>
+      </div>
+
+      <!-- EDIT: Header navigation links -->
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#">Home</a>
+        <a href="#">Catalog</a>
+        <a href="#">Pricing</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- EDIT: Book Now button text / link -->
+        <button class="btn-book">Book Now</button>
+        <!-- EDIT: Replace initials with user avatar / image -->
+        <div class="avatar">PS</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================
+       MOBILE NAV (EDIT: links)
+       - toggled by hamburger on small screens
+       ========================= -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="mobile-panel" role="navigation" aria-label="Mobile menu">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+        <div style="display:flex;gap:12px;align-items:center;">
+          <div class="logo-square">C</div>
+          <div class="brand-name">CertiCode</div>
+        </div>
+        <button id="mobileClose" class="mobile-close" aria-label="Close menu">✕</button>
+      </div>
+
+      <!-- EDIT: mobile menu links -->
+      <a href="#">Home</a>
+      <a href="#">Catalog</a>
+      <a href="#">Pricing</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <hr class="mobile-sep">
+      <a href="#" class="mobile-cta">Book Now</a>
+    </div>
+  </div>
+
+
+  
+  <!-- =========================
+       MAIN CONTENT (centered container)
+       ========================= -->
+  <main class="container" role="main">
+    <!-- HERO / PAGE HEADER
+         EDIT: Title and subtitle text here -->
+    <div class="page-header">
+      <div>
+        <div class="title">My Rentals</div>
+        <div class="subtitle">Manage your active videoke equipment and view your rental history.</div>
+      </div>
+
+      <!-- EDIT: New Rental button -->
+      <div style="display:flex; gap:12px; align-items:center;">
+        <button class="btn-new">New Rental <span class="plus">＋</span></button>
+      </div>
+    </div>
+
+    <!-- TABS (EDIT: tab labels or add/remove tabs) -->
+    <div class="tabs" role="tablist" aria-label="Rentals tabs">
+      <div class="tab active" role="tab" data-tab="active">Active Rentals</div>
+      <a class="tab" role="tab" data-tab="history" href="booking.html">Booking History</a>
+      <div class="tab" role="tab" data-tab="returns">Returns/Extensions</div>
+    </div>
+
+
+    
+    <!-- ===== CURRENTLY IN POSSESSION (REPLACE THIS WHOLE SECTION) ===== -->
+<section class="section">
+  <div class="section-head">
+    <div class="section-title">Currently In Possession</div>
+    <!-- Units active pill -->
+     <div class="units-active">2 Units Active</div>
+
+  </div>
+
+  <div class="cards-row" id="cardsRow">
+    <!-- CARD 1 -->
+    <article class="rental-card">
+      <div class="card-top">
+        <div>
+          <div class="badges-row">
+            <span class="badge status-rented">Rented</span>
+            <span class="small-muted">#VDK-8921</span>
+          </div>
+          <h3 class="title-small">Karaoke Pro System X-100</h3>
+          <div class="meta">Delivery: Oct 12, 2023</div>
+        </div>
+
+        <!-- Circular days indicator -->
+        <div class="days-badge" aria-hidden="true">
+          <div class="days-value">3</div>
+          <div class="days-label">Days</div>
+        </div>
+      </div>
+
+      <!-- banner image -->
+      <div class="card-image">
+        <!-- EDIT image src here -->
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1000' height='300'><rect width='100%' height='100%' fill='%230f172a'/><text x='50%' y='50%' fill='%23fff' font-size='28' font-family='Arial' dominant-baseline='middle' text-anchor='middle'>Karaoke Pro System X-100</text></svg>" alt="Karaoke Pro">
+      </div>
+
+      <div class="card-actions">
+        <button class="btn-extend">Extend <span class="btn-ico">📅</span></button>
+        <button class="btn-return">Return <span class="btn-ico">📦</span></button>
+      </div>
+    </article>
+
+    <!-- CARD 2 (expiring) -->
+    <article class="rental-card card-highlight">
+      <div class="card-top">
+        <div>
+          <div class="badges-row">
+            <span class="badge status-expiring">Expiring Soon</span>
+            <span class="small-muted">#VDK-7742</span>
+          </div>
+          <h3 class="title-small">Party Box Master V2</h3>
+          <div class="meta">Delivery: Oct 8, 2023</div>
+        </div>
+
+        <div class="days-badge days-danger" aria-hidden="true">
+          <div class="days-value">1</div>
+          <div class="days-label">Day</div>
+        </div>
+      </div>
+
+      <div class="card-image">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1000' height='300'><rect width='100%' height='100%' fill='%230b1220'/><text x='50%' y='50%' fill='%23fff' font-size='28' font-family='Arial' dominant-baseline='middle' text-anchor='middle'>Party Box Master V2</text></svg>" alt="Party Box">
+      </div>
+
+      <div class="card-actions">
+        <button class="btn-extend">Extend Now <span class="btn-ico">⟳</span></button>
+        <button class="btn-return">Return <span class="btn-ico">📦</span></button>
+      </div>
+    </article>
+  </div>
+</section>
+<!-- ===== END: CURRENTLY IN POSSESSION ===== -->
+
+
+
+
+ <!-- ===== BOOKING HISTORY (title + panel) =====
+     Replace previous booking history <section> block with this.
+     The header (title + view-all) sits *above* the panel.
+-->
+<!-- Booking header (on top of the panel) -->
+<div class="history-section">
+  <div class="history-head">
+    <div class="history-title">Booking History</div>
+    <a href="#" class="view-all">View All</a>
+  </div>
+
+  <!-- Panel containing the table -->
+  <section class="history-panel" aria-labelledby="historyTitle">
+    <table class="history-table" role="table" aria-label="Booking history">
+      <thead>
+        <tr>
+          <th>Item Details</th>
+          <th>Rental Period</th>
+          <th>Total Amount</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Row 1 -->
+        <tr>
+          <td>
+            <div class="history-item">
+              <div class="history-thumb">🎤</div>
+              <div>
+                <div class="history-name">Karaoke Pro System X-100</div>
+                <div class="small-muted">#VDK-8921</div>
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div>Oct 13 - Oct 16</div>
+            <div class="small-muted status-completed">Completed</div>
+          </td>
+        
+          <td class="amount-cell"><strong>₱500.00</strong></td>
+
+
+         <td>
+      <a class="action-btn" href="receipts/receipt_vdk8921.pdf" download aria-label="Download receipt for Karaoke Pro System">
+        Receipt
+        <!-- inline download icon (SVG) -->
+        <svg class="icon-download" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M21 21H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </td>
+
+        </tr>
+
+
+
+        <!-- Row 2 -->
+        <tr>
+          <td>
+            <div class="history-item">
+              <div class="history-thumb">🔊</div>
+              <div>
+                <div class="history-name">Party Box Master V2</div>
+                <div class="small-muted">#VDK-7742</div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div>Oct 9 - Oct 13</div>
+            <div class="small-muted status-completed">Completed</div>
+          </td>
+           <td class="amount-cell"><strong>₱120.00</strong></td>
+          <td>
+      <a class="action-btn" href="receipts/receipt_vdk7742.pdf" download aria-label="Download receipt for Party Box Master">
+        Receipt
+        <svg class="icon-download" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M21 21H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </td>
+        </tr>
+
+        <!-- Row 3 -->
+        <tr>
+          <td>
+            <div class="history-item">
+              <div class="history-thumb">🎚️</div>
+              <div>
+                <div class="history-name">Home Studio Setup</div>
+                <div class="small-muted">#VDK-2101</div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div>Jul 02 - Jul 05</div>
+            <div class="small-muted status-cancelled">Cancelled</div>
+          </td>
+          <td class="amount-cell"><strong>₱0.00</strong></td>
+          <td>
+      <button class="action-btn action-muted" aria-label="Refunded">
+          Refunded
+        <span class="refund-icon">ø</span>
+      </button>
+    </td>
+
+
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+<!-- ===== END BOOKING HISTORY ===== -->
+
+
+
+    <!-- PROMO CTA (EDIT: promo text and CTA) -->
+    <section class="promo">
+      <div>
+        <div class="promo-text">Plan a party next weekend?</div>
+        <div class="promo-sub">Get 20% off on your next rental if you book 3 days in advance. Exclusive for loyal customers.</div>
+      </div>
+      <div>
+        <button class="promo-cta">Claim 20% Discount</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (EDIT: company text / links)
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div>© 2026 CertiCode Videoke Rentals • v2.4.0</div>
+      <div class="footer-links">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer> -->
+
+
+
+<!-- ===========================
+     SITE FOOTER (replace existing <footer>)
+     =========================== -->
+<footer class="site-footer" role="contentinfo">
+  
+  <!-- Bottom center area: copyright + small policy links -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <div class="copyright">© 2026 CertiCode Videoke Rentals • v2.4.0</div>
+
+      <!-- Privacy and cookie policy centered under copyright -->
+      <div class="policy-links">
+        <a href="#" class="policy-link">Terms of Service</a>
+
+        <a href="#" class="policy-link">Privacy Policy</a>
+
+        <a href="#" class="policy-link">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+  <!-- =========================
+       Javascript: tabs and mobile nav
+       (no edits required unless you want different behavior)
+       ========================= -->
+  <script>
+    // tabs: basic visual switching
+    document.querySelectorAll('.tab').forEach(tab=>{
+      tab.addEventListener('click', ()=>{
+        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        // if you want to show/hide content per tab, add that logic here
+      });
+    });
+
+    // mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeBtn = document.getElementById('mobileClose');
+
+    hamburger && hamburger.addEventListener('click', ()=> {
+      mobileNav.classList.add('open');
+      mobileNav.setAttribute('aria-hidden','false');
+    });
+    closeBtn && closeBtn.addEventListener('click', ()=> {
+      mobileNav.classList.remove('open');
+      mobileNav.setAttribute('aria-hidden','true');
+    });
+    mobileNav && mobileNav.addEventListener('click', (e)=>{
+      if (e.target === mobileNav) {
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden','true');
+      }
+    });
+  </script>
+</body>
+</html>

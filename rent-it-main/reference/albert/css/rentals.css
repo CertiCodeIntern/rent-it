@@ -1,0 +1,592 @@
+/* =========================
+   rentals.css (updated)
+
+/* ---------- Theme variables (EDIT colors/spacing here) ---------- */
+:root{
+  --nav-bg: #083854;      /* header/footer background */
+  --accent: #ff7a16;      /* orange CTA */
+  --muted: #6b7280;       /* muted text */
+  --panel: #ffffff;       /* card background */
+  --page-bg: #f3f6f8;     /* page inner background (center area) */
+  --card-border: rgba(16,24,40,0.06);
+  --text: #0b1320;
+  --success: #059669;
+  --shadow: 0 8px 24px rgba(13,31,54,0.06);
+  --container-max: 1100px;
+  --radius: 12px;
+  --radius-small: 8px;
+  --gap: 18px;
+  --soft: rgba(11,19,32,0.04);
+}
+
+/* ----------------------------
+   Page foundation — top of file
+   - html background prevents white margins/bleed
+   - body as flex column so footer can be pushed down
+   ---------------------------- */
+/* ===== PAGE FOUNDATION (FIXED) ===== */
+
+/* Outer browser background (only visible if page shorter than screen) */
+html {
+  height: 100%;
+  background: #f3f6f8; /* same as page background */
+}
+
+/* Main page layout */
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #f3f6f8; /* light page color */
+  color: var(--text);
+}
+
+/* Main content grows and pushes footer down */
+main.container {
+  flex: 1;
+}
+
+/* Footer stays at bottom and never overlaps */
+.footer {
+  margin-top: auto;
+  flex-shrink: 0;
+
+  background: var(--nav-bg);
+  color: #bfcfe0;
+
+  padding: 24px 0;
+  width: 100%;
+}
+
+
+
+
+/* ---------- Header (EDIT: brand & nav) ---------- */
+.header {
+  background: var(--nav-bg);
+  color: white;
+  width:100%;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08) inset;
+  position: relative;
+  z-index: 5; /* keep header above page content */
+}
+.header-inner{
+  max-width:var(--container-max);
+  margin:0 auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+
+
+.logo-drawer img {
+  width: 72px;               /* change logo size here */
+  height: auto;
+  display:block;
+  border-radius: 8px;
+  object-fit: contain;
+}
+.logo-drawer{ width:44px; height:44px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center; background: rgba(255,255,255,0.04); }
+.logo-drawer img{ width:100%; height:100%; object-fit:contain; display:block; }
+
+
+
+
+
+
+
+
+.brand{ display:flex; align-items:center; gap:12px; }
+.logo-square{
+  width:36px; height:36px; border-radius:8px;
+  background: linear-gradient(135deg,#ff9a3c,#ff6f00);
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-weight:700;
+}
+.brand-name{ font-weight:700; color:white; }
+.brand-sub{ color: rgba(255,255,255,0.85); font-size:12px; }
+
+/* header nav links (desktop) - EDIT links in HTML */
+.nav-links{ display:flex; gap:18px; align-items:center; }
+.nav-links a{ color: rgba(255,255,255,0.9); text-decoration:none; font-weight:600; font-size:14px; padding:6px 8px; border-radius:8px; }
+.nav-links a:hover{ background: rgba(255,255,255,0.04) }
+
+/* header actions (book, avatar) */
+.header-actions{ display:flex; align-items:center; gap:12px; }
+.btn-book{ background: var(--accent); color:#fff; border:0; padding:10px 14px; border-radius:12px; font-weight:700; cursor:pointer; }
+.avatar{ width:36px; height:36px; border-radius:50%; background:#fff; color:#07324a; display:flex; align-items:center; justify-content:center; font-weight:700; }
+
+/* hamburger button for mobile (EDIT: show/hide via media query) */
+.hamburger{ display:none; background:transparent; border:0; color:white; padding:8px; border-radius:8px; }
+
+/* ---------- Mobile Nav (EDIT: links inside HTML) ---------- */
+.mobile-nav{ position:fixed; inset:0; z-index:1200; display:none; background: rgba(0,0,0,0.4); }
+.mobile-nav.open{ display:block; }
+.mobile-panel{ width:280px; height:100vh; background:#062f45; color:white; padding:20px; box-shadow: 12px 0 40px rgba(0,0,0,0.4); }
+.mobile-panel a{ display:block; color:white; text-decoration:none; padding:12px 0; font-weight:700; }
+.mobile-close{ background:transparent; border:0; color:white; font-size:20px; }
+.mobile-sep{ border:0; height:1px; background:rgba(255,255,255,0.06); margin:14px 0; }
+.mobile-cta{ color:var(--accent); font-weight:800; }
+
+/* ---------- Centered page container ---------- */
+.container{ max-width: var(--container-max); margin: 28px auto; padding: 0 20px; }
+
+/* ---------- PAGE HEADER / HERO (EDIT text in HTML) ---------- */
+.page-header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
+.title{ font-size:28px; font-weight:800; }
+.subtitle{ color:var(--muted); margin-top:6px; font-size:14px; }
+.btn-new{ display:inline-flex; gap:8px; align-items:center; background:var(--accent); color:white; padding:10px 14px; border-radius:10px; font-weight:700; border:0; cursor:pointer; }
+.plus{ opacity:0.9; font-weight:800; }
+
+/* ---------- Tabs (EDIT labels in HTML) ---------- */
+.tabs{ display:flex; gap:18px; border-bottom:1px solid rgba(11,19,32,0.06); padding-bottom:12px; margin-bottom:22px; }
+.tab{ padding:10px 6px; color:var(--muted); font-weight:700; cursor:pointer; position:relative; }
+.tab.active{ color:var(--text); }
+.tab.active::after{
+  content:""; position:absolute; left:0; right:0; bottom:-13px; height:3px;
+  background:linear-gradient(90deg,var(--accent), #ff9a3c);
+  border-radius:3px; width:60%; margin:0 auto;
+}
+
+/* ---------- Section titles ---------- */
+.section-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.section-title{ font-weight:700; margin:6px 0 14px 0; font-size:28px; }
+.small-muted{ color:var(--muted); font-size:13px; }
+
+
+/* Units active pill (Currently In Possession) */
+.units-active {
+  display: inline-block;
+  background: #CFDEFC;        /* requested background */
+  color: var(--accent);      /* orange text; uses existing accent variable */
+  padding: 6px 12px;         /* oblong / pill shape */
+  border-radius: 999px;      /* pill */
+  font-weight: 800;
+  font-size: 13px;
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.04); /* subtle edge to separate from background */
+  align-self: center;        /* vertically center inside .section-head */
+}
+
+/* Small-screen tweak so pill doesn't overflow */
+@media (max-width: 520px) {
+  .units-active { padding: 5px 10px; font-size:12px; }
+}
+
+
+/* ---------- Cards grid (Currently In Possession) ----------
+   Replace the previous .cards-row / .rental-card rules with this block.
+   ---------- */
+
+.cards-row{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:20px;
+  margin-bottom:26px;
+}
+
+/* card container */
+.rental-card{
+  background: var(--panel);
+  border-radius: 14px;
+  border: 1px solid rgba(11,19,32,0.04);
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(11,19,32,0.03);
+  position: relative;
+  overflow: visible;
+  display: block; /* vertical layout: header -> image -> actions */
+}
+
+/* top: badges + title + circular days (absolute on right) */
+.card-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+
+/* badges and meta */
+.badges-row{ display:flex; gap:8px; align-items:center; margin-bottom:8px; }
+.badge{
+  font-weight:700;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:13px;
+  display:inline-block;
+}
+.status-rented{
+  background:#ecfdf5;
+  color:#065f46;
+  border:1px solid rgba(6,95,70,0.06);
+}
+.status-expiring{
+  background:#fffbeb;
+  color:#92400e;
+  border:1px solid rgba(146,64,14,0.06);
+}
+
+/* title & meta */
+.title-small{ margin:0; font-size:20px; font-weight:800; color:var(--text); line-height:1.05; }
+.meta{ color:var(--muted); font-size:14px; margin-top:6px; }
+
+/* circular days badge (top-right) */
+.days-badge{
+  width:68px;
+  height:68px;
+  border-radius:50%;
+  background: linear-gradient(180deg,#e6f7ff,#dbeffd);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  color:var(--nav-bg);
+  box-shadow: 0 8px 20px rgba(11,19,32,0.06);
+  border:4px solid #fff;
+  flex-shrink:0;
+  margin-left:12px;
+  /* positioned at top-right via transform (keeps inside card area visually) */
+  transform: translateY(-6px);
+}
+
+/* danger variant */
+.days-danger{
+  background: linear-gradient(180deg,#fff0f0,#ffedf0);
+  color:#9b1b1b;
+}
+
+/* internal values */
+.days-value{ font-size:20px; line-height:1; }
+.days-label{ font-size:11px; font-weight:700; color: rgba(0,0,0,0.45); }
+
+/* banner image under header */
+.card-image{
+  margin-top:12px;
+  border-radius:10px;
+  overflow:hidden;
+  height:140px;
+  border: 1px solid rgba(11,19,32,0.03);
+}
+.card-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* actions row */
+.card-actions{
+  display:flex;
+  gap:12px;
+  margin-top:16px;
+}
+.card-actions .btn-extend,
+.card-actions .btn-return{
+  flex:1;
+  padding:12px 16px;
+  border-radius:10px;
+  border:0;
+  font-weight:800;
+  font-size:15px;
+  cursor:pointer;
+}
+.btn-extend{
+  background: var(--accent);
+  color: #072023;
+  box-shadow: 0 6px 16px rgba(255,122,22,0.12);
+}
+.btn-return{
+  background: #e8f2fb;
+  color: #0b2040;
+  border: 1px solid rgba(11,19,32,0.04);
+}
+
+/* subtle highlight for expiring card */
+.card-highlight{
+  border: 2px solid #ffedd5;
+  box-shadow: 0 10px 30px rgba(255,122,22,0.06);
+}
+
+/* small icon inside buttons (optional) */
+.btn-ico{ margin-left:8px; font-size:14px; }
+
+/* Responsive: single column on narrow screens */
+@media (max-width: 900px){
+  .cards-row{ grid-template-columns: 1fr; }
+  .card-image{ height:180px; }
+  .days-badge{ width:56px; height:56px; }
+}
+
+
+
+
+
+
+
+
+
+/* ---------- Booking history table ---------- */
+/* ===== Booking History header + panel styling ===== */
+
+/* Container that groups the header and the panel */
+.history-section {
+  margin-top: 18px;
+  margin-bottom: 26px;
+}
+
+/* Header that sits above the panel */
+.history-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* space between header and panel */
+}
+
+/* Title on the left (bold, dark) */
+.history-title {
+  font-size: 18px;
+  font-weight: 800;        /* bold */
+  color: var(--text);      /* dark/black color */
+}
+
+/* "View All" on the right (orange link) */
+.view-all {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 14px;
+}
+.view-all:hover { text-decoration: underline; }
+
+/* Panel keeps its previous styling (table inside) */
+.history-panel {
+  background: var(--panel);
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  padding: 14px; /* table padding inside panel */
+}
+
+/* Table header slightly lighter background and top-left rounding should be inside panel */
+.history-table { width:100%; border-collapse:collapse; font-size:14px; }
+.history-table thead th {
+  text-align: left;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(11,19,32,0.04);
+  background: transparent; /* keep consistent with panel */
+}
+
+/* Table body cells styling preserved */
+.history-table tbody td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(11,19,32,0.03);
+  vertical-align: middle;
+}
+
+/* Small helpers */
+.history-item { display:flex; gap:12px; align-items:center; }
+.history-thumb { width:42px; height:42px; border-radius:8px; background:#f8fafc; display:flex; align-items:center; justify-content:center; }
+.history-name { font-weight:700; }
+
+
+.history-table{ width:100%; border-collapse:collapse; font-size:14px; }
+.history-table thead th{ text-align:left; font-weight:700; color:var(--muted); padding:12px 10px; border-bottom:1px solid rgba(11,19,32,0.04); }
+.history-table tbody td{ padding:12px 10px; border-bottom:1px solid rgba(11,19,32,0.03); vertical-align:middle; }
+.history-item{ display:flex; gap:12px; align-items:center; }
+.history-thumb{ width:42px; height:42px; border-radius:8px; background:#f8fafc; display:flex; align-items:center; justify-content:center; }
+.history-name{ font-weight:700; }
+.status-completed{ color:var(--success); }
+.status-cancelled{ color:var(--muted); }
+
+/* ---------- Booking history: action buttons and amount styling ---------- */
+
+/* Make the amount bold and vertically centered */
+.amount-cell { font-size: 15px; text-align: left; vertical-align: middle; }
+
+/* Shared button-like link style for "Receipt" (anchor used for download) */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--accent);
+  border: 1px solid rgba(11,19,32,0.06);
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: none;
+}
+
+/* Hover/focus state */
+.action-btn:hover,
+.action-btn:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  text-decoration: none;
+}
+
+/* Download icon inside the button inherits color and spacing */
+.action-btn .icon-download {
+  color: var(--accent);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Muted / non-interactive state for "Refunded" */
+.action-muted {
+  background: #fff;
+  color: rgba(11,19,32,0.45);
+  border: 1px solid rgba(11,19,32,0.04);
+  cursor: default;
+  opacity: 0.9;
+}
+
+/* refund icon 'ø' styling (inside the refunded button) */
+.refund-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(11,19,32,0.03);
+  color: rgba(11,19,32,0.6);
+  font-weight: 800;
+  margin-right: 8px;
+  font-size: 13px;
+}
+
+/* Keep table cell vertical alignment nice */
+.history-table td, .history-table th {
+  vertical-align: middle;
+}
+
+/* small responsiveness tweak: compress button padding on tiny screens */
+@media (max-width:480px){
+  .action-btn { padding: 6px 10px; font-size:13px; }
+  .refund-icon { width:20px; height:20px; font-size:12px; }
+}
+
+
+
+
+
+/* ---------- Promo CTA ---------- */
+/* Make promo positioned above footer so it is never visually covered */
+.promo{ background: linear-gradient(90deg, #ff8a33, #ff7a16); color:white; padding:22px; border-radius:16px; display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:34px; position:relative; z-index: 3; }
+.promo-text{ font-weight:700; font-size:16px; max-width:70%; }
+.promo-sub{ font-weight:500; opacity:0.95; margin-top:6px; font-size:13px; color:rgba(255,255,255,0.95) }
+.promo-cta{ background:white; color:var(--accent); padding:10px 14px; border-radius:12px; font-weight:800; border:0; cursor:pointer; }
+
+
+
+
+
+
+
+
+
+
+/* ===========================
+   FOOTER — layout + styles
+   =========================== */
+
+/* footer root */
+.site-footer {
+  background: var(--footer-bg, #0F172A); /* footer bg (kept from your theme) */
+  color: var(--text, #FFFFFF);
+  padding-top: 28px;
+  padding-bottom: 18px;
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+/* main three-column area */
+.footer-inner {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+/* -------------------------
+   BOTTOM CENTER AREA
+   ------------------------- */
+.footer-bottom {
+  padding-top: 16px;
+  padding-bottom: 22px;
+}
+.footer-bottom-inner {
+  display:flex;
+  flex-direction:column;
+  align-items:center;  /* center everything horizontally */
+  gap:8px;
+  text-align:center;
+}
+
+/* copyright line */
+.footer-bottom .copyright {
+  font-size: 14px;
+  color: rgba(255,255,255,0.88);
+  font-weight: 600;
+}
+
+/* policy links under copyright */
+.policy-links { display:flex; gap:8px; align-items:center; justify-content:center; color: rgba(255,255,255,0.75); }
+.policy-link {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 13px;
+}
+.policy-link:hover { text-decoration: underline; color: var(--text); }
+.policy-sep { color: rgba(255,255,255,0.45); }
+
+/* ===========================
+   Responsive adjustments
+   =========================== */
+@media (max-width: 880px) {
+  .footer-inner { flex-direction: column; gap: 20px; align-items: flex-start; padding-bottom: 12px; }
+  .footer-brand { align-items:flex-start; }
+  .brand-text { max-width: 100%; }
+  .footer-links, .footer-support { max-width: 100%; }
+  .footer-divider { width: calc(100% - 32px); }
+  .footer-bottom { padding-top: 12px; padding-bottom: 18px; }
+}
+
+
+    
+
+
+
+
+/* ---------- Utilities / responsive ---------- */
+@media (max-width:900px){
+  .cards-row{ grid-template-columns: 1fr; }
+  .rental-card{ flex-direction:column; }
+  .rental-thumb{ width:100%; min-height:160px; }
+  .rental-info{ width:100%; }
+  .days-badge{ position:relative; margin-left:0; width:48px; height:48px; align-self:flex-end; margin-top:-44px; margin-right:8px; }
+  .page-header{ flex-direction:column; align-items:flex-start; gap:8px; }
+  .promo{ flex-direction:column; align-items:flex-start; gap:10px; }
+  .header-inner{ padding:12px; }
+  .nav-links{ display:none; }         /* hide nav links on mobile */
+  .hamburger{ display:inline-flex; } /* show hamburger */
+  .footer-inner{ flex-direction:column; gap:8px; }
+}
+
+/* mobile tweaks */
+@media (max-width:480px){
+  .title{ font-size:22px; }
+  .subtitle{ font-size:13px; }
+  .promo-text{ font-size:15px; }
+  .btn-new{ padding:9px 12px; }
+}

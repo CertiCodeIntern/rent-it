@@ -89,6 +89,25 @@
   background: #f5f7fb;
 }
 
+/* Dark theme: avoid forcing light CTA background */
+[data-theme="dark"] .cta-section {
+  background: var(--bg-secondary);
+}
+
+/* Dark theme: Home "Choose Your Machine" heading readability */
+[data-theme="dark"] .choose .section-title {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .choose .section-subtitle {
+  color: var(--text-secondary) !important;
+}
+
+/* Dark theme: Contact page FAQ heading */
+[data-theme="dark"] .faq-section .section-title {
+  color: var(--text-primary) !important;
+}
+
 @keyframes wip-shimmer {
   0% {
     background-position: 0% 0;

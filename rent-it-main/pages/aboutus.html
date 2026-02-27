@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/rent-it/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn more about RentIt - Premium videoke rental service elevating events with professional sound since 2026.">
+    <title>About Us - RentIt</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
+
+    <!-- Stylesheets (Order: Theme → Layout → Page-specific) -->
+    <link rel="stylesheet" href="shared/css/theme.css">
+    <link rel="stylesheet" href="landingpage/css/index.css">
+    <link rel="stylesheet" href="pages/aboutus.css">
+    
+    <!-- Theme Script (Prevents flash of wrong theme) -->
+    <script src="shared/js/theme.js"></script>
+</head>
+<body>
+    <div class="page-skeleton-overlay" data-skeleton="marketing" aria-hidden="true">
+        <div class="page-skeleton-marketing">
+            <div class="marketing-topbar">
+                <span class="marketing-logo skeleton-shape"></span>
+                <div class="marketing-nav">
+                    <span class="marketing-pill skeleton-shape w-20"></span>
+                    <span class="marketing-pill skeleton-shape w-25"></span>
+                    <span class="marketing-pill skeleton-shape w-20"></span>
+                    <span class="marketing-pill skeleton-shape w-30"></span>
+                </div>
+                <span class="marketing-cta skeleton-shape w-25"></span>
+            </div>
+            <div class="marketing-hero">
+                <div class="marketing-hero-text">
+                    <span class="marketing-line skeleton-shape w-70"></span>
+                    <span class="marketing-line skeleton-shape w-80"></span>
+                    <span class="marketing-line skeleton-shape w-60"></span>
+                    <div class="marketing-actions">
+                        <span class="marketing-button skeleton-shape w-25"></span>
+                        <span class="marketing-button skeleton-shape w-20"></span>
+                    </div>
+                </div>
+                <span class="marketing-hero-media skeleton-shape"></span>
+            </div>
+            <div class="marketing-cards">
+                <span class="marketing-card skeleton-shape"></span>
+                <span class="marketing-card skeleton-shape"></span>
+                <span class="marketing-card skeleton-shape"></span>
+            </div>
+        </div>
+    </div>
+    <!-- ============================
+         SITE HEADER
+         ============================ -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <!-- Hamburger (Mobile) -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            
+            <!-- Brand -->
+            <a href="index.php" class="brand">
+                <div class="logo-drawer">
+                    <img src="assets/images/rIT_logo_tp.png" alt="RentIt Logo">
+                </div>
+                <span class="brand-name">Rent<span class="accent">It</span></span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="main-nav">
+                <a href="index.php" class="nav-link">Home</a>
+                <a href="index.php#machines" class="nav-link">Rentals</a>
+                <a href="index.php#pricing" class="nav-link">Pricing</a>
+                <a href="pages/aboutus.html" class="nav-link active">About</a>
+                <a href="pages/contactus.html" class="nav-link">Contact</a>
+            </nav>
+            
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>                <a href="client/auth/login.php#login" class="btn btn-outline">Login</a>
+                <a href="client/auth/login.php#register" class="btn btn-primary">Register</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.php" class="mobile-link">Home</a>
+            <a href="index.php#machines" class="mobile-link">Rentals</a>
+            <a href="index.php#pricing" class="mobile-link">Pricing</a>
+            <a href="pages/aboutus.html" class="mobile-link active">About</a>
+            <a href="pages/contactus.html" class="mobile-link">Contact</a>
+            <div class="mobile-actions">
+                <a href="client/auth/login.php#login" class="btn btn-primary" style="width: 100%;">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ============================
+             HERO SECTION
+             ============================ -->
+        <section class="about-hero">
+            <div class="container">
+                <div class="about-hero-inner">
+                    <div class="about-hero-content">
+                        <span class="since-badge animate-fade-up delay-1">Since 2026</span>
+                        <h1 class="about-hero-title animate-fade-up delay-2">Elevating Events with Professional Sound</h1>
+                        <p class="about-hero-desc animate-fade-up delay-3">
+                            What started as a small garage project in 2026 has grown into the city's premier videoke rental service. Our mission is to provide high-quality entertainment through professional-grade videoke systems. From intimate family gatherings to grand corporate events, we ensure your voice is heard in crystal clear quality.
+                        </p>
+                        <p class="about-hero-desc animate-fade-up delay-4">
+                            With years of experience and thousands of successful events, RentIt has become the trusted name for videoke rentals in Metro Manila and surrounding areas. Our commitment to quality equipment, professional service, and customer satisfaction sets us apart.
+                        </p>
+                        <div class="about-hero-cta animate-fade-up delay-5">
+                            <a href="#team" class="btn-team">
+                                Our Team
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="about-hero-image animate-fade-right delay-3">
+                        <a href="assets/images/team/RentIT.png" target="_blank" rel="noopener">
+                            <img src="assets/images/team/RentIT.png" alt="RentIt Team" onerror="this.closest('a').replaceWith(Object.assign(document.createElement('div'),{style:'font-size:64px',textContent:'🎤'}))">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             OUR CORE VALUES
+             ============================ -->
+        <section class="core-values">
+            <div class="container">
+                <div class="core-values-header animate-fade-up">
+                    <h2 class="core-values-title">Our Core Values</h2>
+                    <div class="core-values-underline"></div>
+                </div>
+
+                <div class="about-values-grid">
+                    <!-- Quality Sound -->
+                    <article class="value-card animate-fade-up delay-1">
+                        <div class="value-icon blue">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                                <line x1="12" y1="19" x2="12" y2="23"/>
+                                <line x1="8" y1="23" x2="16" y2="23"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Quality Sound</h3>
+                        <p class="value-desc">
+                            We use only top-tier audio equipment and calibrated speakers to ensure studio-grade vocals at every venue. Our systems are regularly maintained and updated with the latest technology to deliver crystal-clear sound that makes every performance shine.
+                        </p>
+                    </article>
+
+                    <!-- Reliable Service -->
+                    <article class="value-card animate-fade-up delay-2">
+                        <div class="value-icon orange">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Reliable Service</h3>
+                        <p class="value-desc">
+                            Prompt delivery and expert setup. Our technical team is on standby to ensure your party never skips a beat. We arrive on time, every time, and provide full support throughout your event. Our 24/7 hotline means help is always just a call away.
+                        </p>
+                    </article>
+
+                    <!-- Customer Joy -->
+                    <article class="value-card animate-fade-up delay-3">
+                        <div class="value-icon red">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </div>
+                        <h3 class="value-title">Customer Joy</h3>
+                        <p class="value-desc">
+                            We don't just rent machines; we facilitate memories. Customer happiness is our ultimate success metric. From the moment you book to the final pickup, we're dedicated to making your experience seamless, enjoyable, and truly unforgettable.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             MEET OUR TEAM
+             ============================ -->
+        <section class="team-section" id="team">
+            <div class="container">
+                <div class="team-header animate-fade-up">
+                    <h2 class="team-title">Meet Our Team</h2>
+                    <p class="team-subtitle">The passionate people behind RentIt who work tirelessly to make your events memorable.</p>
+                </div>
+
+                <div class="team-grid">
+                    <!-- CEO -->
+                    <article class="team-card animate-fade-up delay-1">
+                        <div class="team-photo">👨‍💼</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Tom Oliver</h3>
+                            <div class="team-role">Chief Executive Officer</div>
+                            <p class="team-bio">Visionary leader behind RentIt. Drives the company's strategic direction and ensures every decision aligns with delivering the best videoke rental experience in Metro Manila.</p>
+                        </div>
+                    </article>
+
+                    <!-- Project Manager -->
+                    <article class="team-card animate-fade-up delay-2">
+                        <div class="team-photo">👨‍💼</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Aaron Raven Aramil</h3>
+                            <div class="team-role">Project Manager</div>
+                            <p class="team-bio">Keeps the team aligned and projects on track. Coordinates sprints, manages timelines, and bridges communication between all departments to ensure smooth delivery.</p>
+                        </div>
+                    </article>
+
+                    <!-- Lead Dev / Frontend -->
+                    <article class="team-card animate-fade-up delay-3">
+                        <div class="team-photo">👨‍💻</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Marc Steeven Parubrub</h3>
+                            <div class="team-role">Lead Developer / Frontend Developer</div>
+                            <p class="team-bio">Leads the frontend architecture and development workflow. Builds responsive, accessible interfaces and mentors the dev team to maintain high code quality standards.</p>
+                        </div>
+                    </article>
+
+                    <!-- Full Stack Devs -->
+                    <article class="team-card animate-fade-up delay-4">
+                        <div class="team-photo">👨‍💻</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Miguel Ansano Sta. Maria</h3>
+                            <div class="team-role">Full Stack Developer</div>
+                            <p class="team-bio">Works across the entire stack from database queries to pixel-perfect UI. Tackles complex features end-to-end and ensures seamless integration between frontend and backend.</p>
+                        </div>
+                    </article>
+
+                    <article class="team-card animate-fade-up delay-1">
+                        <div class="team-photo">👨‍💻</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Von Asley Malilos</h3>
+                            <div class="team-role">Full Stack Developer</div>
+                            <p class="team-bio">Versatile developer comfortable in both frontend and backend. Builds robust features, optimizes performance, and contributes to the platform's scalability.</p>
+                        </div>
+                    </article>
+
+                    <!-- Frontend Dev -->
+                    <article class="team-card animate-fade-up delay-2">
+                        <div class="team-photo">👨‍💻</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Jude Vincent</h3>
+                            <div class="team-role">Frontend Developer</div>
+                            <p class="team-bio">Crafts clean, interactive user interfaces with attention to detail. Focuses on responsive layouts, smooth animations, and cross-browser compatibility.</p>
+                        </div>
+                    </article>
+
+                    <!-- Backend Devs -->
+                    <article class="team-card animate-fade-up delay-3">
+                        <div class="team-photo">👨‍💻</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Leander Ochea</h3>
+                            <div class="team-role">Backend Developer</div>
+                            <p class="team-bio">Architects server-side logic, APIs, and database structures. Ensures data integrity, security, and reliable performance behind every feature on the platform.</p>
+                        </div>
+                    </article>
+
+                    <article class="team-card animate-fade-up delay-4">
+                        <div class="team-photo">👨‍💻</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Sean Rey Beltran</h3>
+                            <div class="team-role">Backend Developer</div>
+                            <p class="team-bio">Builds and maintains server-side services and database operations. Focuses on API development, authentication flows, and backend optimization.</p>
+                        </div>
+                    </article>
+
+                    <article class="team-card animate-fade-up delay-1">
+                        <div class="team-photo">👩‍💻</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Via Umali</h3>
+                            <div class="team-role">Backend Developer</div>
+                            <p class="team-bio">Develops backend services and data processing logic. Ensures smooth server operations and contributes to the platform's reliability and security.</p>
+                        </div>
+                    </article>
+
+                    <!-- UI/UX Designers -->
+                    <article class="team-card animate-fade-up delay-2">
+                        <div class="team-photo">
+                            <a href="assets/images/team/JOAQUIN GABRIEL CAMANGEG_UIUX.jpg" target="_blank" rel="noopener">
+                                <img src="assets/images/team/JOAQUIN GABRIEL CAMANGEG_UIUX.jpg" alt="Joaquin Gabriel Camangeg" onerror="this.closest('.team-photo').innerHTML='🎨'">
+                            </a>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Joaquin Gabriel Camangeg</h3>
+                            <div class="team-role">UI/UX Designer</div>
+                            <p class="team-bio">Designs intuitive user experiences and polished visual interfaces. Translates user needs into clean, functional designs that make the platform a joy to use.</p>
+                        </div>
+                    </article>
+
+                    <article class="team-card animate-fade-up delay-3">
+                        <div class="team-photo">
+                            <a href="assets/images/team/VEENY BAUTISTA_UI_UX.png" target="_blank" rel="noopener">
+                                <img src="assets/images/team/VEENY BAUTISTA_UI_UX.png" alt="Veeny Bautista" onerror="this.closest('.team-photo').innerHTML='🎨'">
+                            </a>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Veeny Bautista</h3>
+                            <div class="team-role">UI/UX Designer &amp; Support</div>
+                            <p class="team-bio">An all-around talent who designs user interfaces and provides support across teams. Bridges the gap between design vision and practical implementation.</p>
+                        </div>
+                    </article>
+
+                    <article class="team-card animate-fade-up delay-4">
+                        <div class="team-photo">👨‍🎨</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Andrei</h3>
+                            <div class="team-role">UI/UX Designer</div>
+                            <p class="team-bio">Creates user-centered designs with a focus on accessibility and visual consistency. Contributes to the design system and helps maintain brand cohesion.</p>
+                        </div>
+                    </article>
+
+                    <article class="team-card animate-fade-up delay-1">
+                        <div class="team-photo">👩‍🎨</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Pauline Jayme</h3>
+                            <div class="team-role">UI/UX Designer</div>
+                            <p class="team-bio">Focuses on user research and interaction design. Creates wireframes, prototypes, and high-fidelity mockups that guide the development of seamless user flows.</p>
+                        </div>
+                    </article>
+
+                    <!-- Multimedia -->
+                    <article class="team-card animate-fade-up delay-2">
+                        <div class="team-photo">
+                            <a href="assets/images/team/ROXANNE LAZO_MULTIMEDIA.jpg" target="_blank" rel="noopener">
+                                <img src="assets/images/team/ROXANNE LAZO_MULTIMEDIA.jpg" alt="Roxanne Lazo" onerror="this.closest('.team-photo').innerHTML='🎬'">
+                            </a>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Roxanne Lazo</h3>
+                            <div class="team-role">Multimedia Specialist</div>
+                            <p class="team-bio">Produces visual content, graphics, and media assets for the platform and marketing. Brings the RentIt brand to life through compelling visual storytelling.</p>
+                        </div>
+                    </article>
+
+                    <article class="team-card animate-fade-up delay-3">
+                        <div class="team-photo">👨‍🎬</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Franz Dela Cruz</h3>
+                            <div class="team-role">Multimedia Specialist</div>
+                            <p class="team-bio">Creates engaging multimedia content including graphics, videos, and promotional materials. Ensures all visual assets align with the brand's identity and message.</p>
+                        </div>
+                    </article>
+
+                    <!-- QA -->
+                    <article class="team-card animate-fade-up delay-4">
+                        <div class="team-photo">👨‍🔧</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Aaron Briones</h3>
+                            <div class="team-role">Quality Assurance</div>
+                            <p class="team-bio">Tests every feature rigorously before release. Identifies bugs, validates fixes, and ensures the platform delivers a smooth, error-free experience for all users.</p>
+                        </div>
+                    </article>
+
+                    <article class="team-card animate-fade-up delay-1">
+                        <div class="team-photo">👨‍🔧</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Prince Darrell Malunay Masa</h3>
+                            <div class="team-role">Quality Assurance</div>
+                            <p class="team-bio">Conducts thorough testing across all platform features. Documents test cases, performs regression testing, and helps maintain high reliability standards.</p>
+                        </div>
+                    </article>
+
+                    <!-- Data Analyst -->
+                    <article class="team-card animate-fade-up delay-2">
+                        <div class="team-photo">👩‍💻</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Samantha Faith Tan</h3>
+                            <div class="team-role">Data Analyst</div>
+                            <p class="team-bio">Turns raw data into actionable insights. Analyzes booking trends, customer behavior, and platform metrics to drive informed business and product decisions.</p>
+                        </div>
+                    </article>
+
+                    <!-- IT Support -->
+                    <article class="team-card animate-fade-up delay-3">
+                        <div class="team-photo">
+                            <a href="assets/images/team/TAN HUMPBREY NEIL A.- IT SUPPORT.jpg" target="_blank" rel="noopener">
+                                <img src="assets/images/team/TAN HUMPBREY NEIL A.- IT SUPPORT.jpg" alt="Humpbrey Neil Tan" onerror="this.closest('.team-photo').innerHTML='🛠️'">
+                            </a>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Humpbrey Neil Tan</h3>
+                            <div class="team-role">IT Support</div>
+                            <p class="team-bio">Keeps infrastructure running and resolves technical issues swiftly. Manages deployments, server health, and provides hands-on support to keep the team productive.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             TERMS OF SERVICE
+             ============================ -->
+        <section class="terms-section">
+            <div class="container">
+                <div class="terms-header animate-fade-up">
+                    <h2 class="terms-title">Terms of Service</h2>
+                    <p class="terms-updated">Last updated: January 15, 2026</p>
+                </div>
+
+                <div class="accordion">
+                    <!-- 1. Rental Duration & Logistics -->
+                    <div class="accordion-item animate-fade-up delay-1">
+                        <button class="accordion-header active" data-accordion="rental">
+                            <span class="accordion-icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </span>
+                            <span class="accordion-title">1. Rental Duration & Logistics</span>
+                            <svg class="accordion-chevron" viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content show">
+                            <p>Standard rental periods are <strong>24 hours</strong> starting from the time of setup. Overtime rates apply at ₱500 per additional hour unless pre-arranged with our team.</p>
+                            <p><strong>Delivery window:</strong> 8:00 AM - 12:00 PM</p>
+                            <p><strong>Pickup window:</strong> Next day 9:00 AM - 1:00 PM</p>
+                            <p>The renter must be present at the time of delivery to sign the physical inspection report. A valid government ID is required for verification. For events requiring early setup (before 8 AM), please contact us at least 48 hours in advance.</p>
+                            <p>Extended rentals (2+ days) receive a 15% discount on daily rates. Weekly rentals (7+ days) receive a 25% discount.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Liability & Equipment Care -->
+                    <div class="accordion-item animate-fade-up delay-2">
+                        <button class="accordion-header" data-accordion="liability">
+                            <span class="accordion-icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                </svg>
+                            </span>
+                            <span class="accordion-title">2. Liability & Equipment Care</span>
+                            <svg class="accordion-chevron" viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>The renter assumes full responsibility for the equipment upon delivery. RentIt is not liable for any injuries occurring during the operation of the equipment.</p>
+                            <p>Equipment must be kept under cover and protected from weather elements including rain, extreme heat, and humidity.</p>
+                            <p>Only authorized personnel may move the main console once installed. Moving equipment without proper training may result in damage.</p>
+                            <p>Food and drinks must be kept at a distance of at least 5 feet from all electrical components. Smoking near equipment is strictly prohibited.</p>
+                            <p>Children must be supervised at all times when near the equipment. We recommend a designated "equipment zone" for safety.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. Cancellation Policy -->
+                    <div class="accordion-item animate-fade-up delay-3">
+                        <button class="accordion-header" data-accordion="cancel">
+                            <span class="accordion-icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </span>
+                            <span class="accordion-title">3. Cancellation Policy</span>
+                            <svg class="accordion-chevron" viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>We understand plans change. Our refund structure is as follows:</p>
+                            <div class="policy-grid">
+                                <div class="policy-card">
+                                    <div class="policy-card-title">7+ Days Notice</div>
+                                    <div class="policy-card-text">Full refund of deposit. No cancellation fee applies.</div>
+                                </div>
+                                <div class="policy-card">
+                                    <div class="policy-card-title">3-6 Days Notice</div>
+                                    <div class="policy-card-text">50% refund of deposit. Or reschedule for free within 30 days.</div>
+                                </div>
+                                <div class="policy-card">
+                                    <div class="policy-card-title">Less than 48 Hours</div>
+                                    <div class="policy-card-text">Deposit is non-refundable. One-time reschedule available within 14 days.</div>
+                                </div>
+                                <div class="policy-card">
+                                    <div class="policy-card-title">No-Show</div>
+                                    <div class="policy-card-text">Full payment is forfeited. Future bookings require full prepayment.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Damage Fees -->
+                    <div class="accordion-item animate-fade-up delay-4">
+                        <button class="accordion-header" data-accordion="damage">
+                            <span class="accordion-icon-wrap">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                </svg>
+                            </span>
+                            <span class="accordion-title">4. Damage Fees</span>
+                            <svg class="accordion-chevron" viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>The following fees apply for damaged or lost items. All assessments are made upon equipment return:</p>
+                            <table class="damage-table">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Replacement Fee</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Wireless Microphone (Per unit)</td>
+                                        <td>₱3,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speaker Unit</td>
+                                        <td>₱8,000 - ₱15,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LCD Display / Monitor</td>
+                                        <td>₱12,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Remote Control / Tablet Interface</td>
+                                        <td>₱2,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Main Karaoke Console</td>
+                                        <td>₱25,000 - ₱45,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cables & Accessories</td>
+                                        <td>₱500 - ₱1,500</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="damage-note">Minor scratches and normal wear are expected and not charged. Major cosmetic damage is assessed at 30% of replacement cost.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================
+         SITE FOOTER
+         ============================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <div class="logo-drawer">
+                        <img src="assets/images/rIT_logo_tp.png" alt="RentIt Logo">
+                    </div>
+                    <div class="brand-text">
+                        <h4 class="brand-title">RentIt</h4>
+                        <p class="brand-sub">
+                            Making celebrations louder and more memorable with premium videoke rentals since 2026.
+                        </p>
+                        <p class="powered-by">Powered by <a href="https://www.certicode.tech/" target="_blank" rel="noopener">CertiCode</a></p>                        <div class="social-links">
+                            <a href="https://www.facebook.com/CertiCode" class="social" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.certicode.tech/" class="social" aria-label="CertiCode" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <line x1="3" y1="12" x2="21" y2="12"/>
+                                    <path d="M12 3a12 12 0 0 0 0 18"/>
+                                    <path d="M12 3a12 12 0 0 1 0 18"/>
+                                </svg>
+                            </a>
+                            <a href="pages/contactus.html" class="social" aria-label="Contact">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Links -->
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <nav class="footer-nav">
+                        <a href="pages/aboutus.html" class="footer-link">About Us</a>
+                        <a href="pages/contactus.html" class="footer-link">Contact</a>
+                        <a href="pages/terms.html" class="footer-link">Terms of Service</a>
+                    </nav>
+                </div>
+
+                <!-- Admin Links -->
+                <div class="footer-col">
+                    <h5>Admin</h5>
+                    <nav class="footer-nav">
+                        <a href="admin/auth/login.php" class="footer-link">Admin Login</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 RentIt Videoke Rentals • v2.4.0</p>
+                <div class="policy-links">
+                    <a href="pages/privacy-policy.html" class="policy-link">Privacy Policy</a>
+                    <a href="pages/cookie-policy.html" class="policy-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="landingpage/js/index.js"></script>
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const isActive = header.classList.contains('active');
+                
+                // Close all accordions
+                document.querySelectorAll('.accordion-header').forEach(h => {
+                    h.classList.remove('active');
+                    h.nextElementSibling.classList.remove('show');
+                });
+
+                // Open clicked one (if it wasn't already open)
+                if (!isActive) {
+                    header.classList.add('active');
+                    header.nextElementSibling.classList.add('show');
+                }
+            });
+        });
+
+        // Scroll-triggered animations using Intersection Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    animateOnScroll.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Pause animations initially, then trigger on scroll
+        document.querySelectorAll('.animate-fade-up, .animate-fade-left, .animate-fade-right, .animate-scale').forEach(el => {
+            // Skip hero elements - they should animate immediately
+            if (el.closest('.about-hero')) return;
+            
+            el.style.animationPlayState = 'paused';
+            animateOnScroll.observe(el);
+        });
+    </script>
+</body>
+</html>

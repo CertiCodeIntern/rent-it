@@ -1,8 +1,10 @@
 <?php
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+header("Vary: Origin");
 
 // Get database connection
 include_once '../config/database.php';
@@ -11,6 +13,10 @@ include_once '../models/User.php';
 $database = new Database();
 $db = $database->getConnection();
 
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('HTTP/1.1 204 No Content');
+    exit;
+}
 if (!$db) {
     http_response_code(503);
     echo json_encode(array("success" => false, "message" => "Database connection failed"));

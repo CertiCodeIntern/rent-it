@@ -1,0 +1,333 @@
+/* ========================================
+   Admin Settings Page Styles
+   ======================================== */
+
+/* Settings Grid */
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+    gap: var(--spacing-lg, 1.5rem);
+    max-width: 900px;
+}
+
+/* Settings Card */
+.settings-card {
+    background: var(--admin-bg-card);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-lg, 12px);
+    overflow: hidden;
+}
+
+.settings-card-header {
+    padding: var(--admin-spacing-xl, 1.5rem);
+    border-bottom: 1px solid var(--admin-border-color);
+}
+
+.settings-card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--admin-text-primary);
+    margin: 0 0 0.25rem 0;
+}
+
+.settings-card-subtitle {
+    font-size: 0.875rem;
+    color: var(--admin-text-secondary);
+    margin: 0;
+}
+
+.settings-card-body {
+    padding: var(--admin-spacing-xl, 1.5rem);
+}
+
+/* Password Card Specific */
+.password-card {
+    grid-column: span 1;
+}
+
+/* Setting Item */
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md, 1rem);
+    padding: var(--spacing-md, 1rem) 0;
+}
+
+.setting-item:first-child {
+    padding-top: 0;
+}
+
+.setting-item:last-child {
+    padding-bottom: 0;
+}
+
+.setting-item:not(:last-child) {
+    border-bottom: 1px solid var(--admin-border-color);
+}
+
+.setting-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md, 1rem);
+}
+
+.setting-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--admin-bg-elevated);
+    border-radius: var(--admin-radius-md, 8px);
+    flex-shrink: 0;
+}
+
+.setting-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--admin-accent);
+}
+
+.setting-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.setting-label {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--admin-text-primary);
+    margin: 0;
+}
+
+.setting-description {
+    font-size: 0.8125rem;
+    color: var(--admin-text-secondary);
+    margin: 0;
+}
+
+/* Toggle Switch */
+.toggle-switch-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--admin-bg-elevated);
+    transition: 0.3s ease;
+    border-radius: 28px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--admin-text-muted);
+    transition: 0.3s ease;
+    border-radius: 50%;
+}
+
+.toggle-input:checked + .toggle-slider {
+    background-color: var(--admin-accent);
+}
+
+.toggle-input:checked + .toggle-slider:before {
+    background-color: #fff;
+    transform: translateX(24px);
+}
+
+.toggle-input:focus + .toggle-slider {
+    box-shadow: 0 0 0 2px var(--admin-accent);
+}
+
+/* Password Form */
+.password-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md, 1rem);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--admin-text-primary);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    color: var(--admin-text-primary);
+    background: var(--admin-bg-input);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-md, 8px);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input::placeholder {
+    color: var(--admin-text-muted);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--admin-accent);
+    box-shadow: 0 0 0 3px var(--admin-accent-muted);
+}
+
+.form-hint {
+    font-size: 0.75rem;
+    color: var(--admin-text-muted);
+}
+
+/* Password Input Wrapper */
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper .form-input {
+    padding-right: 48px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    padding: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--admin-text-secondary);
+    transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+    color: var(--admin-text-primary);
+}
+
+.password-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Button Full Width */
+.btn-full {
+    width: 100%;
+    margin-top: var(--spacing-sm, 0.5rem);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm, 0.5rem);
+    }
+
+    .setting-label {
+        font-size: var(--admin-font-sm);
+    }
+
+    .setting-description {
+        font-size: var(--admin-font-xs);
+    }
+    
+    .toggle-switch-wrapper {
+        align-self: flex-end;
+    }
+
+    .settings-card .admin-card-title {
+        font-size: var(--admin-font-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .setting-item {
+        gap: var(--admin-spacing-xs);
+    }
+
+    .setting-label {
+        font-size: var(--admin-font-xs);
+    }
+
+    .setting-description {
+        font-size: 10px;
+    }
+
+    .settings-card .admin-card-title {
+        font-size: var(--admin-font-sm);
+    }
+}
+
+/* ============================
+   EXTRA SMALL SCREEN (375px)
+   ============================ */
+@media (max-width: 375px) {
+    .setting-item {
+        gap: var(--admin-spacing-xs);
+        padding: var(--admin-spacing-sm) 0;
+    }
+
+    .settings-grid {
+        gap: var(--admin-spacing-md);
+    }
+
+    .setting-label {
+        font-size: var(--admin-font-xs);
+    }
+
+    .setting-description {
+        font-size: 10px;
+    }
+
+    .toggle-switch-wrapper {
+        align-self: flex-start;
+    }
+
+    .settings-card .admin-card-title {
+        font-size: var(--admin-font-xs);
+    }
+}
+
+/* ============================
+   LARGE SCREEN ADJUSTMENTS
+   ============================ */
+@media (min-width: 1920px) {
+    .settings-grid {
+        gap: var(--admin-spacing-2xl);
+    }
+}

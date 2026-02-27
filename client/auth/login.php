@@ -1,6 +1,6 @@
-<?php 
+<?php
 session_start();
-include '../../shared/php/db_connection.php'; 
+include '../../shared/php/db_connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +17,14 @@ include '../../shared/php/db_connection.php';
     <link rel="stylesheet" href="../../shared/css/theme.css">
     <link rel="stylesheet" href="../../shared/css/globals.css">
     <link rel="stylesheet" href="css/auth.css">
+
+    <style>
+        /* This page does not use the dashboard skeleton loader.
+           Hide it to avoid the big empty "Loading content..." area. */
+        .page-skeleton-overlay {
+            display: none !important;
+        }
+    </style>
     
     <!-- Theme Script (Prevents flash of wrong theme) -->
     <script src="../../shared/js/theme.js"></script>
@@ -79,10 +87,10 @@ include '../../shared/php/db_connection.php';
         </div>
     </div>
     <div class="auth-section">
-        <a href="/rent-it/index.php" class="back-to-home" title="Back to home">← Home</a>
+        <a href="/rent-it/" class="back-to-home" title="Back to home">← Home</a>
         
-        <!-- Theme Toggle -->
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <!-- Theme Toggle (match React auth page styling) -->
+        <button class="auth-theme-toggle" id="themeToggle" aria-label="Toggle theme">
             <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="5"/>
                 <line x1="12" y1="1" x2="12" y2="3"/>
@@ -164,18 +172,6 @@ include '../../shared/php/db_connection.php';
                         
                         <button type="submit" class="auth-btn stagger-child">Sign In  →</button>
                     </form>
-
-                    <form id="registerForm" class="hidden">
-                        <div class="form-row stagger-child">
-                            <div class="auth-form-group">
-                                <label for="registerFullname">Full Name</label>
-                                <input type="text" id="registerFullname" placeholder="John Doe">
-                            </div>
-                            <div class="auth-form-group">
-                                <label for="registerPhone">Phone Number</label>
-                                <input type="tel" id="registerPhone" placeholder="+63 912 345 6789">
-                            </div>
-                        </div>
 
                         <div class="auth-form-group stagger-child">
                             <label for="registerEmail">Email Address</label>

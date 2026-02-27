@@ -1,0 +1,31 @@
+/* Contact page (public) – hero section with white text */
+
+.contact-hero {
+  padding: 6rem 0 3rem;
+  background: linear-gradient(135deg, var(--page-header-start, #013A63) 0%, var(--page-header-end, #014F86) 100%);
+  text-align: center;
+}
+
+.contact-hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.contact-hero-subtitle {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #ffffff;
+  opacity: 0.95;
+}
+
+@media (max-width: 768px) {
+  .contact-hero-title {
+    font-size: 2rem;
+  }
+  .contact-hero-subtitle {
+    font-size: 1rem;
+  }
+}

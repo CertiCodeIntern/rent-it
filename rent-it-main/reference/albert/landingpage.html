@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CertiCode — Landing</title>
+
+  <!-- Link to stylesheet (edit variables in langdingpage.css) -->
+  <link rel="stylesheet" href="css/langdingpage.css" />
+</head>
+<body>
+  <!-- ==========================
+       SITE HEADER
+       (Edit header styles in CSS under /* HEADER */)
+       ========================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <!-- MOBILE: Hamburger button on the LEFT (visible on small screens) -->
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="hamburgerBtn">☰</button>
+
+      <!-- left: logo / brand -->
+      <div class="brand">
+        <div class="logo-drawer">
+          <img src="src/images/rIT_logo_tp.png" alt="rIT logo" />
+        </div>
+        <div class="brand-name">CertiCode</div>
+      </div>
+
+      <!-- center nav (desktop only) -->
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="#machines">Rentals</a>
+        <a class="nav-link" href="#pricing">Pricing</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+
+      <!-- right: actions (Book + Avatar) -->
+      <div class="header-actions">
+        <button class="btn btn-outline">Book Now</button>
+        <div class="avatar" aria-hidden="true">JS</div>
+      </div>
+    </div>
+
+    <!-- ==========================
+         MOBILE NAV (hidden on desktop)
+         - Populate links here. Edit styles in CSS under /* MOBILE NAV */
+         - This panel is toggleable via the hamburger button.
+         ========================== -->
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a class="mobile-link" href="#">Home</a>
+      <a class="mobile-link" href="#machines">Rentals</a>
+      <a class="mobile-link" href="#pricing">Pricing</a>
+      <a class="mobile-link" href="#about">About</a>
+      <a class="mobile-link" href="#contact">Contact</a>
+      <div class="mobile-actions">
+        <button class="btn btn-outline">Book Now</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================
+       HERO SECTION (NO IMAGE)
+       - Text and CTAs are centered; edit sizes in CSS under /* HERO */
+       ========================== -->
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <!-- CENTERED HERO TEXT -->
+        <div class="hero-text center">
+          <span class="pill">New Arrivals — Gen 5 Systems</span>
+
+          <!-- Main heading: "Home" word uses accent color -->
+          <h1 class="hero-title">Bring the Party <span class="accent">Home</span></h1>
+
+          <!-- Subheading / description -->
+          <p class="hero-sub">High-quality videoke machines with 50k+ songs and wireless mics delivered to your doorstep. Crystal-clear sound, professional setup.</p>
+
+          <!-- Centered CTA buttons -->
+          <div class="hero-cta centered">
+            <a class="btn btn-primary" href="#machines">Browse Machines</a>
+            <a class="btn btn-ghost" href="#packages">View Packages</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================
+         CHOOSE MACHINE
+         ========================== -->
+    <section id="machines" class="choose">
+      <div class="container">
+        <h2 class="section-title">Choose Your Machine</h2>
+        <h4 class="section-title">Select from our range of high-performance videoke setups</h4>
+
+        <!-- tabs -->
+        <div class="tabs">
+          <button class="btn btn-primary" >All Machines</button>
+          <button class="tab active">Standard</button>
+          <button class="tab active">Premium</button>
+        </div>
+
+        <!-- cards -->
+        <div class="cards">
+          <article class="card">
+            <!-- Card media: change src to your image file -->
+        <div class="card-media">
+          <img src="src/images/ministar.jpg" alt="Platinum Pro machine" />
+        </div>
+            <div class="card-head">
+              <h3>Mini Star</h3>
+              <div class="price">₱800</div>
+            </div>
+            <ul class="card-specs">
+              <li>30,000+ Classic Songs</li>
+              <li>2 Wireless Microphones</li>
+              <li>Portable 8&quot; Speaker</li>
+            </ul>
+            <div class="card-foot">
+              <a class="btn btn-primary"href="#">Rent Mini Star</a>
+            </div>
+          </article>
+          <article class="card media">
+             <!-- Card media: change src to your image file -->
+            <div class="card-media">
+                <img src="src/images/platinumpro.webp" alt="Platinum Pro machine" />
+            </div>
+            <div class="card-head">
+              <h3>Platinum Pro</h3>
+              <div class="price">₱1,500</div>
+            </div>
+            <ul class="card-specs">
+              <li>50,000+ Songs</li>
+              <li>2 Wireless Mics + Mixer</li>
+              <li>2 x 12&quot; Active Speakers</li>
+            </ul>
+            <div class="card-foot">
+              <a class="btn btn-primary" href="#">Rent Platinum Pro</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <!-- Card media: change src to your image file -->
+        <div class="card-media">
+          <img src="src/images/partyboxx.webp" alt="Platinum Pro machine" />
+        </div>
+            <div class="card-head">
+              <h3>Party Box X</h3>
+              <div class="price">₱2,500</div>
+            </div>
+            <ul class="card-specs">
+              <li>70,000+ Songs | HD Video</li>
+              <li>4 Wireless Mics</li>
+              <li>4 x 12&quot; Speaker System</li>
+            </ul>
+            <div class="card-foot">
+              <a class="btn btn-primary" href="#">Rent Party Box X</a>
+            </div>
+          </article>
+
+          
+        </div>
+      </div>
+    </section>
+
+   <!-- ==========================
+     DELIVERY & ESTIMATOR 
+     - Left: headline + two feature boxes
+     - Right: estimator card with input, fee, map, CTA
+     ========================== -->
+<section class="delivery">
+  <div class="container delivery-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="delivery-left">
+      <h2 class="delivery-title">Fast & Reliable Delivery</h2>
+      <p class="delivery-sub">
+        We deliver, set up, and pick up — the best equipment for your event.
+      </p>
+
+      <!-- feature boxes -->
+      <div class="feature-stack">
+
+        <!-- Setup time box -->
+        <div class="feature-box">
+          <div class="feature-left">
+            <div class="feature-icon">
+              <!-- wrench icon (SVG) -->
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden><path fill="#072023" d="M22.7 19.3l-6-6c.6-1 .3-2.3-.8-3.4C14 8.6 12.7 8.3 11.7 8.9l-6.9 6.9c-.6.6-.6 1.6 0 2.2l1.8 1.8c.6.6 1.6.6 2.2 0l6.9-6.9c.6-1.1.3-2.4-.8-3.4l6-6c.8-.8 2-.8 2.8 0l1.9 1.9c.8.9.8 2.1 0 2.9z"/></svg>
+            </div>
+          </div>
+          <div class="feature-right">
+            <div class="feature-label">Setup Time</div>
+            <div class="feature-value">15 mins</div>
+          </div>
+        </div>
+
+        <!-- Avg delivery box -->
+        <div class="feature-box">
+          <div class="feature-left">
+            <div class="feature-icon">
+              <!-- truck icon (SVG) -->
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden><path fill="#072023" d="M3 4h13v6h4l1 3h-2a2 2 0 0 0-2 2 2 2 0 0 0 0 4h-10a2 2 0 0 0 0-4h1v-7h-7z"/></svg>
+            </div>
+          </div>
+          <div class="feature-right">
+            <div class="feature-label">Avg Delivery</div>
+            <div class="feature-value">45 mins</div>
+          </div>
+        </div>
+
+      </div> <!-- .feature-stack -->
+    </div> <!-- .delivery-left -->
+
+    <!-- RIGHT COLUMN: Estimator -->
+    <aside class="estimator-card" aria-labelledby="estimatorTitle">
+      <div class="estimator-inner">
+
+        <h3 id="estimatorTitle" class="estimator-title">Delivery Estimator</h3>
+
+        <!-- location input -->
+        <label class="est-label" for="loc">Your Location</label>
+        <div class="input-with-icon">
+          <span class="input-icon">📍</span>
+          <input id="loc" class="est-input" placeholder="Enter city or address" />
+        </div>
+
+        <!-- estimated fee row -->
+        <div class="fee-row">
+          <div class="fee-left">
+            <div class="fee-label">Estimated Delivery Fee</div>
+            <div class="fee-note">Based on your current zone</div>
+          </div>
+          <div class="fee-value">₱150.00</div>
+        </div>
+
+        <!-- ==========================
+     MAP PLACEHOLDER (SVG MOCK)
+     No real map / no image
+     ========================== -->
+<div class="map-box mock-map" aria-hidden="true">
+  <svg viewBox="0 0 400 180" preserveAspectRatio="none">
+    <!-- water -->
+    <rect width="400" height="180" fill="#61A5C2"/>
+
+    <!-- roads -->
+    <path d="M0 40 L400 90" stroke="#E5E7EB" stroke-width="6" opacity="0.7"/>
+    <path d="M0 120 L400 70" stroke="#E5E7EB" stroke-width="4" opacity="0.6"/>
+    <path d="M80 0 L160 180" stroke="#E5E7EB" stroke-width="5" opacity="0.5"/>
+
+    <!-- location pin -->
+    <circle cx="220" cy="90" r="8" fill="#FB7012"/>
+    <circle cx="220" cy="90" r="14" fill="#FB7012" opacity="0.35"/>
+  </svg>
+
+  <!-- optional city label -->
+  <span class="map-label">Manila Area</span>
+</div>
+
+
+        <!-- CTA -->
+        <button class="btn btn-primary est-cta">Calculate Final Price</button>
+
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+
+
+    <!-- ==========================
+         STATS & FOOTER
+         ========================== -->
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat"><div class="stat-num">5,000+</div><div class="stat-label">Parties Hosted</div></div>
+        <div class="stat"><div class="stat-num">4.9/5</div><div class="stat-label">Customer Rating</div></div>
+        <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Live Support</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Uptime</div></div>
+      </div>
+    </section>
+  </main>
+
+<!-- ===========================
+     SITE FOOTER (replace existing <footer>)
+     =========================== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-inner">
+
+    <!-- LEFT: Brand + description + small social icons -->
+    <div class="footer-col footer-brand">
+      <div class="logo-drawer">
+        <img src="src/images/rIT_logo_tp.png" alt="CertiCode / rIT logo">
+      </div>
+
+      <div class="brand-text">
+        <h4 class="brand-title">CertiCode</h4>
+        <p class="brand-sub">
+          Making celebrations louder and more memorable with premium videoke rentals since 2026.
+        </p>
+
+        <div class="social-links" aria-label="Social links">
+          <!-- Chart bar icon -->
+          <a href="#" class="social" aria-label="Analytics">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <rect x="3" y="10" width="4" height="10" rx="1"></rect>
+              <rect x="10" y="6" width="4" height="14" rx="1"></rect>
+              <rect x="17" y="3" width="4" height="17" rx="1"></rect>
+            </svg>
+          </a>
+
+          <!-- Share nodes icon -->
+          <a href="#" class="social" aria-label="Share">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M4 12v6a2 2 0 0 0 2 2h12" stroke-width="1.6" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+              <polyline points="16 6 12 2 8 6" stroke-width="1.6" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></polyline>
+              <path d="M12 2v14" stroke-width="1.6" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+
+          <!-- Email / @ icon -->
+          <a href="mailto:hello@certicode.example" class="social" aria-label="Email">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+              <text x="16" y="20" text-anchor="middle" font-size="14" fill="currentColor" font-family="sans-serif" font-weight="700">@</text>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER: Company links (vertical) -->
+    <div class="footer-col footer-links">
+      <h5 class="footer-heading">Company</h5>
+      <nav class="footer-nav" aria-label="Company">
+        <a href="about.html" class="footer-link">About us</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Careers</a>
+        <a href="#" class="footer-link">Terms of Service</a>
+      </nav>
+    </div>
+
+    <!-- RIGHT: Support links (vertical) -->
+    <div class="footer-col footer-support">
+      <h5 class="footer-heading">Support</h5>
+      <nav class="footer-nav" aria-label="Support">
+        <a href="#" class="footer-link">How it works</a>
+        <a href="#" class="footer-link">Pricing Packages</a>
+        <a href="#" class="footer-link">Safety Guidelines</a>
+        <a href="#" class="footer-link">Delivery areas</a>
+      </nav>
+    </div>
+
+  </div>
+
+  <!-- Divider line -->
+  <div class="footer-divider" role="separator" aria-hidden="true"></div>
+
+  <!-- Bottom center area: copyright + small policy links -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <div class="copyright">© 2026 CertiCode Videoke Rentals • v2.4.0</div>
+
+      <!-- Privacy and cookie policy centered under copyright -->
+      <div class="policy-links">
+        <a href="#" class="policy-link">Privacy Policy</a>
+        <span class="policy-sep">·</span>
+        <a href="#" class="policy-link">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+  <!-- ==========================
+       MOBILE NAV TOGGLE SCRIPT
+       (unchanged)
+       ========================== -->
+  <script>
+    (function () {
+      const ham = document.getElementById('hamburgerBtn');
+      const mobileNav = document.getElementById('mobileNav');
+
+      function openNav() {
+        ham.setAttribute('aria-expanded', 'true');
+        mobileNav.classList.add('open');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeNav() {
+        ham.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      ham.addEventListener('click', function () {
+        const expanded = ham.getAttribute('aria-expanded') === 'true';
+        if (expanded) closeNav();
+        else openNav();
+      });
+
+      mobileNav.querySelectorAll('.mobile-link').forEach(function (a) {
+        a.addEventListener('click', closeNav);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeNav();
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!mobileNav.classList.contains('open')) return;
+        const isInside = mobileNav.contains(e.target) || ham.contains(e.target);
+        if (!isInside) closeNav();
+      });
+    })();
+  </script>
+</body>
+</html>

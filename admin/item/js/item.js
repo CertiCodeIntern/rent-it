@@ -81,11 +81,18 @@ function renderItemRow(item) {
     const image = item.image ? `assets/images/items/${item.image}` : '';
     const price = Number(item.price_per_day || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const deposit = item.deposit ? Number(item.deposit).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : null;
+    
+    // Units info  
+    const totalUnits = parseInt(item.total_units) || 0;
+    const availableUnits = parseInt(item.available_units) || 0;
+    const repairingUnits = parseInt(item.repairing_units) || 0;
+    const rentedUnits = totalUnits - availableUnits - repairingUnits;
+    
     const normalizedStatus = (item.status || '').toLowerCase();
     const isBooked = normalizedStatus.includes('booked') || normalizedStatus.includes('reserved');
     const isRepairing = normalizedStatus.includes('repair') || normalizedStatus.includes('maintenance');
-    const isUnavailable = normalizedStatus.includes('unavailable');
-    const isAvailable = normalizedStatus.includes('available');
+    const isUnavailable = normalizedStatus === 'unavailable';
+    const isAvailable = normalizedStatus === 'available';
 
     // Visibility & Featured badges
     const isVisible = parseInt(item.is_visible) === 1;
@@ -153,6 +160,14 @@ function renderItemRow(item) {
                 <div class="item-pricing">
                     <span class="price-main">₱${price}/day</span>
                     ${deposit ? `<span class="price-deposit">Deposit: ₱${deposit}</span>` : '<span class="price-deposit">No deposit</span>'}
+                </div>
+            </td>
+            <td>
+                <div class="item-units-info">
+                    <div class="units-row"><strong>Total:</strong> ${totalUnits}</div>
+                    <div class="units-row"><strong>Available:</strong> <span class="units-available">${availableUnits}</span></div>
+                    <div class="units-row"><strong>Rented:</strong> <span class="units-rented">${rentedUnits}</span></div>
+                    <div class="units-row"><strong>Repairing:</strong> <span class="units-repairing">${repairingUnits}</span></div>
                 </div>
             </td>
             <td>
@@ -227,12 +242,20 @@ function handleItemStatusChange(itemId, newStatus) {
  * Show modal for setting item to Repairing
  */
 function showRepairingModal(itemId, itemName) {
+    const item = itemsData.find(i => String(i.item_id) === String(itemId));
+    const maxRepairableUnits = item ? (parseInt(item.total_units) - parseInt(item.repairing_units)) : 1;
+    
     if (typeof AdminComponents !== 'undefined' && AdminComponents.showModal) {
         AdminComponents.showModal({
-            title: 'Set Item to Repairing',
+            title: 'Set Units to Repairing',
             content: `
-                <p>Set <strong>${escapeHtml(itemName)}</strong> to <em>Repairing</em> status? This item will not be available for rent.</p>
+                <p>How many units of <strong>${escapeHtml(itemName)}</strong> need repair?</p>
                 <div class="form-group" style="margin-top: 1rem;">
+                    <label class="form-label">Number of Units to Repair <span style="color: var(--admin-accent);">*</span></label>
+                    <input type="number" class="form-input" id="repairUnitsCount" placeholder="1" min="1" max="${maxRepairableUnits}" value="1" required>
+                    <span class="form-hint">Maximum: ${maxRepairableUnits} units</span>
+                </div>
+                <div class="form-group">
                     <label class="form-label">Issue Type</label>
                     <input type="text" class="form-input" id="repairIssueType" placeholder="e.g., Audio Distortion, Power Failure">
                 </div>
@@ -260,21 +283,30 @@ function showRepairingModal(itemId, itemName) {
             confirmText: 'Set to Repairing',
             cancelText: 'Cancel',
             onConfirm: () => {
+                const repairUnitsCount = parseInt(document.getElementById('repairUnitsCount')?.value) || 1;
+                const currentRepairingUnits = parseInt(item.repairing_units) || 0;
+                const newRepairingUnits = currentRepairingUnits + repairUnitsCount;
+                
                 const payload = {
                     item_id: itemId,
+                    repairing_units: newRepairingUnits,
                     status: 'Repairing',
+                    repair_quantity: repairUnitsCount,
                     issue_type: document.getElementById('repairIssueType')?.value || 'General Maintenance',
                     priority: document.getElementById('repairPriority')?.value || 'medium',
                     estimated_cost: parseFloat(document.getElementById('repairCost')?.value) || 0,
                     eta_date: document.getElementById('repairEta')?.value || '',
                     notes: document.getElementById('repairNotes')?.value || ''
                 };
-                updateItemStatus(payload);
+                updateItemRepairUnits(payload);
             }
         });
     } else {
-        if (confirm(`Set "${itemName}" to Repairing status?`)) {
-            updateItemStatus({ item_id: itemId, status: 'Repairing' });
+        const repairUnits = prompt(`How many units to repair? (Max: ${maxRepairableUnits})`, '1');
+        if (repairUnits !== null && !isNaN(repairUnits) && parseInt(repairUnits) > 0) {
+            const currentRepairingUnits = parseInt(item.repairing_units) || 0;
+            const newRepairingUnits = currentRepairingUnits + parseInt(repairUnits);
+            updateItemRepairUnits({ item_id: itemId, repairing_units: newRepairingUnits, status: 'Repairing' });
         }
     }
 }
@@ -322,6 +354,57 @@ function showAvailableModal(itemId, itemName) {
     } else {
         if (confirm(`Set "${itemName}" back to Available?`)) {
             updateItemStatus({ item_id: itemId, status: 'Available' });
+        }
+    }
+}
+
+/**
+ * Update item repair units via dedicated API
+ */
+async function updateItemRepairUnits(payload) {
+    try {
+        const response = await fetch(buildUrl('admin/api/update_repairing_units.php'), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                item_id: payload.item_id,
+                repairing_units: payload.repairing_units
+            })
+        });
+        const result = await response.json();
+        if (result.success) {
+            if (typeof AdminComponents !== 'undefined') {
+                AdminComponents.showToast('Repairing units updated successfully', 'success');
+            }
+            // Create repair ticket if details provided
+            if (payload.issue_type) {
+                await updateItemStatus({
+                    item_id: payload.item_id,
+                    status: 'Repairing',
+                    repair_quantity: payload.repair_quantity || 1,
+                    issue_type: payload.issue_type,
+                    priority: payload.priority,
+                    estimated_cost: payload.estimated_cost,
+                    eta_date: payload.eta_date,
+                    notes: payload.notes
+                });
+            }
+            // Refresh the items list
+            fetchItems();
+        } else {
+            const msg = result.message || 'Failed to update repairing units';
+            if (typeof AdminComponents !== 'undefined') {
+                AdminComponents.showToast(msg, 'danger');
+            } else {
+                alert(msg);
+            }
+        }
+    } catch (err) {
+        console.error('Error updating repair units:', err);
+        if (typeof AdminComponents !== 'undefined') {
+            AdminComponents.showToast('Error updating repair units', 'danger');
+        } else {
+            alert('Error updating repair units');
         }
     }
 }

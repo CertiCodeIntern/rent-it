@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/rent-it/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RentIt Cookie Policy - How we use cookies to enhance your experience.">
+    <title>Cookie Policy - RentIt</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
+
+    <!-- Stylesheets (Order: Theme → Layout) -->
+    <link rel="stylesheet" href="shared/css/theme.css">
+    <link rel="stylesheet" href="landingpage/css/index.css">
+    
+    <!-- Theme Script (Prevents flash of wrong theme) -->
+    <script src="shared/js/theme.js"></script>
+    
+    <!-- Link to external pages styles -->
+    <link rel="stylesheet" href="pages/pages-layout.css">
+    
+    <style>
+        /* Cookie Policy Page Specific Styles (minimal overrides) */
+        .policy-section {
+            margin-bottom: 2rem;
+        }
+        .policy-section h2 {
+            color: var(--heading-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .policy-section h3 {
+            color: var(--heading-secondary);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+        .policy-section p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .policy-section ul {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-left: 1.5rem;
+        }
+        .policy-section li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-skeleton-overlay" data-skeleton="marketing" aria-hidden="true">
+        <div class="page-skeleton-marketing">
+            <div class="marketing-topbar">
+                <span class="marketing-logo skeleton-shape"></span>
+                <div class="marketing-nav">
+                    <span class="marketing-pill skeleton-shape w-20"></span>
+                    <span class="marketing-pill skeleton-shape w-25"></span>
+                    <span class="marketing-pill skeleton-shape w-20"></span>
+                    <span class="marketing-pill skeleton-shape w-30"></span>
+                </div>
+                <span class="marketing-cta skeleton-shape w-25"></span>
+            </div>
+            <div class="marketing-hero">
+                <div class="marketing-hero-text">
+                    <span class="marketing-line skeleton-shape w-70"></span>
+                    <span class="marketing-line skeleton-shape w-80"></span>
+                    <span class="marketing-line skeleton-shape w-60"></span>
+                    <div class="marketing-actions">
+                        <span class="marketing-button skeleton-shape w-25"></span>
+                        <span class="marketing-button skeleton-shape w-20"></span>
+                    </div>
+                </div>
+                <span class="marketing-hero-media skeleton-shape"></span>
+            </div>
+            <div class="marketing-cards">
+                <span class="marketing-card skeleton-shape"></span>
+                <span class="marketing-card skeleton-shape"></span>
+                <span class="marketing-card skeleton-shape"></span>
+            </div>
+        </div>
+    </div>
+    <!-- ============================
+         SITE HEADER
+         ============================ -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <!-- Hamburger (Mobile) -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+              <!-- Brand -->
+            <a href="index.php" class="brand">
+                <div class="logo-drawer">
+                    <img src="assets/images/rIT_logo_tp.png" alt="RentIt Logo">
+                </div>
+                <span class="brand-name">Rent<span class="accent">It</span></span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="main-nav">
+                <a href="index.php" class="nav-link">Home</a>
+                <a href="index.php#machines" class="nav-link">Rentals</a>
+                <a href="index.php#pricing" class="nav-link">Pricing</a>
+                <a href="pages/aboutus.html" class="nav-link">About</a>
+                <a href="pages/contactus.html" class="nav-link">Contact</a>
+            </nav>
+            
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+
+                <a href="client/auth/login.php#login" class="btn btn-outline">Login</a>
+                <a href="client/auth/login.php#register" class="btn btn-primary">Register</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.php" class="mobile-link">Home</a>
+            <a href="index.php#machines" class="mobile-link">Rentals</a>
+            <a href="index.php#pricing" class="mobile-link">Pricing</a>
+            <a href="pages/aboutus.html" class="mobile-link">About</a>
+            <a href="pages/contactus.html" class="mobile-link">Contact</a>
+            <div class="mobile-actions">
+                <a href="client/auth/login.php#login" class="btn btn-primary" style="width: 100%;">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Cookie Policy</h1>
+                <p class="page-subtitle">Last updated: February 1, 2026</p>
+            </div>
+        </section>
+
+        <!-- Cookie Policy Content -->
+        <section class="page-content">
+            <div class="container" style="max-width: 800px;">
+                <div class="policy-content">
+                    
+                    <section class="policy-section">
+                        <h2>1. What Are Cookies?</h2>
+                        <p>
+                            Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and provide a better user experience.
+                        </p>
+                    </section>
+
+                    <section class="policy-section">
+                        <h2>2. How We Use Cookies</h2>
+                        <p>
+                            RentIt uses cookies to:
+                        </p>
+                        <ul>
+                            <li>Remember your login information and preferences</li>
+                            <li>Understand how you interact with our platform</li>
+                            <li>Improve the performance and speed of our website</li>
+                            <li>Provide personalized content and recommendations</li>
+                            <li>Analyze site traffic and usage patterns</li>
+                            <li>Ensure security and prevent fraud</li>
+                        </ul>
+                    </section>
+
+                    <section class="policy-section">
+                        <h2>3. Types of Cookies We Use</h2>
+                        
+                        <h3>Essential Cookies</h3>
+                        <p>
+                            These cookies are necessary for the website to function properly. They enable basic functions like page navigation, secure login, and access to secure areas of the website. The website cannot function properly without these cookies.
+                        </p>
+
+                        <h3>Performance Cookies</h3>
+                        <p>
+                            These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This helps us improve how our website works.
+                        </p>
+
+                        <h3>Functionality Cookies</h3>
+                        <p>
+                            These cookies allow the website to remember choices you make (such as your language preference or the region you are in) and provide enhanced, more personal features.
+                        </p>
+
+                        <h3>Targeting/Advertising Cookies</h3>
+                        <p>
+                            These cookies are used to deliver advertisements more relevant to you and your interests. They are also used to limit the number of times you see an advertisement and to help measure the effectiveness of advertising campaigns.
+                        </p>
+                    </section>
+
+                    <section class="policy-section">
+                        <h2>4. Third-Party Cookies</h2>
+                        <p>
+                            In addition to our own cookies, we may also use various third-party cookies to report usage statistics of the platform and deliver advertisements. These third parties include analytics providers (such as Google Analytics) and advertising networks.
+                        </p>
+                    </section>
+
+                    <section class="policy-section">
+                        <h2>5. Managing Cookies</h2>
+                        <p>
+                            Most web browsers allow you to control cookies through their settings preferences. However, if you limit the ability of websites to set cookies, you may impact your overall user experience.
+                        </p>
+                        <p>
+                            To manage cookies, you can typically:
+                        </p>
+                        <ul>
+                            <li>Delete all cookies from your browser</li>
+                            <li>Block all cookies from being set</li>
+                            <li>Allow all cookies to be set</li>
+                            <li>Block third-party cookies</li>
+                            <li>Clear all cookies when you close the browser</li>
+                            <li>Open a "private browsing" / "incognito" session</li>
+                        </ul>
+                    </section>
+
+                    <section class="policy-section">
+                        <h2>6. Cookie Duration</h2>
+                        <p>
+                            <strong>Session cookies:</strong> These are temporary cookies that expire when you close your browser. They are used to maintain your session while you navigate through our website.
+                        </p>
+                        <p>
+                            <strong>Persistent cookies:</strong> These cookies remain on your device for a set period of time or until you delete them. They are used to remember your preferences and settings for future visits.
+                        </p>
+                    </section>
+
+                    <section class="policy-section">
+                        <h2>7. Updates to This Policy</h2>
+                        <p>
+                            We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our data practices. When we make changes, we will revise the "Last updated" date at the top of this policy. We encourage you to review this policy periodically.
+                        </p>
+                    </section>
+
+                    <section class="policy-section">
+                        <h2>8. Contact Us</h2>
+                        <p>
+                            If you have any questions about our use of cookies, please contact us at:
+                        </p>
+                        <div class="contact-box">
+                            <p style="font-weight: 600;">RentIt by Certicode</p>
+                            <p>Email: support@rentit.ph</p>
+                            <p>Phone: +63 955 421 6789</p>
+                            <p>Address: Makati, Philippines</p>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================
+         SITE FOOTER
+         ============================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <!-- Brand Column -->                <div class="footer-brand">
+                    <div class="logo-drawer">
+                        <img src="assets/images/rIT_logo_tp.png" alt="RentIt Logo">
+                    </div>
+                    <div class="brand-text">
+                        <h4 class="brand-title">RentIt</h4>
+                        <p class="brand-sub">
+                            Making celebrations louder and more memorable with premium videoke rentals since 2026.
+                        </p>
+                        <p class="powered-by">Powered by <a href="https://www.certicode.tech/" target="_blank" rel="noopener">CertiCode</a></p>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/CertiCode" class="social" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.certicode.tech/" class="social" aria-label="CertiCode" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <line x1="3" y1="12" x2="21" y2="12"/>
+                                    <path d="M12 3a12 12 0 0 0 0 18"/>
+                                    <path d="M12 3a12 12 0 0 1 0 18"/>
+                                </svg>
+                            </a>
+                            <a href="pages/contactus.html" class="social" aria-label="Contact">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Links -->
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <nav class="footer-nav">
+                        <a href="pages/aboutus.html" class="footer-link">About Us</a>
+                        <a href="pages/contactus.html" class="footer-link">Contact</a>
+                        <a href="pages/terms.html" class="footer-link">Terms of Service</a>
+                    </nav>
+                </div>
+
+                <!-- Admin Links -->
+                <div class="footer-col">
+                    <h5>Admin</h5>
+                    <nav class="footer-nav">
+                        <a href="admin/auth/login.php" class="footer-link">Admin Login</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 RentIt Videoke Rentals • v2.4.0</p>
+                <div class="policy-links">
+                    <a href="pages/privacy-policy.html" class="policy-link">Privacy Policy</a>
+                    <a href="pages/cookie-policy.html" class="policy-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="landingpage/js/index.js"></script>
+</body>
+</html>

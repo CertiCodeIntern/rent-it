@@ -1,0 +1,690 @@
+/* langdingpage.css
+   Colors updated to the hex palette you specified:
+   - navbar / primary color: #013A63
+   - hero gradient: #013A63 -> #FB7012
+   - choose-machine background: #013A63
+   - delivery estimator bg: #64748B
+   - stats background: #013A63
+   - footer background: #0F172A
+
+   The file is organized into sections with comments so you can quickly find
+   what to edit. Change the variables in :root to tweak the palette.
+*/
+
+/* ============================
+   VARIABLES - edit colors & sizes here
+   ============================ */
+:root{
+  /* palette (your values mapped to variables) */
+  --nav-primary:    #013A63;  /* navbar, choose machine, stats */
+  --hero-top:       #013A63;  /* hero gradient top */
+  --hero-bottom:    #FB7012;  /* hero gradient bottom */
+  --estimator-bg:   #64748B;  /* delivery estimator background */
+  --footer-bg:      #0F172A;  /* footer background */
+  --panel:          #1e293b;  /* card panels (kept neutral) */
+  --muted:          #94a3b8;
+  --text:           #FFFFFF;
+  --accent:         #FB7012;  /* CTA */
+  --accent-soft:    #FFA970;
+
+  /* structural */
+  --container-width: 1100px;
+  --gutter: 20px;
+  --card-height: 220px;
+  --radius: 12px;
+
+   /* Card border settings (edit here to change all card borders) */
+  --card-border-color: #F5F6F8;    /* visible light border (change to any hex) */
+  --card-border-width: 1.5px;      /* thickness */
+  --card-border-style: solid;      /* solid / dashed / dotted */
+  
+
+}
+
+/* ============================
+   BASE RESET
+   ============================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  /* subtle background that works with the dark navbar and footer */
+  background: linear-gradient(180deg, #072030 0%, #0f172a 60%);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  line-height: 1.45;
+}
+
+
+.logo-drawer{ width:44px; height:44px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center; background: rgba(255,255,255,0.04); }
+.logo-drawer img{ width:100%; height:100%; object-fit:contain; display:block; }
+
+.container { max-width: var(--container-width); margin: 0 auto; padding: var(--gutter); }
+
+/* ============================
+   HEADER / NAVBAR
+   (navbar background is --nav-primary)
+   ============================ */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--nav-primary);                /* NAV BAR COLOR */
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.header-inner {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+/* hamburger (left on mobile) */
+.hamburger {
+  display:none;
+  background:transparent;
+  border:0;
+  color:var(--text);
+  font-size:20px;
+  cursor:pointer;
+  padding:8px;
+  margin-right:6px;
+  z-index:120;
+}
+
+/* brand / logo */
+.brand { display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+.logo { width:40px; height:40px; border-radius:8px; background:#0ea5a5; color:#072023; display:flex; align-items:center; justify-content:center; font-weight:700; }
+.brand-name { font-weight:700; color:var(--text); margin-left:6px; }
+
+/* desktop nav */
+.main-nav { display:flex; gap:18px; align-items:center; }
+.nav-link { color: rgba(255,255,255,0.95); text-decoration:none; font-weight:600; }
+
+/* header actions (Book button, avatar) */
+.header-actions { display:flex; gap:10px; align-items:center; }
+.btn { padding:10px 14px; border-radius:8px; font-weight:700; cursor:pointer; border:0; }
+.btn-outline { background:transparent; border:1px solid rgba(255,255,255,0.08); color:var(--text); }
+.avatar { width:36px; height:36px; border-radius:50%; background:#fbd38d; color:#072023; display:flex; align-items:center; justify-content:center; }
+
+/* ============================
+   MOBILE NAV PANEL
+   ============================ */
+.mobile-nav {
+  display:none;
+  position:absolute; left:0; right:0; top:64px;
+  background: var(--nav-primary);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  padding: 12px 16px;
+  z-index:110;
+  transform-origin: top center;
+  transform: translateY(-8px) scaleY(0.98);
+  opacity:0;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+.mobile-nav.open {
+  display:block;
+  transform: translateY(0) scaleY(1);
+  opacity:1;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+}
+.mobile-nav .mobile-link { display:block; padding:12px 10px; color:var(--text); text-decoration:none; font-weight:700; border-radius:8px; margin:6px 0; }
+.mobile-actions { margin-top:8px; }
+
+/* ============================
+   HERO (centered, with linear gradient top->bottom)
+   - top color: --hero-top (#013A63)
+   - bottom color: --hero-bottom (#FB7012)
+   ============================ */
+.hero {
+  padding: 56px 0;
+  text-align: center;
+  background: linear-gradient(180deg, var(--hero-top) 0%, var(--hero-bottom) 100%); /* HERO GRADIENT */
+  color: var(--text);
+}
+.hero-inner {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap: 20px;
+  flex-direction: column; /* keep centered on desktop & mobile */
+  padding: 36px 0;
+}
+
+/* pill */
+.pill {
+  display:inline-block;
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  margin-bottom: 34px;
+  margin-top: -50px;
+}
+
+/* title and accent word */
+.hero-title {
+  font-size: 60px;
+  margin: 0 0 10px;
+  line-height: 1.02;
+  font-weight:800;
+}
+.hero-title .accent {
+  color: var(--accent-cta, var(--accent)); /* orange "Home" */
+}
+
+/* subtitle */
+.hero-sub {
+  color: rgba(245,246,248,0.95);
+  max-width: 60ch;
+  margin: 0 auto 18px;
+}
+
+/* centered CTA */
+.hero-cta.centered {
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  align-items:center;
+}
+.btn-primary {
+  background: var(--accent);  /* CTA orange */
+  color: #072023;
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text);
+}
+
+/* ============================
+   CHOOSE MACHINE
+   - section background uses the same color as navbar (--nav-primary)
+   ============================ */
+.choose {
+  padding: 36px 0;
+  background-color: #F5F6F8;   /* CHOOSE MACHINE BACKGROUND = NAV BAR COLOR */
+  color: var(--text);
+}
+.container .section-title { color: black; } /* ensure title is visible */
+
+/* tabs centered */
+.tabs { display:flex; gap:8px; margin-bottom:12px; justify-content:right; }
+.tab { padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,0.06); background: transparent; color: black; }
+.tab.active { background: rgba(0,0,0,0.12); }
+
+
+/* ==========================
+   CARD MEDIA (top image on cards)
+   - change --card-media-height to increase/decrease image height
+   ========================== */
+:root {
+  /* add near other variables */
+  --card-media-height: 240px; /* edit this to change card image height */
+}
+
+/* Make card layout vertical and allow the media on top */
+.card {
+  display: flex;
+  flex-direction: column;   /* stack media -> body */
+  overflow: hidden;
+
+  border: var(--card-border-width) var(--card-border-style) var(--card-border-color);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.22);
+}
+
+/* media container (top of card) */
+.card-media {
+  width: 100%;
+  height: var(--card-media-height);
+  border-radius: 10px 10px 0 0; /* rounded top corners */
+  overflow: hidden;
+  background: rgba(255,255,255,0.02); /* placeholder color while loading */
+  display: block;
+  margin-bottom: 50px;
+}
+
+/* image inside media: cover so it fills nicely */
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;   /* 'cover' gives the cropped hero look */
+  display: block;
+}
+
+/* card-body separates the padded content from the image */
+.card-body {
+  padding: 12px 14px;  /* you can change this if you want different spacing */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;             /* makes the card stretch vertically consistently */
+}
+
+/* Slight tweak for featured card to keep the elevated look */
+.card.featured {
+  transform: translateY(-8px);
+}
+
+/* Responsive: reduce image height on small screens */
+@media (max-width: 780px) {
+  :root { --card-media-height: 110px; } /* override for mobile */
+  .card-body { padding: 10px; }
+}
+
+
+
+/* card grid: cards keep using panel color to contrast against nav background */
+.cards {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
+  padding-top: 8px;
+
+}
+.card {
+  background-color: transparent;
+  border-radius: var(--radius);
+  padding:14px;
+  min-height: var(--card-height);
+  border:1px solid rgba(255,255,255,0.03);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.card.featured { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
+.card-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; color: black;}
+.price { color: var(--accent); font-weight:800; }
+.card-specs { list-style:none; color:var(--muted); margin-bottom:42px; padding-left:0; }
+.card-foot {text-align: center; margin-bottom: 30px;}
+
+
+/* ============================
+   DELIVERY / ESTIMATOR (new styles)
+   Replace any previous .delivery / .estimator / .large-box blocks
+   ============================ */
+
+/* container grid */
+.delivery {
+  padding: 48px 0;
+  background: var(--nav-primary); /* keeps the dark blue background as requested */
+  color: var(--text);
+}
+.delivery-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px; /* left flexible, right fixed estimator */
+  gap: 28px;
+  align-items: start;
+  align-content: start;
+}
+
+/* ---- LEFT COLUMN ---- */
+.delivery-left { padding-right: 8px; }
+.delivery-title {
+  font-size: 28px;
+  margin: 6px 0 8px;
+  color: #FFFFFF;
+}
+.delivery-sub {
+  color: rgba(255,255,255,0.9);
+  max-width: 44ch;
+  margin-bottom: 22px;
+}
+
+/* stack of feature boxes */
+.feature-stack { display:flex; flex-direction:column; gap:18px; margin-top: 6px; }
+
+/* each rounded feature box */
+.feature-box {
+  display:flex;
+  gap: 16px;
+  align-items:center;
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,0.06);
+  min-height: 84px;
+}
+
+/* left small circle */
+.feature-left { flex: 0 0 84px; display:flex; align-items:center; justify-content:center; }
+.feature-icon {
+  width:64px;
+  height:64px;
+  border-radius: 999px;
+  background: var(--accent); /* orange circle */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+.feature-icon svg { width:28px; height:28px; display:block; }
+
+/* right side labels */
+.feature-right { flex:1; display:flex; flex-direction:column; justify-content:center; }
+.feature-label { color: rgba(255,255,255,0.85); font-weight:700; margin-bottom:4px; }
+.feature-value { color: #FFFFFF; font-size:28px; font-weight:800; }
+
+/* ---- RIGHT COLUMN: Estimator card ---- */
+.estimator-card {
+  background: transparent; /* outer area transparent so we can show outer border */
+  border-radius: 12px;
+  padding: 12px;
+}
+
+/* inner box with white-ish border like screenshot */
+.estimator-inner {
+  background: rgba(10,24,36,0.55); /* subtle dark fill inside card */
+  border-radius: 12px;
+  padding: 22px;
+  border: 2px solid rgba(255,255,255,0.18); /* visible thin white border */
+  box-shadow: 0 10px 30px rgba(3,8,18,0.35);
+  display:flex;
+  flex-direction:column;
+  gap: 14px;
+}
+
+/* Estimator title */
+.estimator-title {
+  font-size: 26px;
+  margin: 2px 0 6px;
+  color: #FFFFFF;
+  font-weight: 800;
+}
+
+/* input with small icon on left */
+.input-with-icon {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background: rgba(255,255,255,0.03);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.input-icon { font-size:16px; color: rgba(255,255,255,0.7); }
+.est-input {
+  flex:1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 14px;
+}
+
+/* fee row (label left, price right in orange) */
+.fee-row {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  background: rgba(255,255,255,0.02);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.fee-left { display:flex; flex-direction:column; }
+.fee-label { font-weight:700; color: rgba(255,255,255,0.9); }
+.fee-note { color: rgba(255,255,255,0.75); font-size:13px; margin-top:6px; }
+.fee-value {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 18px;
+  min-width: 96px;
+  text-align: right;
+}
+
+/* map box below the fee row */
+.map-box {
+  width: 100%;
+  height: 110px;              /* change this to adjust map height */
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+  display:block;
+}
+.map-box img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* CTA button full width inside estimator */
+.est-cta {
+  margin-top:6px;
+  padding:12px 16px;
+  background: var(--accent);
+  color: #072023;
+  border-radius: 8px;
+  border: none;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* small responsive adjustments */
+@media (max-width: 980px) {
+  .delivery-grid { grid-template-columns: 1fr; }
+  .estimator-card { order: 2; margin-top: 10px; }
+  .delivery-left { order: 1; }
+  .map-box { height:140px; }
+}
+
+
+/* ============================
+   MAP PLACEHOLDER (SVG MOCK)
+   Edit here if you want to change height/colors
+   ============================ */
+.mock-map {
+  position: relative;
+  height: 120px; /* change map height here */
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: #61A5C2;
+}
+
+.mock-map svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* label inside map */
+.map-label {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0F172A;
+  background: rgba(255,255,255,0.85);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+
+/* ============================
+   STATS (same background as NAVBAR)
+   ============================ */
+.stats {
+  padding: 28px 0;
+  background: var(--nav-primary); /* STATS BACKGROUND = NAV BAR COLOR */
+}
+.stats-grid {
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:12px;
+}
+.stat {
+  background: rgba(255,255,255,0.03);
+  padding:12px;
+  border-radius:8px;
+  text-align:center;
+  color: #FB7012;
+  font-size: 20px;
+
+}
+
+.stat-label {
+  color: #64748B;
+}
+
+
+/* ===========================
+   FOOTER — layout + styles
+   =========================== */
+
+/* footer root */
+.site-footer {
+  background: var(--footer-bg, #0F172A); /* footer bg (kept from your theme) */
+  color: var(--text, #FFFFFF);
+  padding-top: 28px;
+  padding-bottom: 18px;
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+/* main three-column area */
+.footer-inner {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+/* each column base */
+.footer-col { flex: 1 1 0; min-width: 180px; }
+
+/* BRAND column */
+.footer-brand { display:flex; gap:14px; align-items:flex-start; }
+.logo-drawer img {
+  width: 72px;               /* change logo size here */
+  height: auto;
+  display:block;
+  border-radius: 8px;
+  object-fit: contain;
+}
+.brand-text { max-width: 360px; }
+.brand-title { margin: 6px 0 8px; font-size: 18px; font-weight: 800; color: var(--text); }
+.brand-sub { margin: 0; color: rgba(255,255,255,0.85); font-size: 13px; line-height:1.45; }
+
+/* social icons */
+.social-links { display:flex; gap:10px; margin-top:12px; }
+.social {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:38px; height:38px; border-radius:8px;
+  background: rgba(255,255,255,0.03);
+  color: var(--text); text-decoration:none;
+  transition: transform .14s ease, background .14s ease;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.social:hover { transform: translateY(-3px); background: rgba(255,255,255,0.06); }
+.social svg { width:18px; height:18px; display:block; }
+
+/* CENTER / RIGHT columns (links) */
+.footer-heading { margin:0 0 12px; font-size:15px; font-weight:800; color:var(--text); }
+.footer-nav { display:flex; flex-direction:column; gap:8px; }
+.footer-link {
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  font-size:14px;
+  padding: 4px 0;
+}
+.footer-link:hover { color: var(--accent, #FB7012); text-decoration: underline; }
+
+/* make center and right columns narrower so brand doesn't shrink too much */
+.footer-links, .footer-support { max-width: 220px; }
+
+/* -------------------------
+   DIVIDER LINE
+   ------------------------- */
+.footer-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  margin: 0 auto;
+  width: calc(100% - 40px); /* slight inset from edges */
+  max-width: 1200px;
+}
+
+/* -------------------------
+   BOTTOM CENTER AREA
+   ------------------------- */
+.footer-bottom {
+  padding-top: 16px;
+  padding-bottom: 22px;
+}
+.footer-bottom-inner {
+  display:flex;
+  flex-direction:column;
+  align-items:center;  /* center everything horizontally */
+  gap:8px;
+  text-align:center;
+}
+
+/* copyright line */
+.footer-bottom .copyright {
+  font-size: 14px;
+  color: rgba(255,255,255,0.88);
+  font-weight: 600;
+}
+
+/* policy links under copyright */
+.policy-links { display:flex; gap:8px; align-items:center; justify-content:center; color: rgba(255,255,255,0.75); }
+.policy-link {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 13px;
+}
+.policy-link:hover { text-decoration: underline; color: var(--text); }
+.policy-sep { color: rgba(255,255,255,0.45); }
+
+/* ===========================
+   Responsive adjustments
+   =========================== */
+@media (max-width: 880px) {
+  .footer-inner { flex-direction: column; gap: 20px; align-items: flex-start; padding-bottom: 12px; }
+  .footer-brand { align-items:flex-start; }
+  .brand-text { max-width: 100%; }
+  .footer-links, .footer-support { max-width: 100%; }
+  .footer-divider { width: calc(100% - 32px); }
+  .footer-bottom { padding-top: 12px; padding-bottom: 18px; }
+}
+
+
+
+
+
+
+
+
+/* ============================
+   RESPONSIVE / MOBILE RULES
+   - show hamburger, hide desktop nav
+   - hero remains centered
+   ============================ */
+@media (max-width: 780px) {
+  .main-nav { display:none; }
+  .hamburger { display:inline-block; }
+
+  .hero-inner { padding-top: 18px; gap:12px; }
+  .hero-title { font-size: 28px; }
+
+  .cards { grid-template-columns: 1fr; }
+  .card { min-height: auto; padding:12px; }
+
+  .delivery-grid { grid-template-columns: 1fr; }
+  .estimator { margin-top:12px; }
+  .large-box { height:120px; }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap:10px; }
+}
+
+/* very small phones */
+@media (max-width: 420px) {
+  .hero-title { font-size:24px; }
+  .pill { font-size:12px; padding:6px 8px;}
+  .brand-name { display:none; }
+  .btn { padding:8px 10px; font-size:14px; }
+}

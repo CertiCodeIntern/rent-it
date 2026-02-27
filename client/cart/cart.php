@@ -1,16 +1,66 @@
 <?php
 session_start();
-include('../../shared/php/db_connection.php');
-include '../../shared/php/auth_check.php';
+include '../../shared/php/db_connection.php';
+
+// Detect React JSON requests
+$isJsonRequest = isset($_GET['format']) && $_GET['format'] === 'json';
+
+// Auth guard for both HTML and JSON
+if (!isset($_SESSION['user_id'])) {
+    if ($isJsonRequest) {
+        http_response_code(401);
+        header('Content-Type: application/json');
+        echo json_encode(['error' => 'Not authenticated']);
+        exit();
+    }
+
+    include '../../shared/php/auth_check.php';
+}
 
 $u_id = $_SESSION['user_id'];
 
-$cart_query = "SELECT c.id AS cart_row_id, i.item_name, i.price_per_day, i.category, i.image, 
+// Shared SELECT for cart rows
+$cart_query = "SELECT c.id AS cart_row_id, c.quantity, i.item_name, i.price_per_day, i.category, i.image, 
                       c.start_date, c.end_date 
                FROM cart c 
                JOIN item i ON c.item_id = i.item_id 
-               WHERE c.user_id = '$u_id'";
-$result = mysqli_query($conn, $cart_query);
+               WHERE c.user_id = ?";
+
+// JSON API for React cart page
+if ($isJsonRequest) {
+    $items = [];
+
+    if ($stmt = $conn->prepare($cart_query)) {
+        $stmt->bind_param("i", $u_id);
+        $stmt->execute();
+        $res = $stmt->get_result();
+
+        while ($row = $res->fetch_assoc()) {
+            $items[] = [
+                'cart_row_id'   => (int) ($row['cart_row_id'] ?? 0),
+                'quantity'      => (int) ($row['quantity'] ?? 1),
+                'item_name'     => $row['item_name'] ?? '',
+                'price_per_day' => isset($row['price_per_day']) ? (float) $row['price_per_day'] : 0,
+                'category'      => $row['category'] ?? '',
+                'image'         => $row['image'] ?? null,
+                'start_date'    => $row['start_date'] ?? null,
+                'end_date'      => $row['end_date'] ?? null,
+            ];
+        }
+    }
+
+    header('Access-Control-Allow-Origin: http://localhost:5173');
+    header('Access-Control-Allow-Credentials: true');
+    header('Content-Type: application/json');
+    echo json_encode(['items' => $items]);
+    exit();
+}
+
+// HTML (PHP) cart page query
+$stmt = $conn->prepare($cart_query);
+$stmt->bind_param("i", $u_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -117,13 +167,14 @@ $result = mysqli_query($conn, $cart_query);
             // 1. Calculate inclusive days (+1) logic
             $startDateVal = $row['start_date'] ?: date('Y-m-d');
             $endDateVal = $row['end_date'] ?: date('Y-m-d');
+            $quantity = intval($row['quantity'] ?? 1);
 
             $startDateObj = new DateTime($startDateVal);
             $endDateObj = new DateTime($endDateVal);
             
             $diff = $startDateObj->diff($endDateObj);
             $days = $diff->days + 1; // Inclusive count
-            $itemSubtotal = $days * $row['price_per_day'];
+            $itemSubtotal = $days * $row['price_per_day'] * $quantity;
 
             // 2. Image Path Logic
             $imagePathFromDB = !empty($row['image']) ? $row['image'] : '';
@@ -133,12 +184,12 @@ $result = mysqli_query($conn, $cart_query);
         ?>
             <div class="cart-item-card" id="card-<?php echo $row['cart_row_id']; ?>" 
                  data-id="<?php echo $row['cart_row_id']; ?>" 
-                 data-price="<?php echo $row['price_per_day']; ?>">
+                 data-price="<?php echo $row['price_per_day']; ?>"
+                 data-quantity="<?php echo $quantity; ?>">
                 
                 <label class="cart-item-select">
                     <input type="checkbox" class="cart-checkbox item-checkbox" 
-                           data-id="<?php echo $row['cart_row_id']; ?>" 
-                           onchange="calculateTotal()">
+                           data-id="<?php echo $row['cart_row_id']; ?>">
                 </label>
                 
                 <div class="cart-item-image">
@@ -155,7 +206,10 @@ $result = mysqli_query($conn, $cart_query);
                             <span class="cart-item-category"><?php echo htmlspecialchars($row['category']); ?></span>
                         </div>
                         <div class="cart-item-price-wrap">
-                            <span class="cart-item-price">₱<?php echo number_format($row['price_per_day']); ?><span>/day</span></span>
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <span style="font-size: 0.875rem; color: #6b7280; font-weight: 500;">Qty: <?php echo $quantity; ?></span>
+                                <span class="cart-item-price">₱<?php echo number_format($row['price_per_day']); ?><span>/day</span></span>
+                            </div>
                         </div>
                     </div>
 

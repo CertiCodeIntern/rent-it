@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Booking History — CertiCode</title>
+
+  <!-- NOTE: uses site-wide header/footer styles from your rentals.css -->
+  <link rel="stylesheet" href="css/rentals.css" />
+  <!-- Booking page specific CSS -->
+  <link rel="stylesheet" href="css/booking.css" />
+</head>
+<body>
+
+  <!-- =========================
+       HEADER (USE: edit in rentals.html / rentals.css)
+       This header is copied from your rentals.html so both pages match.
+       Edit brand, nav links, CTA in rentals.html or rentals.css if you want site-wide changes.
+       ========================= -->
+  <header class="header" role="banner">
+    <div class="header-inner container">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <!-- Hamburger for mobile (toggled via JS) -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu" title="Menu">
+          <svg width="22" height="14" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="2" rx="1" fill="white"></rect>
+            <rect y="7" width="24" height="2" rx="1" fill="white"></rect>
+            <rect y="14" width="24" height="2" rx="1" fill="white"></rect>
+          </svg>
+        </button>
+
+        <!-- Brand (edit logo / text in rentals.html if needed) -->
+        <div class="brand">
+          <div class="logo-drawer">
+            <!-- Replace image src with your logo -->
+            <img src="src/images/rIT_logo_tp.png" alt="rIT logo" />
+          </div>
+          <div class="brand-name">CertiCode</div>
+        </div>
+      </div>
+
+      <!-- Desktop navigation links (edit in HTML) -->
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#">Home</a>
+        <a href="#">Catalog</a>
+        <a href="#">Pricing</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+
+      <!-- Header actions: Book CTA + avatar -->
+      <div class="header-actions">
+        <button class="btn-book">Book Now</button>
+        <div class="avatar">AM</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================
+       MOBILE NAV (same as rentals.html)
+       Toggled by the hamburger button. Edit mobile links here if needed.
+       ========================= -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="mobile-panel" role="navigation" aria-label="Mobile menu">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+        <div style="display:flex;gap:12px;align-items:center;">
+          <div class="logo-square">C</div>
+          <div class="brand-name">CertiCode</div>
+        </div>
+        <button id="mobileClose" class="mobile-close" aria-label="Close menu">✕</button>
+      </div>
+
+      <!-- MOBILE LINKS (EDIT HERE) -->
+      <a href="#">Home</a>
+      <a href="#">Catalog</a>
+      <a href="#">Pricing</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <hr class="mobile-sep">
+      <a href="#" class="mobile-cta">Book Now</a>
+    </div>
+  </div>
+
+  <!-- =========================
+       MAIN CONTENT (Booking page)
+       Edit the sections below — comments show where to change copy, buttons, or layout.
+       ========================= -->
+  <main class="container" role="main">
+
+    <!-- HERO / PAGE HEADER
+         EDIT: Title and subtitle text here -->
+    <div class="page-header">
+      <div>
+        <div class="title">Booking History</div>
+        <div class="subtitle">Track all your past videoke rentals and manage receipts.</div>
+      </div>
+
+      <!-- PAGE HEADER ACTIONS — EDIT HERE (Filter button added to the LEFT of New Rental) -->
+<div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+
+  <!-- FILTER BUTTON: edit label or add a dropdown handler in JS -->
+  <button class="filter-btn" id="filterBtn" aria-haspopup="true" aria-expanded="false" title="Open filters">
+    <!-- small filter icon (SVG) -->
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="margin-right:8px;">
+      <path d="M3 5h18M7 12h10M10 19h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Filter
+  </button>
+
+  <!-- NEW RENTAL CTA -->
+  <button class="btn-new">New Rental <span class="plus">＋</span></button>
+</div>
+<!-- END PAGE HEADER ACTIONS -->
+
+    </div>
+    <!-- ===== KPI ROW (replace existing .kpi-row) =====
+     Each .kpi contains:
+       - .small : label
+       - .big   : value with an inline icon before the number/text
+     EDIT: change icon SVGs below or the text values as needed.
+-->
+<div class="kpi-row">
+  <!-- Lifetime Rentals -->
+  <div class="kpi">
+    <div class="small">Lifetime Rentals</div>
+    <div class="big">
+      <!-- Icon container: swap svg inside if you want a different icon -->
+      <span class="kpi-icon receipt" aria-hidden="true">
+        <!-- Receipt / document icon (inline SVG) -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6 3h10l2 2v14l-2 2H6V3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M8 8h8M8 12h6M8 16h4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+
+      <!-- Value text -->
+      <span class="kpi-value">24</span>
+    </div>
+  </div>
+
+  <!-- Total Spent -->
+  <div class="kpi">
+    <div class="small">Total Spent</div>
+    <div class="big">
+      <span class="kpi-icon money" aria-hidden="true">
+        <!-- Money / wallet icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="6" width="20" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M7 10h0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M11 12c1.2 0 2 .6 2 1s-.8 1-2 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        </svg>
+      </span>
+      <span class="kpi-value">₱1,452.80</span>
+    </div>
+  </div>
+
+  <!-- Member Status -->
+  <div class="kpi">
+    <div class="small">Member Status</div>
+    <div class="big">
+      <!-- Gold star icon -->
+      <span class="kpi-icon star" aria-hidden="true" title="Gold member">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 .8l2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 15.8 6.6 17.5l1-6.1L3.2 7.1l6.1-.9L12 .8z"
+                fill="currentColor" stroke="currentColor" stroke-width="0" />
+        </svg>
+      </span>
+      <span class="kpi-value">Gold</span>
+    </div>
+  </div>
+</div>
+<!-- ===== end KPI ROW ===== -->
+
+
+    <!-- TABS (EDIT: tab labels in HTML; tab switching handled by JS below) -->
+    <div class="tabs" role="tablist" aria-label="Booking tabs">
+      <a class="tab" href="rentals.html">Active Rentals</a>
+      <div class="tab active">Booking History</div>
+      <div class="tab">Returns/Extensions</div>
+    </div>
+
+
+    <!-- ===== Booking History: header + table panel =====
+         EDIT: table rows and content below (you can replace <tbody> with dynamic data)
+         ========================= -->
+    <div class="history-section">
+      <!-- <div class="history-head">
+        <div class="history-title">Booking History</div>
+        <a href="#" class="view-all">View All</a>
+      </div> -->
+
+      <section class="history-panel" aria-labelledby="historyTitle">
+        <table class="history-table" role="table" aria-label="Booking history">
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Rental ID</th>
+      <th>Period</th>
+      <th>Total Paid</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <!-- ===== Example row 1 — COMPLETED ===== -->
+    <tr>
+      <!-- Item name + thumbnail -->
+      <td>
+        <div class="item-cell">
+          <div class="item-img" aria-hidden="true">K</div>
+          <div class="item-info">
+            <div class="item-name">Karaoke Pro System X-100</div>
+            <div class="small-muted">Portable karaoke machine • 2 mic</div>
+          </div>
+        </div>
+      </td>
+
+      <!-- Rental ID -->
+      <td class="small-muted">#VDK-8921-01</td>
+
+      <!-- Period: start larger than end -->
+      <td>
+        <div class="period">
+          <div class="date-start">Oct 12, 2023</div>
+          <div class="date-end">to Oct 15, 2023</div>
+        </div>
+      </td>
+
+      <!-- Total paid (bold) -->
+      <td class="amount-cell"><strong>₱125.00</strong></td>
+
+      <!-- Status pill -->
+      <td>
+        <span class="status-pill status-completed">Completed</span>
+      </td>
+
+      <!-- Actions -->
+      <td>
+      <div class="actions-cell">
+        <!-- DOWNLOAD: anchor with download attribute -->
+        <a class="action-btn action-download" href="receipts/receipt_vdk8921.pdf" download aria-label="Download receipt for VDK-8921-01">
+          <!-- download icon SVG -->
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            <path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+          </svg>
+
+        </a>
+
+        <!-- EDIT: button triggers JS (data-id used to identify row) -->
+        <button class="action-btn action-edit" data-rental="#VDK-8921-01" aria-label="Edit rental VDK-8921-01">
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 21v-3.75L14.06 6.19l3.75 3.75L6.75 21H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.37 5.63l-1.75 1.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </button>
+      </div>
+    </td>
+    </tr>
+
+    <!-- ===== Example row 2 — COMPLETED ===== -->
+    <tr>
+      <td>
+        <div class="item-cell">
+          <div class="item-img" aria-hidden="true">P</div>
+          <div class="item-info">
+            <div class="item-name">Party Box Master V2</div>
+            <div class="small-muted">Compact party speaker • bluetooth</div>
+          </div>
+        </div>
+      </td>
+
+      <td class="small-muted">#VDK-7742-05</td>
+
+      <td>
+        <div class="period">
+          <div class="date-start">Sep 20, 2023</div>
+          <div class="date-end">to Sep 21, 2023</div>
+        </div>
+      </td>
+
+      <td class="amount-cell"><strong>₱45.00</strong></td>
+
+      <td>
+        <span class="status-pill status-completed">Completed</span>
+      </td>
+
+      <!-- Actions -->
+      <td>
+      <div class="actions-cell">
+        <!-- DOWNLOAD: anchor with download attribute -->
+        <a class="action-btn action-download" href="receipts/receipt_vdk8921.pdf" download aria-label="Download receipt for VDK-8921-01">
+          <!-- download icon SVG -->
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            <path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+          </svg>
+
+        </a>
+
+        <!-- EDIT: button triggers JS (data-id used to identify row) -->
+        <button class="action-btn action-edit" data-rental="#VDK-8921-01" aria-label="Edit rental VDK-8921-01">
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 21v-3.75L14.06 6.19l3.75 3.75L6.75 21H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.37 5.63l-1.75 1.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </button>
+      </div>
+    </td>
+    </tr>
+
+    <!-- ===== Example row 3 — CANCELLED ===== -->
+    <tr>
+      <td>
+        <div class="item-cell">
+          <div class="item-img" aria-hidden="true">M</div>
+          <div class="item-info">
+            <div class="item-name">Mega Bass Bundle</div>
+            <div class="small-muted">Bass cabinet + amplifier</div>
+          </div>
+        </div>
+      </td>
+
+      <td class="small-muted">#VDK-3312-09</td>
+
+      <td>
+        <div class="period">
+          <div class="date-start">Aug 05, 2023</div>
+          <div class="date-end">to Aug 07, 2023</div>
+        </div>
+      </td>
+
+      <td class="amount-cell"><strong>₱0.00</strong></td>
+
+      <td>
+        <span class="status-pill status-cancelled">Cancelled</span>
+      </td>
+
+      <!-- Actions -->
+      <td>
+      <div class="actions-cell">
+        <!-- DOWNLOAD: anchor with download attribute -->
+        <a class="action-btn action-download" href="receipts/receipt_vdk8921.pdf" download aria-label="Download receipt for VDK-8921-01">
+          <!-- download icon SVG -->
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            <path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+          </svg>
+
+        </a>
+
+        <!-- EDIT: button triggers JS (data-id used to identify row) -->
+        <button class="action-btn action-edit" data-rental="#VDK-8921-01" aria-label="Edit rental VDK-8921-01">
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 21v-3.75L14.06 6.19l3.75 3.75L6.75 21H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.37 5.63l-1.75 1.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </button>
+      </div>
+    </td>
+    </tr>
+
+    <!-- ===== Example row 4 — REFUNDED ===== -->
+    <tr>
+      <td>
+        <div class="item-cell">
+          <div class="item-img" aria-hidden="true">H</div>
+          <div class="item-info">
+            <div class="item-name">Home Studio Setup</div>
+            <div class="small-muted">Mic + stand + cables</div>
+          </div>
+        </div>
+      </td>
+
+      <td class="small-muted">#VDK-2101</td>
+
+      <td>
+        <div class="period">
+          <div class="date-start">Jul 12, 2023</div>
+          <div class="date-end">to Jul 14, 2023</div>
+        </div>
+      </td>
+
+      <td class="amount-cell"><strong>₱89.00</strong></td>
+
+      <td>
+        <span class="status-pill status-refunded">Refunded</span>
+      </td>
+
+      <!-- Actions -->
+      <td>
+      <div class="actions-cell">
+        <!-- DOWNLOAD: anchor with download attribute -->
+        <a class="action-btn action-download" href="receipts/receipt_vdk8921.pdf" download aria-label="Download receipt for VDK-8921-01">
+          <!-- download icon SVG -->
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            <path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            <path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+          </svg>
+
+        </a>
+
+        <!-- EDIT: button triggers JS (data-id used to identify row) -->
+        <button class="action-btn action-edit" data-rental="#VDK-8921-01" aria-label="Edit rental VDK-8921-01">
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 21v-3.75L14.06 6.19l3.75 3.75L6.75 21H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.37 5.63l-1.75 1.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </button>
+      </div>
+    </td>
+    </tr>
+  </tbody>
+</table>
+
+      </section>
+    </div>
+
+    <!-- ===== PROMO CTA (EDIT: copy and CTA) ===== -->
+    <section class="promo">
+      <div>
+        <div class="promo-text">Plan a party next weekend?</div>
+        <div class="promo-sub">Get 20% off on your next rental if you book 3 days in advance. Exclusive for loyal customers.</div>
+      </div>
+      <div>
+        <button class="promo-cta">Claim 20% Discount</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================
+       FOOTER (USE: same layout as rentals.html)
+       Edit footer content/links in rentals.css or in this block.
+       ========================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <div class="copyright">© 2026 CertiCode Videoke Rentals • v2.4.0</div>
+        <div class="policy-links">
+          <a href="#" class="policy-link">Terms of Service</a>
+          <a href="#" class="policy-link">Privacy Policy</a>
+          <a href="#" class="policy-link">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================
+       Scripts: tabs + mobile nav toggle
+       (Copied from your rentals.html)
+       ========================= -->
+  <script>
+    // tabs: simple visual switching (edit behavior if you hook up content per-tab)
+    document.querySelectorAll('.tab').forEach(tab=>{
+      tab.addEventListener('click', ()=>{
+        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+
+    // mobile nav toggle (matches rentals.html)
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeBtn = document.getElementById('mobileClose');
+
+    hamburger && hamburger.addEventListener('click', ()=> {
+      mobileNav.classList.add('open');
+      mobileNav.setAttribute('aria-hidden','false');
+    });
+    closeBtn && closeBtn.addEventListener('click', ()=> {
+      mobileNav.classList.remove('open');
+      mobileNav.setAttribute('aria-hidden','true');
+    });
+    mobileNav && mobileNav.addEventListener('click', (e)=>{
+      if (e.target === mobileNav) {
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden','true');
+      }
+    });
+  </script>
+</body>
+</html>

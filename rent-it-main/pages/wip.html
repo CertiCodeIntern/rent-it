@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/rent-it/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RentIt - This feature is currently under development.">
+    <title>RentIt - Work in Progress</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
+
+    <!-- Stylesheets (Order: Theme → Layout) -->
+    <link rel="stylesheet" href="shared/css/theme.css">
+    <link rel="stylesheet" href="landingpage/css/index.css">
+    
+    <!-- Theme Script (Prevents flash of wrong theme) -->
+    <script src="shared/js/theme.js"></script>
+</head>
+<body>
+    <div class="page-skeleton-overlay" data-skeleton="marketing" aria-hidden="true">
+        <div class="page-skeleton-marketing">
+            <div class="marketing-topbar">
+                <span class="marketing-logo skeleton-shape"></span>
+                <div class="marketing-nav">
+                    <span class="marketing-pill skeleton-shape w-20"></span>
+                    <span class="marketing-pill skeleton-shape w-25"></span>
+                    <span class="marketing-pill skeleton-shape w-20"></span>
+                    <span class="marketing-pill skeleton-shape w-30"></span>
+                </div>
+                <span class="marketing-cta skeleton-shape w-25"></span>
+            </div>
+            <div class="marketing-hero">
+                <div class="marketing-hero-text">
+                    <span class="marketing-line skeleton-shape w-70"></span>
+                    <span class="marketing-line skeleton-shape w-80"></span>
+                    <span class="marketing-line skeleton-shape w-60"></span>
+                    <div class="marketing-actions">
+                        <span class="marketing-button skeleton-shape w-25"></span>
+                        <span class="marketing-button skeleton-shape w-20"></span>
+                    </div>
+                </div>
+                <span class="marketing-hero-media skeleton-shape"></span>
+            </div>
+            <div class="marketing-cards">
+                <span class="marketing-card skeleton-shape"></span>
+                <span class="marketing-card skeleton-shape"></span>
+                <span class="marketing-card skeleton-shape"></span>
+            </div>
+        </div>
+    </div>
+    <!-- ============================
+         SITE HEADER (Consistent)
+         ============================ -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <!-- Hamburger (Mobile) -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+              <!-- Brand -->
+            <a href="index.php" class="brand">
+                <div class="logo-drawer">
+                    <img src="assets/images/rIT_logo_tp.png" alt="RentIt Logo">
+                </div>
+                <span class="brand-name">Rent<span class="accent">It</span></span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="main-nav">
+                <a href="index.php" class="nav-link">Home</a>
+                <a href="index.php#machines" class="nav-link">Rentals</a>
+                <a href="index.php#pricing" class="nav-link">Pricing</a>
+                <a href="pages/aboutus.html" class="nav-link">About</a>
+                <a href="pages/contactus.html" class="nav-link">Contact</a>
+            </nav>
+            
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>                <a href="client/auth/login.php#login" class="btn btn-outline">Login</a>
+                <a href="client/auth/login.php#register" class="btn btn-primary">Register</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.php" class="mobile-link">Home</a>
+            <a href="index.php#machines" class="mobile-link">Rentals</a>
+            <a href="index.php#pricing" class="mobile-link">Pricing</a>
+            <a href="pages/aboutus.html" class="mobile-link">About</a>
+            <a href="pages/contactus.html" class="mobile-link">Contact</a>
+            <div class="mobile-actions">
+                <a href="client/auth/login.php#login" class="btn btn-primary" style="width: 100%;">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ============================
+             WIP SECTION
+             ============================ -->
+        <section class="wip-section">
+            <div class="wip-content">
+                <div class="wip-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                
+                <h1 class="wip-title">Work in <span class="accent">Progress</span></h1>
+                
+                <p class="wip-description">
+                    We're working hard to bring you this feature! Our team is crafting something special that will make your videoke rental experience even better.
+                </p>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p class="progress-label">Estimated completion: 35%</p>
+                  <div class="wip-actions">
+                    <a href="index.php" class="btn btn-primary">Back to Home</a>
+                    <a href="pages/contactus.html" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================
+         SITE FOOTER (Consistent)
+         ============================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <!-- Brand Column -->                <div class="footer-brand">
+                    <div class="logo-drawer">
+                        <img src="assets/images/rIT_logo_tp.png" alt="RentIt Logo">
+                    </div>
+                    <div class="brand-text">
+                        <h4 class="brand-title">RentIt</h4>
+                        <p class="brand-sub">
+                            Making celebrations louder and more memorable with premium videoke rentals since 2026.
+                        </p>
+                        <p class="powered-by">Powered by <a href="https://www.certicode.tech/" target="_blank" rel="noopener">CertiCode</a></p>                        <div class="social-links">
+                            <a href="https://www.facebook.com/CertiCode" class="social" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.certicode.tech/" class="social" aria-label="CertiCode" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <line x1="3" y1="12" x2="21" y2="12"/>
+                                    <path d="M12 3a12 12 0 0 0 0 18"/>
+                                    <path d="M12 3a12 12 0 0 1 0 18"/>
+                                </svg>
+                            </a>
+                            <a href="pages/contactus.html" class="social" aria-label="Contact">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>                <!-- Company Links -->
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <nav class="footer-nav">
+                        <a href="pages/aboutus.html" class="footer-link">About Us</a>
+                        <a href="pages/contactus.html" class="footer-link">Contact</a>
+                        <a href="pages/terms.html" class="footer-link">Terms of Service</a>
+                    </nav>
+                </div>
+
+                <!-- Admin Links -->
+                <div class="footer-col">
+                    <h5>Admin</h5>
+                    <nav class="footer-nav">
+                        <a href="admin/auth/login.php" class="footer-link">Admin Login</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 RentIt Videoke Rentals • v2.4.0</p>                <div class="policy-links">
+                    <a href="pages/privacy-policy.html" class="policy-link">Privacy Policy</a>
+                    <a href="pages/cookie-policy.html" class="policy-link">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>    <!-- Scripts (shared with landing page) -->
+    <script src="landingpage/js/index.js"></script>
+</body>
+</html>

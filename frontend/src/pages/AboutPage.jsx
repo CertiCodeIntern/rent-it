@@ -109,8 +109,8 @@ function AboutPage() {
               </div>
               <div className="about-hero-image animate-fade-right delay-3">
                 <img
-                  src= "http://localhost/rent-it/assets/images/rentitnobg.png"
-                  alt="RentIt brand mark"
+                  src={`${BASE_URL}/assets/images/team/RentIT.png`}
+                  alt="RentIt logo"
                   onError={(e) => {
                     if (e.target && e.target.parentElement) {
                       // fallback icon
@@ -192,49 +192,309 @@ function AboutPage() {
             </div>
 
             <div className="team-grid">
+              {/* CEO */}
               <article className="team-card animate-fade-up delay-1">
                 <div className="team-photo">👨‍💼</div>
                 <div className="team-info">
-                  <h3 className="team-name">Albert Santos</h3>
-                  <div className="team-role">Founder &amp; CEO</div>
+                  <h3 className="team-name">Tom Oliver</h3>
+                  <div className="team-role">Chief Executive Officer</div>
                   <p className="team-bio">
-                    Started RentIt from his garage with a single karaoke machine. Now leads a team of
-                    20+ professionals.
+                    Visionary leader behind RentIt. Drives the company's strategic direction and
+                    ensures every decision aligns with delivering the best videoke rental experience
+                    in Metro Manila.
                   </p>
                 </div>
               </article>
 
+              {/* Project Manager */}
               <article className="team-card animate-fade-up delay-2">
-                <div className="team-photo">👩‍💼</div>
+                <div className="team-photo">👨‍💼</div>
                 <div className="team-info">
-                  <h3 className="team-name">Maria Cruz</h3>
-                  <div className="team-role">Operations Manager</div>
+                  <h3 className="team-name">Aaron Raven Aramil</h3>
+                  <div className="team-role">Project Manager</div>
                   <p className="team-bio">
-                    Ensures every delivery runs smoothly. 8 years of logistics expertise in event
-                    management.
+                    Keeps the team aligned and projects on track. Coordinates sprints, manages
+                    timelines, and bridges communication between all departments to ensure smooth
+                    delivery.
                   </p>
                 </div>
               </article>
 
+              {/* Lead Dev / Frontend */}
               <article className="team-card animate-fade-up delay-3">
-                <div className="team-photo">👨‍🔧</div>
+                <div className="team-photo">👨‍💻</div>
                 <div className="team-info">
-                  <h3 className="team-name">Jose Reyes</h3>
-                  <div className="team-role">Technical Lead</div>
+                  <h3 className="team-name">Marc Steeven Parubrub</h3>
+                  <div className="team-role">Lead Developer / Frontend Developer</div>
                   <p className="team-bio">
-                    Audio engineer with 12 years experience. Keeps all equipment in peak condition.
+                    Leads the frontend architecture and development workflow. Builds responsive,
+                    accessible interfaces and mentors the dev team to maintain high code quality
+                    standards.
+                  </p>
+                </div>
+              </article>
+
+              {/* Full Stack Devs */}
+              <article className="team-card animate-fade-up delay-4">
+                <div className="team-photo">👨‍💻</div>
+                <div className="team-info">
+                  <h3 className="team-name">Miguel Ansano Sta. Maria</h3>
+                  <div className="team-role">Full Stack Developer</div>
+                  <p className="team-bio">
+                    Works across the entire stack from database queries to pixel-perfect UI. Tackles
+                    complex features end-to-end and ensures seamless integration between frontend and
+                    backend.
+                  </p>
+                </div>
+              </article>
+
+              <article className="team-card animate-fade-up delay-1">
+                <div className="team-photo">👨‍💻</div>
+                <div className="team-info">
+                  <h3 className="team-name">Von Asley Malillos</h3>
+                  <div className="team-role">Full Stack Developer</div>
+                  <p className="team-bio">
+                    Versatile developer comfortable in both frontend and backend. Builds robust
+                    features, optimizes performance, and contributes to the platform's scalability.
+                  </p>
+                </div>
+              </article>
+
+              {/* Frontend Dev */}
+              <article className="team-card animate-fade-up delay-2">
+                <div className="team-photo">👨‍💻</div>
+                <div className="team-info">
+                  <h3 className="team-name">Jude Vincent</h3>
+                  <div className="team-role">Frontend Developer</div>
+                  <p className="team-bio">
+                    Crafts clean, interactive user interfaces with attention to detail. Focuses on
+                    responsive layouts, smooth animations, and cross-browser compatibility.
+                  </p>
+                </div>
+              </article>
+
+              {/* Backend Devs */}
+              <article className="team-card animate-fade-up delay-3">
+                <div className="team-photo">👨‍💻</div>
+                <div className="team-info">
+                  <h3 className="team-name">Leander Ochea</h3>
+                  <div className="team-role">Backend Developer</div>
+                  <p className="team-bio">
+                    Architects server-side logic, APIs, and database structures. Ensures data
+                    integrity, security, and reliable performance behind every feature on the
+                    platform.
                   </p>
                 </div>
               </article>
 
               <article className="team-card animate-fade-up delay-4">
+                <div className="team-photo">👨‍💻</div>
+                <div className="team-info">
+                  <h3 className="team-name">Sean Rey Beltran</h3>
+                  <div className="team-role">Backend Developer</div>
+                  <p className="team-bio">
+                    Builds and maintains server-side services and database operations. Focuses on API
+                    development, authentication flows, and backend optimization.
+                  </p>
+                </div>
+              </article>
+
+              <article className="team-card animate-fade-up delay-1">
                 <div className="team-photo">👩‍💻</div>
                 <div className="team-info">
-                  <h3 className="team-name">Ana Garcia</h3>
-                  <div className="team-role">Customer Success</div>
+                  <h3 className="team-name">Via Umali</h3>
+                  <div className="team-role">Backend Developer</div>
                   <p className="team-bio">
-                    Your first point of contact. Dedicated to making every booking experience
-                    exceptional.
+                    Develops backend services and data processing logic. Ensures smooth server
+                    operations and contributes to the platform's reliability and security.
+                  </p>
+                </div>
+              </article>
+
+              {/* UI/UX Designers */}
+              <article className="team-card animate-fade-up delay-2">
+                <div className="team-photo">
+                  <a
+                    href={`${BASE_URL}/assets/images/team/JOAQUIN GABRIEL CAMANGEG_UIUX.jpg`}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <img
+                      src={`${BASE_URL}/assets/images/team/JOAQUIN GABRIEL CAMANGEG_UIUX.jpg`}
+                      alt="Joaquin Gabriel Camangeg"
+                      onError={(e) => {
+                        const photo = e.currentTarget.closest('.team-photo');
+                        if (photo) photo.innerHTML = '🎨';
+                      }}
+                    />
+                  </a>
+                </div>
+                <div className="team-info">
+                  <h3 className="team-name">Joaquin Gabriel Camangeg</h3>
+                  <div className="team-role">UI/UX Designer</div>
+                  <p className="team-bio">
+                    Designs intuitive user experiences and polished visual interfaces. Translates
+                    user needs into clean, functional designs that make the platform a joy to use.
+                  </p>
+                </div>
+              </article>
+
+              <article className="team-card animate-fade-up delay-3">
+                <div className="team-photo">
+                  <a
+                    href={`${BASE_URL}/assets/images/team/VEENY BAUTISTA_UI_UX.png`}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <img
+                      src={`${BASE_URL}/assets/images/team/VEENY BAUTISTA_UI_UX.png`}
+                      alt="Veeny Bautista"
+                      onError={(e) => {
+                        const photo = e.currentTarget.closest('.team-photo');
+                        if (photo) photo.innerHTML = '🎨';
+                      }}
+                    />
+                  </a>
+                </div>
+                <div className="team-info">
+                  <h3 className="team-name">Veeny Bautista</h3>
+                  <div className="team-role">UI/UX Designer &amp; Support</div>
+                  <p className="team-bio">
+                    An all-around talent who designs user interfaces and provides support across
+                    teams. Bridges the gap between design vision and practical implementation.
+                  </p>
+                </div>
+              </article>
+
+              <article className="team-card animate-fade-up delay-4">
+                <div className="team-photo">👨‍🎨</div>
+                <div className="team-info">
+                  <h3 className="team-name">Andrei</h3>
+                  <div className="team-role">UI/UX Designer</div>
+                  <p className="team-bio">
+                    Creates user-centered designs with a focus on accessibility and visual
+                    consistency. Contributes to the design system and helps maintain brand cohesion.
+                  </p>
+                </div>
+              </article>
+
+              <article className="team-card animate-fade-up delay-1">
+                <div className="team-photo">👩‍🎨</div>
+                <div className="team-info">
+                  <h3 className="team-name">Pauline Jayme</h3>
+                  <div className="team-role">UI/UX Designer</div>
+                  <p className="team-bio">
+                    Focuses on user research and interaction design. Creates wireframes, prototypes,
+                    and high-fidelity mockups that guide the development of seamless user flows.
+                  </p>
+                </div>
+              </article>
+
+              {/* Multimedia */}
+              <article className="team-card animate-fade-up delay-2">
+                <div className="team-photo">
+                  <a
+                    href={`${BASE_URL}/assets/images/team/ROXANNE LAZO_MULTIMEDIA.jpg`}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <img
+                      src={`${BASE_URL}/assets/images/team/ROXANNE LAZO_MULTIMEDIA.jpg`}
+                      alt="Roxanne Lazo"
+                      onError={(e) => {
+                        const photo = e.currentTarget.closest('.team-photo');
+                        if (photo) photo.innerHTML = '🎬';
+                      }}
+                    />
+                  </a>
+                </div>
+                <div className="team-info">
+                  <h3 className="team-name">Roxanne Lazo</h3>
+                  <div className="team-role">Multimedia Specialist</div>
+                  <p className="team-bio">
+                    Produces visual content, graphics, and media assets for the platform and
+                    marketing. Brings the RentIt brand to life through compelling visual
+                    storytelling.
+                  </p>
+                </div>
+              </article>
+
+              <article className="team-card animate-fade-up delay-3">
+                <div className="team-photo">👨‍🎬</div>
+                <div className="team-info">
+                  <h3 className="team-name">Franz Dela Cruz</h3>
+                  <div className="team-role">Multimedia Specialist</div>
+                  <p className="team-bio">
+                    Creates engaging multimedia content including graphics, videos, and promotional
+                    materials. Ensures all visual assets align with the brand's identity and
+                    message.
+                  </p>
+                </div>
+              </article>
+
+              {/* QA */}
+              <article className="team-card animate-fade-up delay-4">
+                <div className="team-photo">👨‍🔧</div>
+                <div className="team-info">
+                  <h3 className="team-name">Aaron Briones</h3>
+                  <div className="team-role">Quality Assurance</div>
+                  <p className="team-bio">
+                    Tests every feature rigorously before release. Identifies bugs, validates fixes,
+                    and ensures the platform delivers a smooth, error-free experience for all users.
+                  </p>
+                </div>
+              </article>
+
+              <article className="team-card animate-fade-up delay-1">
+                <div className="team-photo">👨‍🔧</div>
+                <div className="team-info">
+                  <h3 className="team-name">Prince Darrell Malunay Masa</h3>
+                  <div className="team-role">Quality Assurance</div>
+                  <p className="team-bio">
+                    Conducts thorough testing across all platform features. Documents test cases,
+                    performs regression testing, and helps maintain high reliability standards.
+                  </p>
+                </div>
+              </article>
+
+              {/* Data Analyst */}
+              <article className="team-card animate-fade-up delay-2">
+                <div className="team-photo">👩‍💻</div>
+                <div className="team-info">
+                  <h3 className="team-name">Samantha Faith Tan</h3>
+                  <div className="team-role">Data Analyst</div>
+                  <p className="team-bio">
+                    Turns raw data into actionable insights. Analyzes booking trends, customer
+                    behavior, and platform metrics to drive informed business and product decisions.
+                  </p>
+                </div>
+              </article>
+
+              {/* IT Support */}
+              <article className="team-card animate-fade-up delay-3">
+                <div className="team-photo">
+                  <a
+                    href={`${BASE_URL}/assets/images/team/TAN HUMPBREY NEIL A.- IT SUPPORT.jpg`}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <img
+                      src={`${BASE_URL}/assets/images/team/TAN HUMPBREY NEIL A.- IT SUPPORT.jpg`}
+                      alt="Humpbrey Neil Tan"
+                      onError={(e) => {
+                        const photo = e.currentTarget.closest('.team-photo');
+                        if (photo) photo.innerHTML = '🛠️';
+                      }}
+                    />
+                  </a>
+                </div>
+                <div className="team-info">
+                  <h3 className="team-name">Humpbrey Neil Tan</h3>
+                  <div className="team-role">IT Support</div>
+                  <p className="team-bio">
+                    Keeps infrastructure running and resolves technical issues swiftly. Manages
+                    deployments, server health, and provides hands-on support to keep the team
+                    productive.
                   </p>
                 </div>
               </article>

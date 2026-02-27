@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 
+const API_BASE = import.meta.env.DEV ? '/api/rent-it' : '/rent-it';
+
+const PUBLIC_BASE = '/rent-it';
+
 function ClientLoginPage() {
   const [activeTab, setActiveTab] = useState('login');
   const [loginEmail, setLoginEmail] = useState('');
@@ -40,7 +44,7 @@ function ClientLoginPage() {
     setLoginLoading(true);
 
     try {
-      const response = await fetch('http://localhost/rent-it/api/auth/login.php', {
+      const response = await fetch(`${API_BASE}/api/auth/login.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +97,7 @@ function ClientLoginPage() {
     }
 
     try {
-      const response = await fetch('http://localhost/rent-it/api/auth/register.php', {
+      const response = await fetch(`${API_BASE}/api/auth/register.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -177,7 +181,7 @@ function ClientLoginPage() {
           <div className="auth-left-content">
             <div className="auth-logo">
               <img
-                src="http://localhost/rent-it/assets/images/rIT_logo_tp.png"
+                src={`${PUBLIC_BASE}/assets/images/rIT_logo_tp.png`}
                 alt="RentIT Logo"
                 className="auth-logo-icon"
               />
@@ -208,7 +212,7 @@ function ClientLoginPage() {
         <div className="auth-right">
           <div className="mobile-logo stagger-child">
             <img
-              src="http://localhost/rent-it/assets/images/rIT_logo_tp.png"
+              src={`${PUBLIC_BASE}/assets/images/rIT_logo_tp.png`}
               alt="RentIT Logo"
               className="mobile-logo-icon"
             />
@@ -291,7 +295,7 @@ function ClientLoginPage() {
                   <label>
                     <input type="checkbox" id="rememberMe" /> Remember me
                   </label>
-                  <a href="http://localhost/rent-it/forgot-password.php">Forgot password?</a>
+                  <a href={`${PUBLIC_BASE}/forgot-password.php`}>Forgot password?</a>
                 </div>
 
                 {loginError && (
@@ -454,7 +458,7 @@ function ClientLoginPage() {
 
               <div className="auth-social stagger-child">
                 <a
-                  href="http://localhost/rent-it/fb-login.php"
+                  href={`${PUBLIC_BASE}/fb-login.php`}
                   className="auth-social-btn facebook-btn"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 18, height: 18 }}>
@@ -463,7 +467,7 @@ function ClientLoginPage() {
                   Facebook
                 </a>
 
-                <a href="http://localhost/rent-it/google-login.php" className="auth-social-btn">
+                <a href={`${PUBLIC_BASE}/google-login.php`} className="auth-social-btn">
                   <svg viewBox="0 0 24 24" width="20" height="20">
                     <path
                       fill="#4285F4"
@@ -494,8 +498,8 @@ function ClientLoginPage() {
                   </span>
                   <span className="auth-footer-links">
                     By continuing, you agree to our
-                    <a href="http://localhost/rent-it/pages/wip.html">Terms</a> and
-                    <a href="http://localhost/rent-it/pages/wip.html">Privacy Policy</a>.
+                    <a href={`${PUBLIC_BASE}/pages/wip.html`}>Terms</a> and
+                    <a href={`${PUBLIC_BASE}/pages/wip.html`}>Privacy Policy</a>.
                   </span>
                 </div>
               </div>

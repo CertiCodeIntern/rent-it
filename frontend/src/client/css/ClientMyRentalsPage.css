@@ -1,0 +1,1136 @@
+.content-area {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px); /* or whatever header height you use */
+}
+
+.myrentals-tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 20px;
+}
+
+.myrentals-tab-link {
+    text-decoration: none;
+    color: #64748b;
+    padding: 10px 5px;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.myrentals-tab-link:hover {
+    color: #f97316;
+}
+
+.myrentals-tab-active {
+    color: #f97316;
+}
+
+.myrentals-tab-active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #f97316;
+    border-radius: 10px 10px 0 0;
+}
+
+.myrentals-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.myrentals-section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.myrentals-units-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-muted, #eff6ff);
+    color: var(--accent, #f97316);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* Dark theme: units badge */
+[data-theme="dark"] .myrentals-units-badge {
+    background: var(--accent-muted);
+    color: var(--accent);
+}
+
+.myrentals-cards-row {
+    min-height: 120px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.myrentals-cards-row .myrentals-empty-active {
+    grid-column: 1 / -1;
+}
+
+.myrentals-cards-row .rental-empty-card {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Active rental card layout (scoped to My Rentals) */
+.myrentals-page-root .rental-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 22px;
+    border-radius: 18px;
+    background: var(--bg-card, #ffffff);
+    box-shadow: var(--shadow-card);
+    min-height: 220px;
+    border: 1px solid var(--border-color, transparent);
+}
+
+/* Dark theme: rental card */
+[data-theme="dark"] .myrentals-page-root .rental-card {
+    background: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+/* Dark theme: rental card text */
+[data-theme="dark"] .myrentals-page-root .rental-card .card-title,
+[data-theme="dark"] .myrentals-page-root .rental-card .card-meta,
+[data-theme="dark"] .myrentals-page-root .rental-card .rental-id,
+[data-theme="dark"] .myrentals-page-root .rental-card .badges-row {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .myrentals-page-root .rental-card .card-meta {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .myrentals-page-root .rental-card .rental-id {
+    color: var(--text-tertiary);
+}
+
+.myrentals-page-root .rental-card.card-expiring {
+    border: 2px solid var(--danger);
+}
+
+.myrentals-page-root .card-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.myrentals-page-root .card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.myrentals-page-root .card-image {
+    width: 100%;
+    height: 140px;
+    background:
+        var(--bg-secondary, #0f172a)
+        url('/rent-it/assets/images/catalog-fallback.svg') center/contain no-repeat;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark theme: card image background */
+[data-theme="dark"] .myrentals-page-root .card-image {
+    background-color: var(--bg-secondary);
+}
+
+.myrentals-page-root .card-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Circular day badge like PHP design */
+.myrentals-page-root .days-badge {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--nav-primary);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.myrentals-page-root .days-badge .days-value {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.myrentals-page-root .days-badge .days-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.myrentals-page-root .days-badge.days-danger {
+    background: var(--danger);
+}
+
+/* Expiring Soon badge text color override for My Rentals */
+.myrentals-page-root .status-expiring {
+    background: var(--danger);
+    color: #ffffff;
+}
+
+.myrentals-history-section {
+    margin-top: 40px;
+}
+
+.myrentals-view-all-link {
+    color: #f97316;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.myrentals-view-all-link:hover {
+    text-decoration: underline;
+}
+
+.myrentals-history-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.myrentals-history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.myrentals-history-table thead {
+    background: var(--bg-tertiary);
+}
+
+.myrentals-history-table th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.myrentals-history-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+/* Dark theme: table data text - override inline styles */
+[data-theme="dark"] .myrentals-history-table td {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .myrentals-history-table td .history-name,
+[data-theme="dark"] .myrentals-history-table td .history-info .history-name {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .myrentals-history-table td .history-id,
+[data-theme="dark"] .myrentals-history-table td .history-info .history-id {
+    color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .myrentals-history-table td .period-dates {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .myrentals-history-table td .amount-cell,
+[data-theme="dark"] .myrentals-history-table td[class*="amount"] {
+    color: var(--text-primary) !important;
+}
+
+.myrentals-history-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.myrentals-history-table tbody tr:hover {
+    background: var(--bg-elevated);
+}
+
+.myrentals-history-empty-row {
+    background: var(--bg-elevated);
+}
+
+.myrentals-history-empty-cell {
+    padding: 16px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--card-text);
+}
+
+/* Booking history item icon + text, scoped to My Rentals */
+.myrentals-page-root .history-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.myrentals-page-root .history-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--accent-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.myrentals-page-root .history-info .history-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.myrentals-page-root .history-info .history-id {
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
+/* Booking history Receipt button */
+.myrentals-page-root .card-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.myrentals-page-root .btn-extend,
+.myrentals-page-root .btn-return {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.myrentals-page-root .btn-extend {
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+}
+
+.myrentals-page-root .btn-return {
+    background: var(--bg-card, #ffffff);
+    border: 1.5px solid var(--border-medium, #CBD5E1);
+    color: var(--text-primary, #0F172A);
+}
+
+.myrentals-page-root .btn-return:hover {
+    background: var(--bg-secondary, #F1F5F9);
+    border-color: var(--text-secondary, #334155);
+    transform: translateY(-1px);
+}
+
+/* Dark theme: Return button */
+[data-theme="dark"] .myrentals-page-root .btn-return {
+    background: transparent;
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .myrentals-page-root .btn-return:hover {
+    background: var(--bg-tertiary, #334155);
+    border-color: var(--border-medium);
+}
+
+.myrentals-page-root .rental-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.myrentals-page-root .rental-button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+/* Booking History empty state inside table */
+.booking-history-page .bh-empty-cell {
+    text-align: center;
+    padding: 48px 24px;
+    vertical-align: middle;
+}
+
+.booking-history-page .bh-empty-message-inline {
+    margin: 0 0 20px;
+    font-size: 14px;
+    color: #99B2CC;
+}
+
+.booking-history-page .bh-empty-cta-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: #F2B279;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.booking-history-page .bh-empty-cta-inline:hover {
+    background: #e09d5f;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* Booking History table styles (from bookinghistory.css) */
+/* Booking History table styles (scoped with .booking-history-page to avoid affecting catalog) */
+.booking-history-page .bh-history-section {
+    margin-top: 20px;
+}
+
+.booking-history-page .bh-history-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.booking-history-page .bh-history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.booking-history-page .bh-history-table thead {
+    background: var(--bg-elevated);
+}
+
+.booking-history-page .bh-history-head th {
+    background-color: var(--bg-tertiary);
+}
+
+.booking-history-page .bh-history-table th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.booking-history-page .bh-history-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.booking-history-page .bh-history-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.booking-history-page .bh-history-table tbody tr:hover {
+    background: var(--bg-elevated);
+}
+
+.booking-history-page .item-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.booking-history-page .item-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--accent-muted);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.booking-history-page .item-info .item-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--card-text);
+}
+
+.booking-history-page .item-info .small-muted {
+    font-size: 12px;
+    color: var(--card-text);
+}
+
+/* Rental ID / order number cell */
+.booking-history-page td.small-muted {
+    color: var(--card-text);
+}
+
+.booking-history-page .period .date-start {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--card-text);
+}
+
+.booking-history-page .period .date-end {
+    font-size: 12px;
+    color: var(--card-text);
+}
+
+.booking-history-page .amount-cell {
+    font-weight: 700;
+    color: var(--card-text);
+}
+
+.booking-history-page .status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 5.5rem;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.booking-history-page .status-active,
+.booking-history-page .status-completed {
+    background: rgba(5, 150, 105, 0.1);
+    color: var(--success);
+}
+
+.booking-history-page .status-cancelled {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+.booking-history-page .status-refunded {
+    background: rgba(107, 114, 128, 0.1);
+    color: var(--text-secondary);
+}
+
+/* Returned: teal/green pill - clearly visible */
+.booking-history-page .status-returned {
+    background: rgba(16, 185, 129, 0.18);
+    color: #047857;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+/* Extended: blue pill - same style as Rented */
+.booking-history-page .status-extended {
+    background: rgba(59, 130, 246, 0.18);
+    color: #1d4ed8;
+    border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+/* Rented: light blue pill (visible like in design) */
+.booking-history-page .status-rented {
+    background: rgba(59, 130, 246, 0.18);
+    color: #1d4ed8;
+    border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.booking-history-page .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.booking-history-page .pagination-info {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.booking-history-page .pagination-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.booking-history-page .pagination-btn {
+    padding: 8px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.booking-history-page .pagination-btn:hover {
+    background: var(--bg-elevated);
+    border-color: var(--text-tertiary);
+}
+
+.booking-history-page .pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* KPI cards shared for Booking History (bh-kpi-* scoped) */
+.booking-history-page .bh-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 32px 0;
+}
+
+.booking-history-page .bh-kpi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.booking-history-page .bh-kpi-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.booking-history-page .bh-kpi-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.booking-history-page .bh-kpi-icon-wrap svg {
+    width: 24px;
+    height: 24px;
+}
+
+.booking-history-page .bh-kpi-icon-blue {
+    background: var(--info-bg);
+    color: var(--info);
+}
+
+.booking-history-page .bh-kpi-icon-blue svg {
+    stroke: var(--info);
+}
+
+.booking-history-page .bh-kpi-icon-orange {
+    background: var(--accent-muted);
+    color: var(--accent);
+}
+
+.booking-history-page .bh-kpi-icon-orange svg {
+    stroke: var(--accent);
+}
+
+.booking-history-page .bh-kpi-icon-gold {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.booking-history-page .bh-kpi-icon-gold svg {
+    stroke: #f59e0b;
+    fill: #f59e0b;
+}
+
+.booking-history-page .bh-kpi-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.booking-history-page .bh-kpi-value {
+    color: var(--text-primary, #1a1a1a);
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 1 !important;
+}
+
+/* Dark theme: Booking History infobox values */
+[data-theme="dark"] .booking-history-page .bh-kpi-value {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .booking-history-page .bh-kpi-label {
+    color: var(--text-secondary);
+}
+
+/* Returns & Extensions React page (scoped by .returns-page) */
+.returns-page .returns-stats-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.returns-page .returns-stat-card {
+    flex: 1;
+    min-width: 180px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.25rem;
+    transition: all 0.2s ease;
+}
+
+.returns-page .returns-stat-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.returns-page .returns-stat-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.returns-page .returns-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.returns-page .returns-stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.returns-page .returns-section,
+.returns-page .returns-extensions-section {
+    margin-bottom: 2rem;
+}
+
+.returns-page .returns-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.returns-page .returns-section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.returns-page .returns-units-badge {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.625rem;
+    border-radius: 20px;
+}
+
+.returns-page .returns-units-badge-blue {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.returns-page .returns-grid,
+.returns-page .returns-extensions-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.returns-page .returns-card,
+.returns-page .returns-extension-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.returns-page .returns-card:hover,
+.returns-page .returns-extension-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.returns-page .returns-card-header,
+.returns-page .returns-extension-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1rem;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.returns-page .returns-id,
+.returns-page .returns-extension-id {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-family: 'SF Mono', 'Consolas', monospace;
+}
+
+.returns-page .returns-status,
+.returns-page .returns-extension-status {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.returns-page .returns-status-pending {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.returns-page .returns-status-returned {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+.returns-page .returns-card-body,
+.returns-page .returns-extension-body {
+    padding: 1rem;
+}
+
+.returns-page .returns-item,
+.returns-page .returns-extension-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.returns-page .returns-item-image,
+.returns-page .returns-extension-item-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--bg-tertiary);
+}
+
+.returns-page .returns-item-image img,
+.returns-page .returns-extension-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.returns-page .returns-item-info,
+.returns-page .returns-extension-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.returns-page .returns-item-name,
+.returns-page .returns-extension-item-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* New Due Date line: same tone as the extension card (no blue highlight) */
+.returns-page .returns-extension-due {
+    display: inline-block;
+    margin: 0.5rem 0 0 0;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.returns-page .returns-extension-due strong {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.returns-page .returns-item-meta,
+.returns-page .returns-extension-item-meta {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.returns-page .returns-card-footer,
+.returns-page .returns-extension-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1rem;
+    background: var(--bg-tertiary);
+    border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.returns-page .returns-btn-cancel {
+    background: rgba(239, 68, 68, 0.12);
+    color: #ef4444;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+}
+
+.returns-page .returns-btn-cancel:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.returns-page .returns-processed-label {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+}
+
+.returns-page .returns-reason-box {
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+}
+
+.returns-page .returns-no-data-card {
+    padding: 4rem 3rem;
+    background: var(--bg-secondary);
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.returns-page .returns-empty-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 28px;
+}
+
+.returns-page .returns-empty-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.returns-page .returns-empty-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.returns-page .returns-empty-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.returns-page .returns-empty-link:hover {
+    text-decoration: underline;
+}
+
+/* Receipt modal overlay */
+.myrentals-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Receipt modal card */
+.myrentals-modal-content {
+    position: relative;
+    background: #ffffff;
+    border-radius: 14px;
+    width: 360px;
+    max-width: 90vw;
+    padding: 20px 24px 18px;
+    box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.25),
+        0 0 0 1px rgba(148, 163, 184, 0.25);
+}
+
+.myrentals-close-modal {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    color: #64748b;
+}
+
+/* Receipt modal typography and layout */
+#receipt-canvas h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+    color: #f97316;
+    text-align: center;
+}
+
+#receipt-canvas p {
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #94a3b8;
+}
+
+/* Top section separator under title */
+#receipt-canvas > div:first-child {
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+/* Generic rows inside receipt */
+#receipt-canvas .receipt-row-label,
+#receipt-canvas span[style*="Order Ref"],
+#receipt-canvas span[style*="Item:"],
+#receipt-canvas span[style*="Period:"] {
+    font-size: 13px;
+    color: #64748b;
+}
+
+#receipt-canvas .receipt-row-value,
+#receipt-canvas span[style*="font-weight: 600"],
+#receipt-canvas span[style*="fontWeight: 600"] {
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+}
+
+/* Force any links or highlighted spans inside Period / Total Paid to be black */
+#receipt-canvas a,
+#receipt-canvas span {
+    color: #000;
+}
+
+/* Shared modal typography for Extend / Return modals */
+.myrentals-modal h3 {
+    color: #0f172a;
+}
+
+.myrentals-modal p {
+    color: #64748b;
+}
+
+.myrentals-modal label {
+    color: #64748b;
+}
+
+/* Total paid highlight */
+#receipt-canvas .receipt-total {
+    font-size: 15px;
+    font-weight: 700;
+    color: #f97316;
+}
+
+/* Primary action button: Print Receipt */
+#receipt-canvas .print-receipt-btn {
+    margin-top: 14px;
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 0;
+    background: #f97316;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#receipt-canvas .print-receipt-btn:hover {
+    background: #ea580c;
+}

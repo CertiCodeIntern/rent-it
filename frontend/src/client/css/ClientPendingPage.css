@@ -1,0 +1,206 @@
+.pending-page .page-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* Tab bar – same look as My Rentals / Booking History */
+.pending-page .myrentals-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+}
+
+.pending-page .myrentals-tab-link {
+  text-decoration: none;
+  color: #64748b;
+  padding: 10px 5px;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+  font-size: 14px;
+}
+
+.pending-page .myrentals-tab-link:hover {
+  color: #f97316;
+}
+
+.pending-page .myrentals-tab-active {
+  color: #f97316;
+}
+
+.pending-page .myrentals-tab-active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #f97316;
+  border-radius: 10px 10px 0 0;
+}
+
+.pending-page .pending-error {
+  color: #e11d48;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.pending-page .pending-section-title {
+  margin-bottom: 20px;
+  color: var(--text-primary, #0F172A);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.pending-page .pending-loading {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+}
+
+.pending-page .pending-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pending-page .pending-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pending-page .pending-card:hover {
+  border-color: #f97316;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.pending-page .pending-card-image-wrap {
+  flex-shrink: 0;
+}
+
+.pending-page .pending-card-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.pending-page .pending-card-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.pending-page .pending-card-title {
+  margin: 0 0 8px;
+  color: var(--text-primary, #0F172A);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.pending-page .pending-card-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+  font-size: 0.85rem;
+}
+
+.pending-page .pending-meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pending-page .pending-meta-label {
+  color: var(--text-secondary, #334155);
+}
+
+.pending-page .pending-meta-value {
+  color: var(--text-primary, #0F172A);
+  font-weight: 600;
+}
+
+.pending-page .pending-card-total {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #f97316;
+  font-weight: 700;
+}
+
+.pending-page .pending-order-id {
+  font-size: 0.75rem;
+  color: var(--text-tertiary, #64748B);
+  margin-top: 5px;
+}
+
+.pending-page .pending-card-status-wrap {
+  text-align: right;
+  min-width: 150px;
+  flex-shrink: 0;
+}
+
+.pending-page .pending-status-pill {
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.pending-page .pending-status-note {
+  font-size: 0.72rem;
+  color: var(--text-tertiary, #64748B);
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.pending-page .pending-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 2px dashed var(--border-color);
+}
+
+.pending-page .pending-empty-text {
+  color: var(--text-secondary);
+  margin: 0 0 12px;
+}
+
+.pending-page .pending-empty-link {
+  color: #f97316;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.pending-page .pending-empty-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .pending-page .pending-card {
+    flex-direction: column;
+  }
+
+  .pending-page .pending-card-status-wrap {
+    text-align: left;
+    width: 100%;
+  }
+
+  .pending-page .pending-card-meta {
+    grid-template-columns: 1fr;
+  }
+}

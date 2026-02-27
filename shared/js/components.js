@@ -1,4 +1,3 @@
-
 (function() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -527,7 +526,27 @@ container.innerHTML = `
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
             </svg>
         </button>
+<div class="notification-wrapper">
+    <button class="btn-icon notification-btn" id="notificationBtn" aria-label="Notifications" title="Notifications">
+        <svg class="notification-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
         
+        <span class="notification-badge" id="clientNotifBadge" style="display: none;">0</span>
+    </button>
+
+    <div class="notification-dropdown" id="notificationDropdown">
+        <div class="notification-header">
+            <h4>Notifications</h4>
+        </div>
+        
+        <div class="notification-list" id="clientNotifList">
+            <div class="notification-item">Loading notifications...</div>
+        </div>
+
+    </div>
+</div>
         <div class="topbar-user profile-wrapper">
             <button class="btn-icon profile-btn" id="profileBtn" aria-label="User menu" title="Profile & settings">
                 <div class="topbar-user-avatar">${avatarContent}</div>
@@ -653,6 +672,23 @@ container.innerHTML = `
         const profileDropdown = document.getElementById('profileDropdown');
         const markReadBtn = document.getElementById('markReadBtn');
 
+        const updateNotificationState = () => {
+            const hasUnread = document.querySelector('.notification-item.unread') !== null;
+            const badge = document.querySelector('.notification-badge');
+            if (!notificationBtn) return;
+
+            if (hasUnread) {
+                notificationBtn.classList.remove('no-unread');
+                if (badge) badge.style.display = '';
+            } else {
+                notificationBtn.classList.add('no-unread');
+                if (badge) badge.style.display = 'none';
+            }
+        };
+
+        // Initial icon/badge state
+        updateNotificationState();
+
         // Notification toggle
         notificationBtn?.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -673,8 +709,7 @@ container.innerHTML = `
             document.querySelectorAll('.notification-item.unread').forEach(item => {
                 item.classList.remove('unread');
             });
-            const badge = document.querySelector('.notification-badge');
-            if (badge) badge.style.display = 'none';
+            updateNotificationState();
         });
 
         // Close on outside click
@@ -1295,3 +1330,54 @@ if (typeof window !== 'undefined') {
         _hideSkeleton();
     }
 }
+
+function loadClientNotifications() {
+    // Siguraduhin na tama ang path ng get_notifications.php mo
+    fetch('/rent-it/api/get_notifications.php?role=client')
+        .then(res => res.json())
+        .then(data => {
+            const list = document.getElementById('clientNotifList');
+            const badge = document.getElementById('clientNotifBadge');
+
+            if (data.status === 'success') {
+                // 1. Update ang Badge
+                if (badge) {
+                    badge.innerText = data.unread_count;
+                    badge.style.display = data.unread_count > 0 ? 'block' : 'none';
+                }
+
+                // 2. Update ang Listahan
+                if (list) {
+                    list.innerHTML = ''; // Burahin ang "Loading..."
+
+                    if (data.data.length === 0) {
+                        list.innerHTML = '<div class="notification-item">No new notifications</div>';
+                        return;
+                    }
+
+                    data.data.forEach(notif => {
+                        const isUnread = notif.is_read == 0 ? 'unread' : '';
+                        // Ang redirectUrl ay galing sa link_url sa database
+                        const redirectUrl = notif.link_url || '#';
+
+                        list.innerHTML += `
+                            <div class="notification-item ${isUnread}" 
+                                 onclick="markAsRead(${notif.id}, '${redirectUrl}')" 
+                                 style="cursor: pointer;">
+                                <div class="notification-content">
+                                    <div class="notification-title" style="font-weight: bold;">${notif.title}</div>
+                                    <div class="notification-text">${notif.message}</div>
+                                    <div class="notification-time" style="font-size: 0.8rem; color: #888;">${notif.created_at}</div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            }
+        })
+        .catch(err => console.error('Error loading client notifications:', err));
+}
+
+// Tawagin ang function agad at i-set ang refresh rate (halimbawa, every 10 seconds)
+loadClientNotifications();
+setInterval(loadClientNotifications, 10000);

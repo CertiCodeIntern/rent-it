@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -7,20 +7,17 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost/rent-it/admin',
+        target: 'http://localhost',
         changeOrigin: true,
         secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
-      '/admin/api': {
-        target: 'http://localhost/rent-it',
-        changeOrigin: true,
-        secure: false,
-      },
-      '/assets': {
-        target: 'http://localhost/rent-it',
+      // Proxy static assets (images) so catalog/favorites/cart images load in dev
+      '/rent-it/assets': {
+        target: 'http://localhost',
         changeOrigin: true,
         secure: false,
       },
     },
   },
-})
+});

@@ -562,6 +562,184 @@
 }
 
 /* ============================
+   MOBILE LAYOUT REFINEMENTS
+   ============================ */
+@media (max-width: 768px) {
+    /* 2-row header actions: filters on top, CTA below */
+    .admin-page-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--admin-spacing-sm);
+        width: 100%;
+    }
+
+    .filter-group {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--admin-spacing-sm);
+        width: 100%;
+        min-width: 0;
+    }
+
+    .calendar-search,
+    .filter-group .form-select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .calendar-search input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #addNewItemBtn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Give legend + nav room and prevent awkward wrapping */
+    .calendar-controls {
+        gap: var(--admin-spacing-md);
+        padding: var(--admin-spacing-md);
+    }
+
+    .calendar-legend {
+        width: 100%;
+        justify-content: flex-start;
+        gap: var(--admin-spacing-sm);
+    }
+
+    .legend-item {
+        padding: 2px 8px;
+        border: 1px solid var(--admin-border-color);
+        border-radius: var(--admin-radius-full);
+        background: var(--admin-bg-secondary);
+    }
+
+    .legend-color {
+        width: 10px;
+        height: 10px;
+    }
+
+    .legend-label {
+        font-size: var(--admin-font-xs);
+    }
+
+    .calendar-nav {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 36px minmax(0, 1fr) 36px auto;
+        align-items: center;
+        gap: var(--admin-spacing-sm);
+    }
+
+    .calendar-date-range {
+        min-width: 0;
+        font-size: var(--admin-font-sm);
+        line-height: 1.25;
+        text-align: center;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    #todayBtn {
+        justify-self: end;
+        white-space: nowrap;
+    }
+
+    /* Make the table less cramped on mobile before horizontal scroll kicks in */
+    .calendar-grid {
+        min-width: 720px;
+        font-size: var(--admin-font-xs);
+    }
+
+    .asset-column {
+        width: 140px;
+        min-width: 140px;
+    }
+
+    .calendar-grid thead th,
+    .calendar-grid tbody td {
+        padding: var(--admin-spacing-xs) var(--admin-spacing-sm);
+    }
+
+    .calendar-grid tbody td {
+        height: 46px;
+    }
+
+    .booking-block {
+        top: 3px;
+        left: 3px;
+        height: calc(100% - 6px);
+        min-width: calc(100% - 6px);
+    }
+
+    /* Match summary cards with the KPI-style vertical alignment */
+    .summary-card {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: var(--admin-spacing-sm);
+        min-height: 132px;
+    }
+
+    .summary-content {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .summary-value,
+    .summary-label {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-nav {
+        grid-template-columns: 32px minmax(0, 1fr) 32px auto;
+        gap: var(--admin-spacing-xs);
+    }
+
+    .calendar-grid {
+        min-width: 640px;
+    }
+
+    .asset-column {
+        width: 120px;
+        min-width: 120px;
+    }
+
+    .day-name {
+        font-size: 10px;
+    }
+
+    .day-date {
+        font-size: 11px;
+    }
+
+    .summary-card {
+        min-height: 124px;
+    }
+}
+
+@media (max-width: 375px) {
+    .filter-group {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-nav {
+        grid-template-columns: 32px minmax(0, 1fr) 32px;
+    }
+
+    #todayBtn {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 100%;
+        max-width: 140px;
+    }
+}
+
+/* ============================
    LARGE SCREEN ADJUSTMENTS
    ============================ */
 @media (min-width: 1920px) {

@@ -69,6 +69,7 @@ CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL
@@ -133,6 +134,7 @@ CREATE TABLE `item` (
   `total_times_rented` int(11) DEFAULT 0,
   `total_units` int(11) NOT NULL DEFAULT 1,
   `available_units` int(11) NOT NULL DEFAULT 1,
+  `repairing_units` int(11) NOT NULL DEFAULT 0,
   `is_visible` tinyint(1) NOT NULL DEFAULT 1,
   `is_featured` tinyint(1) NOT NULL DEFAULT 0,
   `tags` text DEFAULT NULL
@@ -214,6 +216,7 @@ CREATE TABLE `rental_item` (
   `rental_item_id` int(11) NOT NULL,
   `order_id` int(11) DEFAULT NULL,
   `item_id` int(11) DEFAULT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1,
   `item_price` decimal(10,2) DEFAULT NULL,
   `item_status` varchar(50) DEFAULT NULL,
   `start_date` date DEFAULT NULL,
@@ -233,6 +236,24 @@ INSERT INTO `rental_item` (`rental_item_id`, `order_id`, `item_id`, `item_price`
 (6, 5, 10, 250.00, 'Rented'),
 (7, 6, 8, 300.00, 'Rented'),
 (8, 7, 7, 100.00, 'Late');
+
+
+
+
+CREATE TABLE notifications (
+    id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(11) DEFAULT NULL,
+    title VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+    message TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+    type VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'info',
+    link_url VARCHAR(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+    is_read TINYINT(1) DEFAULT 0,
+    read_at TIMESTAMP NULL DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
 
 -- --------------------------------------------------------
 

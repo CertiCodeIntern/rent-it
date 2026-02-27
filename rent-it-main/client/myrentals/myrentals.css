@@ -1,0 +1,848 @@
+/* =====================================================
+   MY RENTALS PAGE STYLES
+   RentIt - Client Portal
+   ===================================================== */
+
+/* Page Header */
+.page-header-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.page-header-info .page-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--heading-primary);
+    margin-bottom: 4px;
+}
+
+.page-header-info .page-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* Tabs Navigation */
+.rentals-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+    margin-bottom: 28px;
+}
+
+.tab-link {
+    padding: 10px 4px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease;
+    white-space: normal;
+    text-align: center;
+}
+
+.tab-link:hover {
+    color: var(--accent);
+}
+
+.tab-link.active {
+    color: var(--text-primary);
+}
+
+.tab-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -13px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    border-radius: 3px;
+}
+
+
+/* Section Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.units-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--info-bg);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+
+.rental-cards-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    display: grid;
+    gap: 8px;
+    justify-items: center;
+}
+
+.empty-state-card {
+    grid-column: 1 / -1;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    border: 1px dashed var(--border-color);
+    background: var(--bg-secondary);
+}
+
+.empty-state-icon {
+    font-size: 28px;
+}
+
+.empty-state-title {
+    margin: 0;
+    color: var(--heading-primary);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.empty-state-text {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.empty-state-link {
+    color: var(--brand-primary-light, #F59E0B);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.empty-state-link:hover {
+    text-decoration: underline;
+}
+
+.rental-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.rental-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* 3. Para sa mga units na malapit na ang deadline */
+.rental-card.card-expiring {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.2);
+}
+
+/* 4. FIX PARA SA PICTURE: Hindi na ito mapuputol */
+.rental-card img {
+    width: 100%;
+    height: 160px; 
+    object-fit: contain; /* Siguradong buo ang speaker na makikita */
+    margin: 15px 0;
+    display: block;
+    border-radius: 8px;
+    background: #f9fafb; /* Light background para sa empty space ng image */
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.card-info {
+    flex: 1;
+}
+
+.badges-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-rented {
+    background: var(--accent);
+    color: white;
+}
+
+.status-expiring {
+    background: var(--danger);
+    color: white;
+    animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.rental-id {
+    color: var(--text-tertiary);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.card-meta {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* Days Badge */
+.days-badge {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--nav-primary);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.days-badge .days-value {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.days-badge .days-label {
+    font-size: 10px;
+    opacity: 0.85;
+    text-transform: uppercase;
+}
+
+.days-badge.days-danger {
+    background: var(--danger);
+}
+
+/* Hanapin mo ang .card-image at palitan ng ganito: */
+.card-image {
+    width: 100%;
+    height: 160px; /* Pantay sa image height natin */
+    background: #f9fafb;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.card-image-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: zoom-in;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* DAPAT CONTAIN PARA HINDI PUTOL */
+}
+
+
+.btn-extend,
+.btn-return {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-extend {
+    background: var(--accent);
+    color: white;
+    border: none;
+}
+
+.btn-extend:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.btn-extend.btn-urgent {
+    background: var(--danger);
+}
+
+.btn-extend.btn-urgent:hover {
+    background: #dc2626;
+}
+
+.btn-return {
+    background: var(--bg-elevated);
+    border: 1px solid var(--text-tertiary);
+    color: var(--text-primary);
+}
+
+.btn-return:hover {
+    background: var(--bg-hover, var(--bg-secondary));
+    border-color: var(--text-secondary);
+}
+
+/* Booking History Section */
+.history-section {
+    margin-top: 40px;
+}
+
+.view-all-link {
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.view-all-link:hover {
+    text-decoration: underline;
+}
+
+/* History Panel / Table */
+.history-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 768px) {
+    .history-panel {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .history-panel .history-table {
+        min-width: 600px;
+    }
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.history-table thead {
+    background: var(--bg-elevated);
+}
+
+.history-table th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.history-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.history-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.history-table tbody tr:hover {
+    background: var(--bg-elevated);
+}
+
+.history-empty td {
+    padding: 24px 16px;
+    background: var(--bg-secondary);
+}
+
+/* History Item Cell */
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.history-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--accent-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.history-info .history-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.history-info .history-id {
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
+.period-dates {
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+.period-status {
+    font-size: 12px;
+    color: var(--success);
+    font-weight: 500;
+}
+
+.period-status.status-inactive {
+    color: var(--text-tertiary);
+}
+
+.amount-cell {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Status Pills */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.status-completed {
+    background: rgba(5, 150, 105, 0.1);
+    color: var(--success);
+}
+
+.status-cancelled {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+.status-refunded {
+    background: rgba(107, 114, 128, 0.1);
+    color: var(--text-secondary);
+}
+
+/* Action Buttons */
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.action-btn.action-muted {
+    background: transparent;
+    color: var(--text-tertiary);
+    border: 1px solid var(--border-color);
+}
+
+.action-btn.action-muted:hover {
+    background: var(--bg-elevated);
+}
+
+.action-btn.receipt-btn {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.action-btn.receipt-btn:hover {
+    background: var(--accent-hover);
+}
+
+/* Promo Banner */
+.promo-banner {
+    margin-top: 40px;
+    background: linear-gradient(135deg, var(--accent) 0%, #ff9a3c 100%);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 8px 30px rgba(251, 112, 18, 0.25);
+}
+
+.promo-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.promo-text h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 6px;
+}
+
+.promo-text p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+}
+
+.promo-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    background: white;
+    color: var(--accent);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.promo-cta:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+}
+
+/* New Rental Button */
+.btn-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-new:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .rental-cards-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-header-dashboard {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .rentals-tabs {
+        gap: 12px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 12px;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .rentals-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-link {
+        white-space: nowrap;
+        padding: 10px 16px;
+        border-radius: 999px;
+        scroll-snap-align: start;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        text-align: center;
+        min-width: fit-content;
+    }
+
+    .tab-link.active {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+    }
+
+    .tab-link.active::after {
+        display: none;
+    }
+    
+    .history-table {
+        font-size: 13px;
+    }
+    
+    .history-table th,
+    .history-table td {
+        padding: 12px;
+    }
+    
+    .promo-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .promo-text p {
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-actions {
+        flex-direction: column;
+    }
+    
+    .btn-extend,
+    .btn-return {
+        width: 100%;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    /* Hide some table columns on mobile */
+    .history-table th:nth-child(2),
+    .history-table td:nth-child(2) {
+        display: none;
+    }
+}
+
+@media (max-width: 375px) {
+    .section-header {
+        gap: 4px;
+    }
+    
+    .section-title {
+        font-size: 1rem;
+    }
+    
+    .card-item-image {
+        height: 100px;
+    }
+    
+    .card-title {
+        font-size: 0.85rem;
+    }
+    
+    .card-actions .btn-extend,
+    .card-actions .btn-return {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .history-table th,
+    .history-table td {
+        padding: 8px;
+        font-size: 0.75rem;
+    }
+    
+    .receipt-modal-content {
+        width: calc(100vw - 2rem);
+    }
+}
+
+/* ===== RECEIPT MODAL ===== */
+.receipt-modal-content {
+    background: var(--card-bg, #fff);
+    margin: 10% auto;
+    padding: 20px;
+    width: 350px;
+    border-radius: 12px;
+    position: relative;
+    color: var(--text-primary);
+}
+
+.receipt-modal-content .close-modal {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    line-height: 1;
+}
+
+.receipt-modal-content .close-modal:hover {
+    color: var(--text-primary);
+}
+
+.receipt-canvas {
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.receipt-top {
+    text-align: center;
+    border-bottom: 2px dashed var(--border-color, #e2e8f0);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.receipt-brand {
+    margin: 0;
+    color: #f97316;
+}
+
+.receipt-subtitle {
+    font-size: 12px;
+    color: var(--text-secondary, #64748b);
+    margin: 5px 0 0 0;
+}
+
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.receipt-block {
+    margin-bottom: 10px;
+}
+
+.receipt-label-text {
+    color: var(--text-secondary, #64748b);
+}
+
+.receipt-block .receipt-label-text,
+.receipt-block .receipt-value {
+    display: block;
+}
+
+.receipt-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.receipt-period {
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+.receipt-total-row {
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color, #eee);
+}
+
+.receipt-total-label {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.receipt-total-amount {
+    font-weight: 800;
+    color: #f97316;
+}
+
+.receipt-footer-text {
+    text-align: center;
+    font-size: 10px;
+    color: var(--text-secondary, #94a3b8);
+    margin-top: 20px;
+}
+
+.btn-download-receipt {
+    width: 100%;
+    margin-top: 15px;
+    background: #f97316;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.btn-download-receipt:hover {
+    background: #ea580c;
+}

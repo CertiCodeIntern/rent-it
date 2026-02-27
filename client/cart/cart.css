@@ -336,13 +336,15 @@
     border-bottom: 1px solid var(--border-color);
 }
 
-.select-all-wrap {
+.select-all-wrap,
+.select-all-wrapper {
     display: flex;
     align-items: center;
     gap: 0.75rem;
 }
 
-.select-all-wrap label {
+.select-all-wrap label,
+.select-all-wrapper label {
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-primary);
@@ -1117,7 +1119,8 @@
         align-items: stretch;
     }
     
-    .select-all-wrap {
+    .select-all-wrap,
+    .select-all-wrapper {
         justify-content: center;
     }
     
@@ -1263,5 +1266,254 @@
     
     .confirm-dialog {
         padding: 1rem;
+    }
+}
+
+/* =============================================
+   MOBILE CART REFINEMENTS (OVERRIDES)
+   ============================================= */
+@media (max-width: 768px) {
+    .cart-actions-bar {
+        padding: 0.875rem 1rem;
+    }
+
+    .select-all-wrap,
+    .select-all-wrapper {
+        justify-content: flex-start;
+    }
+
+    .cart-item-card {
+        display: grid;
+        grid-template-columns: 24px 96px minmax(0, 1fr);
+        align-items: start;
+        gap: 0.75rem;
+        padding: 0.875rem 1rem;
+        padding-bottom: 0.875rem;
+    }
+
+    .cart-item-select {
+        position: static;
+        padding-top: 0.15rem;
+        align-self: start;
+    }
+
+    .cart-item-card .cart-item-image {
+        width: 96px;
+        height: 96px;
+        margin-left: 0;
+        border-radius: 12px;
+    }
+
+    .cart-item-details {
+        min-width: 0;
+        text-align: left;
+        gap: 0.75rem;
+    }
+
+    .cart-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+
+    .cart-item-info {
+        align-items: flex-start;
+    }
+
+    .cart-item-name {
+        font-size: 0.95rem;
+        line-height: 1.25;
+    }
+
+    .cart-item-category {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.45rem;
+    }
+
+    .cart-item-price-wrap .cart-item-price {
+        font-size: 1.05rem;
+    }
+
+    .cart-item-rental-period {
+        grid-column: 2 / -1;
+        padding: 0.65rem 0.75rem;
+        border-radius: 10px;
+    }
+
+    .rental-dates-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.45rem;
+        margin-bottom: 0.45rem;
+    }
+
+    .rental-dates-row .date-arrow {
+        display: none;
+    }
+
+    .rental-dates-row .date-picker-group {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .date-picker-group label {
+        font-size: 0.6rem;
+    }
+
+    .cart-date-input {
+        width: 100%;
+        font-size: 0.78rem;
+        padding: 0.42rem 0.55rem;
+    }
+
+    .rental-summary {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding-top: 0.55rem;
+        margin-top: 0.15rem;
+    }
+
+    .rental-summary .days-count {
+        font-size: 0.72rem;
+        padding: 0.22rem 0.55rem;
+        border-radius: 9999px;
+        background: rgba(1, 79, 134, 0.12);
+    }
+
+    [data-theme="dark"] .rental-summary .days-count {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .rental-summary .cart-item-subtotal {
+        font-size: 1.05rem;
+    }
+
+    .cart-item-card .btn-remove-cart {
+        top: 0.5rem;
+        right: 0.5rem;
+        bottom: auto;
+        transform: none;
+    }
+
+    .cart-summary-bottom {
+        padding: 1rem;
+    }
+
+    .summary-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .summary-row {
+        font-size: 0.86rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .summary-total {
+        font-size: 1.1rem;
+    }
+
+    .btn-checkout-full {
+        margin-top: 0.9rem;
+        padding: 0.8rem;
+        font-size: 0.98rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-item-card {
+        grid-template-columns: 22px 82px minmax(0, 1fr);
+        padding: 0.75rem;
+    }
+
+    .cart-item-card .cart-item-image {
+        width: 82px;
+        height: 82px;
+    }
+
+    /* Let header + rental period participate directly in the outer grid */
+    .cart-item-details {
+        display: contents;
+    }
+
+    .cart-item-header {
+        grid-column: 3 / -1;
+    }
+
+    .cart-item-rental-period {
+        grid-column: 2 / -1;
+        width: 100%;
+    }
+
+    .rental-dates-row {
+        grid-template-columns: 1fr;
+    }
+
+    .rental-dates-row .date-picker-group {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .cart-date-input {
+        width: 100%;
+    }
+
+    .cart-item-details,
+    .cart-item-header,
+    .cart-item-info {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .cart-item-price-wrap .cart-item-price {
+        font-size: 1rem;
+    }
+
+    .cart-item-card .btn-remove-cart {
+        top: 0.45rem;
+        right: 0.45rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .cart-item-card {
+        grid-template-columns: 20px 74px minmax(0, 1fr);
+        gap: 0.6rem;
+        padding: 0.65rem;
+    }
+
+    .cart-item-card .cart-item-image {
+        width: 74px;
+        height: 74px;
+    }
+
+    .cart-item-name {
+        font-size: 0.85rem;
+    }
+
+    .cart-item-rental-period {
+        grid-column: 1 / -1;
+        padding: 0.58rem 0.62rem;
+    }
+
+    .rental-dates-row {
+        grid-template-columns: 1fr;
+        gap: 0.38rem;
+    }
+
+    .cart-item-price-wrap .cart-item-price,
+    .rental-summary .cart-item-subtotal {
+        font-size: 0.95rem;
+    }
+
+    .summary-title {
+        font-size: 1rem;
+    }
+
+    .btn-checkout-full {
+        font-size: 0.92rem;
+        padding: 0.72rem;
     }
 }

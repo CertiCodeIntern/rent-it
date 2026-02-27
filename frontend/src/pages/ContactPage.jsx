@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import MainLayout from '../layouts/MainLayout';
-
-const BASE_URL = 'http://localhost/rent-it';
+import './ContactPage.css';
 
 function ContactPage() {
   const [formState, setFormState] = useState({
@@ -25,10 +24,10 @@ function ContactPage() {
 
   return (
     <MainLayout>
-      <section className="page-header">
+      <section className="contact-hero">
         <div className="container">
-          <h1 className="page-title">Contact Us</h1>
-          <p className="page-subtitle">
+          <h1 className="contact-hero-title">Contact Us</h1>
+          <p className="contact-hero-subtitle">
             Have questions? We'd love to hear from you. Send us a message and we'll respond as soon
             as possible.
           </p>
@@ -130,7 +129,7 @@ function ContactPage() {
         </div>
       </section>
 
-      <section className="faq-section">
+      <section className="faq-section" id="faq-section">
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Frequently Asked Questions</h2>
@@ -140,27 +139,53 @@ function ContactPage() {
             <div className="faq-item">
               <h4>How do I get started?</h4>
               <p>
-                Simply create a free account and you can start managing your rentals right away. No
-                credit card required.
+                Create a free account, browse our catalog of videoke machines, select your preferred
+                model and rental dates, then place your order. We handle delivery and setup right to
+                your doorstep.
               </p>
             </div>
             <div className="faq-item">
-              <h4>Is there a free trial?</h4>
+              <h4>Are there any subscription fees?</h4>
               <p>
-                Yes! We offer a 14-day free trial with full access to all features. No commitment
-                required.
+                No subscription or membership fees. You only pay for the rental period you book.
+                Pricing is transparent — what you see on our catalog is what you pay, plus a small
+                delivery fee based on your area.
               </p>
             </div>
             <div className="faq-item">
               <h4>What payment methods do you accept?</h4>
               <p>
-                We accept all major credit cards, GCash, Maya, and bank transfers.
+                We operate on a Cash on Delivery (COD) basis. Pay in cash when our team delivers the
+                equipment to your location. No online payment or credit card required.
               </p>
             </div>
             <div className="faq-item">
-              <h4>Can I cancel anytime?</h4>
+              <h4>Can I cancel or reschedule my booking?</h4>
               <p>
-                Absolutely. You can cancel your subscription at any time with no penalties.
+                Yes. You can cancel or reschedule your booking up to 24 hours before the scheduled
+                delivery at no charge. Cancellations within 24 hours may incur a small fee.
+              </p>
+            </div>
+            <div className="faq-item">
+              <h4>How are returns handled?</h4>
+              <p>
+                Our team picks up the equipment from your location at the end of your rental period.
+                Just make sure the items are accessible and in the same condition as when delivered.
+              </p>
+            </div>
+            <div className="faq-item">
+              <h4>What happens if equipment is damaged?</h4>
+              <p>
+                Normal wear and tear is covered. However, the renter is liable for any significant
+                damage, loss, or theft of the equipment. Repair or replacement costs will be
+                assessed and billed accordingly.
+              </p>
+            </div>
+            <div className="faq-item">
+              <h4>Do I need to present a valid ID?</h4>
+              <p>
+                Yes. A valid government-issued ID is required upon delivery for verification
+                purposes. This helps us ensure the security of our equipment and our customers.
               </p>
             </div>
           </div>

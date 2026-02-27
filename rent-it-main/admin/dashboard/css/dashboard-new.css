@@ -1,0 +1,355 @@
+/* =====================================================
+   ADMIN DASHBOARD SPECIFIC STYLES
+   Extends admin-components.css with dashboard-specific styles
+   ===================================================== */
+
+/* ============================
+   KPI GRID
+   ============================ */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--admin-spacing-xl);
+    margin-bottom: var(--admin-spacing-2xl);
+}
+
+@media (max-width: 1200px) {
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================
+   DASHBOARD GRID
+   ============================ */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--admin-spacing-2xl);
+}
+
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.dashboard-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-lg);
+}
+
+/* ============================
+   BOOKINGS SECTION
+   ============================ */
+
+.customer-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+}
+
+.customer-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--admin-radius-full);
+    background: var(--admin-accent-muted);
+    color: var(--admin-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--admin-font-sm);
+    font-weight: var(--admin-font-semibold);
+    flex-shrink: 0;
+}
+
+/* ============================
+   SCHEDULE CARD
+   ============================ */
+.schedule-card .admin-card-body {
+    padding: var(--admin-spacing-lg);
+}
+
+.schedule-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-sm);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+    padding: var(--admin-spacing-md);
+    border-radius: var(--admin-radius-md);
+    transition: background var(--admin-transition-fast);
+}
+
+.timeline-item:hover {
+    background: var(--admin-bg-card-hover);
+}
+
+.timeline-time {
+    font-size: var(--admin-font-xs);
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-muted);
+    min-width: 70px;
+}
+
+.timeline-time.warning {
+    color: var(--admin-warning);
+}
+
+.timeline-time.success {
+    color: var(--admin-success);
+}
+
+.timeline-time.muted {
+    color: var(--admin-text-disabled);
+}
+
+.timeline-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.timeline-title {
+    font-size: var(--admin-font-sm);
+    font-weight: var(--admin-font-medium);
+    color: var(--admin-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.timeline-subtitle {
+    font-size: var(--admin-font-xs);
+    color: var(--admin-text-muted);
+}
+
+.timeline-status {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--admin-radius-full);
+    background: var(--admin-border-color);
+    flex-shrink: 0;
+}
+
+.timeline-status.pending {
+    background: var(--admin-info);
+}
+
+.timeline-status.warning {
+    background: var(--admin-warning);
+}
+
+.timeline-status.success {
+    background: var(--admin-success);
+}
+
+/* ============================
+   INVENTORY CARD
+   ============================ */
+.inventory-card .admin-card-body {
+    padding: var(--admin-spacing-lg);
+}
+
+.inventory-item {
+    margin-bottom: var(--admin-spacing-lg);
+}
+
+.inventory-item:last-child {
+    margin-bottom: 0;
+}
+
+.inventory-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--admin-spacing-sm);
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-secondary);
+}
+
+.inventory-value {
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-primary);
+}
+
+.inventory-value.warning {
+    color: var(--admin-warning);
+}
+
+.inventory-value.info {
+    color: var(--admin-info);
+}
+
+.inventory-value.success {
+    color: var(--admin-success);
+}
+
+.progress-bar {
+    height: 6px;
+    background: var(--admin-border-color);
+    border-radius: var(--admin-radius-full);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: var(--admin-radius-full);
+    transition: width var(--admin-transition-slow);
+}
+
+.progress-fill.rented {
+    background: var(--admin-info);
+}
+
+.progress-fill.repair {
+    background: var(--admin-danger);
+}
+
+.progress-fill.cleaning {
+    background: var(--admin-warning);
+}
+
+.progress-fill.available {
+    background: var(--admin-success);
+}
+
+/* ============================
+   QUICK ACTIONS
+   ============================ */
+.quick-actions .admin-card-body {
+    padding: var(--admin-spacing-lg);
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--admin-spacing-md);
+}
+
+.quick-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--admin-spacing-sm);
+    padding: var(--admin-spacing-lg);
+    background: var(--admin-bg-input);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-lg);
+    text-decoration: none;
+    color: var(--admin-text-secondary);
+    font-size: var(--admin-font-sm);
+    font-weight: var(--admin-font-medium);
+    transition: all var(--admin-transition-fast);
+}
+
+.quick-action-btn:hover {
+    background: var(--admin-accent-subtle);
+    border-color: var(--admin-accent);
+    color: var(--admin-accent);
+    transform: translateY(-2px);
+}
+
+.quick-action-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+}
+
+/* ============================
+   RESPONSIVE ADJUSTMENTS
+   ============================ */
+@media (max-width: 768px) {
+    .quick-actions-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .quick-action-btn {
+        padding: var(--admin-spacing-md);
+    }
+    
+    .quick-action-btn span {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .quick-action-btn span {
+        display: block;
+        font-size: var(--admin-font-xs);
+    }
+
+    .quick-action-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .kpi-grid {
+        gap: var(--admin-spacing-md);
+    }
+
+    .inventory-label {
+        font-size: var(--admin-font-xs);
+    }
+
+    .booking-customer {
+        font-size: var(--admin-font-xs);
+    }
+
+    .booking-dates {
+        font-size: var(--admin-font-xs);
+    }
+}
+
+@media (max-width: 375px) {
+    .quick-action-btn {
+        padding: var(--admin-spacing-sm);
+        gap: var(--admin-spacing-xs);
+        font-size: var(--admin-font-xs);
+    }
+
+    .quick-action-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* ============================
+   LARGE SCREEN ADJUSTMENTS
+   ============================ */
+@media (min-width: 1920px) {
+    .kpi-grid {
+        gap: var(--admin-spacing-2xl);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr 440px;
+        gap: var(--admin-spacing-2xl);
+    }
+}
+
+@media (min-width: 2560px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr 520px;
+        gap: var(--admin-spacing-3xl);
+    }
+
+    .kpi-grid {
+        gap: var(--admin-spacing-3xl);
+    }
+}

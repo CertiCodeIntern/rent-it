@@ -1,0 +1,1166 @@
+/**
+ * =====================================================
+ * LATE FEES TRACKER - Page Specific Styles
+ * ===================================================== */
+
+/* =====================================================
+   STATS OVERVIEW
+   ===================================================== */
+.latefees-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--admin-bg-card);
+    border-radius: var(--admin-radius-lg);
+    border: 1px solid var(--admin-border-color);
+    transition: all var(--admin-transition-normal);
+    animation: fadeInUp 0.4s ease-out backwards;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.05s; }
+.stat-card:nth-child(2) { animation-delay: 0.1s; }
+.stat-card:nth-child(3) { animation-delay: 0.15s; }
+.stat-card:nth-child(4) { animation-delay: 0.2s; }
+
+.stat-card:hover {
+    border-color: var(--admin-border-medium);
+    transform: translateY(-2px);
+    box-shadow: var(--admin-shadow-lg);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--admin-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.stat-icon.danger {
+    background: var(--admin-danger-bg);
+    color: var(--admin-danger);
+}
+
+.stat-icon.warning {
+    background: var(--admin-warning-bg);
+    color: var(--admin-warning);
+}
+
+.stat-icon.success {
+    background: var(--admin-success-bg);
+    color: var(--admin-success);
+}
+
+.stat-icon.pending {
+    background: var(--admin-info-bg);
+    color: var(--admin-info);
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--admin-text-primary);
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--admin-text-muted);
+}
+
+/* =====================================================
+   PAGE HEADER
+   ===================================================== */
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--admin-spacing-xl);
+    margin-bottom: var(--admin-spacing-2xl);
+    flex-wrap: wrap;
+}
+
+.page-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-sm);
+}
+
+.page-header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+    flex-wrap: wrap;
+}
+
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+    font-size: var(--admin-font-2xl);
+    font-weight: var(--admin-font-bold);
+    color: var(--admin-text-primary);
+    margin: 0;
+}
+
+.page-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--admin-accent);
+}
+
+.page-subtitle {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-muted);
+    margin: 0;
+}
+
+/* =====================================================
+   TWO COLUMN LAYOUT
+   ===================================================== */
+.latefees-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1.5rem;
+}
+
+/* =====================================================
+   OVERDUE SECTION
+   ===================================================== */
+.overdue-section .admin-card {
+    animation: fadeInUp 0.4s ease-out 0.25s backwards;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--admin-border-color);
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--admin-text-primary);
+    margin: 0;
+}
+
+.card-title svg {
+    width: 20px;
+    height: 20px;
+    color: var(--admin-orange-500);
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.form-select {
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    background: var(--admin-bg-secondary);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-md);
+    color: var(--admin-text-primary);
+    font-size: 0.8125rem;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    background-size: 14px;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: var(--admin-orange-500);
+}
+
+/* =====================================================
+   OVERDUE LIST
+   ===================================================== */
+.overdue-list {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.overdue-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--admin-border-color);
+    transition: all var(--admin-transition-fast);
+}
+
+.overdue-item:last-child {
+    border-bottom: none;
+}
+
+.overdue-item:hover {
+    background: var(--admin-bg-secondary);
+}
+
+/* Priority Indicator */
+.overdue-priority {
+    flex-shrink: 0;
+}
+
+.priority-indicator {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.priority-indicator.critical {
+    background: var(--admin-danger);
+    box-shadow: 0 0 0 3px var(--admin-danger-bg);
+    animation: pulse 2s infinite;
+}
+
+.priority-indicator.warning {
+    background: var(--admin-warning);
+    box-shadow: 0 0 0 3px var(--admin-warning-bg);
+}
+
+.priority-indicator.mild {
+    background: var(--admin-success);
+    box-shadow: 0 0 0 3px var(--admin-success-bg);
+}
+
+/* Main Info */
+.overdue-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.overdue-customer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    margin-bottom: 0.375rem;
+}
+
+.customer-name {
+    font-weight: 600;
+    color: var(--admin-text-primary);
+    font-size: 0.9375rem;
+}
+
+.customer-email {
+    font-size: 0.75rem;
+    color: var(--admin-text-muted);
+}
+
+.overdue-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.equipment-name {
+    font-size: 0.8125rem;
+    color: var(--admin-text-secondary);
+}
+
+.days-overdue {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.overdue-item.critical .days-overdue {
+    color: var(--admin-danger);
+}
+
+.overdue-item.warning .days-overdue {
+    color: var(--admin-warning);
+}
+
+.overdue-item.mild .days-overdue {
+    color: var(--admin-success);
+}
+
+/* Fee Info */
+.overdue-fee {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+    padding: 0 1rem;
+}
+
+.fee-amount {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--admin-danger);
+}
+
+.fee-label {
+    font-size: 0.6875rem;
+    color: var(--admin-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Actions */
+.overdue-actions {
+    display: flex;
+    gap: 0.375rem;
+    flex-shrink: 0;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: var(--admin-radius-md);
+    cursor: pointer;
+    transition: all var(--admin-transition-fast);
+}
+
+.action-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.action-btn.reminder-btn {
+    background: var(--admin-info-bg);
+    color: var(--admin-info);
+}
+
+.action-btn.reminder-btn:hover {
+    background: var(--admin-info);
+    color: white;
+}
+
+.action-btn.call-btn {
+    background: var(--admin-purple-bg);
+    color: var(--admin-purple);
+}
+
+.action-btn.call-btn:hover {
+    background: var(--admin-purple);
+    color: white;
+}
+
+.action-btn.call-btn.phone-revealed {
+    width: auto;
+    padding: 0.3rem 0.6rem;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    background: var(--admin-bg-secondary);
+    color: var(--admin-text-secondary);
+    user-select: all;
+}
+
+.action-btn.call-btn.phone-revealed:hover {
+    background: var(--admin-bg-tertiary);
+    color: var(--admin-text-primary);
+}
+
+.action-btn.resolve-btn {
+    background: var(--admin-success-bg);
+    color: var(--admin-success);
+}
+
+.action-btn.resolve-btn:hover {
+    background: var(--admin-success);
+    color: white;
+}
+
+/* =====================================================
+   TEMPLATES SECTION
+   ===================================================== */
+.templates-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.templates-card {
+    animation: fadeInUp 0.4s ease-out 0.3s backwards;
+}
+
+.btn-ghost {
+    background: transparent;
+    border: none;
+    color: var(--admin-text-secondary);
+    cursor: pointer;
+    padding: 0.375rem;
+    border-radius: var(--admin-radius-md);
+    transition: all var(--admin-transition-fast);
+}
+
+.btn-ghost:hover {
+    background: var(--admin-bg-secondary);
+    color: var(--admin-orange-500);
+}
+
+.btn-ghost svg {
+    width: 18px;
+    height: 18px;
+}
+
+.templates-list {
+    padding: 0.5rem 0;
+}
+
+.template-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--admin-border-color);
+    transition: all var(--admin-transition-fast);
+}
+
+.template-item:last-child {
+    border-bottom: none;
+}
+
+.template-item:hover {
+    background: var(--admin-bg-secondary);
+}
+
+.template-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.template-name {
+    font-weight: 600;
+    color: var(--admin-text-primary);
+    font-size: 0.875rem;
+}
+
+.template-preview {
+    font-size: 0.75rem;
+    color: var(--admin-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.template-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.template-btn {
+    padding: 0.375rem 0.75rem;
+    border: none;
+    border-radius: var(--admin-radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--admin-transition-fast);
+}
+
+.template-btn.use {
+    background: var(--admin-orange-500);
+    color: white;
+}
+
+.template-btn.use:hover {
+    background: var(--admin-orange-600);
+}
+
+.template-btn.edit {
+    background: var(--admin-bg-tertiary);
+    color: var(--admin-text-secondary);
+    padding: 0.375rem;
+}
+
+.template-btn.edit:hover {
+    color: var(--admin-text-primary);
+}
+
+.template-btn.edit svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Active template highlight (selected via "Use" button) */
+.template-item.active {
+    background: var(--admin-accent-bg, rgba(249, 115, 22, 0.08));
+    border-left: 3px solid var(--admin-orange-500);
+    padding-left: calc(1rem - 3px);
+}
+
+.template-item.active .template-name {
+    color: var(--admin-orange-600, var(--admin-accent));
+    font-weight: 600;
+}
+
+.template-item.active .template-btn.use {
+    background: var(--admin-success, #22c55e);
+}
+
+.template-item.active .template-btn.use::after {
+    content: ' ✓';
+}
+
+/* =====================================================
+   ACTIVITY CARD
+   ===================================================== */
+.activity-card {
+    animation: fadeInUp 0.4s ease-out 0.35s backwards;
+}
+
+.activity-list {
+    padding: 0.5rem 0;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    transition: all var(--admin-transition-fast);
+}
+
+.activity-item:hover {
+    background: var(--admin-bg-secondary);
+}
+
+.activity-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.activity-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.activity-icon.sent {
+    background: var(--admin-info-bg);
+    color: var(--admin-info);
+}
+
+.activity-icon.resolved {
+    background: var(--admin-success-bg);
+    color: var(--admin-success);
+}
+
+.activity-icon.call {
+    background: var(--admin-purple-bg);
+    color: var(--admin-purple);
+}
+
+.activity-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    flex: 1;
+}
+
+.activity-text {
+    font-size: 0.8125rem;
+    color: var(--admin-text-primary);
+}
+
+.activity-time {
+    font-size: 0.6875rem;
+    color: var(--admin-text-muted);
+}
+
+/* =====================================================
+   REMINDER MODAL
+   ===================================================== */
+/* =====================================================
+   MODAL BACKDROP OVERRIDE
+   ===================================================== */
+#reminderModal.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+    overflow: visible;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1.5rem;
+}
+
+#reminderModal.modal.open {
+    display: flex;
+}
+
+#reminderModal .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 0;
+}
+
+#reminderModal .modal-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background: var(--admin-bg-card);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-xl);
+    box-shadow: var(--admin-shadow-xl);
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow: hidden;
+    animation: modalSlideIn 0.25s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.reminder-modal {
+    max-width: 600px;
+}
+
+/* =====================================================
+   EDIT / ADD TEMPLATE MODAL
+   ===================================================== */
+#templateModal.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+    overflow: visible;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1.5rem;
+}
+
+#templateModal.modal.open {
+    display: flex;
+}
+
+#templateModal .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 0;
+}
+
+#templateModal .modal-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background: var(--admin-bg-card);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-xl);
+    box-shadow: var(--admin-shadow-xl);
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow: hidden;
+    animation: modalSlideIn 0.25s ease-out;
+}
+
+.template-modal {
+    max-width: 600px;
+}
+
+.reminder-recipient {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--admin-bg-secondary);
+    border-radius: var(--admin-radius-md);
+    margin-bottom: 1.5rem;
+}
+
+.reminder-recipient .form-label {
+    margin: 0;
+    font-weight: 600;
+}
+
+.recipient-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.recipient-name {
+    font-weight: 600;
+    color: var(--admin-text-primary);
+}
+
+.recipient-email {
+    font-size: 0.8125rem;
+    color: var(--admin-text-muted);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--admin-text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    background: var(--admin-bg-secondary);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-md);
+    color: var(--admin-text-primary);
+    font-size: 0.875rem;
+    font-family: inherit;
+    transition: all var(--admin-transition-fast);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--admin-orange-500);
+    box-shadow: 0 0 0 3px rgba(251, 112, 18, 0.1);
+}
+
+textarea.form-input {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.email-body {
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+@media (max-width: 1400px) {
+    .latefees-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .templates-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .latefees-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .templates-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .overdue-item {
+        flex-wrap: wrap;
+    }
+    
+    .overdue-fee {
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .latefees-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: var(--admin-spacing-lg);
+    }
+
+    .stat-value {
+        font-size: var(--admin-font-xl);
+    }
+
+    .stat-label {
+        font-size: var(--admin-font-xs);
+    }
+    
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--admin-spacing-md);
+    }
+
+    .page-title {
+        font-size: var(--admin-font-xl);
+    }
+
+    .page-subtitle {
+        font-size: var(--admin-font-xs);
+    }
+    
+    .page-header-right {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .page-header-right .btn {
+        width: 100%;
+        justify-content: center;
+        font-size: var(--admin-font-xs);
+    }
+    
+    .overdue-item {
+        padding: var(--admin-spacing-md);
+    }
+
+    .overdue-customer {
+        font-size: var(--admin-font-xs);
+    }
+
+    .overdue-details {
+        font-size: var(--admin-font-xs);
+    }
+
+    .card-title {
+        font-size: var(--admin-font-sm);
+    }
+
+    .form-select {
+        font-size: var(--admin-font-xs);
+    }
+    
+    .overdue-main {
+        order: 1;
+        width: 100%;
+        flex: none;
+    }
+    
+    .overdue-priority {
+        order: 0;
+    }
+    
+    .overdue-fee {
+        order: 2;
+        align-items: flex-start;
+        padding-top: 0.75rem;
+    }
+    
+    .overdue-actions {
+        order: 3;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--admin-spacing-sm);
+    }
+
+    .card-title {
+        font-size: var(--admin-font-xs);
+    }
+    
+    .template-preview {
+        max-width: 150px;
+    }
+
+    .stat-card {
+        padding: var(--admin-spacing-md);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--admin-spacing-sm);
+    }
+
+    .stat-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .stat-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .stat-value {
+        font-size: var(--admin-font-lg);
+    }
+
+    .stat-label {
+        font-size: var(--admin-font-xs);
+    }
+
+    .overdue-item {
+        padding: var(--admin-spacing-sm) var(--admin-spacing-md);
+    }
+
+    .overdue-customer {
+        font-size: var(--admin-font-xs);
+    }
+
+    .fee-amount {
+        font-size: var(--admin-font-sm);
+    }
+
+    .page-title {
+        font-size: var(--admin-font-lg);
+    }
+}
+
+/* ============================
+   EXTRA SMALL SCREEN (375px)
+   ============================ */
+@media (max-width: 375px) {
+    .latefees-stats {
+        gap: var(--admin-spacing-sm);
+    }
+
+    .latefees-layout {
+        gap: var(--admin-spacing-md);
+    }
+
+    .stat-card {
+        padding: var(--admin-spacing-sm) var(--admin-spacing-md);
+    }
+
+    .stat-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .stat-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .stat-value {
+        font-size: var(--admin-font-md);
+    }
+
+    .stat-label {
+        font-size: 10px;
+    }
+
+    .page-title {
+        font-size: var(--admin-font-md);
+    }
+
+    .modal-content {
+        padding: var(--admin-spacing-md);
+    }
+
+    .modal-footer {
+        padding: var(--admin-spacing-sm) var(--admin-spacing-md);
+    }
+
+    .template-preview {
+        max-width: 120px;
+    }
+
+    .pagination {
+        gap: var(--admin-spacing-xs);
+    }
+
+    .pagination .page-btn {
+        min-width: 28px;
+        height: 28px;
+        font-size: 10px;
+    }
+
+    .card-title {
+        font-size: var(--admin-font-xs);
+    }
+
+    .overdue-customer {
+        font-size: 10px;
+    }
+
+    .fee-amount {
+        font-size: var(--admin-font-xs);
+    }
+}
+
+/* ============================
+   LARGE SCREEN ADJUSTMENTS
+   ============================ */
+@media (min-width: 1920px) {
+    .latefees-stats {
+        gap: 2rem;
+    }
+
+    .latefees-layout {
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 2560px) {
+    .latefees-stats {
+        gap: 2.5rem;
+    }
+
+    .latefees-layout {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 3rem;
+    }
+}
+
+/* =====================================================
+   PAGINATION
+   ===================================================== */
+.overdue-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--admin-spacing-md);
+    padding: var(--admin-spacing-lg) var(--admin-spacing-xl);
+    border-top: 1px solid var(--admin-border-color);
+}
+
+.pagination-info {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-muted);
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+}
+
+.pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--admin-border-color);
+    background: var(--admin-bg-secondary);
+    border-radius: var(--admin-radius-md);
+    color: var(--admin-text-primary);
+    cursor: pointer;
+    transition: all var(--admin-transition-fast);
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: var(--admin-bg-hover);
+    border-color: var(--admin-accent);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-pages {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-xs);
+}
+
+.page-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: var(--admin-radius-md);
+    color: var(--admin-text-secondary);
+    font-size: var(--admin-font-sm);
+    cursor: pointer;
+    transition: all var(--admin-transition-fast);
+}
+
+.page-btn:hover {
+    background: var(--admin-bg-hover);
+}
+
+.page-btn.active {
+    background: var(--admin-accent);
+    color: white;
+    font-weight: var(--admin-font-semibold);
+}
+
+.page-dots {
+    color: var(--admin-text-muted);
+    padding: 0 var(--admin-spacing-xs);
+}
+
+@media (max-width: 600px) {
+    .overdue-pagination {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,0 +1,289 @@
+/* =====================================================
+   ADMIN THEME MODULE
+   Color Palette & CSS Variables for Admin Portal
+   
+   Design Principles:
+   - Primary: Deep Navy (#0A0F1A - #1E293B)
+   - Accent: Vibrant Orange (#FB7012)
+   - Secondary: Slate grays for text hierarchy
+   - Proper contrast ratios for accessibility
+   ===================================================== */
+
+/* ============================
+   DARK THEME (Default for Admin)
+   ============================ */
+:root,
+[data-theme="dark"] {
+    /* === ADMIN BRAND COLORS === */
+    --admin-navy-900: #0A0F1A;
+    --admin-navy-800: #0F172A;
+    --admin-navy-700: #1E293B;
+    --admin-navy-600: #334155;
+    --admin-navy-500: #475569;
+    
+    /* === ACCENT: Vibrant Orange === */
+    --admin-orange-600: #EA580C;
+    --admin-orange-500: #FB7012;
+    --admin-orange-400: #FF8534;
+    --admin-orange-300: #FFA05C;
+    --admin-orange-200: #FFCC99;
+    
+    /* === SLATE TEXT COLORS === */
+    --admin-slate-50: #F8FAFC;
+    --admin-slate-100: #F1F5F9;
+    --admin-slate-200: #E2E8F0;
+    --admin-slate-300: #CBD5E1;
+    --admin-slate-400: #94A3B8;
+    --admin-slate-500: #64748B;
+    --admin-slate-600: #475569;
+    
+    /* === SEMANTIC BACKGROUNDS === */
+    --admin-bg-primary: var(--admin-navy-900);
+    --admin-bg-secondary: var(--admin-navy-800);
+    --admin-bg-card: #1A2332;
+    --admin-bg-card-hover: #1F2A3D;
+    --admin-bg-elevated: #243447;
+    --admin-bg-input: var(--admin-navy-700);
+    --admin-bg-sidebar: var(--admin-navy-800);
+    --admin-bg-header: var(--admin-navy-800);
+   --admin-bg-hover: var(--admin-bg-card-hover);
+   --admin-surface-200: var(--admin-bg-elevated);
+    
+    /* === TEXT COLORS === */
+    --admin-text-primary: var(--admin-slate-100);
+    --admin-text-secondary: var(--admin-slate-300);
+    --admin-text-muted: var(--admin-slate-400);
+    --admin-text-disabled: var(--admin-slate-500);
+    --admin-text-inverse: var(--admin-navy-900);
+    
+    /* === ACCENT COLORS === */
+    --admin-accent: var(--admin-orange-500);
+    --admin-accent-hover: var(--admin-orange-400);
+    --admin-accent-active: var(--admin-orange-600);
+    --admin-accent-muted: rgba(251, 112, 18, 0.15);
+    --admin-accent-subtle: rgba(251, 112, 18, 0.08);
+   --admin-primary: var(--admin-accent);
+   --admin-primary-hover: var(--admin-accent-hover);
+    
+    /* === BORDERS === */
+    --admin-border-color: rgba(255, 255, 255, 0.08);
+    --admin-border-light: rgba(255, 255, 255, 0.05);
+    --admin-border-medium: rgba(255, 255, 255, 0.12);
+    --admin-border-focus: var(--admin-orange-500);
+    
+    /* === STATUS COLORS === */
+    --admin-success: #22C55E;
+    --admin-success-bg: rgba(34, 197, 94, 0.15);
+    --admin-success-border: rgba(34, 197, 94, 0.3);
+   --admin-success-subtle: rgba(34, 197, 94, 0.12);
+    
+    --admin-warning: #F59E0B;
+    --admin-warning-bg: rgba(245, 158, 11, 0.15);
+    --admin-warning-border: rgba(245, 158, 11, 0.3);
+   --admin-warning-subtle: rgba(245, 158, 11, 0.12);
+    
+    --admin-danger: #EF4444;
+    --admin-danger-bg: rgba(239, 68, 68, 0.15);
+    --admin-danger-border: rgba(239, 68, 68, 0.3);
+   --admin-error-subtle: rgba(239, 68, 68, 0.12);
+    
+    --admin-info: #3B82F6;
+    --admin-info-bg: rgba(59, 130, 246, 0.15);
+    --admin-info-border: rgba(59, 130, 246, 0.3);
+   --admin-info-subtle: rgba(59, 130, 246, 0.12);
+    
+    --admin-neutral: #6B7280;
+    --admin-neutral-bg: rgba(107, 114, 128, 0.15);
+    
+    /* === PURPLE (for edit/special actions) === */
+    --admin-purple: #8B5CF6;
+    --admin-purple-bg: rgba(139, 92, 246, 0.15);
+    
+    /* === BOOKING STATUS (Calendar) === */
+    --status-booked: #3B82F6;
+    --status-booked-bg: rgba(59, 130, 246, 0.2);
+    --status-repair: #EF4444;
+    --status-repair-bg: rgba(239, 68, 68, 0.2);
+    --status-cleaning: #6366F1;
+    --status-cleaning-bg: rgba(99, 102, 241, 0.2);
+    --status-available: #22C55E;
+    --status-available-bg: rgba(34, 197, 94, 0.2);
+    
+    /* === SHADOWS === */
+    --admin-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --admin-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --admin-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --admin-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+    --admin-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --admin-shadow-dropdown: 0 10px 40px rgba(0, 0, 0, 0.5);
+    
+    /* === SCROLLBAR === */
+    --admin-scrollbar-bg: var(--admin-navy-800);
+    --admin-scrollbar-thumb: var(--admin-navy-600);
+    --admin-scrollbar-thumb-hover: var(--admin-navy-500);
+}
+
+/* ============================
+   LIGHT THEME
+   ============================ */
+[data-theme="light"] {
+    /* === SEMANTIC BACKGROUNDS === */
+    --admin-bg-primary: #F3F4F6;
+    --admin-bg-secondary: #FFFFFF;
+    --admin-bg-card: #FFFFFF;
+    --admin-bg-card-hover: #F9FAFB;
+    --admin-bg-elevated: #FFFFFF;
+    --admin-bg-input: #F3F4F6;
+    --admin-bg-sidebar: #FFFFFF;
+    --admin-bg-header: #FFFFFF;
+   --admin-bg-hover: #F3F4F6;
+   --admin-surface-200: #F3F4F6;
+    
+    /* === TEXT COLORS === */
+    --admin-text-primary: #111827;
+    --admin-text-secondary: #4B5563;
+    --admin-text-muted: #6B7280;
+    --admin-text-disabled: #9CA3AF;
+    --admin-text-inverse: #FFFFFF;
+    
+    /* === ACCENT (stays orange) === */
+    --admin-accent: #EA580C;
+    --admin-accent-hover: #C2410C;
+    --admin-accent-active: #9A3412;
+    --admin-accent-muted: rgba(234, 88, 12, 0.1);
+    --admin-accent-subtle: rgba(234, 88, 12, 0.05);
+   --admin-primary: var(--admin-accent);
+   --admin-primary-hover: var(--admin-accent-hover);
+    
+    /* === BORDERS === */
+    --admin-border-color: #E5E7EB;
+    --admin-border-light: #F3F4F6;
+    --admin-border-medium: #D1D5DB;
+    --admin-border-focus: #EA580C;
+    
+    /* === STATUS COLORS (adjusted for light) === */
+    --admin-success: #16A34A;
+    --admin-success-bg: rgba(22, 163, 74, 0.1);
+    --admin-success-border: rgba(22, 163, 74, 0.2);
+   --admin-success-subtle: rgba(22, 163, 74, 0.1);
+    
+    --admin-warning: #D97706;
+    --admin-warning-bg: rgba(217, 119, 6, 0.1);
+    --admin-warning-border: rgba(217, 119, 6, 0.2);
+   --admin-warning-subtle: rgba(217, 119, 6, 0.1);
+    
+    --admin-danger: #DC2626;
+    --admin-danger-bg: rgba(220, 38, 38, 0.1);
+    --admin-danger-border: rgba(220, 38, 38, 0.2);
+   --admin-error-subtle: rgba(220, 38, 38, 0.1);
+    
+    --admin-info: #2563EB;
+    --admin-info-bg: rgba(37, 99, 235, 0.1);
+    --admin-info-border: rgba(37, 99, 235, 0.2);
+   --admin-info-subtle: rgba(37, 99, 235, 0.1);
+    
+    --admin-neutral: #6B7280;
+    --admin-neutral-bg: rgba(107, 114, 128, 0.1);
+    
+    /* === PURPLE (for edit/special actions - Light) === */
+    --admin-purple: #7C3AED;
+    --admin-purple-bg: rgba(124, 58, 237, 0.1);
+    
+    /* === BOOKING STATUS (Calendar - Light) === */
+    --status-booked: #2563EB;
+    --status-booked-bg: rgba(37, 99, 235, 0.15);
+    --status-repair: #DC2626;
+    --status-repair-bg: rgba(220, 38, 38, 0.15);
+    --status-cleaning: #4F46E5;
+    --status-cleaning-bg: rgba(79, 70, 229, 0.15);
+    --status-available: #16A34A;
+    --status-available-bg: rgba(22, 163, 74, 0.15);
+    
+    /* === SHADOWS (lighter for light mode) === */
+    --admin-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --admin-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --admin-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --admin-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --admin-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --admin-shadow-dropdown: 0 10px 40px rgba(0, 0, 0, 0.15);
+    
+    /* === SCROLLBAR === */
+    --admin-scrollbar-bg: #F3F4F6;
+    --admin-scrollbar-thumb: #D1D5DB;
+    --admin-scrollbar-thumb-hover: #9CA3AF;
+}
+
+/* ============================
+   SHARED DESIGN TOKENS
+   ============================ */
+:root {
+    /* === TYPOGRAPHY === */
+    --admin-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    --admin-font-xs: 0.75rem;      /* 12px */
+    --admin-font-sm: 0.875rem;     /* 14px */
+    --admin-font-md: 1rem;         /* 16px */
+    --admin-font-lg: 1.125rem;     /* 18px */
+    --admin-font-xl: 1.25rem;      /* 20px */
+    --admin-font-2xl: 1.5rem;      /* 24px */
+    --admin-font-3xl: 2rem;        /* 32px */
+    
+    --admin-font-normal: 400;
+    --admin-font-medium: 500;
+    --admin-font-semibold: 600;
+    --admin-font-bold: 700;
+    
+    /* === SPACING === */
+    --admin-spacing-xs: 4px;
+    --admin-spacing-sm: 8px;
+    --admin-spacing-md: 12px;
+    --admin-spacing-lg: 16px;
+    --admin-spacing-xl: 24px;
+    --admin-spacing-2xl: 32px;
+    --admin-spacing-3xl: 48px;
+    --admin-spacing-4xl: 64px;
+    
+    /* === BORDER RADIUS === */
+    --admin-radius-sm: 4px;
+    --admin-radius-md: 8px;
+    --admin-radius-lg: 12px;
+    --admin-radius-xl: 16px;
+    --admin-radius-2xl: 24px;
+    --admin-radius-full: 9999px;
+    
+    /* === TRANSITIONS === */
+    --admin-transition-fast: 150ms ease;
+    --admin-transition-normal: 250ms ease;
+    --admin-transition-slow: 350ms ease;
+    --admin-transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    
+    /* === LAYOUT === */
+    --admin-sidebar-width: 260px;
+    --admin-sidebar-collapsed: 72px;
+    --admin-header-height: 64px;
+    --admin-container-max: 1600px;
+    
+    /* === Z-INDEX SCALE === */
+    --admin-z-dropdown: 100;
+    --admin-z-sticky: 200;
+    --admin-z-fixed: 300;
+    --admin-z-modal-backdrop: 400;
+    --admin-z-modal: 500;
+    --admin-z-popover: 600;
+    --admin-z-tooltip: 700;
+}
+
+/* ============================
+   THEME TRANSITION
+   ============================ */
+body,
+.admin-sidebar,
+.admin-header,
+.admin-card,
+.admin-table,
+input,
+select,
+textarea,
+button {
+    transition: var(--admin-transition-theme);
+}

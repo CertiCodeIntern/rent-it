@@ -1,0 +1,582 @@
+/* =====================================================
+   CALENDAR MASTER VIEW - Styles
+   Grid-based calendar for booking visualization
+   ===================================================== */
+
+/* ============================
+   CALENDAR CONTROLS
+   ============================ */
+.calendar-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--admin-spacing-lg);
+    margin-bottom: var(--admin-spacing-xl);
+    padding: var(--admin-spacing-lg);
+    background: var(--admin-bg-card);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-lg);
+}
+
+/* Filter Group */
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+}
+
+.filter-group .form-select {
+    min-width: 160px;
+}
+
+/* Legend */
+.calendar-legend {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-xl);
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: var(--admin-radius-sm);
+}
+
+.legend-color.booked {
+    background: var(--status-booked);
+}
+
+.legend-color.repair {
+    background: var(--status-repair);
+}
+
+.legend-color.available {
+    background: var(--status-available);
+}
+
+.legend-label {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-secondary);
+}
+
+/* Calendar Navigation */
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+}
+
+.calendar-date-range {
+    font-size: var(--admin-font-md);
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-primary);
+    min-width: 180px;
+    text-align: center;
+}
+
+/* ============================
+   CALENDAR GRID
+   ============================ */
+.calendar-card {
+    overflow: hidden;
+}
+
+.calendar-grid-wrapper {
+    overflow-x: auto;
+    padding: var(--admin-spacing-sm);
+}
+
+.calendar-grid {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--admin-font-sm);
+}
+
+/* Header */
+.calendar-grid thead th {
+    background: var(--admin-bg-secondary);
+    padding: var(--admin-spacing-md);
+    text-align: center;
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-muted);
+    border-bottom: 1px solid var(--admin-border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.calendar-grid thead th:first-child {
+    text-align: left;
+    border-radius: var(--admin-radius-lg) 0 0 0;
+}
+
+.calendar-grid thead th:last-child {
+    border-radius: 0 var(--admin-radius-lg) 0 0;
+}
+
+.asset-column {
+    width: 180px;
+    min-width: 180px;
+}
+
+.day-column {
+    width: calc((100% - 180px) / 6);
+}
+
+.day-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.day-name {
+    font-size: var(--admin-font-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.day-date {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-primary);
+}
+
+/* Body */
+.calendar-grid tbody tr {
+    transition: background var(--admin-transition-fast);
+}
+
+.calendar-grid tbody tr:hover {
+    background: var(--admin-bg-card-hover);
+}
+
+.calendar-grid tbody td {
+    padding: var(--admin-spacing-sm);
+    border-bottom: 1px solid var(--admin-border-color);
+    vertical-align: middle;
+    height: 56px;
+    position: relative;
+}
+
+.calendar-grid tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.calendar-grid tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 var(--admin-radius-lg);
+}
+
+.calendar-grid tbody tr:last-child td:last-child {
+    border-radius: 0 0 var(--admin-radius-lg) 0;
+}
+
+/* Asset Cell */
+.asset-cell {
+    background: var(--admin-bg-secondary);
+    position: sticky;
+    left: 0;
+    z-index: 5;
+}
+
+.asset-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.asset-id {
+    font-size: var(--admin-font-xs);
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-accent);
+}
+
+.asset-name {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-primary);
+}
+
+/* Day Cell */
+.day-cell {
+    position: relative;
+    overflow: visible;
+}
+
+/* Booking Blocks */
+.booking-block {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: calc(100% - 8px);
+    min-width: calc(100% - 8px);
+    padding: var(--admin-spacing-xs) var(--admin-spacing-sm);
+    border-radius: var(--admin-radius-sm);
+    display: flex;
+    align-items: center;
+    font-size: var(--admin-font-xs);
+    font-weight: var(--admin-font-medium);
+    cursor: pointer;
+    transition: all var(--admin-transition-fast);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    z-index: 1;
+}
+
+.booking-block:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--admin-shadow-md);
+    z-index: 2;
+}
+
+.booking-block.booked {
+    background: var(--status-booked);
+    color: white;
+}
+
+.booking-block.repair {
+    background: var(--status-repair);
+    color: white;
+}
+
+.booking-block.available {
+    background: var(--status-available-bg);
+    color: var(--status-available);
+    border: 1px dashed var(--status-available);
+}
+
+.booking-block.available:hover {
+    background: var(--status-available);
+    color: white;
+}
+
+.booking-customer {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.booking-status {
+    font-size: var(--admin-font-xs);
+}
+
+/* ============================
+   CALENDAR SUMMARY
+   ============================ */
+.calendar-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--admin-spacing-lg);
+    margin-top: var(--admin-spacing-xl);
+}
+
+@media (max-width: 1024px) {
+    .calendar-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .calendar-summary {
+        grid-template-columns: 1fr;
+    }
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-lg);
+    padding: var(--admin-spacing-lg);
+    background: var(--admin-bg-card);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-lg);
+    transition: all var(--admin-transition-fast);
+}
+
+.summary-card:hover {
+    border-color: var(--admin-border-medium);
+    transform: translateY(-2px);
+}
+
+.summary-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--admin-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.summary-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.summary-icon.info {
+    background: var(--admin-info-bg);
+    color: var(--admin-info);
+}
+
+.summary-icon.danger {
+    background: var(--admin-danger-bg);
+    color: var(--admin-danger);
+}
+
+.summary-icon.warning {
+    background: var(--admin-warning-bg);
+    color: var(--admin-warning);
+}
+
+.summary-icon.success {
+    background: var(--admin-success-bg);
+    color: var(--admin-success);
+}
+
+.summary-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-value {
+    font-size: var(--admin-font-2xl);
+    font-weight: var(--admin-font-bold);
+    color: var(--admin-text-primary);
+    line-height: 1.2;
+}
+
+.summary-label {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-muted);
+}
+
+/* ============================
+   BOOKING DETAIL MODAL
+   ============================ */
+.booking-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--admin-spacing-lg);
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-xs);
+}
+
+.detail-item label {
+    font-size: var(--admin-font-xs);
+    color: var(--admin-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-item span {
+    font-size: var(--admin-font-md);
+    color: var(--admin-text-primary);
+    font-weight: var(--admin-font-medium);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 1024px) {
+    .calendar-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .calendar-legend {
+        justify-content: center;
+    }
+    
+    .calendar-nav {
+        justify-content: center;
+    }
+    
+    .filter-group {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-page-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+    
+    .filter-group .form-select {
+        flex: 1;
+        font-size: var(--admin-font-xs);
+    }
+    
+    .booking-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-legend span {
+        font-size: var(--admin-font-xs);
+    }
+}
+
+/* Calendar Search */
+.calendar-search {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+    background: var(--admin-bg-secondary);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-md);
+    padding: var(--admin-spacing-xs) var(--admin-spacing-sm);
+}
+
+.calendar-search svg {
+    color: var(--admin-text-muted);
+    flex-shrink: 0;
+}
+
+.calendar-search input {
+    border: none;
+    background: transparent;
+    color: var(--admin-text-primary);
+    font-size: var(--admin-font-sm);
+    outline: none;
+    width: 160px;
+}
+
+.calendar-search input::placeholder {
+    color: var(--admin-text-muted);
+}
+
+/* Calendar Empty State */
+.calendar-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    text-align: center;
+    color: var(--admin-text-muted);
+}
+
+.calendar-empty-state svg {
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.calendar-empty-state h3 {
+    margin: 0 0 0.5rem;
+    font-size: var(--admin-font-lg);
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-primary);
+}
+
+.calendar-empty-state p {
+    margin: 0;
+    font-size: var(--admin-font-sm);
+}
+
+/* ============================
+   SMALL SCREEN ADJUSTMENTS
+   ============================ */
+@media (max-width: 480px) {
+    .calendar-controls {
+        gap: var(--admin-spacing-sm);
+        flex-wrap: wrap;
+    }
+
+    .calendar-legend {
+        flex-wrap: wrap;
+        gap: var(--admin-spacing-xs);
+    }
+
+    .calendar-legend span {
+        font-size: 10px;
+    }
+
+    .calendar-search input {
+        width: 120px;
+        font-size: var(--admin-font-xs);
+    }
+
+    .calendar-summary {
+        gap: var(--admin-spacing-md);
+    }
+
+    .calendar-empty-state h3 {
+        font-size: var(--admin-font-md);
+    }
+
+    .calendar-empty-state p {
+        font-size: var(--admin-font-xs);
+    }
+}
+
+/* ============================
+   EXTRA SMALL SCREEN (375px)
+   ============================ */
+@media (max-width: 375px) {
+    .calendar-controls {
+        gap: var(--admin-spacing-xs);
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .calendar-search {
+        width: 100%;
+    }
+
+    .calendar-search input {
+        width: 100%;
+        font-size: var(--admin-font-xs);
+    }
+
+    .calendar-summary {
+        gap: var(--admin-spacing-sm);
+    }
+
+    .calendar-legend {
+        gap: var(--admin-spacing-xs);
+    }
+
+    .calendar-empty-state h3 {
+        font-size: var(--admin-font-sm);
+    }
+
+    .calendar-empty-state p {
+        font-size: var(--admin-font-xs);
+    }
+}
+
+/* ============================
+   LARGE SCREEN ADJUSTMENTS
+   ============================ */
+@media (min-width: 1920px) {
+    .calendar-summary {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--admin-spacing-xl);
+    }
+}
+
+@media (min-width: 2560px) {
+    .calendar-summary {
+        gap: var(--admin-spacing-2xl);
+    }
+
+    .calendar-search input {
+        width: 240px;
+    }
+}

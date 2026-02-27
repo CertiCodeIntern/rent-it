@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — CertiCode</title>
+
+  <!-- Link to stylesheet (edit variables/colors in about.css :root) -->
+  <link rel="stylesheet" href="css/about.css" />
+</head>
+<body>
+  <!-- ================================
+       HEADER / NAVBAR
+       - Mobile hamburger is on the LEFT; mobile nav lives below header
+       ================================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <!-- MOBILE: left hamburger button -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <!-- Brand / Logo -->
+      <div class="brand">
+        <div class="logo-drawer">
+          <img src="src/images/rIT_logo_tp.png" alt="rIT logo" />
+        </div>
+        <div class="brand-name">CertiCode</div>
+      </div>
+
+      <!-- Desktop nav (hidden on mobile) -->
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="landingpage.html">Home</a>
+        <a href="rentals.html">Rentals</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="active" href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Header actions (Book + avatar) -->
+      <div class="header-actions">
+        <button class="btn btn-outline">Book Now</button>
+        <div class="avatar">JS</div>
+      </div>
+    </div>
+
+    <!-- ================================
+         MOBILE NAV PANEL
+         - Menu links for mobile view (toggle via hamburger)
+         ================================= -->
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <a class="mobile-link" href="index.html">Home</a>
+      <a class="mobile-link" href="rentals.html">Rentals</a>
+      <a class="mobile-link" href="pricing.html">Pricing</a>
+      <a class="mobile-link" href="about.html">About</a>
+      <a class="mobile-link" href="contact.html">Contact</a>
+      <div class="mobile-actions">
+        <button class="btn btn-outline">Book Now</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    
+
+    <!-- ================================
+     HERO (text + right-side image)
+     Replace the previous hero section with this block.
+     Change the image src if your file is named differently.
+     ================================= -->
+<section class="hero">
+  <div class="container hero-inner">
+
+    <!-- HERO TEXT (left column) -->
+    <div class="hero-text">
+      <span class="pill">Since 2010</span>
+
+      <h1 class="hero-title">Elevating Events with Professional Sound</h1>
+
+      <p class="hero-sub">
+        What started as a small garage project in 2010 has grown into the city's premier videoke rental service.
+        We provide high-quality equipment and professional setup for parties, corporate events, and gatherings of every size.
+      </p>
+
+      <div class="hero-cta centered">
+        <a class="btn btn-primary" >Our Team 👥</a>
+        <a class="btn btn-ghost" >View Gallery</a>
+      </div>
+    </div>
+
+    <!-- HERO MEDIA (right column) -->
+    <div class="hero-media" aria-hidden="true">
+      <img src="src/images/about-hero.jpg" alt="Team setting up equipment at an event" />
+    </div>
+  </div>
+</section>
+
+
+
+
+    <!-- ================================
+         CORE VALUES
+         - SECTION BACKGROUND uses the navbar color (no white)
+         - Edit cards layout in about.css under /* VALUES */
+         ================================= -->
+    <section id="values" class="values">
+      <div class="container">
+        <h2 class="section-title">Our Core Values</h2>
+
+        <!-- Values grid: cards use dark panel background (not white) -->
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🔊</div>
+            <h3>Quality Sound</h3>
+            <p>We use pro-grade audio equipment and perform sound checks for every event to ensure sonic clarity.</p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">🚚</div>
+            <h3>Reliable Service</h3>
+            <p>On-time delivery, professional setup, and fast support — we make sure your event runs smoothly from start to finish.</p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">🎉</div>
+            <h3>Customer Joy</h3>
+            <p>We design experiences, not just rentals. Customer satisfaction is our top priority at every step.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================
+         TERMS / ACCORDION
+         - Accordion panels use dark panel bg (not white)
+         ================================= -->
+    <section class="terms">
+      <div class="container">
+        <h2 class="section-title">Terms of Service</h2>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="true">
+             💰 1. Rental Duration & Logistics
+              <span class="accordion-indicator">▾</span>
+            </button>
+
+            <!-- accordion-panel: uses dark panel background (see CSS) -->
+            <div class="accordion-panel">
+              <p>Standard rental periods are 24 hours starting from the time of setup. Overtime rates apply at ₱25 per additional hour (unless pre-arranged).</p>
+
+                <p>Delivery window: 8:00 AM – 12:00 PM</p> 
+                <p> Pick-up window: Next day, 9:00 AM – 1:00 PM</p>
+                <p>The renter must be present at the time of delivery to sign the inspection report.</p>
+         
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="true">
+             👥 2. Liability & Equipment Care
+              <span class="accordion-indicator">▾</span>
+            </button>
+
+            <div class="accordion-panel">
+              <p>The renter assumes full responsibility for the equipment upon delivery. Videoke Rentals is not liable for damage due to negligence.</p>
+              <ul>
+                <li>Keep equipment dry and protected from weather elements.</li>
+                <li>Only authorized personnel may move the main console once installed.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="true">
+             🗓️ 3. Cancellation Policy
+              <span class="accordion-indicator">▾</span>
+            </button>
+
+            <div class="accordion-panel">
+              <p>We understand plans change. Our refund structure is as follows:</p>
+              <div class="policy-grid">
+                <div class="policy"><strong>7+ Days Notice</strong><p>Full refund of deposit.</p></div>
+                <div class="policy"><strong>3-6 Days Notice</strong><p>50% refund of deposit.</p></div>
+                <div class="policy"><strong>Less than 48 Hours</strong><p>No refund.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="true">
+              💸4. Damage Fees
+              <span class="accordion-indicator">▾</span>
+            </button>
+
+            <div class="accordion-panel">
+
+                <p>Wireless Microphone: ₱800 per unit (lost / irreparable)</p>
+                <p>Speaker: ₱3,000</p>
+                <p>LCD Monitor / Display: ₱4,500</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+<!-- ===========================
+     SITE FOOTER (replace existing <footer>)
+     =========================== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-inner">
+
+    <!-- LEFT: Brand + description + small social icons -->
+    <div class="footer-col footer-brand">
+      <div class="logo-drawer">
+        <img src="src/images/rIT_logo_tp.png" alt="CertiCode / rIT logo">
+      </div>
+
+      <div class="brand-text">
+        <h4 class="brand-title">CertiCode</h4>
+        <p class="brand-sub">
+          Making celebrations louder and more memorable with premium videoke rentals since 2026.
+        </p>
+
+        <div class="social-links" aria-label="Social links">
+          <!-- Chart bar icon -->
+          <a href="#" class="social" aria-label="Analytics">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <rect x="3" y="10" width="4" height="10" rx="1"></rect>
+              <rect x="10" y="6" width="4" height="14" rx="1"></rect>
+              <rect x="17" y="3" width="4" height="17" rx="1"></rect>
+            </svg>
+          </a>
+
+          <!-- Share nodes icon -->
+          <a href="#" class="social" aria-label="Share">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M4 12v6a2 2 0 0 0 2 2h12" stroke-width="1.6" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+              <polyline points="16 6 12 2 8 6" stroke-width="1.6" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></polyline>
+              <path d="M12 2v14" stroke-width="1.6" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+
+          <!-- Email / @ icon -->
+          <a href="mailto:hello@certicode.example" class="social" aria-label="Email">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+              <text x="16" y="20" text-anchor="middle" font-size="14" fill="currentColor" font-family="sans-serif" font-weight="700">@</text>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER: Company links (vertical) -->
+    <div class="footer-col footer-links">
+      <h5 class="footer-heading">Company</h5>
+      <nav class="footer-nav" aria-label="Company">
+        <a href="about.html" class="footer-link">About us</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Careers</a>
+        <a href="#" class="footer-link">Terms of Service</a>
+      </nav>
+    </div>
+
+    <!-- RIGHT: Support links (vertical) -->
+    <div class="footer-col footer-support">
+      <h5 class="footer-heading">Support</h5>
+      <nav class="footer-nav" aria-label="Support">
+        <a href="#" class="footer-link">How it works</a>
+        <a href="#" class="footer-link">Pricing Packages</a>
+        <a href="#" class="footer-link">Safety Guidelines</a>
+        <a href="#" class="footer-link">Delivery areas</a>
+      </nav>
+    </div>
+
+  </div>
+
+  <!-- Divider line -->
+  <div class="footer-divider" role="separator" aria-hidden="true"></div>
+
+  <!-- Bottom center area: copyright + small policy links -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <div class="copyright">© 2026 CertiCode Videoke Rentals • v2.4.0</div>
+
+      <!-- Privacy and cookie policy centered under copyright -->
+      <div class="policy-links">
+        <a href="#" class="policy-link">Privacy Policy</a>
+        <span class="policy-sep">·</span>
+        <a href="#" class="policy-link">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- ================================
+       SCRIPTS
+       - Mobile nav toggle (hamburger)
+       - Accordion toggle
+       ================================= -->
+  <script>
+    (function () {
+      // Mobile nav toggle
+      const ham = document.getElementById('hamburgerBtn');
+      const mobileNav = document.getElementById('mobileNav');
+
+      function openNav() {
+        ham.setAttribute('aria-expanded', 'true');
+        mobileNav.classList.add('open');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeNav() {
+        ham.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      ham && ham.addEventListener('click', function () {
+        const expanded = ham.getAttribute('aria-expanded') === 'true';
+        if (expanded) closeNav();
+        else openNav();
+      });
+
+      // close when a mobile link is clicked (if nav exists)
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+      mobileLinks.forEach(function (a) { a.addEventListener('click', closeNav); });
+
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
+
+      // Accordion toggle logic
+      document.querySelectorAll('.accordion-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+          const panel = btn.nextElementSibling;
+          if (!expanded) panel.style.maxHeight = panel.scrollHeight + 'px';
+          else panel.style.maxHeight = null;
+        });
+      });
+
+      // ensure any pre-open panels are expanded on load
+      document.querySelectorAll('.accordion-item').forEach(function (item) {
+        const btn = item.querySelector('.accordion-toggle');
+        const panel = item.querySelector('.accordion-panel');
+        if (btn && panel && btn.getAttribute('aria-expanded') === 'true') {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

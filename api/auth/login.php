@@ -7,10 +7,11 @@ error_reporting(0);
 ini_set('display_errors', 0);
 
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Origin: http://localhost"); // Palitan mo ito kung iba ang host mo
+header("Access-Control-Allow-Origin: http://localhost:5173"); // React dev server origin
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Credentials: true"); // Mahalaga ito para sa Sessions
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+header("Vary: Origin");
 
 // Get database connection
 // Siguraduhin na tama ang paths na ito. Kung mali, dito galing ang "<br /> <b>" error.
@@ -19,6 +20,11 @@ include_once '../models/User.php';
 
 $database = new Database();
 $db = $database->getConnection();
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('HTTP/1.1 204 No Content');
+    exit;
+}
 
 if (!$db) {
     http_response_code(503);

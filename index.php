@@ -120,11 +120,11 @@ $userName = $_SESSION['user_name'] ?? '';
         
         <!-- Mobile Navigation -->
         <nav class="mobile-nav" id="mobileNav">
-            <a href="<?= BASE_URL ?>/" class="mobile-link">Home</a>
+            <a href="http://localhost:5173/" class="mobile-link">Home</a>
             <a href="#machines" class="mobile-link">Rentals</a>
             <a href="#pricing" class="mobile-link">Pricing</a>
-            <a href="<?= BASE_URL ?>/pages/aboutus.html" class="mobile-link">About</a>
-            <a href="<?= BASE_URL ?>/pages/contactus.html" class="mobile-link">Contact</a>
+            <a href="http://localhost:5173/about" class="mobile-link">About</a>
+            <a href="http://localhost:5173/contact" class="mobile-link">Contact</a>
             <div class="mobile-actions">
                 <?php if ($isLoggedIn): ?>
                     <a href="<?= BASE_URL ?>/client/dashboard/dashboard.php" class="btn btn-primary" style="width: 100%;">Dashboard</a>
@@ -447,7 +447,7 @@ $userName = $_SESSION['user_name'] ?? '';
                                     <path d="M12 3a12 12 0 0 1 0 18"/>
                                 </svg>
                             </a>
-                            <a href="<?= BASE_URL ?>/pages/contactus.html" class="social" aria-label="Contact">
+                            <a href="http://localhost:5173/contact" class="social" aria-label="Contact">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                     <polyline points="22,6 12,13 2,6"/>

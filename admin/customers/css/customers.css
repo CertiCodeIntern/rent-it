@@ -8,19 +8,22 @@
    ============================ */
 .customers-kpi-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--admin-spacing-lg);
     margin-bottom: var(--admin-spacing-xl);
 }
 
 .customers-kpi-grid .kpi-card {
     display: flex;
-    align-items: center;
-    gap: var(--admin-spacing-lg);
-    padding: var(--admin-spacing-xl);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--admin-spacing-md);
+    padding: var(--admin-spacing-lg);
     background: var(--admin-bg-card);
     border: 1px solid var(--admin-border-color);
     border-radius: var(--admin-radius-xl);
+    min-height: 170px;
 }
 
 .customers-kpi-grid .kpi-icon {
@@ -61,6 +64,8 @@
 .customers-kpi-grid .kpi-content {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .customers-kpi-grid .kpi-value {
@@ -73,7 +78,7 @@
 .customers-kpi-grid .kpi-label {
     font-size: var(--admin-font-sm);
     color: var(--admin-text-muted);
-    margin-top: var(--admin-spacing-xs);
+    margin-top: 2px;
 }
 
 @media (max-width: 1200px) {
@@ -84,7 +89,22 @@
 
 @media (max-width: 600px) {
     .customers-kpi-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--admin-spacing-md);
+    }
+
+    .customers-kpi-grid .kpi-card {
+        min-height: 156px;
+    }
+
+    .customers-kpi-grid .kpi-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .customers-kpi-grid .kpi-icon svg {
+        width: 22px;
+        height: 22px;
     }
 }
 
@@ -811,6 +831,21 @@
         gap: var(--admin-spacing-md);
     }
 
+    .customers-kpi-grid .kpi-card {
+        padding: var(--admin-spacing-md);
+        gap: var(--admin-spacing-sm);
+        min-height: 142px;
+    }
+
+    .customers-kpi-grid .kpi-content {
+        align-items: flex-start;
+    }
+
+    .customers-kpi-grid .kpi-value,
+    .customers-kpi-grid .kpi-label {
+        text-align: left;
+    }
+
     .customers-toolbar {
         gap: var(--admin-spacing-sm);
     }
@@ -864,6 +899,10 @@
 @media (max-width: 375px) {
     .customers-kpi-grid {
         gap: var(--admin-spacing-sm);
+    }
+
+    .customers-kpi-grid .kpi-card {
+        min-height: 132px;
     }
 
     .customers-toolbar {

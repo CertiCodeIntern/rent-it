@@ -1,16 +1,59 @@
 <?php
 session_start();
 include '../../shared/php/db_connection.php';
-include '../../shared/php/auth_check.php';
+
+// Detect React JSON requests
+$isJsonRequest = isset($_GET['format']) && $_GET['format'] === 'json';
+
+// Auth guard for both HTML and JSON
+if (!isset($_SESSION['user_id'])) {
+    if ($isJsonRequest) {
+        http_response_code(401);
+        header('Content-Type: application/json');
+        echo json_encode(['error' => 'Not authenticated']);
+        exit();
+    }
+
+    include '../../shared/php/auth_check.php';
+}
 
 $user_id = $_SESSION['user_id'];
 
-// SQL Query: Gamitin ang 'f.id' base sa structure mo
+// Shared query for favorites
 $query = "SELECT f.favorite_id, i.item_id, i.item_name, i.price_per_day, i.image, i.status 
           FROM favorites f 
           JOIN item i ON f.item_id = i.item_id 
           WHERE f.id = ?";
 
+// JSON API for React clients
+if ($isJsonRequest) {
+    $favorites = [];
+
+    if ($stmt = $conn->prepare($query)) {
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $res = $stmt->get_result();
+
+        while ($row = $res->fetch_assoc()) {
+            $favorites[] = [
+                'favorite_id'   => (int) ($row['favorite_id'] ?? 0),
+                'item_id'       => (int) ($row['item_id'] ?? 0),
+                'item_name'     => $row['item_name'] ?? '',
+                'price_per_day' => isset($row['price_per_day']) ? (float) $row['price_per_day'] : 0,
+                'image'         => $row['image'] ?? null,
+                'status'        => $row['status'] ?? null,
+            ];
+        }
+    }
+
+    header('Access-Control-Allow-Origin: http://localhost:5173');
+    header('Access-Control-Allow-Credentials: true');
+    header('Content-Type: application/json');
+    echo json_encode(['favorites' => $favorites]);
+    exit();
+}
+
+// HTML (PHP) page: run query for template rendering
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();

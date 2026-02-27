@@ -1,0 +1,26 @@
+<svg width="640" height="480" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Premium karaoke tower</title>
+  <desc id="desc">Stylized illustration of a tall karaoke speaker tower.</desc>
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6ee7b7"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="26" fill="url(#bg2)"/>
+  <rect x="230" y="70" width="180" height="340" rx="22" fill="#0b1224" stroke="#60a5fa" stroke-width="9" opacity="0.9"/>
+  <circle cx="320" cy="188" r="62" fill="#0f172a" stroke="url(#accent2)" stroke-width="12"/>
+  <circle cx="320" cy="188" r="30" fill="#0b1224" stroke="#67e8f9" stroke-width="10" opacity="0.8"/>
+  <circle cx="320" cy="316" r="48" fill="#0f172a" stroke="url(#accent2)" stroke-width="10"/>
+  <circle cx="320" cy="316" r="20" fill="#0b1224" stroke="#67e8f9" stroke-width="8" opacity="0.8"/>
+  <rect x="278" y="116" width="84" height="12" rx="6" fill="#22d3ee" opacity="0.8"/>
+  <rect x="274" y="360" width="92" height="12" rx="6" fill="#22d3ee" opacity="0.8"/>
+  <rect x="265" y="96" width="110" height="6" rx="3" fill="#22c55e" opacity="0.6"/>
+  <rect x="292" y="66" width="56" height="18" rx="8" fill="#facc15"/>
+  <circle cx="292" cy="246" r="10" fill="#22c55e"/>
+  <circle cx="348" cy="246" r="10" fill="#22c55e"/>
+</svg>

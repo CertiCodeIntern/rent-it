@@ -372,6 +372,431 @@
 }
 
 
+/* =====================================================
+
+   PRODUCT CARD AVAILABILITY STATES (React catalog)
+
+   ===================================================== */
+
+.product-card-unavailable {
+
+    position: relative;
+
+    opacity: 0.9;
+
+}
+
+
+.product-unavailable-badge {
+
+    position: absolute;
+
+    top: 10px;
+
+    left: 10px;
+
+    padding: 4px 12px;
+
+    border-radius: 999px;
+
+    background: #f97373;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    z-index: 2;
+
+}
+
+
+.btn-rent-disabled {
+
+    background: #e5e7eb !important;
+
+    color: #9ca3af !important;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+}
+
+
+/* Rent quantity modal (React catalog) */
+.rent-qty-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    backdrop-filter: blur(3px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 999;
+
+}
+
+
+.rent-qty-modal {
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    padding: 24px 28px 22px;
+
+    width: 360px;
+
+    max-width: 90%;
+
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+
+    position: relative;
+
+}
+
+
+[data-theme="dark"] .rent-qty-modal {
+
+    background: var(--bg-card);
+
+}
+
+
+.rent-qty-close {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 12px;
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 999px;
+
+    border: none;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+}
+
+
+.rent-qty-header {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-bottom: 18px;
+
+    text-align: center;
+
+}
+
+
+.rent-qty-title {
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    color: var(--heading-primary);
+
+    margin: 0;
+
+}
+
+
+.rent-qty-item-name {
+
+    font-size: 14px;
+
+    color: var(--text-secondary);
+
+    margin: 0;
+
+}
+
+
+.rent-qty-body {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.rent-qty-controls {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 4px;
+
+}
+
+
+.rent-qty-btn {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 999px;
+
+    border: 1px solid var(--border-color);
+
+    background: #f9fafb;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.rent-qty-input {
+
+    width: 70px;
+
+    height: 40px;
+
+    border-radius: 999px;
+
+    border: 1px solid var(--border-color);
+
+    text-align: center;
+
+    font-size: 16px;
+
+    line-height: 40px;
+
+    padding: 0;
+
+    -moz-appearance: textfield;
+
+}
+
+
+.rent-qty-input::-webkit-inner-spin-button,
+.rent-qty-input::-webkit-outer-spin-button {
+
+    -webkit-appearance: none;
+
+    margin: 0;
+
+}
+
+
+.rent-qty-available {
+
+    font-size: 13px;
+
+    color: var(--text-secondary);
+
+}
+
+
+.rent-qty-error {
+
+    font-size: 12px;
+
+    color: #b91c1c;
+
+    margin-top: 4px;
+
+}
+
+
+.rent-qty-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+}
+
+
+.rent-qty-cancel {
+
+    padding: 10px 16px;
+
+    border-radius: 999px;
+
+    border: 1px solid var(--border-color);
+
+    background: transparent;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+}
+
+
+.rent-qty-confirm {
+
+    padding: 10px 18px;
+
+    border-radius: 999px;
+
+    border: none;
+
+    background: var(--accent);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    cursor: pointer;
+
+}
+
+
+
+
+
+/* Catalog page toast (success for cart & favorites) */
+.catalog-toast {
+
+    position: fixed;
+
+    right: 24px;
+
+    bottom: 24px;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background: #ffffff;
+
+    border-radius: 10px;
+
+    padding: 14px 18px;
+
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+
+    font-size: 0.9rem;
+
+    color: #020617;
+
+    border-left: 4px solid #22c55e;
+
+    opacity: 0;
+
+    transform: translateX(40px);
+
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+
+}
+
+
+.catalog-toast-success {
+
+    border-left-color: #22c55e;
+
+}
+
+
+.catalog-toast-show {
+
+    opacity: 1;
+
+    transform: translateX(0);
+
+}
+
+
+.catalog-toast-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 18px;
+
+    height: 18px;
+
+    border-radius: 999px;
+
+    border: 2px solid #22c55e;
+
+    color: #22c55e;
+
+    font-size: 0.7rem;
+
+    flex-shrink: 0;
+
+}
+
+
+.catalog-toast-message {
+
+    white-space: nowrap;
+
+}
+
+
 
 /* Filter Card */
 
@@ -424,6 +849,72 @@
 
 
 /* Category Checkboxes */
+
+/* Base layout for catalog product modal */
+.product-modal-body {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    padding: 24px;
+
+    background: var(--bg-card);
+
+}
+
+/* Wider two-column variant used by the favorites page modal to avoid conflicts */
+.favorites-product-modal {
+
+    width: 100%;
+
+    max-width: 1040px;
+
+    border-radius: var(--radius-xl, 18px);
+
+    overflow: hidden;
+
+}
+
+.favorites-product-modal-body {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+    padding: 24px;
+
+    background: var(--bg-card);
+
+}
+
+@media (min-width: 900px) {
+
+    .favorites-product-modal-body {
+
+        flex-direction: row;
+
+        align-items: flex-start;
+
+    }
+
+    .favorites-product-modal-body .modal-product-image-section {
+
+        flex: 0 0 48%;
+
+    }
+
+    .favorites-product-modal-body .modal-product-info {
+
+        flex: 1;
+
+    }
+
+}
 
 .category-list {
 
@@ -1726,6 +2217,119 @@
 }
 
 
+/* Units availability row (match PHP catalog) */
+.product-units-row {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.product-units-pill {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    padding: 3px 9px;
+
+    border-radius: 20px;
+
+    letter-spacing: 0.01em;
+
+}
+
+
+.units-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+}
+
+
+.units-available {
+
+    background: #d1fae5;
+
+    color: #065f46;
+
+}
+
+
+.dot-available {
+
+    background: #10b981;
+
+}
+
+
+.units-repairing {
+
+    background: #fef3c7;
+
+    color: #92400e;
+
+}
+
+
+.dot-repairing {
+
+    background: #f59e0b;
+
+}
+
+
+.units-none {
+
+    background: #fee2e2;
+
+    color: #991b1b;
+
+}
+
+
+.dot-none {
+
+    background: #ef4444;
+
+}
+
+
+/* Disabled Rent Now button (match PHP catalog) */
+.product-cta-main.product-cta-disabled,
+.product-cta-main:disabled {
+
+    background: var(--border-color, #e5e7eb);
+
+    color: var(--text-tertiary, #9ca3af);
+
+    cursor: not-allowed;
+
+    pointer-events: none;
+
+    opacity: 0.7;
+
+}
+
+
 
 .product-description {
 
@@ -2633,7 +3237,7 @@
 
 /* =====================================================
 
-   PRODUCT DETAILS MODAL (container styling only; content is in JSX)
+   PRODUCT DETAILS MODAL (mirrored from client/catalog/catalog.css)
 
    ===================================================== */
 
@@ -2643,15 +3247,25 @@
 
     inset: 0;
 
-    background: rgba(15, 23, 42, 0.6);
+    background: rgba(0, 0, 0, 0.6);
 
-    display: none;
+    backdrop-filter: blur(4px);
+
+    display: flex;
 
     align-items: center;
 
     justify-content: center;
 
-    z-index: 2000;
+    z-index: 1000;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: var(--transition-fast);
+
+    padding: 20px;
 
 }
 
@@ -2659,31 +3273,82 @@
 
 .modal-overlay.active {
 
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+/* Favorites modal overlay (independent from catalog modal-overlay) */
+.favorites-modal-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    backdrop-filter: blur(4px);
+
     display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 1100;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: var(--transition-fast);
+
+    padding: 20px;
+
+}
+
+
+.favorites-modal-overlay.active {
+
+    opacity: 1;
+
+    visibility: visible;
 
 }
 
 
 
-.modal-container.product-modal {
-
-    width: min(960px, 92vw);
-
-    max-height: 90vh;
+.product-modal {
 
     background: var(--bg-card);
 
-    border-radius: 18px;
+    border-radius: var(--radius-xl);
 
-    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.45);
+    max-width: 600px;
+
+    width: 90%;
+
+    max-height: 80vh;
+
+    overflow-y: auto;
 
     position: relative;
 
-    overflow: hidden;
+    margin: auto;
 
-    display: flex;
+    border: 1px solid var(--border-color);
 
-    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+}
+
+
+
+.modal-overlay.active .product-modal {
+
+    transform: translateY(0) scale(1);
 
 }
 
@@ -2693,21 +3358,19 @@
 
     position: absolute;
 
-    top: 12px;
+    top: 16px;
 
-    right: 12px;
+    right: 16px;
 
-    width: 32px;
+    width: 36px;
 
-    height: 32px;
-
-    border-radius: 999px;
+    height: 36px;
 
     border: none;
 
-    background: rgba(148, 163, 184, 0.1);
+    background: var(--bg-secondary);
 
-    color: var(--text-secondary);
+    border-radius: 50%;
 
     cursor: pointer;
 
@@ -2717,7 +3380,11 @@
 
     justify-content: center;
 
-    transition: background-color var(--transition-fast), color var(--transition-fast), transform 0.1s ease;
+    z-index: 15;
+
+    transition: var(--transition-fast);
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
 }
 
@@ -2725,11 +3392,29 @@
 
 .modal-close:hover {
 
-    background: rgba(148, 163, 184, 0.25);
+    background: var(--danger-muted, rgba(239, 68, 68, 0.1));
 
-    color: var(--text-primary);
+}
 
-    transform: translateY(-1px);
+
+
+.modal-close svg {
+
+    width: 18px;
+
+    height: 18px;
+
+    stroke: var(--text-secondary);
+
+    transition: var(--transition-fast);
+
+}
+
+
+
+.modal-close:hover svg {
+
+    stroke: var(--danger-color, #ef4444);
 
 }
 
@@ -2737,11 +3422,793 @@
 
 .product-modal-body {
 
-    display: grid;
+    display: flex;
 
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
+    flex-direction: column;
 
-    gap: 0;
+    gap: 18px;
+
+    padding: 24px;
+
+}
+
+
+
+.modal-product-image-section {
+
+    position: relative;
+
+    border-radius: var(--radius-lg);
+
+    overflow: hidden;
+
+    background: var(--bg-secondary);
+
+    height: 350px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+
+.modal-product-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 10px;
+
+}
+
+
+
+.modal-product-badge {
+
+    position: absolute;
+
+    top: 12px;
+
+    left: 12px;
+
+    padding: 6px 12px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    border-radius: var(--radius);
+
+    background: var(--success-color, #22c55e);
+
+    color: white;
+
+}
+
+
+
+.modal-product-badge.booked {
+
+    background: var(--danger-color, #ef4444);
+
+}
+
+
+
+.modal-product-badge.maintenance {
+
+    background: var(--warning-color, #f59e0b);
+
+}
+
+
+
+.modal-product-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+    padding-top: 24px;
+
+}
+
+
+
+.modal-product-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 16px;
+
+}
+
+
+
+.modal-product-name {
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    color: var(--heading-primary);
+
+    margin: 0;
+
+}
+
+
+
+.modal-product-price {
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    color: var(--accent);
+
+    white-space: nowrap;
+
+}
+
+
+
+.modal-product-price span {
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    color: var(--text-tertiary);
+
+}
+
+
+
+.modal-rating-summary {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+
+.modal-rating-stars {
+
+    display: flex;
+
+    gap: 2px;
+
+}
+
+
+
+.modal-rating-stars svg {
+
+    width: 18px;
+
+    height: 18px;
+
+}
+
+
+
+.modal-rating-stars svg.filled {
+
+    fill: #FBBF24;
+
+    stroke: #FBBF24;
+
+}
+
+
+
+.modal-rating-stars svg.empty {
+
+    fill: none;
+
+    stroke: var(--text-tertiary);
+
+}
+
+
+
+.modal-rating-score {
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: var(--text-primary);
+
+}
+
+
+
+.modal-rating-count {
+
+    font-size: 13px;
+
+    color: var(--text-tertiary);
+
+}
+
+
+
+.modal-product-description {
+
+    font-size: 14px;
+
+    color: var(--text-secondary);
+
+    line-height: 1.6;
+
+    margin: 0;
+
+}
+
+
+
+.modal-product-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+}
+
+
+
+.modal-product-tags .product-tag {
+
+    font-size: 12px;
+
+    padding: 4px 10px;
+
+}
+
+
+
+.modal-availability-section {
+
+    background: var(--bg-secondary);
+
+    border-radius: var(--radius);
+
+    padding: 16px;
+
+    border: 1px solid var(--border-color);
+
+}
+
+
+
+.modal-section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: var(--heading-primary);
+
+    margin: 0 0 12px 0;
+
+}
+
+
+
+.modal-section-title svg {
+
+    width: 18px;
+
+    height: 18px;
+
+    stroke: var(--accent);
+
+}
+
+
+
+.modal-availability-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+
+.availability-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 10px 12px;
+
+    background: var(--bg-card);
+
+    border-radius: var(--radius-sm);
+
+    border: 1px solid var(--border-color);
+
+}
+
+
+
+.availability-dates {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 13px;
+
+    color: var(--text-primary);
+
+}
+
+
+
+.availability-dates svg {
+
+    width: 14px;
+
+    height: 14px;
+
+    stroke: var(--danger-color, #ef4444);
+
+}
+
+
+
+.availability-status {
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    padding: 4px 8px;
+
+    border-radius: var(--radius-sm);
+
+    background: var(--danger-muted, rgba(239, 68, 68, 0.1));
+
+    color: var(--danger-color, #ef4444);
+
+}
+
+
+
+.availability-empty {
+
+    font-size: 13px;
+
+    color: var(--text-tertiary);
+
+    text-align: center;
+
+    padding: 8px;
+
+    margin: 0;
+
+}
+
+
+
+.modal-actions {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: auto;
+
+    padding-top: 16px;
+
+    border-top: 1px solid var(--border-color);
+
+}
+
+
+
+.btn-modal-favorite,
+
+.btn-modal-cart {
+
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 12px 20px;
+
+    border-radius: var(--radius);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: var(--transition-fast);
+
+    border: none;
+
+}
+
+
+
+.btn-modal-favorite {
+
+    background: var(--bg-secondary);
+
+    color: var(--text-primary);
+
+    border: 1px solid var(--border-color);
+
+}
+
+
+
+.btn-modal-favorite:hover {
+
+    border-color: var(--danger-color, #ef4444);
+
+    color: var(--danger-color, #ef4444);
+
+    box-shadow: var(--shadow-sm);
+
+    transform: translateY(-1px);
+
+}
+
+
+
+.btn-modal-favorite.active {
+
+    background: var(--danger-muted, rgba(239, 68, 68, 0.1));
+
+    border-color: var(--danger-color, #ef4444);
+
+    color: var(--danger-color, #ef4444);
+
+}
+
+
+
+.btn-modal-favorite.active svg {
+
+    fill: var(--danger-color, #ef4444);
+
+}
+
+
+
+.btn-modal-cart {
+
+    background: var(--accent);
+
+    color: white;
+
+}
+
+
+
+.btn-modal-cart:hover {
+
+    background: var(--accent-hover);
+
+    box-shadow: var(--shadow-sm);
+
+    transform: translateY(-1px);
+
+}
+
+
+
+.btn-modal-favorite svg,
+
+.btn-modal-cart svg {
+
+    width: 18px;
+
+    height: 18px;
+
+}
+
+
+
+.modal-reviews-section {
+
+    border-top: 1px solid var(--border-color);
+
+    padding: 24px;
+
+    background: var(--bg-secondary);
+
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+
+}
+
+
+
+.modal-reviews-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: var(--heading-primary);
+
+    margin: 0 0 16px 0;
+
+}
+
+
+
+.modal-reviews-heading {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+
+.modal-reviews-title svg {
+
+    width: 20px;
+
+    height: 20px;
+
+    stroke: var(--accent);
+
+}
+
+
+
+.modal-reviews-count {
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    color: var(--text-tertiary);
+
+}
+
+
+
+.reviews-toggle {
+
+    border: 1px solid var(--border-color);
+
+    background: var(--bg-card);
+
+    color: var(--text-secondary);
+
+    border-radius: var(--radius-pill);
+
+    padding: 8px 14px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: var(--transition-fast);
+
+}
+
+
+
+.reviews-toggle:hover {
+
+    color: var(--accent);
+
+    border-color: var(--accent);
+
+}
+
+
+
+.modal-reviews-section.collapsed .modal-reviews-list {
+
+    display: none;
+
+}
+
+
+
+.modal-reviews-section.collapsed .reviews-toggle {
+
+    color: var(--accent);
+
+    border-color: var(--accent);
+
+}
+
+
+
+.modal-reviews-list {
+
+    display: flex;
+
+    justify-content: center; /* center empty state under the title */
+
+}
+
+
+
+.modal-reviews-section .review-empty-state {
+
+    display: inline-flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    /* extra vertical padding to make the empty card visually taller */
+
+    padding: 52px 10px;
+
+    text-align: center;
+
+}
+
+
+
+/* Override legacy empty-state icon size just for the React modal */
+
+.modal-reviews-section .review-empty-state svg {
+
+    width: 48px;
+
+    height: 48px;
+
+    margin-bottom: 2px;
+
+    stroke: var(--text-tertiary);
+
+    opacity: 0.7;
+
+}
+
+
+
+.modal-reviews-section .review-empty-state p {
+
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    color: var(--text-tertiary);
+
+}
+
+
+
+.review-item {
+
+    display: flex;
+
+    gap: 12px;
+
+    padding: 16px;
+
+    background: var(--bg-card);
+
+    border-radius: var(--radius);
+
+    border: 1px solid var(--border-color);
+
+}
+
+
+
+.review-avatar {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: var(--accent-muted);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: var(--accent);
+
+    flex-shrink: 0;
+
+}
+
+
+
+.review-content {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+
+.review-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 6px;
 
 }
 

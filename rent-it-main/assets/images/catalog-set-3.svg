@@ -1,0 +1,27 @@
+<svg width="640" height="480" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Concert-grade rig</title>
+  <desc id="desc">Wide illustration of a concert-grade karaoke rig with lights.</desc>
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="accent3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="26" fill="url(#bg3)"/>
+  <rect x="90" y="180" width="140" height="170" rx="18" fill="#0b1224" stroke="#a78bfa" stroke-width="7"/>
+  <rect x="190" y="130" width="260" height="230" rx="22" fill="#0d152b" stroke="#c084fc" stroke-width="9" opacity="0.95"/>
+  <rect x="430" y="150" width="120" height="200" rx="18" fill="#0b1224" stroke="#a78bfa" stroke-width="7"/>
+  <circle cx="240" cy="240" r="52" fill="#0b1224" stroke="url(#accent3)" stroke-width="10"/>
+  <circle cx="240" cy="240" r="20" fill="#0d152b" stroke="#f9a8d4" stroke-width="7"/>
+  <circle cx="320" cy="256" r="34" fill="#0b1224" stroke="#a78bfa" stroke-width="8"/>
+  <rect x="226" y="164" width="148" height="16" rx="8" fill="#c084fc" opacity="0.8"/>
+  <rect x="210" y="320" width="180" height="20" rx="10" fill="#f472b6" opacity="0.85"/>
+  <circle cx="132" cy="262" r="18" fill="#22c55e"/>
+  <circle cx="498" cy="262" r="18" fill="#22c55e"/>
+  <rect x="120" y="214" width="40" height="10" rx="4" fill="#c084fc" opacity="0.8"/>
+  <rect x="480" y="214" width="40" height="10" rx="4" fill="#c084fc" opacity="0.8"/>
+</svg>

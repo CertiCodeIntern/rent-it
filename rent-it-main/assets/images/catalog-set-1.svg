@@ -1,0 +1,25 @@
+<svg width="640" height="480" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Portable karaoke set</title>
+  <desc id="desc">Vibrant illustration of a portable karaoke setup.</desc>
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#182848"/>
+      <stop offset="100%" stop-color="#4b6cb7"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff8e53"/>
+      <stop offset="100%" stop-color="#fe6b8b"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="26" fill="url(#bg1)"/>
+  <rect x="120" y="130" width="180" height="240" rx="16" fill="#0b1224" stroke="#5ad4ff" stroke-width="8" opacity="0.8"/>
+  <rect x="146" y="158" width="128" height="52" rx="10" fill="#0f1f3d" stroke="#8fe3ff" stroke-width="6"/>
+  <circle cx="206" cy="308" r="42" fill="url(#accent1)" stroke="#ffedd5" stroke-width="8"/>
+  <circle cx="206" cy="308" r="16" fill="#0b1224"/>
+  <rect x="350" y="160" width="170" height="180" rx="18" fill="#0d1a33" stroke="#8fe3ff" stroke-width="8" opacity="0.9"/>
+  <rect x="370" y="186" width="130" height="60" rx="12" fill="#0f274b" stroke="#b5e8ff" stroke-width="5"/>
+  <rect x="392" y="266" width="86" height="30" rx="8" fill="url(#accent1)"/>
+  <rect x="392" y="306" width="86" height="18" rx="6" fill="#182848" stroke="#ffd7ba" stroke-width="4"/>
+  <rect x="422" y="112" width="28" height="34" rx="10" fill="#ffd166"/>
+  <path d="M430 102c0-8 6-14 14-14s14 6 14 14v10h-28z" fill="#ffb347"/>
+</svg>

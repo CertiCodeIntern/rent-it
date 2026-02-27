@@ -1,0 +1,695 @@
+/* =====================================================
+   ORDER DETAIL PAGE STYLES
+   Styles for admin order detail view
+   ===================================================== */
+
+/* ============================
+   PAGE HEADER MODIFICATIONS
+   ============================ */
+.page-header-left {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--admin-spacing-lg);
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--admin-radius-lg);
+    background: var(--admin-bg-secondary);
+    border: 1px solid var(--admin-border-color);
+    color: var(--admin-text-secondary);
+    transition: all var(--admin-transition-fast);
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.back-link:hover {
+    background: var(--admin-bg-hover);
+    color: var(--admin-accent);
+    border-color: var(--admin-accent);
+}
+
+.order-header-top {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+    flex-wrap: wrap;
+}
+
+.order-header-top .status-badge {
+    font-size: var(--admin-font-xs);
+}
+
+/* ============================
+   ORDER DETAIL GRID
+   ============================ */
+.order-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: var(--admin-spacing-xl);
+}
+
+@media (max-width: 1200px) {
+    .order-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.order-detail-left,
+.order-detail-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-lg);
+}
+
+/* ============================
+   DETAIL CARDS
+   ============================ */
+.detail-card {
+    background: var(--admin-bg-card);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-xl);
+    overflow: hidden;
+}
+
+.detail-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--admin-spacing-lg);
+    border-bottom: 1px solid var(--admin-border-color);
+    background: var(--admin-bg-secondary);
+}
+
+.detail-card-title {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+    font-size: var(--admin-font-md);
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-primary);
+    margin: 0;
+}
+
+.detail-card-title svg {
+    color: var(--admin-text-muted);
+}
+
+.detail-card-link {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-accent);
+    text-decoration: none;
+    font-weight: var(--admin-font-medium);
+    transition: color var(--admin-transition-fast);
+}
+
+.detail-card-link:hover {
+    color: var(--admin-accent-hover);
+    text-decoration: underline;
+}
+
+.detail-card-body {
+    padding: var(--admin-spacing-lg);
+}
+
+/* ============================
+   CUSTOMER DETAIL
+   ============================ */
+.customer-detail {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-lg);
+}
+
+.customer-avatar-lg {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--admin-accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--admin-font-xl);
+    font-weight: var(--admin-font-bold);
+    flex-shrink: 0;
+}
+
+.customer-avatar-lg img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.customer-detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-xs);
+}
+
+.customer-detail-name {
+    font-size: var(--admin-font-lg);
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-primary);
+    margin: 0;
+}
+
+.customer-detail-email,
+.customer-detail-phone {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-secondary);
+    margin: 0;
+}
+
+/* ============================
+   RENTAL ITEMS
+   ============================ */
+.item-count-badge {
+    font-size: var(--admin-font-xs);
+    color: var(--admin-text-muted);
+    background: var(--admin-bg-primary);
+    padding: var(--admin-spacing-xs) var(--admin-spacing-sm);
+    border-radius: var(--admin-radius-full);
+}
+
+.rental-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-md);
+}
+
+.rental-item {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-lg);
+    padding: var(--admin-spacing-md);
+    background: var(--admin-bg-secondary);
+    border-radius: var(--admin-radius-lg);
+}
+
+.rental-item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--admin-radius-md);
+    background: var(--admin-bg-hover);
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rental-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rental-item-image svg {
+    width: 32px;
+    height: 32px;
+    color: var(--admin-text-muted);
+}
+
+.rental-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.rental-item-name {
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-primary);
+    margin-bottom: var(--admin-spacing-xs);
+}
+
+.rental-item-category {
+    font-size: var(--admin-font-xs);
+    color: var(--admin-text-muted);
+}
+
+.rental-item-meta {
+    display: flex;
+    gap: var(--admin-spacing-lg);
+    margin-top: var(--admin-spacing-sm);
+}
+
+.rental-item-meta span {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-secondary);
+}
+
+.rental-item-price {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.rental-item-rate {
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-primary);
+}
+
+.rental-item-total {
+    font-size: var(--admin-font-xs);
+    color: var(--admin-text-muted);
+}
+
+/* Rental Items Empty State */
+.rental-items-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--admin-spacing-xl) var(--admin-spacing-lg);
+    text-align: center;
+}
+
+.rental-items-empty svg {
+    color: var(--admin-text-muted);
+    opacity: 0.5;
+    margin-bottom: var(--admin-spacing-md);
+}
+
+.rental-items-empty-title {
+    font-size: var(--admin-font-md);
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-primary);
+    margin-bottom: var(--admin-spacing-xs);
+}
+
+.rental-items-empty-text {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-muted);
+}
+
+/* ============================
+   TIMELINE
+   ============================ */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+}
+
+.timeline-item {
+    display: flex;
+    gap: var(--admin-spacing-lg);
+    padding: var(--admin-spacing-md) 0;
+    position: relative;
+}
+
+.timeline-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 40px;
+    bottom: 0;
+    width: 2px;
+    background: var(--admin-border-color);
+}
+
+.timeline-item.completed::before {
+    background: var(--admin-success);
+}
+
+.timeline-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--admin-bg-secondary);
+    border: 2px solid var(--admin-border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-item.completed .timeline-icon {
+    background: var(--admin-success);
+    border-color: var(--admin-success);
+    color: white;
+}
+
+.timeline-item.current .timeline-icon {
+    background: var(--admin-accent);
+    border-color: var(--admin-accent);
+    color: white;
+}
+
+.timeline-icon svg {
+    width: 12px;
+    height: 12px;
+}
+
+.timeline-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.timeline-title {
+    font-weight: var(--admin-font-medium);
+    color: var(--admin-text-primary);
+    margin-bottom: var(--admin-spacing-xs);
+}
+
+.timeline-date {
+    font-size: var(--admin-font-xs);
+    color: var(--admin-text-muted);
+}
+
+/* ============================
+   STATUS PROGRESS
+   ============================ */
+.status-progress {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-md);
+    margin-bottom: var(--admin-spacing-lg);
+}
+
+.status-step {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+}
+
+.status-step-indicator {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--admin-bg-secondary);
+    border: 2px solid var(--admin-border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.status-step.completed .status-step-indicator {
+    background: var(--admin-success);
+    border-color: var(--admin-success);
+    color: white;
+}
+
+.status-step.current .status-step-indicator {
+    background: var(--admin-accent);
+    border-color: var(--admin-accent);
+    color: white;
+}
+
+.status-step-indicator svg {
+    width: 14px;
+    height: 14px;
+}
+
+.status-step-label {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-secondary);
+}
+
+.status-step.completed .status-step-label,
+.status-step.current .status-step-label {
+    color: var(--admin-text-primary);
+    font-weight: var(--admin-font-medium);
+}
+
+.status-step.late .status-step-indicator {
+    background: #EF4444;
+    border-color: #EF4444;
+    color: white;
+}
+
+.status-step.late .status-step-label {
+    color: #EF4444;
+    font-weight: var(--admin-font-semibold);
+}
+
+.status-badge.late {
+    background: #FEE2E2;
+    color: #991B1B;
+}
+
+.status-action {
+    padding-top: var(--admin-spacing-md);
+    border-top: 1px solid var(--admin-border-color);
+}
+
+.status-action .btn {
+    width: 100%;
+}
+
+/* ============================
+   INFO ROWS
+   ============================ */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--admin-spacing-sm) 0;
+    gap: var(--admin-spacing-md);
+}
+
+.info-row:not(:last-child) {
+    border-bottom: 1px solid var(--admin-border-color);
+}
+
+.info-label {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-muted);
+    flex-shrink: 0;
+}
+
+.info-value {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-primary);
+    text-align: right;
+}
+
+/* ============================
+   PAYMENT SUMMARY
+   ============================ */
+.payment-badge {
+    font-size: var(--admin-font-xs);
+    padding: var(--admin-spacing-xs) var(--admin-spacing-sm);
+    border-radius: var(--admin-radius-full);
+    font-weight: var(--admin-font-medium);
+}
+
+.payment-badge.paid {
+    background: var(--admin-success-subtle);
+    color: var(--admin-success);
+}
+
+.payment-badge.pending {
+    background: var(--admin-warning-subtle);
+    color: var(--admin-warning);
+}
+
+.payment-badge.partial {
+    background: var(--admin-info-subtle);
+    color: var(--admin-info);
+}
+
+.payment-rows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-sm);
+    margin-bottom: var(--admin-spacing-md);
+}
+
+.payment-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--admin-font-sm);
+}
+
+.payment-row .label {
+    color: var(--admin-text-secondary);
+}
+
+.payment-row .value {
+    color: var(--admin-text-primary);
+}
+
+.payment-row.discount .value {
+    color: var(--admin-success);
+}
+
+.payment-total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--admin-spacing-md);
+    border-top: 1px solid var(--admin-border-color);
+    font-size: var(--admin-font-md);
+    font-weight: var(--admin-font-bold);
+    color: var(--admin-text-primary);
+}
+
+.payment-method-info {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+    margin-top: var(--admin-spacing-lg);
+    padding: var(--admin-spacing-md);
+    background: var(--admin-bg-secondary);
+    border-radius: var(--admin-radius-md);
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-secondary);
+}
+
+/* ============================
+   NOTES
+   ============================ */
+.btn-sm {
+    padding: var(--admin-spacing-xs) var(--admin-spacing-md);
+    font-size: var(--admin-font-xs);
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid var(--admin-border-color);
+    color: var(--admin-text-secondary);
+}
+
+.btn-ghost:hover {
+    background: var(--admin-bg-hover);
+    color: var(--admin-text-primary);
+}
+
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-md);
+}
+
+.note-item {
+    padding: var(--admin-spacing-md);
+    background: var(--admin-bg-secondary);
+    border-radius: var(--admin-radius-md);
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--admin-spacing-sm);
+}
+
+.note-author {
+    font-weight: var(--admin-font-medium);
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-primary);
+}
+
+.note-date {
+    font-size: var(--admin-font-xs);
+    color: var(--admin-text-muted);
+}
+
+.note-text {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-secondary);
+    line-height: 1.5;
+}
+
+.notes-empty {
+    text-align: center;
+    padding: var(--admin-spacing-lg);
+    color: var(--admin-text-muted);
+    font-size: var(--admin-font-sm);
+}
+
+/* ============================
+   RESPONSIVE - Small screens
+   ============================ */
+@media (max-width: 768px) {
+    .order-detail-grid {
+        gap: var(--admin-spacing-lg);
+    }
+
+    .page-header-left {
+        flex-direction: column;
+        gap: var(--admin-spacing-md);
+    }
+
+    .back-link {
+        margin-top: 0;
+    }
+
+    .rental-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .rental-item-image {
+        width: 100%;
+        height: 120px;
+    }
+
+    .rental-item-price {
+        text-align: left;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: var(--admin-spacing-sm);
+        padding-top: var(--admin-spacing-sm);
+        border-top: 1px solid var(--admin-border-color);
+    }
+
+    .customer-detail {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .customer-detail-info {
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .detail-card .admin-card-header {
+        padding: var(--admin-spacing-sm) var(--admin-spacing-md);
+    }
+
+    .detail-card .admin-card-body {
+        padding: var(--admin-spacing-md);
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: var(--admin-spacing-xs);
+    }
+
+    .info-value {
+        text-align: left;
+    }
+
+    .rental-item-details h4 {
+        font-size: var(--admin-font-sm);
+    }
+}
+
+/* ============================
+   LARGE SCREEN ADJUSTMENTS
+   ============================ */
+@media (min-width: 1920px) {
+    .order-detail-grid {
+        grid-template-columns: 1fr 480px;
+        gap: var(--admin-spacing-2xl);
+    }
+}
+
+@media (min-width: 2560px) {
+    .order-detail-grid {
+        grid-template-columns: 1fr 560px;
+        gap: var(--admin-spacing-3xl);
+    }
+}

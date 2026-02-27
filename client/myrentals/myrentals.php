@@ -5,20 +5,21 @@ include '../../shared/php/auth_check.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="RentIt - My Rentals. Manage your active videoke equipment and rental history.">
     <title>My Rentals - RentIt</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    
+
     <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
-    
+
     <link rel="stylesheet" href="<?= BASE_URL ?>/shared/css/theme.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/shared/css/globals.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/client/dashboard/dashboard.css">
@@ -26,6 +27,7 @@ include '../../shared/php/auth_check.php';
 
     <script src="<?= BASE_URL ?>/shared/js/theme.js"></script>
 </head>
+
 <body>
     <div class="page-skeleton-overlay" aria-hidden="true">
         <div class="page-skeleton-shell">
@@ -83,10 +85,10 @@ include '../../shared/php/auth_check.php';
     </div>
     <div class="app-container">
         <div id="sidebarContainer"></div>
-        
+
         <main class="main-content">
             <div id="topbarContainer"></div>
-            
+
             <div class="content-area" id="contentArea">
                 <div class="page-header-dashboard">
                     <div class="page-header-info">
@@ -96,18 +98,18 @@ include '../../shared/php/auth_check.php';
                         <a href="<?= BASE_URL ?>/client/catalog/catalog.php" class="btn-new">
                             New Rental
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <line x1="12" y1="5" x2="12" y2="19"/>
-                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
                             </svg>
                         </a>
                     </div>
                 </div>
 
                 <div class="rentals-tabs">
-                <a href="<?= BASE_URL ?>/client/myrentals/pending.php" class="tab-link">Pending Rentals</a>
+                    <a href="<?= BASE_URL ?>/client/myrentals/pending.php" class="tab-link">Pending Rentals</a>
                     <a href="<?= BASE_URL ?>/client/myrentals/myrentals.php" class="tab-link active">Active Rentals</a>
-                    <a href="<?= BASE_URL ?>/client/bookinghistory/bookinghistory.php" class="tab-link">Booking History</a>
                     <a href="<?= BASE_URL ?>/client/returns/returns.php" class="tab-link">Returns & Extensions</a>
+                    <a href="<?= BASE_URL ?>/client/bookinghistory/bookinghistory.php" class="tab-link">Booking History</a>
                 </div>
 
                 <section class="active-rentals-section">
@@ -117,7 +119,7 @@ include '../../shared/php/auth_check.php';
                     </div>
 
                     <div class="rental-cards-row" id="activeRentalsCards">
-                        </div>
+                    </div>
                     <!-- Active Rentals Pagination -->
                     <nav class="pagination-controls is-hidden" id="activeRentalsPagination" aria-label="Active rentals pagination"></nav>
                 </section>
@@ -139,14 +141,14 @@ include '../../shared/php/auth_check.php';
                                 </tr>
                             </thead>
                             <tbody id="historyTableBody">
-                                </tbody>
+                            </tbody>
                         </table>
                     </div>
                     <!-- History Pagination -->
                     <nav class="pagination-controls is-hidden" id="myRentalsHistoryPagination" aria-label="Booking history pagination"></nav>
                 </section>
 
-              
+
             </div>
 
             <!-- Footer Container (Injected by JS) -->
@@ -166,16 +168,16 @@ include '../../shared/php/auth_check.php';
         <div class="modal-content" style="background:white; padding:25px; border-radius:12px; width:90%; max-width:400px; position:relative;">
             <h3 style="margin-top:0;">Request Return</h3>
             <p style="font-size: 0.9rem; color: #64748b;">Please provide a reason for returning the item.</p>
-            
+
             <form method="POST" action="../returns/returns.php">
                 <input type="hidden" name="order_id" id="return_order_id">
                 <input type="hidden" name="action" value="submit_return">
-                
+
                 <div style="margin: 15px 0;">
                     <label style="display:block; margin-bottom:5px; font-weight:600;">Reason:</label>
                     <textarea name="return_reason" required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px; height:80px; font-family:inherit;" placeholder="e.g. Done using, item issue..."></textarea>
                 </div>
-                
+
                 <div style="display:flex; justify-content:flex-end; gap:10px;">
                     <button type="button" onclick="closeModal('returnModal')" style="padding:8px 15px; border:none; background:#e2e8f0; border-radius:6px; cursor:pointer;">Cancel</button>
                     <button type="submit" style="padding:8px 15px; border:none; background:#f97316; color:white; border-radius:6px; cursor:pointer;">Submit Return</button>
@@ -188,11 +190,11 @@ include '../../shared/php/auth_check.php';
         <div class="modal-content" style="background:white; padding:25px; border-radius:12px; width:90%; max-width:400px; position:relative;">
             <h3 style="margin-top:0;">Request Extension</h3>
             <p style="font-size: 0.9rem; color: #64748b;">How many days would you like to extend?</p>
-            
+
             <form method="POST" action="../returns/returns.php">
                 <input type="hidden" name="order_id" id="extension_order_id">
                 <input type="hidden" name="action" value="submit_extension">
-                
+
                 <div style="margin: 15px 0;">
                     <label style="display:block; margin-bottom:5px; font-weight:600;">Extend for:</label>
                     <select name="extension_days" id="extension_days" onchange="updateExtensionPrice(this.value)" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px;">
@@ -216,7 +218,7 @@ include '../../shared/php/auth_check.php';
                         </div>
                     </div>
                 </div>
-                
+
                 <div style="display:flex; justify-content:flex-end; gap:10px;">
                     <button type="button" onclick="closeModal('extensionModal')" style="padding:8px 15px; border:none; background:#e2e8f0; border-radius:6px; cursor:pointer;">Cancel</button>
                     <button type="submit" style="padding:8px 15px; border:none; background:#2563eb; color:white; border-radius:6px; cursor:pointer;">Confirm Extension</button>
@@ -224,9 +226,10 @@ include '../../shared/php/auth_check.php';
             </form>
         </div>
     </div>
-    
+
     <script src="<?= BASE_URL ?>/shared/js/components.js"></script>
     <script src="<?= BASE_URL ?>/shared/js/pagination.js"></script>
     <script src="<?= BASE_URL ?>/client/myrentals/myrentals.js"></script>
 </body>
+
 </html>

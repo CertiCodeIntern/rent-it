@@ -4,8 +4,26 @@ session_start();
 include '../../shared/php/db_connection.php';
 include '../../shared/php/auth_check.php';
 
-$query = "SELECT * FROM item";
+// Only load visible items so the catalog mirrors admin visibility
+$query = "SELECT * FROM item WHERE is_visible = 1";
 $result = mysqli_query($conn, $query);
+
+// JSON API mode for React catalog (used by ClientCatalogPage.jsx)
+if (isset($_GET['format']) && $_GET['format'] === 'json') {
+    $items = [];
+    if ($result && mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $items[] = $row;
+        }
+    }
+
+    // Allow React dev server to call this endpoint with cookies
+    header('Access-Control-Allow-Origin: http://localhost:5173');
+    header('Access-Control-Allow-Credentials: true');
+    header('Content-Type: application/json');
+    echo json_encode(['items' => $items]);
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -297,11 +315,29 @@ $result = mysqli_query($conn, $query);
                         </div>
 
                         <div class="products-grid">
-                        <?php while($row = mysqli_fetch_assoc($result)) { ?>
+                        <?php while($row = mysqli_fetch_assoc($result)) { 
+    // Normalize status for CSS/filters
+    $rawStatus = strtolower(trim($row['status'] ?? 'Available'));
+    $statusClass = 'available';
+    if ($rawStatus === 'booked') {
+        $statusClass = 'booked';
+    } elseif (in_array($rawStatus, ['repairing', 'maintenance', 'under repair', 'under maintenance'])) {
+        $statusClass = 'maintenance';
+    }
+    $statusLabel = $row['status'] ?? 'Available';
+    $isFeatured = isset($row['is_featured']) && (int)$row['is_featured'] === 1;
+?>
     <article class="product-card"
         data-id="<?php echo $row['item_id']; ?>"
         data-category="<?php echo htmlspecialchars($row['category']); ?>"
-        data-price="<?php echo $row['price_per_day']; ?>">
+        data-price="<?php echo $row['price_per_day']; ?>"
+        data-status="<?php echo $statusClass; ?>"
+        data-status-label="<?php echo htmlspecialchars($statusLabel); ?>"
+        data-featured="<?php echo $isFeatured ? 'true' : 'false'; ?>"
+        data-promo="<?php echo $isFeatured ? 'true' : 'false'; ?>"
+        data-available-units="<?php echo intval($row['available_units']); ?>"
+        data-repairing-units="<?php echo intval($row['repairing_units']); ?>"
+        data-item-name="<?php echo htmlspecialchars($row['item_name']); ?>">
                     
         <?php 
             $sampleImages = [
@@ -314,10 +350,14 @@ $result = mysqli_query($conn, $query);
                 : $sampleImages[$row['item_id'] % count($sampleImages)];
         ?>
         <div class="product-image-wrap">
-              <img src="<?php echo $imageFile; ?>"
-                      alt="<?php echo htmlspecialchars($row['item_name']); ?>"
-                      class="product-image"
-                      onerror="this.onerror=null;this.src='../../assets/images/catalog-fallback.svg';">
+            <?php if ($isFeatured) { ?>
+                <span class="product-featured-pill">Featured</span>
+            <?php } ?>
+            <span class="product-badge <?php echo $statusClass; ?>"><?php echo htmlspecialchars($statusLabel); ?></span>
+            <img src="<?php echo $imageFile; ?>"
+                    alt="<?php echo htmlspecialchars($row['item_name']); ?>"
+                    class="product-image"
+                    onerror="this.onerror=null;this.src='../../assets/images/catalog-fallback.svg';">
         </div>
 
         <div class="product-content">
@@ -329,6 +369,26 @@ $result = mysqli_query($conn, $query);
             </div>
 
             <div class="product-price">₱<?php echo number_format($row['price_per_day'], 2); ?> <span>/ day</span></div>
+
+            <div class="product-units-row">
+                <?php if ($row['available_units'] > 0): ?>
+                    <span class="product-units-pill units-available">
+                        <span class="units-dot dot-available"></span>
+                        <?php echo intval($row['available_units']); ?> available
+                    </span>
+                <?php else: ?>
+                    <span class="product-units-pill units-none">
+                        <span class="units-dot dot-none"></span>
+                        Not available
+                    </span>
+                <?php endif; ?>
+                <?php if ($row['repairing_units'] > 0): ?>
+                    <span class="product-units-pill units-repairing">
+                        <span class="units-dot dot-repairing"></span>
+                        <?php echo intval($row['repairing_units']); ?> repairing
+                    </span>
+                <?php endif; ?>
+            </div>
             
             <p class="product-description">
                 <?php 
@@ -341,10 +401,13 @@ $result = mysqli_query($conn, $query);
             </p>
             
             <div class="product-actions">
-                <button class="product-cta-main"
-                        title="Add this item to your cart"
-                        onclick="location.href='../cart/add_to_cart.php?id=<?php echo $row['item_id']; ?>'">
-                    Rent Now
+                <?php 
+                    $canRent = intval($row['available_units']) > 0 && strtolower(trim($row['status'] ?? '')) !== 'unavailable';
+                ?>
+                <button class="product-cta-main<?php echo !$canRent ? ' product-cta-disabled' : ''; ?>"
+                        title="<?php echo $canRent ? 'Add this item to your cart' : 'This item is currently unavailable'; ?>"
+                        <?php echo $canRent ? 'onclick="openRentQuantityModal(this)"' : 'disabled'; ?>>
+                    <?php echo $canRent ? 'Rent Now' : 'Unavailable'; ?>
                 </button>
             </div>
         </div>
@@ -479,6 +542,43 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
     
+    <!-- Rent Quantity Modal -->
+    <div class="rent-qty-overlay" id="rentQtyModal">
+        <div class="rent-qty-modal">
+            <button class="rent-qty-close" id="closeRentQtyModal" aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="rent-qty-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28" style="color: var(--accent);">
+                    <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+                <h3 class="rent-qty-title">How many units do you want to rent?</h3>
+                <p class="rent-qty-item-name" id="rentQtyItemName">Item Name</p>
+            </div>
+            <div class="rent-qty-body">
+                <div class="rent-qty-controls">
+                    <button type="button" class="rent-qty-btn" id="rentQtyDecrease">-</button>
+                    <input type="number" class="rent-qty-input" id="rentQtyInput" value="1" min="1" max="1" readonly />
+                    <button type="button" class="rent-qty-btn" id="rentQtyIncrease">+</button>
+                </div>
+                <p class="rent-qty-available" id="rentQtyAvailable">Available: 1 unit(s)</p>
+            </div>
+            <div class="rent-qty-footer">
+                <button type="button" class="rent-qty-cancel" id="rentQtyCancelBtn">Cancel</button>
+                <button type="button" class="rent-qty-confirm" id="rentQtyConfirmBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="../../shared/js/components.js"></script>
     <script src="catalog.js"></script>

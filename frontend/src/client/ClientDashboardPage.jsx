@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './css/ClientDashboardPage.css';
 
+// Backend base: dev uses Vite proxy (/api), prod uses direct /rent-it
+const API_BASE = import.meta.env.DEV ? '/api/rent-it' : '/rent-it';
 
 const ClientDashboardPage = () => {
   const [loading, setLoading] = useState(true);
@@ -15,7 +17,7 @@ const ClientDashboardPage = () => {
   useEffect(() => {
     let isMounted = true;
 
-    fetch('http://localhost/rent-it/client/dashboard/dashboard.php?format=json', {
+    fetch(`${API_BASE}/client/dashboard/dashboard.php?format=json`, {
       credentials: 'include',
     })
       .then((res) => {
