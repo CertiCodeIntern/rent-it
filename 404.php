@@ -3,6 +3,7 @@ http_response_code(404);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,10 @@ http_response_code(404);
     <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
     <link rel="stylesheet" href="/rent-it/shared/css/theme.css">
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
@@ -26,6 +30,7 @@ http_response_code(404);
             font-family: "Inter", system-ui, -apple-system, sans-serif;
             padding: 24px;
         }
+
         .card {
             width: min(900px, 100%);
             background: linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)), var(--bg-card);
@@ -36,6 +41,7 @@ http_response_code(404);
             overflow: hidden;
             box-shadow: var(--shadow-xl);
         }
+
         .card::before {
             content: "";
             position: absolute;
@@ -45,12 +51,14 @@ http_response_code(404);
                 radial-gradient(circle at 88% 84%, rgba(1, 58, 99, 0.12), transparent 42%);
             pointer-events: none;
         }
+
         .header {
             display: flex;
             align-items: center;
             gap: 14px;
             margin-bottom: 22px;
         }
+
         .logo {
             width: 48px;
             height: 48px;
@@ -60,24 +68,33 @@ http_response_code(404);
             place-items: center;
             box-shadow: 0 12px 30px rgba(1, 58, 99, 0.28);
         }
-        .logo img { width: 32px; height: 32px; object-fit: contain; }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
         .title {
             margin: 0;
             font-size: 24px;
             letter-spacing: -0.01em;
             color: var(--heading-primary);
         }
+
         .subtitle {
             margin: 4px 0 0 0;
             color: var(--text-tertiary);
             font-size: 15px;
         }
+
         .content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 28px;
             align-items: center;
         }
+
         .big {
             font-size: 88px;
             font-weight: 800;
@@ -85,17 +102,20 @@ http_response_code(404);
             letter-spacing: -0.04em;
             color: var(--heading-primary);
         }
+
         .hint {
             margin: 14px 0 0;
             color: var(--text-secondary);
             line-height: 1.6;
         }
+
         .actions {
             display: flex;
             gap: 12px;
             margin-top: 20px;
             flex-wrap: wrap;
         }
+
         .btn {
             padding: 12px 16px;
             border-radius: var(--radius);
@@ -107,14 +127,24 @@ http_response_code(404);
             transition: var(--transition-fast);
             box-shadow: var(--shadow-sm);
         }
+
         .btn.primary {
             background: linear-gradient(130deg, var(--accent), var(--brand-primary-light));
             border: none;
             box-shadow: 0 15px 35px rgba(1, 58, 99, 0.28);
             color: var(--text-on-nav);
         }
-        .btn:hover { transform: translateY(-1px); border-color: var(--border-medium); box-shadow: var(--shadow-md); }
-        .btn.primary:hover { box-shadow: 0 18px 40px rgba(1, 58, 99, 0.36); }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            border-color: var(--border-medium);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn.primary:hover {
+            box-shadow: 0 18px 40px rgba(1, 58, 99, 0.36);
+        }
+
         .loader {
             width: 80px;
             height: 80px;
@@ -125,33 +155,101 @@ http_response_code(404);
             animation: spin 1s linear infinite;
             margin: 0 auto 14px;
         }
-        .loading-copy { text-align: center; color: var(--text-tertiary); font-size: 14px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .loading-copy {
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 14px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
         /* Responsive refinements */
         @media (max-width: 1024px) {
-            body { padding: 20px; }
-            .card { padding: 30px; }
-            .content { gap: 22px; }
+            body {
+                padding: 20px;
+            }
+
+            .card {
+                padding: 30px;
+            }
+
+            .content {
+                gap: 22px;
+            }
         }
+
         @media (max-width: 768px) {
-            body { padding: 18px; }
-            .card { padding: 26px; }
-            .content { grid-template-columns: 1fr; gap: 18px; }
-            .header { align-items: flex-start; }
-            .big { font-size: 72px; }
-            .actions { width: 100%; }
-            .btn { flex: 1 1 100%; text-align: center; }
-            .loader { width: 70px; height: 70px; }
+            body {
+                padding: 18px;
+            }
+
+            .card {
+                padding: 26px;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .header {
+                align-items: flex-start;
+            }
+
+            .big {
+                font-size: 72px;
+            }
+
+            .actions {
+                width: 100%;
+            }
+
+            .btn {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+
+            .loader {
+                width: 70px;
+                height: 70px;
+            }
         }
+
         @media (max-width: 480px) {
-            body { padding: 14px; }
-            .card { padding: 22px; border-radius: var(--radius-lg); }
-            .title { font-size: 20px; }
-            .subtitle { font-size: 14px; }
-            .big { font-size: 60px; }
-            .actions { flex-direction: column; gap: 10px; }
-            .btn { width: 100%; }
+            body {
+                padding: 14px;
+            }
+
+            .card {
+                padding: 22px;
+                border-radius: var(--radius-lg);
+            }
+
+            .title {
+                font-size: 20px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+            }
+
+            .big {
+                font-size: 60px;
+            }
+
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+            }
         }
     </style>
     <script>
@@ -163,6 +261,7 @@ http_response_code(404);
         })();
     </script>
 </head>
+
 <body>
     <div class="card">
         <div class="header">
@@ -202,7 +301,9 @@ http_response_code(404);
                 ctaBtn.textContent = 'Go to landing';
             }
 
-            const go = (target) => { window.location.href = target; };
+            const go = (target) => {
+                window.location.href = target;
+            };
 
             setTimeout(() => go(redirectTarget), 1400);
             ctaBtn.addEventListener('click', () => go(redirectTarget));
@@ -210,4 +311,5 @@ http_response_code(404);
         })();
     </script>
 </body>
+
 </html>

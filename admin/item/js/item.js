@@ -69,9 +69,11 @@ function renderItems(items) {
 
     // Bind action buttons after rendering
     bindActionButtons();
-    
+
     // Update pagination
     updatePagination(items.length);
+    // Bind action buttons after rendering
+    bindActionButtons();
 }
 
 function renderItemRow(item) {
@@ -175,8 +177,8 @@ function renderItemRow(item) {
                         <span class="visibility-badge ${isVisible ? 'visible' : 'hidden'}" title="${isVisible ? 'Visible to customers' : 'Hidden from catalog'}">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12">
                                 ${isVisible
-                                    ? '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'
-                                    : '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'}
+            ? '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'
+            : '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'}
                             </svg>
                             ${isVisible ? 'Visible' : 'Hidden'}
                         </span>
@@ -192,8 +194,8 @@ function renderItemRow(item) {
             <td>
                 <div class="item-tags">
                     ${tags.length > 0
-                        ? tags.map(tag => `<span class="item-tag">${escapeHtml(tag)}</span>`).join('')
-                        : '<span class="item-no-tags">No tags</span>'}
+            ? tags.map(tag => `<span class="item-tag">${escapeHtml(tag)}</span>`).join('')
+            : '<span class="item-no-tags">No tags</span>'}
                 </div>
             </td>
             <td>${item.total_times_rented || 0}</td>
@@ -556,7 +558,7 @@ function goToPage(page) {
 document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prevPageBtn');
     const nextBtn = document.getElementById('nextPageBtn');
-    
+
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
             if (currentPage > 1) {
@@ -565,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
             const totalPages = Math.ceil(filteredItemsData.length / PAGE_SIZE);

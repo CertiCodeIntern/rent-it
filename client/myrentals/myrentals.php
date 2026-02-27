@@ -6,19 +6,24 @@ include '../../shared/php/auth_check.php';
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="RentIt - My Rentals. Manage your active videoke equipment and rental history.">
     <title>My Rentals - RentIt</title>
 
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
+
     <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
+
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/shared/css/theme.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/shared/css/globals.css">
@@ -27,6 +32,7 @@ include '../../shared/php/auth_check.php';
 
     <script src="<?= BASE_URL ?>/shared/js/theme.js"></script>
 </head>
+
 
 <body>
     <div class="page-skeleton-overlay" aria-hidden="true">
@@ -86,8 +92,10 @@ include '../../shared/php/auth_check.php';
     <div class="app-container">
         <div id="sidebarContainer"></div>
 
+
         <main class="main-content">
             <div id="topbarContainer"></div>
+
 
             <div class="content-area" id="contentArea">
                 <div class="page-header-dashboard">
@@ -100,6 +108,8 @@ include '../../shared/php/auth_check.php';
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <line x1="12" y1="5" x2="12" y2="19" />
                                 <line x1="5" y1="12" x2="19" y2="12" />
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
                             </svg>
                         </a>
                     </div>
@@ -108,6 +118,7 @@ include '../../shared/php/auth_check.php';
                 <div class="rentals-tabs">
                     <a href="<?= BASE_URL ?>/client/myrentals/pending.php" class="tab-link">Pending Rentals</a>
                     <a href="<?= BASE_URL ?>/client/myrentals/myrentals.php" class="tab-link active">Active Rentals</a>
+                    <a href="<?= BASE_URL ?>/client/returns/returns.php" class="tab-link">Returns & Extensions</a>
                     <a href="<?= BASE_URL ?>/client/returns/returns.php" class="tab-link">Returns & Extensions</a>
                     <a href="<?= BASE_URL ?>/client/bookinghistory/bookinghistory.php" class="tab-link">Booking History</a>
                 </div>
@@ -120,40 +131,41 @@ include '../../shared/php/auth_check.php';
 
                     <div class="rental-cards-row" id="activeRentalsCards">
                     </div>
-                    <!-- Active Rentals Pagination -->
-                    <nav class="pagination-controls is-hidden" id="activeRentalsPagination" aria-label="Active rentals pagination"></nav>
-                </section>
-
-                <section class="history-section">
-                    <div class="section-header">
-                        <h2 class="section-title">Booking History</h2>
-                        <a href="<?= BASE_URL ?>/client/bookinghistory/bookinghistory.php" class="view-all-link">View All</a>
-                    </div>
-
-                    <div class="history-panel">
-                        <table class="history-table" role="table" aria-label="Booking history">
-                            <thead>
-                                <tr>
-                                    <th>Item Details</th>
-                                    <th>Rental Period</th>
-                                    <th>Total Amount</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="historyTableBody">
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- History Pagination -->
-                    <nav class="pagination-controls is-hidden" id="myRentalsHistoryPagination" aria-label="Booking history pagination"></nav>
-                </section>
-
-
             </div>
+            <!-- Active Rentals Pagination -->
+            <nav class="pagination-controls is-hidden" id="activeRentalsPagination" aria-label="Active rentals pagination"></nav>
+            </section>
 
-            <!-- Footer Container (Injected by JS) -->
-            <div id="footerContainer"></div>
-        </main>
+            <section class="history-section">
+                <div class="section-header">
+                    <h2 class="section-title">Booking History</h2>
+                    <a href="<?= BASE_URL ?>/client/bookinghistory/bookinghistory.php" class="view-all-link">View All</a>
+                </div>
+
+                <div class="history-panel">
+                    <table class="history-table" role="table" aria-label="Booking history">
+                        <thead>
+                            <tr>
+                                <th>Item Details</th>
+                                <th>Rental Period</th>
+                                <th>Total Amount</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                        </tbody>
+                    </table>
+                </div>
+                <!-- History Pagination -->
+                <nav class="pagination-controls is-hidden" id="myRentalsHistoryPagination" aria-label="Booking history pagination"></nav>
+            </section>
+
+
+    </div>
+
+    <!-- Footer Container (Injected by JS) -->
+    <div id="footerContainer"></div>
+    </main>
     </div>
 
     <div id="receiptModal" class="modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">

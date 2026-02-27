@@ -1,0 +1,527 @@
+/* =====================================================
+   ADMIN GLOBALS — Ported to Vite + React
+   Scoped under .admin-root
+   ===================================================== */
+
+/* ============================
+   ADMIN LAYOUT WRAPPER
+   ============================ */
+.admin-root .admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--admin-bg-primary);
+    font-family: var(--admin-font-family);
+    font-size: var(--admin-font-md);
+    font-weight: var(--admin-font-normal);
+    line-height: 1.5;
+    color: var(--admin-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure admin-root itself also has the font and background, 
+   acting as the effective 'body' for the admin app */
+.admin-root {
+    font-family: var(--admin-font-family);
+    background-color: var(--admin-bg-primary);
+    color: var(--admin-text-primary);
+    min-height: 100vh;
+}
+
+.admin-root .admin-wrapper *,
+.admin-root .admin-wrapper *::before,
+.admin-root .admin-wrapper *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.admin-root .admin-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-left: var(--admin-sidebar-width);
+    transition: margin-left var(--admin-transition-normal);
+}
+
+.admin-root .admin-wrapper.sidebar-collapsed .admin-main {
+    margin-left: var(--admin-sidebar-collapsed);
+}
+
+.admin-root .admin-content {
+    flex: 1;
+    padding: var(--admin-spacing-2xl) var(--admin-spacing-xl);
+    max-width: var(--admin-container-max);
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ============================
+   TYPOGRAPHY
+   ============================ */
+.admin-root h1,
+.admin-root h2,
+.admin-root h3,
+.admin-root h4,
+.admin-root h5,
+.admin-root h6 {
+    font-weight: var(--admin-font-semibold);
+    line-height: 1.3;
+    color: var(--admin-text-primary);
+}
+
+.admin-root h1 {
+    font-size: var(--admin-font-3xl);
+}
+
+.admin-root h2 {
+    font-size: var(--admin-font-2xl);
+}
+
+.admin-root h3 {
+    font-size: var(--admin-font-xl);
+}
+
+.admin-root h4 {
+    font-size: var(--admin-font-lg);
+}
+
+.admin-root h5 {
+    font-size: var(--admin-font-md);
+}
+
+.admin-root h6 {
+    font-size: var(--admin-font-sm);
+}
+
+.admin-root p {
+    color: var(--admin-text-secondary);
+    margin-bottom: var(--admin-spacing-md);
+}
+
+.admin-root a {
+    color: var(--admin-accent);
+    text-decoration: none;
+    transition: color var(--admin-transition-fast);
+}
+
+.admin-root a:hover {
+    color: var(--admin-accent-hover);
+}
+
+/* ============================
+   SCROLLBAR STYLING
+   ============================ */
+.admin-root ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.admin-root ::-webkit-scrollbar-track {
+    background: var(--admin-scrollbar-bg);
+}
+
+.admin-root ::-webkit-scrollbar-thumb {
+    background: var(--admin-scrollbar-thumb);
+    border-radius: var(--admin-radius-full);
+}
+
+.admin-root ::-webkit-scrollbar-thumb:hover {
+    background: var(--admin-scrollbar-thumb-hover);
+}
+
+.admin-root * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--admin-scrollbar-thumb) var(--admin-scrollbar-bg);
+}
+
+/* ============================
+   FOCUS STATES
+   ============================ */
+.admin-root :focus-visible {
+    outline: 2px solid var(--admin-accent);
+    outline-offset: 2px;
+}
+
+/* ============================
+   SELECTION
+   ============================ */
+.admin-root ::selection {
+    background-color: var(--admin-accent-muted);
+    color: var(--admin-text-primary);
+}
+
+/* ============================
+   PAGE HEADER
+   ============================ */
+.admin-root .admin-page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--admin-spacing-xl);
+    margin-bottom: var(--admin-spacing-2xl);
+    flex-wrap: wrap;
+}
+
+.admin-root .admin-page-title {
+    font-size: var(--admin-font-2xl);
+    font-weight: var(--admin-font-bold);
+    color: var(--admin-text-primary);
+    margin-bottom: var(--admin-spacing-sm);
+}
+
+.admin-root .admin-page-subtitle {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-muted);
+}
+
+.admin-root .admin-page-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-lg);
+    flex-wrap: wrap;
+}
+
+/* ============================
+   UTILITY CLASSES
+   ============================ */
+.admin-root .text-primary {
+    color: var(--admin-text-primary) !important;
+}
+
+.admin-root .text-secondary {
+    color: var(--admin-text-secondary) !important;
+}
+
+.admin-root .text-muted {
+    color: var(--admin-text-muted) !important;
+}
+
+.admin-root .text-accent {
+    color: var(--admin-accent) !important;
+}
+
+.admin-root .text-success {
+    color: var(--admin-success) !important;
+}
+
+.admin-root .text-warning {
+    color: var(--admin-warning) !important;
+}
+
+.admin-root .text-danger {
+    color: var(--admin-danger) !important;
+}
+
+.admin-root .text-info {
+    color: var(--admin-info) !important;
+}
+
+.admin-root .text-xs {
+    font-size: var(--admin-font-xs) !important;
+}
+
+.admin-root .text-sm {
+    font-size: var(--admin-font-sm) !important;
+}
+
+.admin-root .text-md {
+    font-size: var(--admin-font-md) !important;
+}
+
+.admin-root .text-lg {
+    font-size: var(--admin-font-lg) !important;
+}
+
+.admin-root .text-xl {
+    font-size: var(--admin-font-xl) !important;
+}
+
+.admin-root .text-2xl {
+    font-size: var(--admin-font-2xl) !important;
+}
+
+.admin-root .font-normal {
+    font-weight: var(--admin-font-normal) !important;
+}
+
+.admin-root .font-medium {
+    font-weight: var(--admin-font-medium) !important;
+}
+
+.admin-root .font-semibold {
+    font-weight: var(--admin-font-semibold) !important;
+}
+
+.admin-root .font-bold {
+    font-weight: var(--admin-font-bold) !important;
+}
+
+.admin-root .d-none {
+    display: none !important;
+}
+
+.admin-root .d-block {
+    display: block !important;
+}
+
+.admin-root .d-flex {
+    display: flex !important;
+}
+
+.admin-root .d-grid {
+    display: grid !important;
+}
+
+.admin-root .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ============================
+   ANIMATIONS
+   ============================ */
+@keyframes adminFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes adminFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes adminFadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes adminSlideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes adminSlideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes adminScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes adminPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes adminSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.admin-root .animate-fadeIn {
+    animation: adminFadeIn 0.3s ease forwards;
+}
+
+.admin-root .animate-fadeInUp {
+    animation: adminFadeInUp 0.4s ease-out forwards;
+}
+
+.admin-root .animate-fadeInDown {
+    animation: adminFadeInDown 0.3s ease forwards;
+}
+
+.admin-root .animate-slideInLeft {
+    animation: adminSlideInLeft 0.3s ease forwards;
+}
+
+.admin-root .animate-slideInRight {
+    animation: adminSlideInRight 0.3s ease forwards;
+}
+
+.admin-root .animate-scaleIn {
+    animation: adminScaleIn 0.2s ease forwards;
+}
+
+.admin-root .animate-pulse {
+    animation: adminPulse 2s infinite;
+}
+
+.admin-root .animate-spin {
+    animation: adminSpin 1s linear infinite;
+}
+
+.admin-root .stagger-1 {
+    animation-delay: 0.1s;
+}
+
+.admin-root .stagger-2 {
+    animation-delay: 0.2s;
+}
+
+.admin-root .stagger-3 {
+    animation-delay: 0.3s;
+}
+
+.admin-root .stagger-4 {
+    animation-delay: 0.4s;
+}
+
+.admin-root .stagger-5 {
+    animation-delay: 0.5s;
+}
+
+/* ============================
+   RESPONSIVE BREAKPOINTS
+   ============================ */
+@media (max-width: 1280px) {
+    .admin-root .admin-content {
+        padding: var(--admin-spacing-lg);
+    }
+}
+
+@media (max-width: 1024px) {
+    .admin-root .admin-main {
+        margin-left: 0;
+    }
+
+    .admin-root .admin-wrapper.sidebar-collapsed .admin-main {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-root .admin-content {
+        padding: var(--admin-spacing-md);
+    }
+
+    .admin-root .admin-page-header {
+        flex-direction: column;
+        gap: var(--admin-spacing-md);
+    }
+
+    .admin-root .admin-page-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-root .admin-content {
+        padding: var(--admin-spacing-sm);
+    }
+
+    .admin-root .admin-page-title {
+        font-size: var(--admin-font-xl);
+    }
+
+    .admin-root .admin-page-subtitle {
+        font-size: var(--admin-font-xs);
+    }
+
+    .admin-root .admin-page-actions {
+        gap: var(--admin-spacing-sm);
+    }
+
+    .admin-root .admin-page-actions .btn {
+        font-size: var(--admin-font-xs);
+        padding: var(--admin-spacing-sm) var(--admin-spacing-md);
+    }
+}
+
+@media (max-width: 375px) {
+    .admin-root .admin-page-title {
+        font-size: var(--admin-font-lg);
+    }
+
+    .admin-root .admin-page-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .admin-root .admin-page-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ============================
+   LARGE SCREENS
+   ============================ */
+@media (min-width: 1920px) {
+    .admin-root .admin-content {
+        --admin-container-max: 1800px;
+        max-width: var(--admin-container-max);
+        padding: var(--admin-spacing-3xl) var(--admin-spacing-2xl);
+    }
+}
+
+@media (min-width: 2560px) {
+    .admin-root .admin-content {
+        --admin-container-max: 2200px;
+        max-width: var(--admin-container-max);
+        padding: var(--admin-spacing-3xl) var(--admin-spacing-3xl);
+    }
+}

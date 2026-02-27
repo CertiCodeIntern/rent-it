@@ -1,0 +1,341 @@
+/* =====================================================
+   ADMIN DASHBOARD SPECIFIC STYLES
+   Extends admin-components.css with dashboard-specific styles
+   Scoped under .admin-root
+   ===================================================== */
+
+/* ============================
+   KPI GRID
+   ============================ */
+.admin-root .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--admin-spacing-xl);
+    margin-bottom: var(--admin-spacing-2xl);
+}
+
+@media (max-width: 1200px) {
+    .admin-root .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-root .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================
+   DASHBOARD GRID
+   ============================ */
+.admin-root .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--admin-spacing-2xl);
+}
+
+@media (max-width: 1200px) {
+    .admin-root .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.admin-root .dashboard-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-lg);
+}
+
+/* ============================
+   BOOKINGS SECTION
+   ============================ */
+.admin-root .bookings-section {
+    min-height: 400px;
+}
+
+.admin-root .customer-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+}
+
+.admin-root .customer-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--admin-radius-full);
+    background: var(--admin-accent-muted);
+    color: var(--admin-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--admin-font-sm);
+    font-weight: var(--admin-font-semibold);
+    flex-shrink: 0;
+}
+
+/* ============================
+   SCHEDULE CARD
+   ============================ */
+.admin-root .schedule-card .admin-card-body {
+    padding: var(--admin-spacing-lg);
+}
+
+.admin-root .schedule-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-spacing-sm);
+}
+
+.admin-root .timeline-item {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-md);
+    padding: var(--admin-spacing-md);
+    border-radius: var(--admin-radius-md);
+    transition: background var(--admin-transition-fast);
+}
+
+.admin-root .timeline-item:hover {
+    background: var(--admin-bg-card-hover);
+}
+
+.admin-root .timeline-time {
+    font-size: var(--admin-font-xs);
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-muted);
+    min-width: 70px;
+}
+
+.admin-root .timeline-time.warning {
+    color: var(--admin-warning);
+}
+
+.admin-root .timeline-time.success {
+    color: var(--admin-success);
+}
+
+.admin-root .timeline-time.muted {
+    color: var(--admin-text-disabled);
+}
+
+.admin-root .timeline-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-root .timeline-title {
+    font-size: var(--admin-font-sm);
+    font-weight: var(--admin-font-medium);
+    color: var(--admin-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-root .timeline-subtitle {
+    font-size: var(--admin-font-xs);
+    color: var(--admin-text-muted);
+}
+
+.admin-root .timeline-status {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--admin-radius-full);
+    background: var(--admin-border-color);
+    flex-shrink: 0;
+}
+
+.admin-root .timeline-status.pending {
+    background: var(--admin-info);
+}
+
+.admin-root .timeline-status.warning {
+    background: var(--admin-warning);
+}
+
+.admin-root .timeline-status.success {
+    background: var(--admin-success);
+}
+
+/* ============================
+   INVENTORY CARD
+   ============================ */
+.admin-root .inventory-card .admin-card-body {
+    padding: var(--admin-spacing-lg);
+}
+
+.admin-root .inventory-item {
+    margin-bottom: var(--admin-spacing-lg);
+}
+
+.admin-root .inventory-item:last-child {
+    margin-bottom: 0;
+}
+
+.admin-root .inventory-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--admin-spacing-sm);
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-secondary);
+}
+
+.admin-root .inventory-value {
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-primary);
+}
+
+.admin-root .inventory-value.warning {
+    color: var(--admin-warning);
+}
+
+.admin-root .inventory-value.info {
+    color: var(--admin-info);
+}
+
+.admin-root .inventory-value.success {
+    color: var(--admin-success);
+}
+
+.admin-root .progress-bar {
+    height: 6px;
+    background: var(--admin-border-color);
+    border-radius: var(--admin-radius-full);
+    overflow: hidden;
+}
+
+.admin-root .progress-fill {
+    height: 100%;
+    border-radius: var(--admin-radius-full);
+    transition: width var(--admin-transition-slow);
+}
+
+.admin-root .progress-fill.rented {
+    background: var(--admin-info);
+}
+
+.admin-root .progress-fill.repair {
+    background: var(--admin-danger);
+}
+
+.admin-root .progress-fill.cleaning {
+    background: var(--admin-warning);
+}
+
+.admin-root .progress-fill.available {
+    background: var(--admin-success);
+}
+
+/* ============================
+   QUICK ACTIONS
+   ============================ */
+.admin-root .quick-actions .admin-card-body {
+    padding: var(--admin-spacing-lg);
+}
+
+.admin-root .quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--admin-spacing-md);
+}
+
+.admin-root .quick-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--admin-spacing-sm);
+    padding: var(--admin-spacing-lg);
+    background: var(--admin-bg-input);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-lg);
+    text-decoration: none;
+    color: var(--admin-text-secondary);
+    font-size: var(--admin-font-sm);
+    font-weight: var(--admin-font-medium);
+    transition: all var(--admin-transition-fast);
+}
+
+.admin-root .quick-action-btn:hover {
+    background: var(--admin-accent-subtle);
+    border-color: var(--admin-accent);
+    color: var(--admin-accent);
+    transform: translateY(-2px);
+}
+
+.admin-root .quick-action-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+}
+
+/* ============================
+   RESPONSIVE ADJUSTMENTS
+   ============================ */
+@media (max-width: 768px) {
+    .admin-root .quick-actions-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .admin-root .quick-action-btn {
+        padding: var(--admin-spacing-md);
+    }
+
+    .admin-root .quick-action-btn span {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-root .quick-actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-root .quick-action-btn span {
+        display: block;
+    }
+
+    .admin-root .kpi-grid {
+        gap: var(--admin-spacing-md);
+    }
+}
+
+@media (max-width: 375px) {
+    .admin-root .quick-action-btn {
+        padding: var(--admin-spacing-sm);
+        gap: var(--admin-spacing-xs);
+        font-size: var(--admin-font-xs);
+    }
+
+    .admin-root .quick-action-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* ============================
+   LARGE SCREEN ADJUSTMENTS
+   ============================ */
+@media (min-width: 1920px) {
+    .admin-root .kpi-grid {
+        gap: var(--admin-spacing-2xl);
+    }
+
+    .admin-root .dashboard-grid {
+        grid-template-columns: 1fr 440px;
+        gap: var(--admin-spacing-2xl);
+    }
+}
+
+@media (min-width: 2560px) {
+    .admin-root .dashboard-grid {
+        grid-template-columns: 1fr 520px;
+        gap: var(--admin-spacing-3xl);
+    }
+
+    .admin-root .kpi-grid {
+        gap: var(--admin-spacing-3xl);
+    }
+}
