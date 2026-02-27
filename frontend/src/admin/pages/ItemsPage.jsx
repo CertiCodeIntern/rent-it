@@ -167,8 +167,8 @@ export default function ItemsPage() {
         </div>
       </div>
 
-      <div className="items-toolbar">
-        <div className="items-search">
+      <div className="items-toolbar items-toolbar--react">
+        <div className="items-search items-search--react">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -188,10 +188,10 @@ export default function ItemsPage() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="items-filters">
+        <div className="items-filters items-filters--react">
           <select
             id="statusFilter"
-            className="filter-select"
+            className="filter-select filter-select--react"
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
           >
@@ -226,7 +226,7 @@ export default function ItemsPage() {
         </div>
       </div>
 
-      <div className="items-table-container">
+      <div className="items-table-container items-table-container--react">
         {loading ? (
           <div style={{ textAlign: "center", padding: "2rem", color: "var(--admin-text-muted)" }}>
             Loading items...
@@ -236,13 +236,14 @@ export default function ItemsPage() {
             No items found
           </div>
         ) : (
-          <table className="admin-table items-table">
+          <table className="admin-table items-table items-table-react">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Item</th>
                 <th>Category</th>
                 <th>Pricing</th>
+                <th>Units</th>
                 <th>Status &amp; Visibility</th>
                 <th>Tags</th>
                 <th>Times Rented</th>
@@ -250,7 +251,16 @@ export default function ItemsPage() {
               </tr>
             </thead>
             <tbody id="itemsTableBody">
-              {filteredItems.map((item) => (
+              {filteredItems.map((item) => {
+                const totalUnits = parseInt(item.total_units, 10) || 0;
+                const availableUnits = parseInt(item.available_units, 10) || 0;
+                const repairingUnits = parseInt(item.repairing_units, 10) || 0;
+                const rentedUnits = Math.max(
+                  0,
+                  totalUnits - availableUnits - repairingUnits
+                );
+
+                return (
                 <tr key={item.item_id}>
                   <td>#{item.item_id}</td>
                   <td>
@@ -293,6 +303,29 @@ export default function ItemsPage() {
                     </div>
                   </td>
                   <td>
+                    <div className="item-units-info">
+                      <div className="units-row">
+                        <strong>Total:</strong> {totalUnits}
+                      </div>
+                      <div className="units-row">
+                        <strong>Available:</strong>{" "}
+                        <span className="units-available">
+                          {availableUnits}
+                        </span>
+                      </div>
+                      <div className="units-row">
+                        <strong>Rented:</strong>{" "}
+                        <span className="units-rented">{rentedUnits}</span>
+                      </div>
+                      <div className="units-row">
+                        <strong>Repairing:</strong>{" "}
+                        <span className="units-repairing">
+                          {repairingUnits}
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
                     <div className="item-status-visibility">
                       <span
                         className={`status-badge ${getStatusBadgeClass(
@@ -303,13 +336,53 @@ export default function ItemsPage() {
                       </span>
                       <div className="visibility-badges">
                         {parseInt(item.is_visible) === 1 && (
-                          <span className="visibility-badge visible">Visible</span>
+                          <span className="visibility-badge visible">
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              width="12"
+                              height="12"
+                            >
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                              <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            VISIBLE
+                          </span>
                         )}
                         {parseInt(item.is_visible) === 0 && (
-                          <span className="visibility-badge hidden">Hidden</span>
+                          <span className="visibility-badge hidden">
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              width="12"
+                              height="12"
+                            >
+                              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20C5 20 1 12 1 12a18.45 18.45 0 0 1 5.06-5.94" />
+                              <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                              <path d="M14.12 14.12A3 3 0 0 1 9.88 9.88" />
+                              <line x1="1" y1="1" x2="23" y2="23" />
+                            </svg>
+                            HIDDEN
+                          </span>
                         )}
                         {parseInt(item.is_featured) === 1 && (
-                          <span className="visibility-badge featured">Featured</span>
+                          <span className="visibility-badge featured">
+                            <svg
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              width="12"
+                              height="12"
+                            >
+                              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                            FEATURED
+                          </span>
                         )}
                       </div>
                     </div>
@@ -415,7 +488,8 @@ export default function ItemsPage() {
                     </div>
                   </td>
                 </tr>
-              ))}
+              );
+              })}
             </tbody>
           </table>
         )}

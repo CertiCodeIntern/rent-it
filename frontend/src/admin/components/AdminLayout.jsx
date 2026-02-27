@@ -260,14 +260,16 @@ export default function AdminLayout({ children }) {
                             <h2 className="header-page-title">{pageTitle}</h2>
                         </div>
                         <div className="header-right">
-                            {/* Theme toggle as the first element in header-right */}
+                            {/* Theme toggle — match PHP admin header */}
                             <button
-                                className="auth-theme-toggle"
+                                className="theme-toggle"
+                                id="themeToggle"
                                 onClick={toggleTheme}
+                                title="Toggle light/dark theme"
+                                type="button"
                                 aria-label="Toggle theme"
-                                style={{ marginRight: '5rem', marginTop: '-0.49rem' }}
                             >
-                                <svg className="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <svg className="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <circle cx="12" cy="12" r="5" />
                                     <line x1="12" y1="1" x2="12" y2="3" />
                                     <line x1="12" y1="21" x2="12" y2="23" />
@@ -278,10 +280,52 @@ export default function AdminLayout({ children }) {
                                     <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
                                     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                                 </svg>
-                                <svg className="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <svg className="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                                 </svg>
                             </button>
+
+                            {/* Notifications — same visual as PHP version */}
+                            <div
+                                className={`dropdown notification-wrapper ${notifOpen ? 'open' : ''}`}
+                                id="notificationDropdownWrapper"
+                                ref={notifRef}
+                            >
+                                <button
+                                    className="header-btn"
+                                    id="notificationBtn"
+                                    title="Notifications"
+                                    type="button"
+                                    onClick={() => { setNotifOpen(p => !p); setProfileOpen(false); }}
+                                >
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+                                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                                    </svg>
+                                    <span className="notification-badge">3</span>
+                                </button>
+                                <div className="dropdown-menu notification-dropdown" id="notificationDropdown">
+                                    <div className="dropdown-header">
+                                        <h4>Notifications</h4>
+                                        <button className="mark-read" type="button">
+                                            Mark all as read
+                                        </button>
+                                    </div>
+                                    <div className="notification-list">
+                                        <div className="notification-item">
+                                            <div className="notification-content">
+                                                No notifications yet.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="notification-footer">
+                                        <button type="button" className="link-button">
+                                            View all notifications
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* Profile — matches original admin-components.js */}
                             <div className={`dropdown ${profileOpen ? 'open' : ''}`} id="profileDropdown" ref={profileRef}>
                                 <button className="header-btn profile-btn" id="profileBtn" onClick={() => { setProfileOpen(p => !p); setNotifOpen(false); }} title="Profile menu">

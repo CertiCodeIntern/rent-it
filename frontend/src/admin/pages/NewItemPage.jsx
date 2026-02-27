@@ -18,6 +18,7 @@ const defaultForm = {
   depositAmount: "",
   totalUnits: 1,
   availableUnits: 1,
+  repairingUnits: 0,
   itemCondition: "good",
   itemStatus: "Available",
   isVisible: true,
@@ -70,6 +71,7 @@ export default function NewItemPage() {
         depositAmount: item.deposit || "",
         totalUnits: item.total_units || 1,
         availableUnits: item.available_units || 1,
+        repairingUnits: item.repairing_units || 0,
         itemCondition: item.condition || "good",
         itemStatus: item.status || "Available",
         isVisible: item.is_visible == 1,
@@ -95,10 +97,25 @@ export default function NewItemPage() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+
+    setForm((prev) => {
+      const next = {
+        ...prev,
+        [name]: type === "checkbox" ? checked : value,
+      };
+
+      // Auto-calculate available units like PHP: Total - Repairing (new items have no rentals yet)
+      if (name === "totalUnits" || name === "repairingUnits") {
+        const total = Number(name === "totalUnits" ? value : next.totalUnits);
+        const repairing = Number(
+          name === "repairingUnits" ? value : next.repairingUnits ?? 0
+        );
+        const available = Math.max(0, total - repairing);
+        next.availableUnits = available;
+      }
+
+      return next;
+    });
     if (name === "itemTags") {
       setTags(
         value
@@ -163,6 +180,7 @@ export default function NewItemPage() {
         formData.append("status", form.itemStatus);
         formData.append("total_units", form.totalUnits);
         formData.append("available_units", form.availableUnits);
+        formData.append("repairing_units", form.repairingUnits);
         formData.append("is_visible", form.isVisible ? 1 : 0);
         formData.append("is_featured", form.isFeatured ? 1 : 0);
         formData.append("tags", form.itemTags || null);
@@ -183,6 +201,7 @@ export default function NewItemPage() {
           status: form.itemStatus,
           total_units: form.totalUnits,
           available_units: form.availableUnits,
+          repairing_units: form.repairingUnits,
           is_visible: form.isVisible ? 1 : 0,
           is_featured: form.isFeatured ? 1 : 0,
           tags: form.itemTags || null,
@@ -440,6 +459,9 @@ export default function NewItemPage() {
                       required
                       onChange={handleChange}
                     />
+                    <span className="form-hint">
+                      Total number of this item you own
+                    </span>
                   </div>
 
                   <div className="form-group">
@@ -454,9 +476,31 @@ export default function NewItemPage() {
                       placeholder="1"
                       min="0"
                       value={form.availableUnits}
-                      onChange={handleChange}
+                      readOnly
                     />
+                    <span className="form-hint">
+                      Auto-calculated: Total - Rented - Repairing
+                    </span>
                   </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="repairingUnits" className="form-label">
+                    Repairing Units
+                  </label>
+                  <input
+                    type="number"
+                    id="repairingUnits"
+                    name="repairingUnits"
+                    className="form-input"
+                    placeholder="0"
+                    min="0"
+                    value={form.repairingUnits}
+                    onChange={handleChange}
+                  />
+                  <span className="form-hint">
+                    Number of units currently under repair
+                  </span>
                 </div>
 
                 <div className="form-group">

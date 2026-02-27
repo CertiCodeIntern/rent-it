@@ -4,25 +4,26 @@
    ===================================================== */
 
 /* ============================
-   ITEMS TOOLBAR
+   ITEMS TOOLBAR (match PHP)
    ============================ */
 .items-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: var(--admin-spacing-md);
-    margin-bottom: var(--admin-spacing-lg);
+    gap: 12px;
+    margin-bottom: 16px;
     flex-wrap: wrap;
 }
 
 .items-search {
     display: flex;
     align-items: center;
-    gap: var(--admin-spacing-sm);
-    padding: var(--admin-spacing-sm) var(--admin-spacing-md);
-    background: var(--admin-bg-secondary);
-    border: 1px solid var(--admin-border-color);
-    border-radius: var(--admin-radius-lg);
+    gap: 8px;
+    padding: 10px 12px;
+    min-height: 44px;
+    background: var(--admin-surface-200);
+    border: 1px solid var(--admin-border);
+    border-radius: 10px;
     min-width: 0;
     flex: 1;
 }
@@ -31,10 +32,11 @@
     border: none;
     outline: none;
     background: transparent;
-    color: var(--admin-text-primary);
+    color: var(--admin-text);
     width: 100%;
     min-width: 0;
-    font-size: var(--admin-font-sm);
+    font-size: 13px;
+    line-height: 1.4;
 }
 
 .items-search input::placeholder {
@@ -44,19 +46,19 @@
 .items-filters {
     display: flex;
     align-items: center;
-    gap: var(--admin-spacing-sm);
+    gap: 8px;
 }
 
 /* Filter Select Dropdown */
 .filter-select {
     height: 40px;
     padding: 0 32px 0 12px;
-    background: var(--admin-bg-secondary);
-    border: 1px solid var(--admin-border-color);
-    border-radius: var(--admin-radius-lg);
-    color: var(--admin-text-primary);
-    font-size: var(--admin-font-sm);
-    font-weight: var(--admin-font-medium);
+    background: var(--admin-surface-200);
+    border: 1px solid var(--admin-border);
+    border-radius: 10px;
+    color: var(--admin-text);
+    font-size: 13px;
+    font-weight: 500;
     cursor: pointer;
     outline: none;
     appearance: none;
@@ -64,16 +66,16 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 10px center;
-    transition: all var(--admin-transition-fast);
+    transition: all 0.2s ease;
 }
 
 .filter-select:hover {
-    border-color: var(--admin-accent);
+    border-color: var(--admin-accent, #8B5CF6);
 }
 
 .filter-select:focus {
-    border-color: var(--admin-accent);
-    box-shadow: 0 0 0 3px var(--admin-accent-subtle);
+    border-color: var(--admin-accent, #8B5CF6);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.15);
 }
 
 /* ============================
@@ -84,6 +86,12 @@
     border-radius: var(--admin-radius-xl);
     overflow-x: auto;
     overflow-y: hidden;
+}
+
+/* React Items page: adjust spacing and remove outer table outline */
+.items-table-container--react {
+    margin-top: 16px !important;
+    border: none;
 }
 
 .items-table .item-cell {
@@ -145,29 +153,30 @@
     text-transform: capitalize;
 }
 
-.status-success {
-    background: var(--admin-success-subtle);
-    color: var(--admin-success);
-}
-
-.status-warning {
-    background: var(--admin-warning-subtle);
-    color: var(--admin-warning);
-}
-
-.status-info {
-    background: var(--admin-info-subtle);
-    color: var(--admin-info);
-}
-
-.status-danger {
-    background: var(--admin-error-subtle);
-    color: var(--admin-error);
-}
-
 .status-default {
     background: var(--admin-bg-secondary);
     color: var(--admin-text-primary);
+}
+
+/* React items table – copy PHP colors exactly, scoped under .items-table-react */
+.items-table-react .status-success {
+    background: #DCFCE7;
+    color: #166534;
+}
+
+.items-table-react .status-warning {
+    background: #FEF9C3;
+    color: #854D0E;
+}
+
+.items-table-react .status-info {
+    background: #E0F2FE;
+    color: #075985;
+}
+
+.items-table-react .status-danger {
+    background: #FEE2E2;
+    color: #991B1B;
 }
 
 /* =====================================================
@@ -217,19 +226,48 @@
     letter-spacing: 0.03em;
 }
 
-.visibility-badge.visible {
-    background: var(--admin-success-subtle);
-    color: var(--admin-success);
+.items-table-react .visibility-badge.visible {
+    background: #DCFCE7;
+    color: #166534;
 }
 
-.visibility-badge.hidden {
-    background: var(--admin-error-subtle);
-    color: var(--admin-error);
+.items-table-react .visibility-badge.hidden {
+    background: #FEE2E2;
+    color: #991B1B;
 }
 
-.visibility-badge.featured {
-    background: var(--admin-warning-subtle);
-    color: var(--admin-warning);
+.items-table-react .visibility-badge.featured {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+/* Make visibility badges line up under status pill:
+   - two badges share the same total width
+   - single badge spans full width */
+.items-table-react .item-status-visibility {
+    /* Give room for icon + long labels (VISIBLE / FEATURED) */
+    max-width: 190px;
+}
+
+.items-table-react .visibility-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.items-table-react .visibility-badge {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    padding: 3px 12px; /* slightly longer pills */
+    text-align: center;
+}
+
+/* Make visibility icons clearly visible inside pills */
+.items-table-react .visibility-badge svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
 }
 
 /* =====================================================
@@ -259,6 +297,73 @@
 }
 
 /* =====================================================
+   UNITS INFO COLUMN
+   ===================================================== */
+
+/* React-specific overrides to avoid other pages */
+.items-toolbar--react .items-search--react {
+    padding: 10px 16px;
+    min-height: 44px;
+}
+
+.items-toolbar--react .items-search--react input {
+    padding-left: 6px;
+}
+
+.items-toolbar--react .items-filters--react .filter-select--react {
+    padding: 0 32px 0 18px;
+    background-color: #1f2937; /* match PHP dark select */
+    color: #e5e7eb;            /* light text */
+    border-color: var(--admin-border);
+}
+
+.items-toolbar--react .items-filters--react .filter-select--react:focus {
+    /* soften the orange active outline */
+    box-shadow: 0 0 0 1px rgba(255, 122, 0, 0.35);
+    outline: none;
+}
+
+.items-toolbar--react .items-filters--react .filter-select--react option {
+    background-color: #020617; /* dropdown panel background */
+    color: #e5e7eb;
+}
+
+.item-units-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+}
+
+.units-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--admin-text-muted);
+}
+
+.units-row strong {
+    color: var(--admin-text-primary);
+    font-weight: var(--admin-font-semibold);
+    min-width: 70px;
+}
+
+.units-available {
+    color: #059669;
+    font-weight: var(--admin-font-semibold);
+}
+
+.units-rented {
+    color: #0284c7;
+    font-weight: var(--admin-font-semibold);
+}
+
+.units-repairing {
+    color: #dc2626;
+    font-weight: var(--admin-font-semibold);
+}
+
+/* =====================================================
    ACTION BUTTONS
    ===================================================== */
 .item-actions {
@@ -273,20 +378,20 @@
     align-items: center;
     gap: 4px;
     padding: 5px 10px;
-    border: 1px solid var(--admin-border-color);
-    border-radius: var(--admin-radius-md);
-    background: var(--admin-bg-secondary);
-    color: var(--admin-text-primary);
+    border: 1px solid var(--admin-border);
+    border-radius: 6px;
+    background: var(--admin-surface-200);
+    color: var(--admin-text);
     font-size: 11px;
-    font-weight: var(--admin-font-semibold);
+    font-weight: 600;
     cursor: pointer;
-    transition: all var(--admin-transition-fast);
+    transition: all 0.2s ease;
     white-space: nowrap;
 }
 
 .item-action-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .item-action-btn svg {
@@ -294,8 +399,8 @@
 }
 
 .item-action-edit {
-    border-color: var(--admin-accent);
-    color: var(--admin-accent);
+    border-color: #8B5CF6;
+    color: #8B5CF6;
 }
 
 .item-action-edit:hover {
@@ -304,28 +409,28 @@
 }
 
 .item-action-repair {
-    border-color: var(--admin-info);
-    color: var(--admin-info);
+    border-color: #3B82F6;
+    color: #3B82F6;
 }
 
 .item-action-repair:hover {
-    background: var(--admin-info);
+    background: #3B82F6;
     color: #fff;
 }
 
 .item-action-unavailable {
-    border-color: var(--admin-danger);
-    color: var(--admin-danger);
+    border-color: #EF4444;
+    color: #EF4444;
 }
 
 .item-action-unavailable:hover {
-    background: var(--admin-danger);
+    background: #EF4444;
     color: #fff;
 }
 
 .item-action-available {
-    border-color: var(--admin-success);
-    color: var(--admin-success);
+    border-color: #22C55E;
+    color: #22C55E;
 }
 
 .item-action-available:hover {
@@ -340,6 +445,12 @@
     font-weight: var(--admin-font-semibold);
     color: var(--admin-text-muted);
     opacity: 0.6;
+}
+
+/* React Items table: slightly larger buttons to match visual size in PHP UI */
+.items-table-react .item-action-btn {
+    font-size: 12px;
+    padding: 6px 14px;
 }
 
 /* =====================================================
@@ -397,10 +508,10 @@
         flex-direction: column;
         gap: 4px;
     }
-
-    .item-action-btn {
-        font-size: 10px;
-        padding: 4px 8px;
+    /* Keep React items-table action button size consistent with desktop */
+    .items-table-react .item-action-btn {
+        font-size: 11px;
+        padding: 5px 10px;
     }
 }
 
