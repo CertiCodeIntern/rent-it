@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/pages/history.css';
 
+// Match Admin API base to Vite proxy + PHP paths
+const ADMIN_API_BASE = import.meta.env.DEV
+  ? "/api/rent-it/admin/api"
+  : "/rent-it/admin/api";
+
 const HistoryPage = () => {
   const [historyData, setHistoryData] = useState([]);
   const [filteredHistoryData, setFilteredHistoryData] = useState([]);
@@ -20,7 +25,7 @@ const HistoryPage = () => {
   const fetchHistory = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/admin/api/get_history.php", {
+      const response = await fetch(`${ADMIN_API_BASE}/get_history.php`, {
         credentials: "include",
       });
       if (!response.ok) throw new Error("Failed to fetch history");

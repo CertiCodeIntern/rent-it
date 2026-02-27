@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../api/client';
 
 // Dashboard-specific CSS
@@ -44,6 +45,7 @@ export default function AdminDashboardPage() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         api.get('/get_dashboard.php')
@@ -60,6 +62,17 @@ export default function AdminDashboardPage() {
             })
             .finally(() => setLoading(false));
     }, []);
+
+    const handleViewBooking = (orderId) => {
+        if (!orderId) return;
+        navigate(`/admin/orders/${orderId}`);
+    };
+
+    const handleEditBooking = (orderId) => {
+        if (!orderId) return;
+        // For now, navigate to same detail route – editing can be handled there
+        navigate(`/admin/orders/${orderId}`);
+    };
 
     if (loading) {
         return (
@@ -214,8 +227,9 @@ export default function AdminDashboardPage() {
                                         const customerInitial = customerName.charAt(0).toUpperCase();
                                         const items = booking.items || 'No items';
                                         const statusClass = getStatusBadgeClass(booking.rental_status);
+                                        const orderId = booking.order_id;
                                         return (
-                                            <tr key={booking.order_id}>
+                                            <tr key={orderId}>
                                                 <td>
                                                     <div className="customer-cell">
                                                         <div className="customer-avatar">{customerInitial}</div>
@@ -229,12 +243,20 @@ export default function AdminDashboardPage() {
                                                 <td><span className={`status-badge ${statusClass}`}>{booking.rental_status}</span></td>
                                                 <td>
                                                     <div className="table-action-btns">
-                                                        <button className="btn-icon" title="View booking details">
+                                                        <button
+                                                            className="btn-icon"
+                                                            title="View booking details"
+                                                            onClick={() => handleViewBooking(orderId)}
+                                                        >
                                                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
                                                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" />
                                                             </svg>
                                                         </button>
-                                                        <button className="btn-icon" title="Edit booking">
+                                                        <button
+                                                            className="btn-icon"
+                                                            title="Edit booking"
+                                                            onClick={() => handleEditBooking(orderId)}
+                                                        >
                                                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
                                                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                                                             </svg>

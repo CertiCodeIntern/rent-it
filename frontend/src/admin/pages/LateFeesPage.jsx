@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/pages/latefees.css';
 
+// Match Admin API base to Vite proxy + PHP paths
+const ADMIN_API_BASE = import.meta.env.DEV
+  ? "/api/rent-it/admin/api"
+  : "/rent-it/admin/api";
+
 const LateFeesPage = () => {
   // State for overdue items
   const [overdueItems, setOverdueItems] = useState([]);
@@ -38,7 +43,7 @@ const LateFeesPage = () => {
   const fetchLateFees = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/admin/api/get_latefees.php", {
+      const response = await fetch(`${ADMIN_API_BASE}/get_latefees.php`, {
         credentials: "include",
       });
       if (!response.ok) throw new Error("Failed to fetch late fees");

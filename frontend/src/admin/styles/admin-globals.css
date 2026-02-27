@@ -43,10 +43,13 @@
     min-height: 100vh;
     margin-left: var(--admin-sidebar-width);
     transition: margin-left var(--admin-transition-normal);
+    overflow-x: hidden;
+    max-width: calc(100vw - var(--admin-sidebar-width));
 }
 
 .admin-root .admin-wrapper.sidebar-collapsed .admin-main {
     margin-left: var(--admin-sidebar-collapsed);
+    max-width: calc(100vw - var(--admin-sidebar-collapsed));
 }
 
 .admin-root .admin-content {
@@ -286,6 +289,104 @@
     border: 0;
 }
 
+/* Spacing */
+.admin-root .mt-0 {
+    margin-top: 0 !important;
+}
+
+.admin-root .mt-sm {
+    margin-top: var(--admin-spacing-sm) !important;
+}
+
+.admin-root .mt-md {
+    margin-top: var(--admin-spacing-md) !important;
+}
+
+.admin-root .mt-lg {
+    margin-top: var(--admin-spacing-lg) !important;
+}
+
+.admin-root .mt-xl {
+    margin-top: var(--admin-spacing-xl) !important;
+}
+
+.admin-root .mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.admin-root .mb-sm {
+    margin-bottom: var(--admin-spacing-sm) !important;
+}
+
+.admin-root .mb-md {
+    margin-bottom: var(--admin-spacing-md) !important;
+}
+
+.admin-root .mb-lg {
+    margin-bottom: var(--admin-spacing-lg) !important;
+}
+
+.admin-root .mb-xl {
+    margin-bottom: var(--admin-spacing-xl) !important;
+}
+
+.admin-root .gap-sm {
+    gap: var(--admin-spacing-sm) !important;
+}
+
+.admin-root .gap-md {
+    gap: var(--admin-spacing-md) !important;
+}
+
+.admin-root .gap-lg {
+    gap: var(--admin-spacing-lg) !important;
+}
+
+.admin-root .gap-xl {
+    gap: var(--admin-spacing-xl) !important;
+}
+
+/* Flex */
+.admin-root .flex-row {
+    flex-direction: row !important;
+}
+
+.admin-root .flex-column {
+    flex-direction: column !important;
+}
+
+.admin-root .flex-wrap {
+    flex-wrap: wrap !important;
+}
+
+.admin-root .flex-1 {
+    flex: 1 !important;
+}
+
+.admin-root .items-center {
+    align-items: center !important;
+}
+
+.admin-root .items-start {
+    align-items: flex-start !important;
+}
+
+.admin-root .items-end {
+    align-items: flex-end !important;
+}
+
+.admin-root .justify-center {
+    justify-content: center !important;
+}
+
+.admin-root .justify-between {
+    justify-content: space-between !important;
+}
+
+.admin-root .justify-end {
+    justify-content: flex-end !important;
+}
+
 /* ============================
    ANIMATIONS
    ============================ */
@@ -445,16 +546,18 @@
 @media (max-width: 1024px) {
     .admin-root .admin-main {
         margin-left: 0;
+        max-width: 100vw;
     }
 
     .admin-root .admin-wrapper.sidebar-collapsed .admin-main {
         margin-left: 0;
+        max-width: 100vw;
     }
 }
 
 @media (max-width: 768px) {
     .admin-root .admin-content {
-        padding: var(--admin-spacing-md);
+        padding: var(--admin-spacing-lg);
     }
 
     .admin-root .admin-page-header {
@@ -466,11 +569,28 @@
         width: 100%;
         justify-content: flex-start;
     }
+
+    /* Typography scaling - tablet */
+    .admin-root h1 {
+        font-size: var(--admin-font-2xl);
+    }
+
+    .admin-root h2 {
+        font-size: var(--admin-font-xl);
+    }
+
+    .admin-root h3 {
+        font-size: var(--admin-font-lg);
+    }
+
+    .admin-root h4 {
+        font-size: var(--admin-font-md);
+    }
 }
 
 @media (max-width: 480px) {
     .admin-root .admin-content {
-        padding: var(--admin-spacing-sm);
+        padding: var(--admin-spacing-md);
     }
 
     .admin-root .admin-page-title {
@@ -489,9 +609,34 @@
         font-size: var(--admin-font-xs);
         padding: var(--admin-spacing-sm) var(--admin-spacing-md);
     }
+
+    /* Typography scaling - mobile */
+    .admin-root h1 {
+        font-size: var(--admin-font-xl);
+    }
+
+    .admin-root h2 {
+        font-size: var(--admin-font-lg);
+    }
+
+    .admin-root h3 {
+        font-size: var(--admin-font-md);
+    }
+
+    .admin-root h4 {
+        font-size: var(--admin-font-sm);
+    }
+
+    .admin-root {
+        font-size: var(--admin-font-sm);
+    }
 }
 
 @media (max-width: 375px) {
+    .admin-root .admin-content {
+        padding: var(--admin-spacing-sm) var(--admin-spacing-md);
+    }
+
     .admin-root .admin-page-title {
         font-size: var(--admin-font-lg);
     }
@@ -504,6 +649,23 @@
     .admin-root .admin-page-actions .btn {
         width: 100%;
         justify-content: center;
+    }
+
+    /* Typography scaling - ultra mobile */
+    .admin-root h1 {
+        font-size: var(--admin-font-lg);
+    }
+
+    .admin-root h2 {
+        font-size: var(--admin-font-md);
+    }
+
+    .admin-root h3 {
+        font-size: var(--admin-font-sm);
+    }
+
+    .admin-root h4 {
+        font-size: var(--admin-font-xs);
     }
 }
 

@@ -6,6 +6,11 @@ import "../styles/pages/admin-dashboard.css";
 import "../styles/pages/admin-login.css";
 import "../styles/pages/repairs.css";
 
+// Match Admin API base to Vite proxy + PHP paths
+const ADMIN_API_BASE = import.meta.env.DEV
+  ? "/api/rent-it/admin/api"
+  : "/rent-it/admin/api";
+
 export default function RepairsPage() {
   const [repairs, setRepairs] = useState([]);
   const [filteredRepairs, setFilteredRepairs] = useState([]);
@@ -26,11 +31,22 @@ export default function RepairsPage() {
   const fetchRepairs = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/admin/api/get_repairs.php", {
+      const response = await fetch(`${ADMIN_API_BASE}/get_repairs.php`, {
         credentials: "include",
       });
       if (!response.ok) throw new Error("Failed to fetch repairs");
-      const result = await response.json();
+
+      // Some environments are returning HTML/PHP error pages instead of JSON.
+      // Read as text first so we can log the raw response if JSON parsing fails.
+      const rawText = await response.text();
+      let result;
+      try {
+        result = JSON.parse(rawText);
+      } catch (parseError) {
+        console.error("Non-JSON response from get_repairs.php:", rawText);
+        throw new Error("Response from get_repairs.php is not valid JSON");
+      }
+
       if (result.success) {
         const repairsData = (result.data || []).map((repair) => ({
           id: `RPR-${String(repair.repair_id).padStart(3, "0")}`,

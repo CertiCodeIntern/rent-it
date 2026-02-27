@@ -1,58 +1,385 @@
-/* Styles for NewItemPage (if needed, import this in NewItemPage.jsx)
-   You can copy styles from admin/newitem/css/newitem.css or add custom tweaks here. */
+/* =====================================================
+   NEW ITEM PAGE STYLES
+   Admin page for adding new rental items
+   ===================================================== */
 
 .newitem-form-container {
-  margin-top: 2rem;
+  max-width: 1200px;
 }
 
 .newitem-form {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+}
+
+.form-column {
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.form-column-main, .form-column-side {
-  flex: 1;
-  min-width: 0;
-}
-
-.tags-preview {
-  margin-top: 0.5rem;
+.admin-card-title {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 10px;
 }
 
-.tag-preview {
-  background: #e0e7ef;
-  color: #2d3a4a;
-  border-radius: 12px;
-  padding: 0.2em 0.8em;
-  font-size: 0.95em;
+.admin-card-title svg {
+  opacity: 0.7;
 }
 
-.image-upload-area {
-  border: 2px dashed #bfc9d9;
-  border-radius: 8px;
-  padding: 1.5rem;
-  text-align: center;
-  background: #f8fafc;
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--admin-text-primary);
+  margin-bottom: 6px;
+}
+
+.form-label .required {
+  color: var(--admin-danger);
+  margin-left: 2px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--admin-text-primary);
+  background: var(--admin-bg-input, var(--admin-bg-secondary));
+  border: 1.5px solid var(--admin-border-medium);
+  border-radius: var(--admin-radius-md, 8px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--admin-accent);
+  box-shadow: 0 0 0 3px var(--admin-accent-muted);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--admin-text-muted);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-select {
   cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+.form-hint {
+  display: block;
+  font-size: 12px;
+  color: var(--admin-text-muted);
+  margin-top: 4px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Image Upload Area */
+.image-upload-area {
   position: relative;
+  border: 2px dashed var(--admin-border-medium);
+  border-radius: var(--admin-radius-lg, 12px);
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  background: var(--admin-bg-input, var(--admin-bg-secondary));
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-upload-area:hover {
+  border-color: var(--admin-accent);
+  background: var(--admin-accent-subtle);
+}
+
+.image-upload-area.dragover {
+  border-color: var(--admin-accent);
+  background: var(--admin-accent-muted);
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload-placeholder svg {
+  color: var(--admin-text-muted);
+  opacity: 0.6;
+}
+
+.upload-placeholder p {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--admin-text-secondary);
+  margin: 0;
+}
+
+.upload-placeholder span {
+  font-size: 12px;
+  color: var(--admin-text-muted);
+}
+
+.file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .image-preview {
   max-width: 100%;
-  max-height: 180px;
-  margin: 0 auto;
-  display: block;
-  border-radius: 8px;
+  max-height: 250px;
+  border-radius: var(--radius);
+  object-fit: contain;
 }
 
-.upload-placeholder {
-  color: #7a869a;
-  font-size: 1.1em;
+/* Toggle Switch */
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 8px 0;
 }
 
-.file-input {
+.toggle-label input[type="checkbox"] {
   display: none;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: var(--admin-border-medium);
+  border: 1.5px solid var(--admin-border-medium);
+  border-radius: 12px;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  flex-shrink: 0;
+}
+
+:root .toggle-switch {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .toggle-switch {
+  background: #CBD5E1;
+  border-color: #94A3B8;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  transition: left 0.25s ease, background 0.25s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+:root .toggle-switch::after {
+  background: #E2E8F0;
+}
+
+[data-theme="light"] .toggle-switch::after {
+  background: #FFFFFF;
+}
+
+.toggle-label input:checked+.toggle-switch {
+  background: var(--admin-accent);
+  border-color: var(--admin-accent);
+}
+
+.toggle-label input:checked+.toggle-switch::after {
+  left: 22px;
+  background: #FFFFFF;
+}
+
+.toggle-text {
+  font-size: 14px;
+  color: var(--admin-text-primary);
+}
+
+/* Tags Preview */
+.tags-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--admin-accent);
+  background: var(--admin-accent-muted);
+  border-radius: 20px;
+}
+
+.tag-pill button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.tag-pill button:hover {
+  opacity: 1;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .newitem-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-column-side {
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .image-upload-area {
+    min-height: 160px;
+    padding: 30px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .newitem-form {
+    gap: var(--admin-spacing-lg);
+  }
+
+  .form-section {
+    padding: var(--admin-spacing-md);
+  }
+
+  .form-section-title {
+    font-size: var(--admin-font-md);
+  }
+
+  .form-label {
+    font-size: var(--admin-font-xs);
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: var(--admin-font-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .image-upload-area {
+    min-height: 120px;
+    padding: 20px 12px;
+  }
+
+  .upload-text {
+    font-size: var(--admin-font-xs);
+  }
+
+  .form-section-title {
+    font-size: var(--admin-font-sm);
+  }
+
+  .form-section {
+    padding: var(--admin-spacing-sm) var(--admin-spacing-md);
+  }
+}
+
+@media (max-width: 375px) {
+  .image-upload-area {
+    min-height: 100px;
+    padding: 16px 10px;
+  }
+
+  .form-section {
+    padding: var(--admin-spacing-sm);
+  }
+
+  .form-section-title {
+    font-size: var(--admin-font-xs);
+  }
+
+  .newitem-form {
+    gap: var(--admin-spacing-md);
+  }
+
+  .upload-text {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .newitem-form {
+    gap: var(--admin-spacing-2xl);
+  }
+}
+
+@media (min-width: 2560px) {
+  .newitem-form {
+    gap: var(--admin-spacing-3xl);
+  }
+
+  .image-upload-area {
+    min-height: 280px;
+  }
 }

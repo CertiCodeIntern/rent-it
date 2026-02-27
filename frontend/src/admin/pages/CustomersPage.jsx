@@ -6,6 +6,11 @@ import "../styles/pages/admin-dashboard.css";
 import "../styles/pages/admin-login.css";
 import "../styles/pages/customers.css";
 
+// Match Admin API base to Vite proxy + PHP paths
+const ADMIN_API_BASE = import.meta.env.DEV
+  ? "/api/rent-it/admin/api"
+  : "/rent-it/admin/api";
+
 export default function CustomersPage() {
   const [customers, setCustomers] = useState([]);
   const [filteredCustomers, setFilteredCustomers] = useState([]);
@@ -25,7 +30,7 @@ export default function CustomersPage() {
   const fetchCustomers = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/admin/api/get_customers.php", {
+      const response = await fetch(`${ADMIN_API_BASE}/get_customers.php`, {
         credentials: "include",
       });
       if (!response.ok) throw new Error("Failed to fetch customers");

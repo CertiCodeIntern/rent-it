@@ -147,6 +147,7 @@ include '../../shared/php/db_connection.php';
                 </div>
                 
                 <div class="form-wrapper fade-in" id="formWrapper">
+                    <!-- Login form -->
                     <form id="loginForm">
                         <div class="auth-form-group stagger-child">
                             <label for="loginEmail">Email Address</label>
@@ -173,6 +174,19 @@ include '../../shared/php/db_connection.php';
                         <button type="submit" class="auth-btn stagger-child">Sign In  →</button>
                     </form>
 
+                    <!-- Register form (initially hidden, toggled by tabs via auth.js) -->
+                    <form id="registerForm" class="hidden">
+                        <div class="form-row stagger-child">
+                            <div class="auth-form-group">
+                                <label for="registerFullname">Full Name</label>
+                                <input type="text" id="registerFullname" placeholder="John Doe">
+                            </div>
+                            <div class="auth-form-group">
+                                <label for="registerPhone">Phone Number</label>
+                                <input type="tel" id="registerPhone" placeholder="+63 912 345 6789">
+                            </div>
+                        </div>
+
                         <div class="auth-form-group stagger-child">
                             <label for="registerEmail">Email Address</label>
                             <input type="email" id="registerEmail" placeholder="name@company.com" required>
@@ -182,11 +196,14 @@ include '../../shared/php/db_connection.php';
                             <div class="auth-form-group">
                                 <label for="registerPassword">Password</label>
                                 <div class="password-wrapper">
-                                    <input type="password" id="registerPassword" 
-                                           placeholder="••••••••" 
-                                           required 
-                                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                                    <input
+                                        type="password"
+                                        id="registerPassword"
+                                        placeholder="••••••••"
+                                        required
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                    >
                                     <button type="button" class="eye-btn" aria-label="Show password">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
@@ -198,7 +215,12 @@ include '../../shared/php/db_connection.php';
                             <div class="auth-form-group">
                                 <label for="registerConfirmPassword">Confirm Password</label>
                                 <div class="password-wrapper">
-                                    <input type="password" id="registerConfirmPassword" placeholder="••••••••" required>
+                                    <input
+                                        type="password"
+                                        id="registerConfirmPassword"
+                                        placeholder="••••••••"
+                                        required
+                                    >
                                     <button type="button" class="eye-btn" aria-label="Show password">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>

@@ -104,22 +104,21 @@
     align-items: center;
     gap: var(--admin-spacing-lg);
     margin-bottom: var(--admin-spacing-xl);
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .filter-tabs {
     display: flex;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 0;
+    background: var(--admin-bg-secondary);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-lg);
+    padding: var(--admin-spacing-xs);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
     white-space: nowrap;
-    flex: 1;
-    gap: var(--admin-spacing-xs);
+    flex-shrink: 0;
 }
 
 .filter-tabs::-webkit-scrollbar {
@@ -127,13 +126,13 @@
 }
 
 .filter-tab {
-    padding: var(--admin-spacing-xs) var(--admin-spacing-md);
-    border: 1px solid transparent;
+    padding: var(--admin-spacing-sm) var(--admin-spacing-lg);
+    border: none;
     background: transparent;
     color: var(--admin-text-secondary);
     font-size: var(--admin-font-sm);
     font-weight: var(--admin-font-medium);
-    border-radius: var(--admin-radius-full);
+    border-radius: var(--admin-radius-md);
     cursor: pointer;
     transition: all var(--admin-transition-fast);
     white-space: nowrap;
@@ -141,14 +140,12 @@
 }
 
 .filter-tab:hover {
-    background: var(--admin-bg-hover);
-    border-color: var(--admin-border-medium);
+    color: var(--admin-text-primary);
 }
 
 .filter-tab.active {
     background: var(--admin-accent);
     color: white;
-    border-color: var(--admin-accent);
 }
 
 .filter-search {
@@ -159,7 +156,8 @@
     border: 1px solid var(--admin-border-color);
     border-radius: var(--admin-radius-lg);
     padding: var(--admin-spacing-sm) var(--admin-spacing-lg);
-    flex: 0 1 350px;
+    flex: 1;
+    max-width: 400px;
     transition: all var(--admin-transition-fast);
 }
 
@@ -237,20 +235,8 @@
    ============================ */
 .dispatch-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: var(--admin-spacing-lg);
-}
-
-@media (max-width: 1440px) {
-    .dispatch-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 1024px) {
-    .dispatch-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 /* ============================
@@ -299,7 +285,7 @@
 }
 
 .dispatch-type.returning {
-    color: var(--admin-warning, #f59e0b);
+    color: var(--admin-warning);
 }
 
 .dispatch-type svg {
@@ -314,37 +300,16 @@
     border-radius: var(--admin-radius-full);
     font-size: var(--admin-font-xs);
     font-weight: var(--admin-font-medium);
-    text-transform: capitalize;
 }
 
-.dispatch-status.pending {
-    background: var(--admin-warning-subtle);
-    color: var(--admin-warning);
-}
-
-.dispatch-status.confirmed {
+.dispatch-status.scheduled {
     background: var(--admin-info-subtle);
     color: var(--admin-info);
 }
 
-.dispatch-status.out_for_delivery {
+.dispatch-status.in_transit {
     background: var(--admin-accent-subtle);
     color: var(--admin-accent);
-}
-
-.dispatch-status.active {
-    background: var(--admin-accent-subtle);
-    color: var(--admin-accent);
-}
-
-.dispatch-status.return_scheduled {
-    background: var(--admin-warning-subtle);
-    color: var(--admin-warning);
-}
-
-.dispatch-status.returned {
-    background: var(--admin-success-subtle);
-    color: var(--admin-success);
 }
 
 .dispatch-status.completed {
@@ -352,14 +317,9 @@
     color: var(--admin-success);
 }
 
-.dispatch-status.cancelled {
-    background: var(--admin-danger-subtle);
-    color: var(--admin-danger);
-}
-
-.dispatch-status.late {
-    background: var(--admin-danger-subtle);
-    color: var(--admin-danger);
+.dispatch-status.pending {
+    background: var(--admin-warning-subtle);
+    color: var(--admin-warning);
 }
 
 .dispatch-card-body {
@@ -478,11 +438,6 @@
     border-top: 1px solid var(--admin-border-color);
 }
 
-.dispatch-detail {
-    font-size: var(--admin-font-xs);
-    color: var(--admin-text-muted);
-}
-
 .dispatch-actions {
     display: flex;
     gap: var(--admin-spacing-xs);
@@ -522,7 +477,6 @@
     justify-content: center;
     padding: var(--admin-spacing-3xl);
     text-align: center;
-    grid-column: 1 / -1;
 }
 
 .dispatch-empty svg {
@@ -684,5 +638,95 @@
     .dispatch-grid {
         grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
         gap: var(--admin-spacing-2xl);
+    }
+}
+
+/* ============================
+   PAGINATION
+   ============================ */
+.dispatch-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--admin-spacing-md);
+    margin-top: var(--admin-spacing-xl);
+}
+
+.pagination-info {
+    font-size: var(--admin-font-sm);
+    color: var(--admin-text-muted);
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+}
+
+.pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--admin-border-color);
+    background: var(--admin-bg-secondary);
+    border-radius: var(--admin-radius-md);
+    color: var(--admin-text-primary);
+    cursor: pointer;
+    transition: all var(--admin-transition-fast);
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: var(--admin-bg-hover);
+    border-color: var(--admin-accent);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-pages {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-xs);
+}
+
+.page-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: var(--admin-radius-md);
+    color: var(--admin-text-secondary);
+    font-size: var(--admin-font-sm);
+    cursor: pointer;
+    transition: all var(--admin-transition-fast);
+}
+
+.page-btn:hover {
+    background: var(--admin-bg-hover);
+}
+
+.page-btn.active {
+    background: var(--admin-accent);
+    color: white;
+    font-weight: var(--admin-font-semibold);
+}
+
+.page-dots {
+    color: var(--admin-text-muted);
+    padding: 0 var(--admin-spacing-xs);
+}
+
+@media (max-width: 600px) {
+    .dispatch-pagination {
+        flex-direction: column;
+        align-items: center;
     }
 }

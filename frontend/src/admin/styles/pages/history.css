@@ -109,7 +109,8 @@
   background: var(--admin-bg-card);
   border: 1px solid var(--admin-border-color);
   border-radius: var(--admin-radius-xl);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   margin-bottom: var(--admin-spacing-lg);
 }
 
@@ -173,10 +174,6 @@
    RESPONSIVE TABLE
    ============================ */
 @media (max-width: 1024px) {
-  .history-table-container {
-    overflow-x: auto;
-  }
-
   .history-table {
     min-width: 800px;
   }
@@ -353,8 +350,8 @@
 }
 
 .history-table .status-badge.returned {
-  background: #DBEAFE;
-  color: #1D4ED8;
+  background: var(--admin-info-subtle);
+  color: var(--admin-info);
 }
 
 /* ============================

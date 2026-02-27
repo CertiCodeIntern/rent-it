@@ -187,6 +187,10 @@
         min-width: 120px;
         font-size: var(--admin-font-xs);
     }
+
+    .pagination-info {
+        font-size: var(--admin-font-xs);
+    }
 }
 
 /* ============================
@@ -196,7 +200,8 @@
     background: var(--admin-bg-card);
     border: 1px solid var(--admin-border-color);
     border-radius: var(--admin-radius-xl);
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     margin-bottom: var(--admin-spacing-lg);
 }
 
@@ -475,6 +480,23 @@
     color: var(--admin-success);
 }
 
+.action-btn.call.phone-revealed {
+    width: auto !important;
+    padding: 0.25rem 0.5rem;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    white-space: nowrap;
+    background: var(--admin-bg-secondary);
+    color: var(--admin-text-secondary);
+    border-radius: var(--admin-radius-sm);
+}
+
+.action-btn.call.phone-revealed:hover {
+    background: var(--admin-bg-hover);
+    color: var(--admin-text-primary);
+}
+
 /* ============================
    PAGINATION
    ============================ */
@@ -557,6 +579,22 @@
     padding: 0 var(--admin-spacing-xs);
 }
 
+@media (max-width: 600px) {
+    .customers-pagination {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* ============================
+   RESPONSIVE TABLE
+   ============================ */
+@media (max-width: 1024px) {
+    .customers-table {
+        min-width: 900px;
+    }
+}
+
 /* ============================
    EMPTY STATE
    ============================ */
@@ -590,62 +628,226 @@
 }
 
 /* ============================
-   RESPONSIVE
+   EMAIL MODAL
    ============================ */
-@media (max-width: 1024px) {
-    .customers-table-container {
-        overflow-x: auto;
-    }
+.email-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: var(--admin-spacing-xl);
 }
 
-@media (max-width: 600px) {
-    .customers-pagination {
-        flex-direction: column;
-        align-items: stretch;
+.email-modal-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.email-modal {
+    background: var(--admin-bg-card);
+    border-radius: var(--admin-radius-xl);
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--admin-shadow-2xl);
+    transform: scale(0.95) translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.email-modal-backdrop.open .email-modal {
+    transform: scale(1) translateY(0);
+}
+
+.email-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--admin-spacing-lg) var(--admin-spacing-xl);
+    border-bottom: 1px solid var(--admin-border-color);
+}
+
+.email-modal-title {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+    font-size: var(--admin-font-lg);
+    font-weight: var(--admin-font-semibold);
+    color: var(--admin-text-primary);
+    margin: 0;
+}
+
+.email-modal-title svg {
+    color: var(--admin-accent);
+}
+
+.email-modal-close {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--admin-radius-lg);
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--admin-text-muted);
+    transition: all var(--admin-transition-fast);
+}
+
+.email-modal-close:hover {
+    background: var(--admin-bg-input);
+    color: var(--admin-text-primary);
+}
+
+.email-modal-body {
+    padding: var(--admin-spacing-xl);
+    overflow-y: auto;
+    flex: 1;
+}
+
+.email-form-group {
+    margin-bottom: var(--admin-spacing-lg);
+}
+
+.email-form-group:last-child {
+    margin-bottom: 0;
+}
+
+.email-form-label {
+    display: block;
+    font-size: var(--admin-font-sm);
+    font-weight: var(--admin-font-medium);
+    color: var(--admin-text-secondary);
+    margin-bottom: var(--admin-spacing-sm);
+}
+
+.email-form-input,
+.email-form-select,
+.email-form-textarea {
+    width: 100%;
+    padding: var(--admin-spacing-md) var(--admin-spacing-lg);
+    font-size: var(--admin-font-sm);
+    font-family: var(--admin-font-family);
+    color: var(--admin-text-primary);
+    background: var(--admin-bg-input);
+    border: 1px solid var(--admin-border-color);
+    border-radius: var(--admin-radius-md);
+    transition: all var(--admin-transition-fast);
+}
+
+.email-form-input:focus,
+.email-form-select:focus,
+.email-form-textarea:focus {
+    outline: none;
+    border-color: var(--admin-accent);
+    background: var(--admin-bg-card);
+}
+
+.email-form-input[readonly] {
+    background: var(--admin-bg-secondary);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.email-form-textarea {
+    resize: vertical;
+    min-height: 150px;
+    line-height: 1.6;
+}
+
+.email-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--admin-spacing-md);
+    padding: var(--admin-spacing-lg) var(--admin-spacing-xl);
+    border-top: 1px solid var(--admin-border-color);
+    background: var(--admin-bg-secondary);
+}
+
+.email-send-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--admin-spacing-sm);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .email-modal-backdrop {
+        padding: var(--admin-spacing-md);
     }
 
-    .pagination-info {
-        text-align: center;
+    .email-modal {
+        max-height: 95vh;
     }
 
-    .pagination-controls {
-        justify-content: center;
-        width: 100%;
+    .email-modal-header {
+        padding: var(--admin-spacing-md) var(--admin-spacing-lg);
+    }
+
+    .email-modal-body {
+        padding: var(--admin-spacing-lg);
+    }
+
+    .email-modal-footer {
+        padding: var(--admin-spacing-md) var(--admin-spacing-lg);
     }
 }
 
 @media (max-width: 480px) {
     .customers-kpi-grid {
-        grid-template-columns: 1fr;
         gap: var(--admin-spacing-md);
-    }
-
-    .customers-kpi-grid .kpi-card {
-        padding: var(--admin-spacing-lg);
     }
 
     .customers-toolbar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: var(--admin-spacing-md);
+        gap: var(--admin-spacing-sm);
     }
 
     .customers-search {
-        max-width: none;
-        min-width: auto;
+        padding: var(--admin-spacing-xs) var(--admin-spacing-md);
+    }
+
+    .customers-search input {
+        font-size: var(--admin-font-xs);
+    }
+
+    .customers-search svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-select {
+        min-width: unset;
+        width: 100%;
+        font-size: var(--admin-font-xs);
+        padding: var(--admin-spacing-xs) var(--admin-spacing-md);
     }
 
     .customers-filters {
         flex-direction: column;
     }
 
-    .filter-select {
-        width: 100%;
-        min-width: auto;
+    .customers-pagination {
+        flex-direction: column;
+        align-items: center;
     }
 
     .pagination-info {
         font-size: var(--admin-font-xs);
+        text-align: center;
+        width: 100%;
     }
 
     .page-btn,
@@ -656,40 +858,49 @@
     }
 }
 
+/* ============================
+   EXTRA SMALL SCREEN (375px)
+   ============================ */
 @media (max-width: 375px) {
-    .customers-table th,
-    .customers-table td {
-        padding: var(--admin-spacing-sm) var(--admin-spacing-md);
-        font-size: var(--admin-font-xs);
-    }
-
     .customers-kpi-grid {
         gap: var(--admin-spacing-sm);
     }
 
-    .customers-kpi-grid .kpi-card {
-        gap: var(--admin-spacing-md);
+    .customers-toolbar {
+        gap: var(--admin-spacing-xs);
+    }
+
+    .customers-search {
+        padding: var(--admin-spacing-xs) var(--admin-spacing-sm);
+    }
+
+    .customers-pagination {
+        gap: var(--admin-spacing-xs);
+    }
+
+    .customers-pagination .page-btn,
+    .customers-pagination .pagination-btn {
+        min-width: 28px;
+        height: 28px;
+        font-size: 10px;
+    }
+
+    .email-modal-body {
         padding: var(--admin-spacing-md);
     }
 
-    .customers-kpi-grid .kpi-icon {
-        width: 40px;
-        height: 40px;
+    .email-modal-footer {
+        padding: var(--admin-spacing-sm) var(--admin-spacing-md);
     }
 
-    .customers-kpi-grid .kpi-icon svg {
-        width: 20px;
-        height: 20px;
+    .email-form-label {
+        font-size: var(--admin-font-xs);
     }
 
-    .customers-kpi-grid .kpi-value {
-        font-size: var(--admin-font-lg);
-    }
-
-    .page-btn,
-    .pagination-btn {
-        width: 28px;
-        height: 28px;
+    .email-form-input,
+    .email-form-select,
+    .email-form-textarea {
+        font-size: var(--admin-font-xs);
     }
 }
 
@@ -711,8 +922,11 @@
         gap: var(--admin-spacing-2xl);
     }
 
-    .customers-table th,
-    .customers-table td {
-        padding: var(--admin-spacing-lg) var(--admin-spacing-2xl);
+    .customers-search {
+        max-width: 600px;
+    }
+
+    .customers-table {
+        font-size: var(--admin-font-md);
     }
 }

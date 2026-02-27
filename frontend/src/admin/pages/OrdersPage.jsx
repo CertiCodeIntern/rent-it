@@ -7,6 +7,11 @@ import "../styles/pages/admin-dashboard.css";
 import "../styles/pages/admin-login.css";
 import "../styles/pages/orders.css";
 
+// Match Admin API base to Vite proxy + PHP paths
+const ADMIN_API_BASE = import.meta.env.DEV
+  ? "/api/rent-it/admin/api"
+  : "/rent-it/admin/api";
+
 export default function OrdersPage() {
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
@@ -25,7 +30,7 @@ export default function OrdersPage() {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/admin/api/get_orders.php", {
+      const response = await fetch(`${ADMIN_API_BASE}/get_orders.php`, {
         credentials: "include",
       });
       if (!response.ok) throw new Error("Failed to fetch orders");
@@ -252,7 +257,7 @@ export default function OrdersPage() {
   const handleConfirmOrder = async (orderId) => {
     if (!confirm("Confirm this order?")) return;
     try {
-      const response = await fetch("/admin/api/update_order_status.php", {
+      const response = await fetch(`${ADMIN_API_BASE}/update_order_status.php`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -275,7 +280,7 @@ export default function OrdersPage() {
   const handleCancelOrder = async (orderId) => {
     if (!confirm("Are you sure you want to cancel this order?")) return;
     try {
-      const response = await fetch("/admin/api/update_order_status.php", {
+      const response = await fetch(`${ADMIN_API_BASE}/update_order_status.php`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
