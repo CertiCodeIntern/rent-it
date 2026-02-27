@@ -1,0 +1,736 @@
+/* =====================================================
+   ADMIN AUTH STYLES (copied from admin/auth/css/auth.css)
+   Scoped inside .admin-root to avoid conflicts with client styles.
+   Uses shared CSS variables from theme.css and globals.css.
+   ===================================================== */
+
+/* =====================================================
+   SHARED CSS VARIABLES (from shared/css/globals.css & theme.css)
+   Duplicated here so admin login works standalone in Vite.
+   ===================================================== */
+.admin-root {
+    /* Color Palette */
+    --primary-color: #FF6B00;
+    --primary-hover: #E55F00;
+    --primary-light: #FF8533;
+    --secondary-color: #1E3A5F;
+
+    /* Neutrals */
+    --gray-50: #F8FAFC;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-300: #CBD5E1;
+    --gray-400: #94A3B8;
+    --gray-500: #64748B;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1E293B;
+    --gray-900: #0F172A;
+    --white: #FFFFFF;
+
+    /* Spacing (rem-based, matching globals.css) */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+
+    /* Borders */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --line-height-relaxed: 1.625;
+
+    /* Transitions */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+    /* Theme (light defaults) */
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #F1F5F9;
+    --bg-tertiary: #E2E8F0;
+    --bg-card: #FFFFFF;
+    --bg-elevated: #FFFFFF;
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #94A3B8;
+    --border-color: #E2E8F0;
+
+    /* Base styles */
+    font-family: var(--font-family);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Dark theme overrides */
+.admin-root[data-theme="dark"] {
+    --bg-primary: #0F172A;
+    --bg-secondary: #1E293B;
+    --bg-tertiary: #334155;
+    --bg-card: #1E293B;
+    --bg-elevated: #243447;
+    --text-primary: #F1F5F9;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* =====================================================
+   THEME TOGGLE (from theme.css auth-theme-toggle)
+   ===================================================== */
+.admin-root .auth-theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+}
+
+.admin-root .auth-theme-toggle:hover {
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.admin-root .auth-theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Sun/Moon icon toggling */
+.admin-root .auth-theme-toggle .sun-icon {
+    position: absolute;
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+.admin-root .auth-theme-toggle .moon-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+.admin-root[data-theme="dark"] .auth-theme-toggle .sun-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+.admin-root[data-theme="dark"] .auth-theme-toggle .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+/* =====================================================
+   MAIN CONTAINER - SPLIT LAYOUT
+   ===================================================== */
+.admin-root .admin-login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* =====================================================
+   LEFT PANEL - BRANDING
+   ===================================================== */
+.admin-root .admin-branding {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    padding: var(--spacing-3xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-root .admin-branding::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.1) 0%, transparent 50%);
+    animation: pulse 15s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.3;
+    }
+}
+
+.admin-root .branding-content {
+    position: relative;
+    z-index: 1;
+}
+
+.admin-root .admin-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.admin-root .admin-logo .logo-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.admin-root .admin-logo .logo-text {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--white);
+}
+
+.admin-root .branding-title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--white);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+.admin-root .branding-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--gray-400);
+    margin-bottom: var(--spacing-3xl);
+    max-width: 400px;
+    line-height: var(--line-height-relaxed);
+}
+
+.admin-root .branding-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.admin-root .branding-features .feature {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    color: var(--gray-300);
+    font-size: var(--font-size-md);
+}
+
+.admin-root .branding-features .feature-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+}
+
+.admin-root .branding-footer {
+    position: relative;
+    z-index: 1;
+    color: var(--gray-500);
+    font-size: var(--font-size-sm);
+}
+
+/* =====================================================
+   RIGHT PANEL - LOGIN FORM
+   ===================================================== */
+.admin-root .admin-form-panel {
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3xl);
+}
+
+.admin-root .form-wrapper {
+    width: 100%;
+    max-width: 420px;
+}
+
+.admin-root .form-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.admin-root .admin-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: linear-gradient(135deg, var(--primary-color), #ff8533);
+    color: var(--white);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.admin-root .form-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-900);
+    margin-bottom: var(--spacing-sm);
+}
+
+.admin-root .form-subtitle {
+    color: var(--gray-500);
+    font-size: var(--font-size-md);
+}
+
+/* =====================================================
+   FORM STYLES
+   ===================================================== */
+.admin-root .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.admin-root .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.admin-root .form-group label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--gray-700);
+}
+
+.admin-root .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.admin-root .input-wrapper .input-icon {
+    position: absolute;
+    left: var(--spacing-md);
+    width: 18px;
+    height: 18px;
+    color: var(--gray-400);
+    pointer-events: none;
+}
+
+.admin-root .input-wrapper input {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 48px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family);
+    transition: all 0.2s ease;
+    background: var(--gray-50);
+    color: var(--gray-900);
+}
+
+.admin-root .input-wrapper input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.1);
+}
+
+.admin-root .input-wrapper input:focus+.input-icon,
+.admin-root .input-wrapper:focus-within .input-icon {
+    color: var(--primary-color);
+}
+
+.admin-root .input-wrapper input::placeholder {
+    color: var(--gray-400);
+}
+
+.admin-root .toggle-password {
+    position: absolute;
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-root .toggle-password .eye-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--gray-400);
+    transition: color 0.2s;
+}
+
+.admin-root .toggle-password:hover .eye-icon {
+    color: var(--gray-600);
+}
+
+/* =====================================================
+   FORM OPTIONS
+   ===================================================== */
+.admin-root .form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-root .remember-me {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--gray-600);
+}
+
+.admin-root .remember-me input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.admin-root .forgot-link {
+    font-size: var(--font-size-sm);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+}
+
+.admin-root .forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* =====================================================
+   ERROR MESSAGE
+   ===================================================== */
+.admin-root .error-message {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    animation: shakeIn 0.3s ease;
+}
+
+@keyframes shakeIn {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* =====================================================
+   LOGIN BUTTON
+   ===================================================== */
+.admin-root .btn-login {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: linear-gradient(135deg, var(--primary-color), #ff8533);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    min-height: 48px;
+}
+
+.admin-root .btn-login:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+}
+
+.admin-root .btn-login:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.admin-root .btn-login:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.admin-root .btn-loader {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =====================================================
+   FORM FOOTER
+   ===================================================== */
+.admin-root .form-footer {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--gray-200);
+}
+
+.admin-root .form-footer p {
+    color: var(--gray-500);
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+.admin-root .form-footer a {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+}
+
+.admin-root .form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* =====================================================
+   DEMO CREDENTIALS
+   ===================================================== */
+.admin-root .demo-credentials {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border-radius: var(--radius-lg);
+    border: 1px dashed #0ea5e9;
+}
+
+.admin-root .demo-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: #0369a1;
+    margin-bottom: var(--spacing-sm);
+}
+
+.admin-root .demo-title svg {
+    color: #0369a1;
+}
+
+.admin-root .credentials-box {
+    font-family: monospace;
+    font-size: var(--font-size-sm);
+    color: var(--gray-700);
+}
+
+.admin-root .credentials-box p {
+    margin-bottom: var(--spacing-xs);
+}
+
+.admin-root .credentials-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1024px) {
+    .admin-root .admin-login-container {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-root .admin-branding {
+        display: none;
+    }
+
+    .admin-root .admin-form-panel {
+        padding: var(--spacing-xl);
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-root .form-wrapper {
+        padding: 0;
+    }
+
+    .admin-root .form-title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .admin-root .form-options {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: flex-start;
+    }
+}
+
+/* =====================================================
+   DARK MODE SUPPORT
+   ===================================================== */
+.admin-root[data-theme="dark"] {
+    background: var(--bg-secondary);
+}
+
+.admin-root[data-theme="dark"] .admin-form-panel {
+    background: var(--bg-primary);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.admin-root[data-theme="dark"] .form-title {
+    color: var(--text-primary);
+}
+
+.admin-root[data-theme="dark"] .form-subtitle {
+    color: var(--text-secondary);
+}
+
+.admin-root[data-theme="dark"] .form-group label {
+    color: var(--text-secondary);
+}
+
+.admin-root[data-theme="dark"] .input-wrapper input {
+    background: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.admin-root[data-theme="dark"] .input-wrapper input:focus {
+    background: var(--bg-elevated);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.2);
+}
+
+.admin-root[data-theme="dark"] .input-wrapper input::placeholder {
+    color: var(--text-muted);
+}
+
+.admin-root[data-theme="dark"] .input-wrapper .input-icon {
+    color: var(--text-muted);
+}
+
+.admin-root[data-theme="dark"] .toggle-password .eye-icon {
+    color: var(--text-muted);
+}
+
+.admin-root[data-theme="dark"] .toggle-password:hover .eye-icon {
+    color: var(--text-primary);
+}
+
+.admin-root[data-theme="dark"] .form-options label {
+    color: var(--text-secondary);
+}
+
+.admin-root[data-theme="dark"] .form-footer {
+    border-color: var(--border-color);
+}
+
+.admin-root[data-theme="dark"] .form-footer p {
+    color: var(--text-secondary);
+}
+
+.admin-root[data-theme="dark"] .error-message {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}
+
+.admin-root[data-theme="dark"] .demo-credentials {
+    background: rgba(14, 165, 233, 0.1);
+    border-color: rgba(14, 165, 233, 0.3);
+}
+
+.admin-root[data-theme="dark"] .demo-title {
+    color: #38bdf8;
+}
+
+.admin-root[data-theme="dark"] .credentials-box {
+    color: var(--text-secondary);
+}
+
+/* =====================================================
+   ADMIN LOADING SCREEN
+   ===================================================== */
+.admin-root .admin-loading-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--gray-900);
+}
+
+.admin-root .admin-loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.08);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}

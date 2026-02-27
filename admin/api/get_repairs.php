@@ -15,11 +15,10 @@ require_once __DIR__ . '/../../config.php';
 
 header('Content-Type: application/json');
 
-// Get repairs joined with item data
+// Get repairs joined with item data (repair table has no quantity column; default to 1 in response)
 $query = "SELECT 
     r.repair_id,
     r.item_id,
-    r.quantity,
     r.issue_type,
     r.priority,
     r.status,

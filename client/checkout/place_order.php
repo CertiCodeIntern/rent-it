@@ -13,21 +13,57 @@ try {
     $total_price = $_POST['grand_total'] ?? 0;
     $venue = $_POST['venue'] ?? 'Home Delivery';
     
-    // Kunin ang cart_ids mula sa JavaScript (e.g., "12,15")
-    $cart_ids = $_POST['cart_ids'] ?? '';
+    // Kunin ang cart_ids mula sa JavaScript
+    // Frontend currently sends this as a JSON array string (e.g. "[12,15]")
+    // but we also support simple CSV ("12,15") for backward compatibility.
+    $cart_ids_raw = $_POST['cart_ids'] ?? '';
 
-    if (empty($cart_ids)) {
+    if (empty($cart_ids_raw)) {
         throw new Exception("No items selected for checkout.");
     }
 
+    // Normalize cart_ids into a cleaned comma-separated list of integers
+    $cart_ids_list = [];
+    if (is_string($cart_ids_raw)) {
+        $trimmed = trim($cart_ids_raw);
+
+        // JSON array format, e.g. "[12,15]"
+        if (strlen($trimmed) > 0 && $trimmed[0] === '[') {
+            $decoded = json_decode($trimmed, true);
+            if (is_array($decoded)) {
+                foreach ($decoded as $cid) {
+                    $cid = intval($cid);
+                    if ($cid > 0) {
+                        $cart_ids_list[] = $cid;
+                    }
+                }
+            }
+        } else {
+            // CSV format, e.g. "12,15"
+            $parts = explode(',', $trimmed);
+            foreach ($parts as $part) {
+                $cid = intval(trim($part));
+                if ($cid > 0) {
+                    $cart_ids_list[] = $cid;
+                }
+            }
+        }
+    }
+
+    if (empty($cart_ids_list)) {
+        throw new Exception("Invalid cart selection.");
+    }
+
+    $cart_ids_sql = implode(',', $cart_ids_list);
+
     $conn->begin_transaction();
 
-    // 1. FIX: Kunin lang ang SELECTED items gamit ang IN ($cart_ids)
+    // 1. FIX: Kunin lang ang SELECTED items gamit ang IN ($cart_ids_sql)
     // Dito natin masisiguro na hindi mag-1970 ang date dahil tama ang mahihila nating row
     $cart_query = "SELECT c.item_id, c.quantity, i.price_per_day, c.start_date, c.end_date 
                    FROM cart c 
                    JOIN item i ON c.item_id = i.item_id 
-                   WHERE c.user_id = ? AND c.id IN ($cart_ids)";
+                   WHERE c.user_id = ? AND c.id IN ($cart_ids_sql)";
     
     $stmt_cart = $conn->prepare($cart_query);
     $stmt_cart->bind_param("i", $user_id);
@@ -99,7 +135,7 @@ try {
 
     // 4. FIX: Burahin LANG ang mga items na binili (gamit ang IN clause)
     // Para kung may itinira siyang items sa cart, nandoon pa rin yun.
-    $delete_query = "DELETE FROM cart WHERE user_id = ? AND id IN ($cart_ids)";
+    $delete_query = "DELETE FROM cart WHERE user_id = ? AND id IN ($cart_ids_sql)";
     $stmt_delete = $conn->prepare($delete_query);
     $stmt_delete->bind_param("i", $user_id);
     $stmt_delete->execute();

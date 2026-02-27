@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import MainLayout from '../layouts/MainLayout';
 import './ContactPage.css';
 
-const BASE_URL = 'http://localhost/rent-it';
-
 function ContactPage() {
   const [formState, setFormState] = useState({
     name: '',
