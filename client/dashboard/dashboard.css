@@ -1294,7 +1294,7 @@
 
 /* Sidebar smooth transition */
 .sidebar {
-    transition: width 0.3s ease;
+    transition: width 0.3s ease, transform 0.3s ease;
 }
 
 .sidebar-header {
@@ -1480,8 +1480,9 @@
     border-bottom: 1px solid var(--client-shell-border);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 var(--spacing-xl);
+    justify-content: flex-start;
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-lg);
     position: fixed;
     top: 0;
     left: var(--sidebar-width);
@@ -1499,6 +1500,8 @@
     letter-spacing: -0.01em;
     line-height: 1.2;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: none;
 }
 
@@ -1527,15 +1530,23 @@
 
 .menu-btn {
     display: none;
-    padding: var(--spacing-sm);
+    width: 40px;
+    height: 40px;
+    padding: 0;
     background: transparent;
     border: none;
-    font-size: var(--font-size-xl);
+    border-radius: var(--radius);
     color: var(--client-shell-text);
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
 }
 
 .menu-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
     stroke: currentColor;
 }
 
@@ -1546,7 +1557,8 @@
 .topbar-actions {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
+    margin-left: auto;
 }
 
 .topbar-user {
@@ -1556,8 +1568,8 @@
 }
 
 .topbar-user-avatar {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: var(--accent);
     color: var(--white);
@@ -1760,7 +1772,7 @@
 /* =====================================================
    RESPONSIVE
    ===================================================== */
-@media (max-width: 850px) and (min-width: 769px) {
+@media (max-width: 1024px) and (min-width: 769px) {
     /* Keep sidebar labels visible in the tablet band so icons aren't alone */
     .sidebar.collapsed {
         width: var(--sidebar-width);
@@ -1780,7 +1792,7 @@
         justify-content: flex-start;
     }
 }
-@media (max-width: 850px) {
+@media (max-width: 1024px) {
     .main-content {
         margin-left: 0;
         overflow-x: hidden;
@@ -1795,6 +1807,10 @@
     
     .sidebar {
         transform: translateX(-100%);
+        width: min(280px, calc(100vw - 3rem));
+        max-width: calc(100vw - 3rem);
+        overflow: hidden;
+        overflow-y: auto;
     }
     
     .sidebar.open {
@@ -1808,15 +1824,16 @@
     
     /* Force sidebar to full width on mobile, no collapsed state */
     .sidebar.collapsed {
-        width: var(--sidebar-width);
+        width: min(280px, calc(100vw - 3rem));
+        max-width: calc(100vw - 3rem);
     }
     
     .menu-btn {
-        display: block;
+        display: flex;
     }
     
     .topbar {
-        padding: 0 var(--spacing-md);
+        padding: 0 var(--spacing-lg);
         left: 0 !important;
         width: 100% !important;
     }
@@ -2851,7 +2868,8 @@
         left: 0;
         top: 0;
         bottom: 0;
-        width: 280px !important;
+        width: min(280px, calc(100vw - 3rem)) !important;
+        max-width: calc(100vw - 3rem) !important;
         transform: translateX(-100%);
         z-index: 1000;
     }
@@ -2863,7 +2881,8 @@
     /* Reset collapsed styles on mobile - show everything */
     .sidebar.collapsed,
     .sidebar.open.collapsed {
-        width: 280px !important;
+        width: min(280px, calc(100vw - 3rem)) !important;
+        max-width: calc(100vw - 3rem) !important;
     }
     
     .sidebar.open .sidebar-logo-text,
@@ -2911,7 +2930,7 @@
     }
     
     .menu-btn {
-        display: block;
+        display: flex;
     }
     
     .topbar {
@@ -2991,6 +3010,13 @@
 
 /* Mobile portrait (480px and below) */
 @media (max-width: 480px) {
+    .sidebar,
+    .sidebar.collapsed,
+    .sidebar.open.collapsed {
+        width: min(280px, calc(100vw - 2.75rem)) !important;
+        max-width: calc(100vw - 2.75rem) !important;
+    }
+
     .page-title {
         font-size: 22px;
     }
@@ -3136,13 +3162,20 @@
    MOBILE SIDEBAR ACTIONS
    Match admin footer behavior on mobile widths
    ===================================================== */
-@media (max-width: 850px) {
+@media (max-width: 1024px) {
     .mobile-only-actions {
         display: flex;
     }
 }
 
 @media (max-width: 375px) {
+    .sidebar,
+    .sidebar.collapsed,
+    .sidebar.open.collapsed {
+        width: min(280px, calc(100vw - 2.5rem)) !important;
+        max-width: calc(100vw - 2.5rem) !important;
+    }
+
     /* Hide topbar actions on ultra-small screens */
     .topbar-actions .notification-wrapper,
     .topbar-actions .theme-toggle {
