@@ -506,8 +506,17 @@ const avatarContent = user.profile_picture
 
 container.innerHTML = `
 <header class="topbar">
-    <button class="menu-btn" id="menuBtn" title="Toggle sidebar menu">☰</button>
-    <h1 class="topbar-title" id="pageTitle">${title}</h1>
+    <div class="header-left">
+        <button class="menu-btn" id="menuBtn" title="Toggle sidebar menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+        </button>
+        <h1 class="topbar-title" id="pageTitle">${title}</h1>
+    </div>
+    <div class="header-right">
     <div class="topbar-actions">
         
         <button class="btn-icon theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark theme">
@@ -528,12 +537,12 @@ container.innerHTML = `
         </button>
 <div class="notification-wrapper">
     <button class="btn-icon notification-btn" id="notificationBtn" aria-label="Notifications" title="Notifications">
-        <svg class="notification-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+        <svg class="notification-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
             <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
             <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
         </svg>
         
-        <span class="notification-badge" id="clientNotifBadge" style="display: none;">0</span>
+        <!-- <span class="notification-badge" id="clientNotifBadge" style="display: none;">0</span> -->
     </button>
 
     <div class="notification-dropdown" id="notificationDropdown">
@@ -588,6 +597,7 @@ container.innerHTML = `
                 </nav>
             </div>
         </div>
+    </div>
     </div>
 </header>
 
@@ -1381,3 +1391,4 @@ function loadClientNotifications() {
 // Tawagin ang function agad at i-set ang refresh rate (halimbawa, every 10 seconds)
 loadClientNotifications();
 setInterval(loadClientNotifications, 10000);
+

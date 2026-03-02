@@ -407,7 +407,7 @@ const AdminComponents = {
                 
                 <div class="header-right">
                     <button class="theme-toggle" id="themeToggle" title="Toggle light/dark theme">
-                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"/>
                             <line x1="12" y1="1" x2="12" y2="3"/>
                             <line x1="12" y1="21" x2="12" y2="23"/>
@@ -416,20 +416,20 @@ const AdminComponents = {
                             <line x1="1" y1="12" x2="3" y2="12"/>
                             <line x1="21" y1="12" x2="23" y2="12"/>
                             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                            
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
                         </svg>
-                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                         </svg>
                     </button>
 
                     <div class="dropdown notification-wrapper" id="notificationDropdownWrapper">
                         <button class="header-btn" id="notificationBtn" title="Notifications">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
                                 <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
                                 <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
                             </svg>
-                            <span class="notification-badge">3</span>
+                            <!-- <span class="notification-badge">3</span> -->
                         </button>
                        <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
  <div class="dropdown-header">

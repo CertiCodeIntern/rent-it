@@ -21,7 +21,13 @@
 
 @media (max-width: 600px) {
     .kpi-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* 1x2x1 mobile pattern: first and last cards full-width */
+    .kpi-grid > .kpi-card:first-child,
+    .kpi-grid > .kpi-card:last-child {
+        grid-column: 1 / -1;
     }
 }
 

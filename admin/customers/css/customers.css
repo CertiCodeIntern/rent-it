@@ -23,12 +23,12 @@
     background: var(--admin-bg-card);
     border: 1px solid var(--admin-border-color);
     border-radius: var(--admin-radius-xl);
-    min-height: 170px;
+    min-height: 156px;
 }
 
 .customers-kpi-grid .kpi-icon {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
     border-radius: var(--admin-radius-lg);
     display: flex;
     align-items: center;
@@ -37,8 +37,8 @@
 }
 
 .customers-kpi-grid .kpi-icon svg {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
 }
 
 .customers-kpi-grid .kpi-icon.info {
@@ -72,7 +72,7 @@
     font-size: var(--admin-font-2xl);
     font-weight: var(--admin-font-bold);
     color: var(--admin-text-primary);
-    line-height: 1.2;
+    line-height: 1;
 }
 
 .customers-kpi-grid .kpi-label {
@@ -94,17 +94,20 @@
     }
 
     .customers-kpi-grid .kpi-card {
-        min-height: 156px;
+        min-height: 142px;
     }
 
     .customers-kpi-grid .kpi-icon {
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
     }
 
-    .customers-kpi-grid .kpi-icon svg {
-        width: 22px;
-        height: 22px;
+    .customers-kpi-grid .kpi-value {
+        font-size: var(--admin-font-2xl);
+    }
+
+    .customers-kpi-grid .kpi-label {
+        font-size: var(--admin-font-sm);
     }
 }
 
@@ -834,11 +837,24 @@
     .customers-kpi-grid .kpi-card {
         padding: var(--admin-spacing-md);
         gap: var(--admin-spacing-sm);
-        min-height: 142px;
+        min-height: 132px;
+    }
+
+    .customers-kpi-grid .kpi-icon {
+        width: 40px;
+        height: 40px;
     }
 
     .customers-kpi-grid .kpi-content {
         align-items: flex-start;
+    }
+
+    .customers-kpi-grid .kpi-value {
+        font-size: var(--admin-font-lg);
+    }
+
+    .customers-kpi-grid .kpi-label {
+        font-size: var(--admin-font-xs);
     }
 
     .customers-kpi-grid .kpi-value,
@@ -902,7 +918,22 @@
     }
 
     .customers-kpi-grid .kpi-card {
-        min-height: 132px;
+        padding: var(--admin-spacing-sm) var(--admin-spacing-md);
+        gap: var(--admin-spacing-sm);
+        min-height: 124px;
+    }
+
+    .customers-kpi-grid .kpi-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .customers-kpi-grid .kpi-value {
+        font-size: var(--admin-font-md);
+    }
+
+    .customers-kpi-grid .kpi-label {
+        font-size: 10px;
     }
 
     .customers-toolbar {
