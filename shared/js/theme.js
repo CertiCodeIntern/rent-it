@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * RENTIT THEME MODULE
+ * Rentertain THEME MODULE
  * Dark/Light Mode Toggle with localStorage Persistence
  * 
  * This script runs immediately to prevent "theme flash" on load.

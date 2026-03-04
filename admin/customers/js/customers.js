@@ -647,7 +647,7 @@ function updateEmailTemplate(template, customerName) {
 
     const templates = {
         reminder: {
-            subject: 'Rental Reminder - RentIt',
+            subject: 'Rental Reminder - Rentertain',
             message: `Hi ${customerName},
 
 This is a friendly reminder about your upcoming rental.
@@ -660,20 +660,20 @@ Please remember to:
 If you have any questions, please don't hesitate to contact us.
 
 Best regards,
-RentIt Team`
+Rentertain Team`
         },
         confirmation: {
-            subject: 'Booking Confirmed - RentIt',
+            subject: 'Booking Confirmed - Rentertain',
             message: `Hi ${customerName},
 
 Great news! Your booking has been confirmed.
 
 Your rental details have been saved in our system. You will receive a reminder before your pickup date.
 
-Thank you for choosing RentIt!
+Thank you for choosing Rentertain!
 
 Best regards,
-RentIt Team`
+Rentertain Team`
         },
         overdue: {
             subject: 'Overdue Notice - Action Required',
@@ -688,20 +688,20 @@ Current late fees may apply as per our rental agreement.
 Please contact us if you have any questions or concerns.
 
 Best regards,
-RentIt Team`
+Rentertain Team`
         },
         thankyou: {
             subject: 'Thank You for Renting with Us!',
             message: `Hi ${customerName},
 
-Thank you for choosing RentIt for your rental needs!
+Thank you for choosing Rentertain for your rental needs!
 
 We hope you had a great experience with our equipment. We would love to hear your feedback.
 
 Looking forward to serving you again soon!
 
 Best regards,
-RentIt Team`
+Rentertain Team`
         },
         custom: {
             subject: '',

@@ -88,7 +88,7 @@ $total_count = count($orders);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Returns & Extensions - RentIt</title>
+    <title>Returns & Extensions - Rentertain</title>
     <link rel="stylesheet" href="../../shared/css/theme.css">
     <link rel="stylesheet" href="../../shared/css/globals.css">
     <link rel="stylesheet" href="../dashboard/dashboard.css">

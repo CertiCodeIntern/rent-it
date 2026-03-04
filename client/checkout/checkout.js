@@ -1,5 +1,5 @@
 /**
- * RentIt - Checkout Page JavaScript
+ * Rentertain - Checkout Page JavaScript
  * Manages checkout functionality and order confirmation
  */
 

@@ -8,77 +8,29 @@
    ============================ */
 .customers-kpi-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--admin-spacing-lg);
     margin-bottom: var(--admin-spacing-xl);
+    align-items: stretch;
 }
 
 .customers-kpi-grid .kpi-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: var(--admin-spacing-md);
-    padding: var(--admin-spacing-lg);
-    background: var(--admin-bg-card);
-    border: 1px solid var(--admin-border-color);
-    border-radius: var(--admin-radius-xl);
-    min-height: 156px;
-}
-
-.customers-kpi-grid .kpi-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--admin-radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.customers-kpi-grid .kpi-icon svg {
-    width: 24px;
-    height: 24px;
-}
-
-.customers-kpi-grid .kpi-icon.info {
-    background: var(--admin-info-subtle);
-    color: var(--admin-info);
-}
-
-.customers-kpi-grid .kpi-icon.accent {
-    background: var(--admin-accent-subtle);
-    color: var(--admin-accent);
-}
-
-.customers-kpi-grid .kpi-icon.success {
-    background: var(--admin-success-subtle);
-    color: var(--admin-success);
-}
-
-.customers-kpi-grid .kpi-icon.warning {
-    background: var(--admin-warning-subtle);
-    color: var(--admin-warning);
+    height: 100%;
 }
 
 .customers-kpi-grid .kpi-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
 }
 
 .customers-kpi-grid .kpi-value {
-    font-size: var(--admin-font-2xl);
-    font-weight: var(--admin-font-bold);
-    color: var(--admin-text-primary);
-    line-height: 1;
+    order: 2;
 }
 
 .customers-kpi-grid .kpi-label {
-    font-size: var(--admin-font-sm);
-    color: var(--admin-text-muted);
-    margin-top: 2px;
+    order: 1;
+    margin-bottom: var(--admin-spacing-xs);
 }
 
 @media (max-width: 1200px) {
@@ -90,24 +42,6 @@
 @media (max-width: 600px) {
     .customers-kpi-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--admin-spacing-md);
-    }
-
-    .customers-kpi-grid .kpi-card {
-        min-height: 142px;
-    }
-
-    .customers-kpi-grid .kpi-icon {
-        width: 44px;
-        height: 44px;
-    }
-
-    .customers-kpi-grid .kpi-value {
-        font-size: var(--admin-font-2xl);
-    }
-
-    .customers-kpi-grid .kpi-label {
-        font-size: var(--admin-font-sm);
     }
 }
 
@@ -830,37 +764,7 @@
 }
 
 @media (max-width: 480px) {
-    .customers-kpi-grid {
-        gap: var(--admin-spacing-md);
-    }
-
-    .customers-kpi-grid .kpi-card {
-        padding: var(--admin-spacing-md);
-        gap: var(--admin-spacing-sm);
-        min-height: 132px;
-    }
-
-    .customers-kpi-grid .kpi-icon {
-        width: 40px;
-        height: 40px;
-    }
-
-    .customers-kpi-grid .kpi-content {
-        align-items: flex-start;
-    }
-
-    .customers-kpi-grid .kpi-value {
-        font-size: var(--admin-font-lg);
-    }
-
-    .customers-kpi-grid .kpi-label {
-        font-size: var(--admin-font-xs);
-    }
-
-    .customers-kpi-grid .kpi-value,
-    .customers-kpi-grid .kpi-label {
-        text-align: left;
-    }
+    .customers-kpi-grid { gap: var(--admin-spacing-md); }
 
     .customers-toolbar {
         gap: var(--admin-spacing-sm);
@@ -913,28 +817,7 @@
    EXTRA SMALL SCREEN (375px)
    ============================ */
 @media (max-width: 375px) {
-    .customers-kpi-grid {
-        gap: var(--admin-spacing-sm);
-    }
-
-    .customers-kpi-grid .kpi-card {
-        padding: var(--admin-spacing-sm) var(--admin-spacing-md);
-        gap: var(--admin-spacing-sm);
-        min-height: 124px;
-    }
-
-    .customers-kpi-grid .kpi-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .customers-kpi-grid .kpi-value {
-        font-size: var(--admin-font-md);
-    }
-
-    .customers-kpi-grid .kpi-label {
-        font-size: 10px;
-    }
+    .customers-kpi-grid { gap: var(--admin-spacing-sm); }
 
     .customers-toolbar {
         gap: var(--admin-spacing-xs);

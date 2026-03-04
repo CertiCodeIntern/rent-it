@@ -1,7 +1,7 @@
 /**
  * ============================================================
- * RENTIT LANDING PAGE SCRIPTS
- * RentIt - Videoke Rental Management System
+ * Rentertain LANDING PAGE SCRIPTS
+ * Rentertain - Videoke Rental Management System
  * Powered by CertiCode
  * ============================================================
  */
@@ -457,7 +457,7 @@
         initHeaderScroll();
         initStatCounters();
 
-        console.log('🎤 RentIt Landing Page Initialized');
+        console.log('🎤 Rentertain Landing Page Initialized');
     }
 
     // Run on DOM ready

@@ -1,0 +1,271 @@
+/* =====================================================
+   SHARED COMPONENT
+   Added this to clean things up that are shared by admin and client, because WHY TwT
+   ===================================================== */
+
+:root {
+    --shared-control-size: 40px;
+    --shared-icon-size: 20px;
+    --shared-avatar-size: 36px;
+    --shared-sidebar-avatar-size: 40px;
+    --shared-gap-md: 16px;
+    --shared-gap-sm: 12px;
+    --shared-nav-pad-y: 12px;
+    --shared-nav-pad-x: 16px;
+    --shared-nav-icon-size: 20px;
+    --shared-collapse-size: 28px;
+    --shared-collapse-icon-size: 14px;
+    --shared-collapse-stroke-width: 2;
+}
+
+.admin-header .header-left,
+.topbar .header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--shared-gap-md);
+    min-width: 0;
+}
+
+.admin-header .header-right,
+.topbar .header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--shared-gap-md);
+    flex: 0 0 auto;
+}
+
+.header-page-title,
+.topbar-title {
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.admin-header .header-btn,
+.admin-header .theme-toggle,
+.admin-header .profile-btn,
+.topbar .btn-icon,
+.topbar .theme-toggle,
+.topbar .profile-btn {
+    width: var(--shared-control-size);
+    height: var(--shared-control-size);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-header .header-btn svg,
+.admin-header .theme-toggle svg,
+.topbar .btn-icon svg,
+.topbar .theme-toggle svg {
+    width: var(--shared-icon-size);
+    height: var(--shared-icon-size);
+}
+
+.admin-header .profile-btn,
+.topbar .profile-btn {
+    gap: 0;
+    border-radius: 9999px;
+}
+
+.admin-header .profile-avatar,
+.topbar .topbar-user-avatar,
+.topbar .avatar {
+    width: var(--shared-avatar-size);
+    height: var(--shared-avatar-size);
+    min-width: var(--shared-avatar-size);
+    min-height: var(--shared-avatar-size);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.admin-sidebar .sidebar-nav-item,
+.sidebar .nav-item {
+    display: flex;
+    align-items: center;
+    gap: var(--shared-gap-sm);
+    padding: var(--shared-nav-pad-y) var(--shared-nav-pad-x);
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-lg, var(--admin-radius-lg, 0.75rem));
+    color: var(--client-shell-text-muted, var(--admin-text-secondary, #64748b));
+    text-decoration: none;
+    font-size: var(--font-size-sm, var(--admin-font-sm, 0.875rem));
+    font-weight: var(--font-weight-medium, var(--admin-font-medium, 500));
+    line-height: 1.2;
+    transition: background-color var(--admin-transition-fast, 0.2s ease),
+        color var(--admin-transition-fast, 0.2s ease);
+    position: relative;
+}
+
+.admin-sidebar .sidebar-nav-item:hover,
+.sidebar .nav-item:hover {
+    background: var(--client-shell-hover-bg, var(--admin-accent-subtle, rgba(234, 88, 12, 0.08)));
+    color: var(--client-shell-text, var(--admin-text-primary, #0f172a));
+    text-decoration: none;
+}
+
+.admin-sidebar .sidebar-nav-item.active,
+.sidebar .nav-item.active {
+    background: var(--client-shell-active-bg, var(--admin-accent, #ea580c));
+    color: var(--client-shell-active-text, #ffffff);
+}
+
+.admin-sidebar .sidebar-nav-item.active:hover,
+.sidebar .nav-item.active:hover {
+    background: var(--client-shell-active-bg, var(--admin-accent-hover, #c2410c));
+    color: var(--client-shell-active-text, #ffffff);
+}
+
+.admin-sidebar .sidebar-nav-icon,
+.sidebar .nav-icon {
+    width: var(--shared-nav-icon-size);
+    height: var(--shared-nav-icon-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.admin-sidebar .sidebar-nav-icon svg,
+.sidebar .nav-icon svg {
+    width: var(--shared-nav-icon-size);
+    height: var(--shared-nav-icon-size);
+    stroke: currentColor;
+    fill: none;
+}
+
+.admin-sidebar .sidebar-nav-label,
+.sidebar .nav-label {
+    white-space: nowrap;
+    transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.admin-sidebar.collapsed .sidebar-nav-item,
+.sidebar.collapsed .nav-item {
+    justify-content: flex-start;
+    gap: var(--shared-gap-sm);
+    padding-left: var(--shared-nav-pad-x);
+    padding-right: var(--shared-nav-pad-x);
+}
+
+.admin-sidebar.collapsed .sidebar-nav-icon,
+.sidebar.collapsed .nav-icon {
+    width: var(--shared-nav-icon-size);
+    height: var(--shared-nav-icon-size);
+    margin: 0;
+}
+
+.admin-sidebar.collapsed .sidebar-nav-icon svg,
+.sidebar.collapsed .nav-icon svg {
+    width: var(--shared-nav-icon-size);
+    height: var(--shared-nav-icon-size);
+}
+
+.admin-sidebar.collapsed .sidebar-nav-label,
+.sidebar.collapsed .nav-label {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.admin-sidebar .sidebar-collapse-btn,
+.sidebar .sidebar-collapse-btn {
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--shared-collapse-size);
+    height: var(--shared-collapse-size);
+    border-radius: var(--admin-radius-full, 9999px);
+    background: var(--admin-bg-card, var(--client-shell-topbar-bg, #ffffff));
+    border: 1px solid var(--admin-border-color, var(--client-shell-border, #e5e7eb));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: calc(var(--admin-z-sticky, 1000) + 10);
+    transition: all var(--admin-transition-fast, 0.2s ease);
+    opacity: 1;
+    color: var(--shared-collapse-color, var(--admin-text-primary, var(--client-shell-text, #111827)));
+    box-shadow: 0 2px 8px rgba(17, 24, 39, 0.2);
+}
+
+.admin-sidebar .sidebar-collapse-btn:hover,
+.sidebar .sidebar-collapse-btn:hover {
+    background: var(--admin-accent, var(--client-shell-active-bg, #ea580c));
+    border-color: var(--admin-accent, var(--client-shell-active-bg, #ea580c));
+    color: #ffffff;
+    transform: translateY(-50%);
+}
+
+.admin-sidebar .sidebar-collapse-btn svg,
+.sidebar .sidebar-collapse-btn svg {
+    width: var(--shared-collapse-icon-size);
+    height: var(--shared-collapse-icon-size);
+    stroke: currentColor;
+    stroke-width: var(--shared-collapse-stroke-width);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform var(--admin-transition-fast, 0.2s ease);
+}
+
+.admin-sidebar.collapsed .sidebar-collapse-btn svg,
+.sidebar.collapsed .sidebar-collapse-btn svg {
+    transform: rotate(180deg);
+}
+
+.sidebar-footer {
+    padding: var(--spacing-md, var(--admin-spacing-md, 1rem));
+    border-top: 1px solid var(--client-shell-border, var(--admin-border-color, #e2e8f0));
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md, var(--admin-spacing-md, 1rem));
+}
+
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: var(--shared-gap-sm);
+}
+
+.sidebar-user-avatar {
+    width: var(--shared-sidebar-avatar-size);
+    height: var(--shared-sidebar-avatar-size);
+    min-width: var(--shared-sidebar-avatar-size);
+    min-height: var(--shared-sidebar-avatar-size);
+    max-width: var(--shared-sidebar-avatar-size);
+    max-height: var(--shared-sidebar-avatar-size);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.sidebar-user-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    transition: opacity 0.2s ease;
+}
+
+.sidebar-user-name,
+.sidebar-user-role {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

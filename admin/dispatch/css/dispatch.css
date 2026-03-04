@@ -8,84 +8,29 @@
    ============================ */
 .dispatch-stats {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--admin-spacing-lg);
     margin-bottom: var(--admin-spacing-xl);
+    align-items: stretch;
 }
 
-.stat-card {
+.dispatch-stats .kpi-card {
+    height: 100%;
+}
+
+.dispatch-stats .kpi-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
-    gap: var(--admin-spacing-md);
-    padding: var(--admin-spacing-lg);
-    background: var(--admin-bg-card);
-    border: 1px solid var(--admin-border-color);
-    border-radius: var(--admin-radius-xl);
-    transition: all var(--admin-transition-fast);
-    min-height: 156px;
 }
 
-.stat-card:hover {
-    border-color: var(--admin-border-medium);
-    transform: translateY(-2px);
-    box-shadow: var(--admin-shadow-lg);
+.dispatch-stats .kpi-value {
+    order: 2;
 }
 
-.stat-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--admin-radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.stat-icon svg {
-    width: 24px;
-    height: 24px;
-}
-
-.stat-icon.delivery {
-    background: var(--admin-accent-subtle);
-    color: var(--admin-accent);
-}
-
-.stat-icon.pickup {
-    background: var(--admin-info-subtle);
-    color: var(--admin-info);
-}
-
-.stat-icon.pending {
-    background: var(--admin-warning-subtle);
-    color: var(--admin-warning);
-}
-
-.stat-icon.completed {
-    background: var(--admin-success-subtle);
-    color: var(--admin-success);
-}
-
-.stat-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.stat-value {
-    font-size: var(--admin-font-2xl);
-    font-weight: var(--admin-font-bold);
-    color: var(--admin-text-primary);
-    line-height: 1;
-}
-
-.stat-label {
-    font-size: var(--admin-font-sm);
-    color: var(--admin-text-muted);
-    margin-top: 2px;
+.dispatch-stats .kpi-label {
+    order: 1;
+    margin-bottom: var(--admin-spacing-xs);
 }
 
 @media (max-width: 1200px) {
@@ -97,21 +42,6 @@
 @media (max-width: 600px) {
     .dispatch-stats {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--admin-spacing-md);
-    }
-
-    .stat-card {
-        min-height: 142px;
-    }
-
-    .stat-icon {
-        width: 44px;
-        height: 44px;
-    }
-
-    .stat-icon svg {
-        width: 22px;
-        height: 22px;
     }
 }
 
@@ -252,9 +182,6 @@
         font-size: var(--admin-font-xs);
     }
 
-    .stat-label {
-        font-size: var(--admin-font-xs);
-    }
 }
 
 /* ============================
@@ -559,31 +486,6 @@
         margin: 0;
     }
 
-    .stat-card {
-        padding: var(--admin-spacing-md);
-        gap: var(--admin-spacing-sm);
-        min-height: 132px;
-        align-items: flex-start;
-    }
-
-    .stat-icon {
-        width: 40px;
-        height: 40px;
-    }
-
-    .stat-icon svg {
-        width: 20px;
-        height: 20px;
-    }
-
-    .stat-value {
-        font-size: var(--admin-font-lg);
-    }
-
-    .stat-label {
-        font-size: var(--admin-font-xs);
-    }
-
     .filter-tab {
         font-size: var(--admin-font-xs);
         padding: var(--admin-spacing-xs) var(--admin-spacing-sm);
@@ -611,30 +513,6 @@
         padding: var(--admin-spacing-sm);
     }
 
-    .stat-card {
-        padding: var(--admin-spacing-sm) var(--admin-spacing-md);
-        gap: var(--admin-spacing-sm);
-        min-height: 124px;
-    }
-
-    .stat-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .stat-icon svg {
-        width: 16px;
-        height: 16px;
-    }
-
-    .stat-value {
-        font-size: var(--admin-font-md);
-    }
-
-    .stat-label {
-        font-size: 10px;
-    }
-
     .filter-tabs {
         gap: var(--admin-spacing-xs);
     }
@@ -650,10 +528,6 @@
    LARGE SCREEN ADJUSTMENTS
    ============================ */
 @media (min-width: 1920px) {
-    .dispatch-stats {
-        gap: var(--admin-spacing-xl);
-    }
-
     .dispatch-grid {
         grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
         gap: var(--admin-spacing-xl);
@@ -661,10 +535,6 @@
 }
 
 @media (min-width: 2560px) {
-    .dispatch-stats {
-        gap: var(--admin-spacing-2xl);
-    }
-
     .dispatch-grid {
         grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
         gap: var(--admin-spacing-2xl);

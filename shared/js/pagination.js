@@ -1,6 +1,6 @@
 /* =====================================================
    SHARED PAGINATION UTILITY
-   RentIt - Client Portal
+   Rentertain - Client Portal
    
    Provides reusable pagination for DOM-rendered items
    (tables rows, cards, grids). Works by showing/hiding

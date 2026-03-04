@@ -91,6 +91,17 @@ function initAdminPageSkeleton() {
 
 const AdminComponents = {
     BASE_URL: '/rent-it',
+    sidebarLogoAssets: {
+        expanded: {
+            light: '/assets/images/Logo%20with%20Text%20LMode.svg',
+            dark: '/assets/images/Logo%20with%20Text%20DMode.svg'
+        },
+        collapsed: {
+            light: '/assets/images/Logo%20LMode.svg',
+            dark: '/assets/images/Logo%20DMode.svg'
+        },
+        fallback: '/assets/images/rIT_logo_tp.png'
+    },
 
     baseUrl(path = '') {
         const normalized = path.startsWith('/') ? path : `/${path}`;
@@ -109,11 +120,9 @@ const AdminComponents = {
             id: 'dashboard', 
             label: 'Dashboard', 
             href: '/admin/dashboard/dashboard.php',
-            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="7" height="9"/>
-                <rect x="14" y="3" width="7" height="5"/>
-                <rect x="14" y="12" width="7" height="9"/>
-                <rect x="3" y="16" width="7" height="5"/>
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>`
         },
         { 
@@ -230,6 +239,70 @@ const AdminComponents = {
         return name?.charAt(0)?.toUpperCase() || 'A';
     },
 
+    isMobileSidebarViewport() {
+        return window.matchMedia('(max-width: 850px)').matches;
+    },
+
+    syncSidebarForViewport() {
+        const sidebar = document.getElementById('adminSidebar');
+        const wrapper = document.querySelector('.admin-wrapper');
+        const overlay = document.getElementById('sidebarOverlay');
+        if (!sidebar) return;
+
+        if (this.isMobileSidebarViewport()) {
+            sidebar.classList.remove('collapsed');
+            wrapper?.classList.remove('sidebar-collapsed');
+            return;
+        }
+
+        const isCollapsed = localStorage.getItem('admin-sidebar-collapsed') === 'true';
+        sidebar.classList.toggle('collapsed', isCollapsed);
+        wrapper?.classList.toggle('sidebar-collapsed', isCollapsed);
+        sidebar.classList.remove('open');
+        overlay?.classList.remove('active');
+        document.body.style.overflow = '';
+    },
+
+    bindSidebarViewportListener() {
+        if (this._sidebarViewportListenerBound) return;
+        this._sidebarViewportListenerBound = true;
+        window.addEventListener('resize', () => this.syncSidebarForViewport(), { passive: true });
+    },
+
+    renderSidebarLogo({
+        href = '/admin/dashboard/dashboard.php',
+        linkClass = 'sidebar-logo-link',
+        title = 'Go to Dashboard',
+        expandedAlt = 'Rentertain Logo',
+        collapsedAlt = 'Rentertain Logo Icon'
+    } = {}) {
+        const { expanded, collapsed, fallback } = this.sidebarLogoAssets;
+        const expandedLight = this.baseUrl(expanded.light);
+        const expandedDark = this.baseUrl(expanded.dark);
+        const collapsedLight = this.baseUrl(collapsed.light);
+        const collapsedDark = this.baseUrl(collapsed.dark);
+        const fallbackSrc = this.baseUrl(fallback);
+
+        return `
+            <a href="${this.baseUrl(href)}" class="${linkClass}" title="${title}">
+                <img src="${expandedLight}" data-logo-light="${expandedLight}" data-logo-dark="${expandedDark}" alt="${expandedAlt}" class="sidebar-logo-icon sidebar-logo-icon-expanded" onerror="this.onerror=null;this.src='${fallbackSrc}';">
+                <img src="${collapsedLight}" data-logo-light="${collapsedLight}" data-logo-dark="${collapsedDark}" alt="${collapsedAlt}" class="sidebar-logo-icon sidebar-logo-icon-collapsed" onerror="this.onerror=null;this.src='${fallbackSrc}';">
+            </a>
+        `;
+    },
+
+    syncSidebarLogoTheme() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        document.querySelectorAll('.sidebar-logo-icon[data-logo-light][data-logo-dark]').forEach((img) => {
+            const lightSrc = img.getAttribute('data-logo-light');
+            const darkSrc = img.getAttribute('data-logo-dark');
+            const nextSrc = isDark ? darkSrc : lightSrc;
+            if (nextSrc && img.getAttribute('src') !== nextSrc) {
+                img.setAttribute('src', nextSrc);
+            }
+        });
+    },
+
     /**
      * Inject Sidebar into the DOM
      * @param {string} containerId - Container element ID
@@ -241,7 +314,7 @@ const AdminComponents = {
 
         const user = this.getCurrentUser();
         const initial = this.getUserInitial(user.name);
-        const isCollapsed = localStorage.getItem('admin-sidebar-collapsed') === 'true';
+        const isCollapsed = !this.isMobileSidebarViewport() && localStorage.getItem('admin-sidebar-collapsed') === 'true';
 
         const navItems = this.navItems.map(item => `
             <a href="${this.baseUrl(item.href)}" 
@@ -256,10 +329,7 @@ const AdminComponents = {
         container.innerHTML = `
             <aside class="admin-sidebar ${isCollapsed ? 'collapsed' : ''}" id="adminSidebar">
                 <div class="sidebar-logo">
-                    <a href="${this.baseUrl('/admin/dashboard/dashboard.php')}" class="sidebar-logo-link" title="Go to Dashboard">
-                        <img src="${this.baseUrl('/assets/images/rIT_logo_tp.png')}" alt="RentIT Logo" class="sidebar-logo-icon" onerror="this.style.display='none'">
-                        <span class="sidebar-logo-text">RentIT</span>
-                    </a>
+                    ${this.renderSidebarLogo({ href: '/admin/dashboard/dashboard.php', linkClass: 'sidebar-logo-link' })}
                     <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" title="Collapse/expand sidebar" aria-label="Toggle sidebar">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="15 18 9 12 15 6"/>
@@ -312,12 +382,17 @@ const AdminComponents = {
             <div class="sidebar-overlay" id="sidebarOverlay"></div>
         `;
 
+        // Match sidebar logo assets to current light/dark theme.
+        this.syncSidebarLogoTheme();
+
         // Apply collapsed state to wrapper
         if (isCollapsed) {
             document.querySelector('.admin-wrapper')?.classList.add('sidebar-collapsed');
         }
 
         this.attachSidebarEvents();
+        this.bindSidebarViewportListener();
+        this.syncSidebarForViewport();
     },
 
     /**
@@ -332,6 +407,10 @@ const AdminComponents = {
         // Collapse toggle (desktop)
         if (collapseBtn && sidebar) {
             collapseBtn.addEventListener('click', () => {
+                if (this.isMobileSidebarViewport()) {
+                    this.toggleMobileSidebar();
+                    return;
+                }
                 sidebar.classList.toggle('collapsed');
                 wrapper?.classList.toggle('sidebar-collapsed');
                 localStorage.setItem('admin-sidebar-collapsed', sidebar.classList.contains('collapsed'));
@@ -361,7 +440,12 @@ const AdminComponents = {
      */
     openSidebar() {
         const sidebar = document.getElementById('adminSidebar');
+        const wrapper = document.querySelector('.admin-wrapper');
         const overlay = document.getElementById('sidebarOverlay');
+        if (this.isMobileSidebarViewport()) {
+            sidebar?.classList.remove('collapsed');
+            wrapper?.classList.remove('sidebar-collapsed');
+        }
         if (sidebar) sidebar.classList.add('open');
         if (overlay) overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -376,6 +460,17 @@ const AdminComponents = {
         if (sidebar) sidebar.classList.remove('open');
         if (overlay) overlay.classList.remove('active');
         document.body.style.overflow = '';
+    },
+
+    toggleMobileSidebar() {
+        if (!this.isMobileSidebarViewport()) return;
+        const sidebar = document.getElementById('adminSidebar');
+        if (!sidebar) return;
+        if (sidebar.classList.contains('open')) {
+            this.closeSidebar();
+        } else {
+            this.openSidebar();
+        }
     },
 
     /**
@@ -504,7 +599,7 @@ const AdminComponents = {
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', () => this.openSidebar());
+            mobileMenuBtn.addEventListener('click', () => this.toggleMobileSidebar());
         }
 
         // Theme toggle
@@ -629,6 +724,7 @@ const AdminComponents = {
         
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('admin-theme', newTheme);
+        this.syncSidebarLogoTheme();
         
         // Show toast notification
         this.showToast(`Switched to ${newTheme} mode`, 'info');

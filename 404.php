@@ -6,7 +6,7 @@ http_response_code(404);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | RentIT</title>
+    <title>Page Not Found | Rentertain</title>
     <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
     <link rel="stylesheet" href="/rent-it/shared/css/theme.css">
     <style>
@@ -166,7 +166,7 @@ http_response_code(404);
 <body>
     <div class="card">
         <div class="header">
-            <div class="logo"><img src="/rent-it/assets/images/rIT_logo_tp.png" alt="RentIT logo"></div>
+            <div class="logo"><img src="/rent-it/assets/images/rIT_logo_tp.png" alt="Rentertain logo"></div>
             <div>
                 <p class="title">You seem a bit lost</p>
                 <p class="subtitle">We’ll guide you back in a second</p>

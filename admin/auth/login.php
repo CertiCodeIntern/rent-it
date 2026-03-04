@@ -12,8 +12,8 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
     <base href="/rent-it/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RentIt Admin Portal - Staff Login">
-    <title>Admin Login - RentIt</title>
+    <meta name="description" content="Rentertain Admin Portal - Staff Login">
+    <title>Admin Login - Rentertain</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +56,7 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
             <div class="branding-content">
                 <div class="admin-logo">
                     <span class="logo-icon">🎤</span>
-                    <span class="logo-text">RentIt</span>
+                    <span class="logo-text">Rentertain</span>
                 </div>
                 <h1 class="branding-title">Admin Portal</h1>
                 <p class="branding-subtitle">Manage your videoke rental business with powerful tools and insights.</p>

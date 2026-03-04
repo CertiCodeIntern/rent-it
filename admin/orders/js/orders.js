@@ -473,7 +473,7 @@ function exportOrdersToPDF() {
     // --- Header ---
     doc.setFontSize(20);
     doc.setFont('helvetica', 'bold');
-    doc.text('RentIt - Orders Report', 14, 18);
+    doc.text('Rentertain - Orders Report', 14, 18);
 
     doc.setFontSize(10);
     doc.setFont('helvetica', 'normal');
@@ -585,7 +585,7 @@ function exportOrdersToPDF() {
         doc.setFontSize(8);
         doc.setTextColor(150);
         doc.text(
-            `Page ${i} of ${pageCount}  |  RentIt Admin`,
+            `Page ${i} of ${pageCount}  |  Rentertain Admin`,
             doc.internal.pageSize.getWidth() / 2,
             doc.internal.pageSize.getHeight() - 8,
             { align: 'center' }
@@ -593,7 +593,7 @@ function exportOrdersToPDF() {
     }
 
     // --- Save ---
-    const filename = `RentIt_Orders_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.pdf`;
+    const filename = `Rentertain_Orders_${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}.pdf`;
     doc.save(filename);
 }
 

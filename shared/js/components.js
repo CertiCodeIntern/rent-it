@@ -8,6 +8,18 @@
 })();
 
 const Components = {
+    sidebarLogoAssets: {
+        expanded: {
+            light: '/rent-it/assets/images/Logo%20with%20Text%20LMode.svg',
+            dark: '/rent-it/assets/images/Logo%20with%20Text%20DMode.svg'
+        },
+        collapsed: {
+            light: '/rent-it/assets/images/Logo%20LMode.svg',
+            dark: '/rent-it/assets/images/Logo%20DMode.svg'
+        },
+        fallback: '/rent-it/assets/images/rIT_logo_tp.png'
+    },
+
     /**
      * Navigation tabs configuration for the sidebar (Admin)
      */
@@ -29,6 +41,53 @@ const Components = {
         { id: 'myrentals', icon: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>', label: 'My Rentals', href: '/rent-it/client/myrentals/myrentals.php' },
         { id: 'bookinghistory', icon: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>', label: 'Booking History', href: '/rent-it/client/bookinghistory/bookinghistory.php' },
     ],
+
+    renderSidebarLogo({
+        href = '/rent-it/client/dashboard/dashboard.php',
+        linkClass = 'sidebar-logo',
+        title = 'Go to Dashboard',
+        expandedAlt = 'Rentertain Logo',
+        collapsedAlt = 'Rentertain Logo Icon'
+    } = {}) {
+        const { expanded, collapsed, fallback } = this.sidebarLogoAssets;
+        return `
+            <a class="${linkClass}" href="${href}" title="${title}">
+                <img src="${expanded.light}" data-logo-light="${expanded.light}" data-logo-dark="${expanded.dark}" alt="${expandedAlt}" class="sidebar-logo-icon sidebar-logo-icon-expanded" onerror="this.onerror=null;this.src='${fallback}';">
+                <img src="${collapsed.light}" data-logo-light="${collapsed.light}" data-logo-dark="${collapsed.dark}" alt="${collapsedAlt}" class="sidebar-logo-icon sidebar-logo-icon-collapsed" onerror="this.onerror=null;this.src='${fallback}';">
+            </a>
+        `;
+    },
+
+    isMobileSidebarViewport() {
+        return window.matchMedia('(max-width: 850px)').matches;
+    },
+
+    syncSidebarForViewport() {
+        const sidebar = document.getElementById('sidebar');
+        const appContainer = document.querySelector('.app-container');
+        const overlay = document.getElementById('sidebarOverlay');
+        if (!sidebar) return;
+
+        if (this.isMobileSidebarViewport()) {
+            sidebar.classList.remove('collapsed');
+            appContainer?.classList.remove('sidebar-collapsed');
+            return;
+        }
+
+        const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+        sidebar.classList.toggle('collapsed', isCollapsed);
+        appContainer?.classList.toggle('sidebar-collapsed', isCollapsed);
+        sidebar.classList.remove('open');
+        overlay?.classList.remove('active');
+        document.body.style.overflow = '';
+    },
+
+    bindSidebarViewportListener() {
+        if (this._sidebarViewportListenerBound) return;
+        this._sidebarViewportListenerBound = true;
+        window.addEventListener('resize', () => this.syncSidebarForViewport(), { passive: true });
+    },
+
     /**
      * Get current user from localStorage
      * @returns {Object} User object with name and role
@@ -132,16 +191,13 @@ const Components = {
             }
         }).join('');
 
-        // Check localStorage for collapsed state
-        const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+        // Keep mobile drawer always expanded; collapse state is desktop-only.
+        const isCollapsed = !this.isMobileSidebarViewport() && localStorage.getItem('sidebarCollapsed') === 'true';
 
         container.innerHTML = `
             <aside class="sidebar${isCollapsed ? ' collapsed' : ''}" id="sidebar">
                                 <div class="sidebar-header">
-                                        <a class="sidebar-logo" href="/rent-it/client/dashboard/dashboard.php" title="Go to Dashboard">
-                                            <img src="/rent-it/assets/images/rIT_logo_tp.png" alt="RentIT Logo" class="sidebar-logo-icon">
-                                                <span class="sidebar-logo-text">RentIT</span>
-                                        </a>
+                                        ${this.renderSidebarLogo({ href: '/rent-it/client/dashboard/dashboard.php', linkClass: 'sidebar-logo' })}
                     <!-- Collapse Toggle Button -->
                     <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Toggle sidebar" title="Collapse/expand sidebar">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -197,6 +253,9 @@ const Components = {
             <div class="sidebar-overlay" id="sidebarOverlay"></div>
         `;
 
+        // Align logo assets with current theme on initial render.
+        this.syncSidebarLogoTheme();
+
         // Apply collapsed state to app container
         if (isCollapsed) {
             document.querySelector('.app-container')?.classList.add('sidebar-collapsed');
@@ -204,6 +263,8 @@ const Components = {
 
         // Attach event listeners
         this.attachSidebarEvents();
+        this.bindSidebarViewportListener();
+        this.syncSidebarForViewport();
     },
 
     /**
@@ -246,7 +307,12 @@ const Components = {
     toggleSidebarCollapse() {
         const sidebar = document.getElementById('sidebar');
         const appContainer = document.querySelector('.app-container');
-        
+
+        if (this.isMobileSidebarViewport()) {
+            this.toggleMobileSidebar();
+            return;
+        }
+
         if (sidebar) {
             const isCollapsed = sidebar.classList.toggle('collapsed');
             appContainer?.classList.toggle('sidebar-collapsed', isCollapsed);
@@ -254,6 +320,21 @@ const Components = {
             // Persist to localStorage
             localStorage.setItem('sidebarCollapsed', isCollapsed.toString());
         }
+    },
+
+    /**
+     * Keep sidebar logo sources in sync with current light/dark theme.
+     */
+    syncSidebarLogoTheme() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        document.querySelectorAll('.sidebar-logo-icon[data-logo-light][data-logo-dark]').forEach((img) => {
+            const lightSrc = img.getAttribute('data-logo-light');
+            const darkSrc = img.getAttribute('data-logo-dark');
+            const nextSrc = isDark ? darkSrc : lightSrc;
+            if (nextSrc && img.getAttribute('src') !== nextSrc) {
+                img.setAttribute('src', nextSrc);
+            }
+        });
     },
 
     /**
@@ -471,9 +552,15 @@ const Components = {
      */
     openSidebar() {
         const sidebar = document.getElementById('sidebar');
+        const appContainer = document.querySelector('.app-container');
         const overlay = document.getElementById('sidebarOverlay');
+        if (this.isMobileSidebarViewport()) {
+            sidebar?.classList.remove('collapsed');
+            appContainer?.classList.remove('sidebar-collapsed');
+        }
         if (sidebar) sidebar.classList.add('open');
         if (overlay) overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
     },
 
     /**
@@ -484,6 +571,18 @@ const Components = {
         const overlay = document.getElementById('sidebarOverlay');
         if (sidebar) sidebar.classList.remove('open');
         if (overlay) overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    },
+
+    toggleMobileSidebar() {
+        if (!this.isMobileSidebarViewport()) return;
+        const sidebar = document.getElementById('sidebar');
+        if (!sidebar) return;
+        if (sidebar.classList.contains('open')) {
+            this.closeSidebar();
+        } else {
+            this.openSidebar();
+        }
     },
 
     /**
@@ -623,7 +722,7 @@ container.innerHTML = `
         // Attach menu button event
         const menuBtn = document.getElementById('menuBtn');
         if (menuBtn) {
-            menuBtn.addEventListener('click', () => this.openSidebar());
+            menuBtn.addEventListener('click', () => this.toggleMobileSidebar());
         }
 
         // Initialize dropdown functionality
@@ -646,6 +745,7 @@ container.innerHTML = `
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             themeToggle?.setAttribute('data-theme', isDark ? 'dark' : 'light');
             sidebarThemeToggle?.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            this.syncSidebarLogoTheme();
             if (themeLabel) {
                 themeLabel.textContent = isDark ? 'Light Mode' : 'Dark Mode';
             }
@@ -888,8 +988,8 @@ container.innerHTML = `
                 <div class="footer-content">
                     <div class="footer-main">
                         <div class="footer-brand">
-                            <img src="/rent-it/assets/images/rIT_logo_tp.png" alt="RentIT Logo" class="footer-logo">
-                            <span class="footer-brand-name">RentIT</span>
+                            <img src="/rent-it/assets/images/rIT_logo_tp.png" alt="Rentertain Logo" class="footer-logo">
+                            <span class="footer-brand-name">Rentertain</span>
                         </div>
                         <p class="footer-tagline">Premium karaoke equipment rentals for your perfect event.</p>
                     </div>
@@ -922,7 +1022,7 @@ container.innerHTML = `
                 </div>
                 
                 <div class="footer-bottom">
-                    <p class="footer-copyright">&copy; ${currentYear} RentIT. All rights reserved.</p>
+                    <p class="footer-copyright">&copy; ${currentYear} Rentertain. All rights reserved.</p>
                     <div class="footer-socials">
                         <a href="https://www.facebook.com/CertiCode" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                             <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">

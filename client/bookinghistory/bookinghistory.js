@@ -1,6 +1,6 @@
 /* =====================================================
    BOOKING HISTORY PAGE JAVASCRIPT
-   RentIt - Client Portal
+   Rentertain - Client Portal
    ===================================================== */
 
 document.addEventListener('DOMContentLoaded', function() {

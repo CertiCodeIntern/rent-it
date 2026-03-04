@@ -36,13 +36,26 @@
    ============================ */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: 1fr 380px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--admin-spacing-2xl);
+}
+
+.bookings-section {
+    grid-column: 1 / span 3;
+}
+
+.dashboard-sidebar {
+    grid-column: 4;
 }
 
 @media (max-width: 1200px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
+    }
+
+    .bookings-section,
+    .dashboard-sidebar {
+        grid-column: 1 / -1;
     }
 }
 
@@ -257,7 +270,15 @@
     color: var(--admin-text-secondary);
     font-size: var(--admin-font-sm);
     font-weight: var(--admin-font-medium);
+    text-align: center;
     transition: all var(--admin-transition-fast);
+}
+
+.quick-action-btn span {
+    display: block;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
 .quick-action-btn:hover {
@@ -344,14 +365,12 @@
     }
 
     .dashboard-grid {
-        grid-template-columns: 1fr 440px;
         gap: var(--admin-spacing-2xl);
     }
 }
 
 @media (min-width: 2560px) {
     .dashboard-grid {
-        grid-template-columns: 1fr 520px;
         gap: var(--admin-spacing-3xl);
     }
 

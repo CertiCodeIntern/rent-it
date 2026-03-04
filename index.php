@@ -14,8 +14,8 @@ $userName = $_SESSION['user_name'] ?? '';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RentIt - High-quality videoke machines with 50k+ songs and wireless mics delivered to your doorstep.">
-    <title>RentIt - Premium Videoke Rentals</title>
+    <meta name="description" content="Rentertain - High-quality videoke machines with 50k+ songs and wireless mics delivered to your doorstep.">
+    <title>Rentertain - Premium Videoke Rentals</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,7 +75,7 @@ $userName = $_SESSION['user_name'] ?? '';
             <!-- Brand -->
             <a href="<?= BASE_URL ?>/" class="brand">
                 <div class="logo-drawer">
-                    <img src="<?= BASE_URL ?>/assets/images/rIT_logo_tp.png" alt="RentIt Logo">
+                    <img src="<?= BASE_URL ?>/assets/images/rIT_logo_tp.png" alt="Rentertain Logo">
                 </div>
                 <span class="brand-name">Rent<span class="accent">It</span></span>
             </a>
@@ -425,10 +425,10 @@ $userName = $_SESSION['user_name'] ?? '';
                 <!-- Brand Column -->
                 <div class="footer-brand">
                     <div class="logo-drawer">
-                        <img src="<?= BASE_URL ?>/assets/images/rIT_logo_tp.png" alt="RentIt Logo">
+                        <img src="<?= BASE_URL ?>/assets/images/rIT_logo_tp.png" alt="Rentertain Logo">
                     </div>
                     <div class="brand-text">
-                        <h4 class="brand-title">RentIt</h4>
+                        <h4 class="brand-title">Rentertain</h4>
                         <p class="brand-sub">
                             Making celebrations louder and more memorable with premium videoke rentals since 2026.
                         </p>
@@ -479,7 +479,7 @@ $userName = $_SESSION['user_name'] ?? '';
             <div class="footer-divider"></div>
 
             <div class="footer-bottom">
-                <p class="copyright">© 2026 RentIt Videoke Rentals • v2.4.0</p>
+                <p class="copyright">© 2026 Rentertain Videoke Rentals • v2.4.0</p>
                 <div class="policy-links">
                     <a href="<?= BASE_URL ?>/pages/privacy-policy.html" class="policy-link">Privacy Policy</a>
                     <a href="<?= BASE_URL ?>/pages/cookie-policy.html" class="policy-link">Cookie Policy</a>

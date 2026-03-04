@@ -1,11 +1,11 @@
 /* ============================================================
-   RENTIT THEME MODULE
+   Rentertain THEME MODULE
    Global CSS Variables & Dark/Light Theme System
    
    Design Principles:
    - No Pure Black (#000000) - Use rich dark blue-grey
    - No Pure White (#FFFFFF) - Use off-white with subtle tint
-   - RentIt Blue (#013A63) as brand foundation
+   - Rentertain Blue (#013A63) as brand foundation
    - Orange (#FB7012) as split-complementary accent
    ============================================================ */
 
@@ -14,7 +14,7 @@
    ============================ */
 :root {
     /* === BRAND COLORS (Immutable) === */
-    --brand-primary: #013A63;           /* RentIt Blue - Foundation */
+    --brand-primary: #013A63;           /* Rentertain Blue - Foundation */
     --brand-primary-light: #014F86;     /* Lighter blue for gradients */
     --brand-primary-dark: #012A4A;      /* Darker blue for depth */
     
@@ -34,7 +34,7 @@
     --bg-elevated: #FFFFFF;             /* Elevated surfaces */
     
     /* Navigation & Header */
-    --nav-bg: #013A63;                  /* RentIt Blue nav */
+    --nav-bg: #013A63;                  /* Rentertain Blue nav */
     --nav-bg-scroll: rgba(1, 58, 99, 0.98);
     
     /* Hero Section - Dark gradient (always dark for impact) */

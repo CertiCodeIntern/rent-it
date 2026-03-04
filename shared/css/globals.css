@@ -3,6 +3,8 @@
    Shared variables, reset, and base styles
    ===================================================== */
 
+@import url("/rent-it/shared/css/shared-compo.css");
+
 /* =====================================================
    1. CSS VARIABLES & DESIGN TOKENS
    ===================================================== */

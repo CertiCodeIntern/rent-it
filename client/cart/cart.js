@@ -1,5 +1,5 @@
 /**
- * RentIt - Cart Page JavaScript
+ * Rentertain - Cart Page JavaScript
  * Inayos para sa MySQL Database at UI Synchronization
  */
 

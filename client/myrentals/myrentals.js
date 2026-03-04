@@ -1,6 +1,6 @@
 /* =====================================================
    MY RENTALS PAGE JAVASCRIPT - Full Optimized Version
-   RentIt - Client Portal
+   Rentertain - Client Portal
    ===================================================== */
 
    document.addEventListener('DOMContentLoaded', function() {
@@ -252,7 +252,7 @@ function showReceipt(data) {
     receiptDetails.innerHTML = `
         <div id="receipt-canvas" class="receipt-canvas">
             <div class="receipt-top">
-                <h2 class="receipt-brand">RentIt</h2>
+                <h2 class="receipt-brand">Rentertain</h2>
                 <p class="receipt-subtitle">OFFICIAL RENTAL RECEIPT</p>
             </div>
 
@@ -276,7 +276,7 @@ function showReceipt(data) {
                 <span class="receipt-total-amount">₱${parseFloat(data.total_amount).toFixed(2)}</span>
             </div>
             
-            <p class="receipt-footer-text">Thank you for renting with RentIt!</p>
+            <p class="receipt-footer-text">Thank you for renting with Rentertain!</p>
         </div>
     `;
 
@@ -332,7 +332,7 @@ function downloadReceiptPDF() {
 
     const opt = {
         margin:       0.35,
-        filename:     `RentIt-Receipt-${orderRef.replace('#','')}.pdf`,
+        filename:     `Rentertain-Receipt-${orderRef.replace('#','')}.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2, useCORS: true, scrollX: 0, scrollY: 0 },
         jsPDF:        { unit: 'in', format: [4.5, 6], orientation: 'portrait' }

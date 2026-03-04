@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: column;
     min-height: auto;
+    padding-top: var(--topbar-height);
 }
 
 .content-area {
@@ -59,7 +60,7 @@
 .page-header-info {}
 
 .page-title {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 800;
     color: var(--heading-primary);
     margin-bottom: 4px;
@@ -1008,7 +1009,7 @@
     color: var(--client-shell-text);
     cursor: pointer;
     border-radius: 0;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .sidebar-logo:hover {
@@ -1017,11 +1018,22 @@
 }
 
 .sidebar-logo-icon {
-    width: 36px;
-    height: 36px;
-    max-width: 36px;
     object-fit: contain;
     flex-shrink: 0;
+    display: block;
+}
+
+.sidebar-logo-icon-expanded {
+    width: 132px;
+    height: auto;
+    max-width: 100%;
+}
+
+.sidebar-logo-icon-collapsed {
+    width: 44px;
+    height: 44px;
+    max-width: 44px;
+    display: none;
 }
 
 .sidebar-logo:hover .sidebar-logo-icon {
@@ -1075,53 +1087,18 @@
     scrollbar-color: var(--client-scrollbar-thumb) var(--client-scrollbar-bg);
 }
 @media (max-width: 1024px) {
-    .sidebar-logo-icon {
+    .sidebar-logo-icon-collapsed {
         width: 36px;
         height: 36px;
         max-width: 36px;
     }
 }
 @media (max-width: 768px) {
-    .sidebar-logo-icon {
+    .sidebar-logo-icon-collapsed {
         width: 36px;
         height: 36px;
         max-width: 36px;
     }
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border: none;
-    background: transparent;
-    color: var(--client-shell-text-muted);
-    border-radius: var(--radius-lg);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.2;
-    transition: all 0.2s;
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
-    text-decoration: none;
-}
-
-.nav-item:hover {
-    background: var(--client-shell-hover-bg);
-    color: var(--client-shell-text);
-    text-decoration: none;
-}
-
-.nav-item.active {
-    background: var(--client-shell-active-bg);
-    color: var(--client-shell-active-text);
-}
-
-.nav-item.active:hover {
-    background: var(--client-shell-active-bg);
-    color: var(--client-shell-active-text);
 }
 
 .app-container.sidebar-neutral .nav-item.active {
@@ -1134,23 +1111,7 @@
     color: var(--client-shell-text);
 }
 
-.nav-icon {
-    font-size: var(--font-size-lg);
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-right: 0;
-}
-
-.nav-icon svg {
-    width: 20px;
-    height: 20px;
-    stroke: currentColor;
-    fill: none;
-}
+/* Sidebar nav-item base styles are shared in shared/css/shared-compo.css */
 
 .sidebar-footer {
     padding: var(--spacing-md);
@@ -1265,7 +1226,7 @@
    ===================================================== */
 :root {
     --sidebar-width: 260px;
-    --sidebar-collapsed-width: 72px;
+    --sidebar-collapsed-width: 76px;
     --topbar-height: 64px;
     --client-shell-sidebar-bg: #FFFFFF;
     --client-shell-topbar-bg: #FFFFFF;
@@ -1310,42 +1271,7 @@
     white-space: nowrap;
 }
 
-/* Collapse Toggle Button */
-.sidebar-collapse-btn {
-    position: absolute;
-    right: -14px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 28px;
-    height: 28px;
-    background: var(--client-shell-topbar-bg);
-    border: 1px solid var(--client-shell-border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1001;
-    transition: all 0.3s ease;
-    color: var(--client-shell-text-muted);
-    font-size: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.sidebar-collapse-btn:hover {
-    background: var(--client-shell-active-bg);
-    border-color: var(--client-shell-active-bg);
-    color: var(--client-shell-active-text);
-    transform: translateY(-50%);
-}
-
-.sidebar-collapse-btn svg {
-    width: 14px;
-    height: 14px;
-    stroke: currentColor;
-    stroke-width: 2.5;
-    transition: transform 0.3s ease;
-}
+/* Sidebar collapse button base styles are shared in shared/css/shared-compo.css */
 
 /* Main content smooth transition */
 .main-content {
@@ -1377,34 +1303,31 @@
 }
 
 .sidebar.collapsed .sidebar-logo {
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0;
     margin-right: 0;
-    padding: 16px 12px;
+    padding: 16px 0 16px 14px;
     border-radius: 0;
 }
 
 .sidebar.collapsed .sidebar-logo-icon {
-    width: 36px;
-    height: 36px;
-    max-width: 36px;
+    width: 44px;
+    height: 44px;
+    max-width: 44px;
     display: block;
-    margin: 0 auto;
+    margin: 0;
+}
+
+.sidebar.collapsed .sidebar-logo-icon-expanded {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-logo-icon-collapsed {
+    display: block;
 }
 
 .sidebar.collapsed .sidebar-nav {
     padding: 16px 12px;
-}
-
-.sidebar.collapsed .nav-item {
-    justify-content: center;
-    gap: 0;
-    padding: 12px 0;
-}
-
-.sidebar.collapsed .nav-icon {
-    margin: 0;
-    font-size: 20px;
 }
 
 .sidebar.collapsed .sidebar-user {
@@ -1414,10 +1337,6 @@
 
 .sidebar.collapsed .sidebar-footer {
     padding: var(--spacing-md);
-}
-
-.sidebar.collapsed .sidebar-collapse-btn svg {
-    transform: rotate(180deg);
 }
 
 /* Tooltip for collapsed sidebar items */
@@ -1494,20 +1413,6 @@
     transition: left 0.3s ease, transform 0.3s ease;
 }
 
-.topbar .header-left {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    flex: 0 0 auto;
-}
-
-.topbar .header-right {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    flex: 0 0 auto;
-}
-
 /* Topbar text colors for blueish background */
 .topbar-title {
     flex: 0 0 auto;
@@ -1545,11 +1450,6 @@
 /* Smart header: hide on scroll down */
 .topbar.header-hidden {
     transform: translateY(-100%);
-}
-
-/* Add padding to content-area to account for fixed topbar */
-.content-area {
-    padding-top: calc(var(--topbar-height) + var(--spacing-xl));
 }
 
 .menu-btn {
@@ -1813,6 +1713,14 @@
     .sidebar.collapsed .nav-item {
         justify-content: flex-start;
     }
+
+    .sidebar.collapsed .sidebar-logo-icon-expanded {
+        display: block;
+    }
+
+    .sidebar.collapsed .sidebar-logo-icon-collapsed {
+        display: none;
+    }
 }
 @media (max-width: 850px) {
     .main-content {
@@ -1835,8 +1743,8 @@
         transform: translateX(0);
     }
     
-    /* Hide collapse button on mobile - use hamburger instead */
-    .sidebar-collapse-btn {
+    /* Hide collapse button on mobile/tablet - use hamburger instead */
+    .sidebar .sidebar-collapse-btn {
         display: none !important;
     }
     
@@ -1864,8 +1772,7 @@
     }
     
     .content-area {
-        padding: var(--spacing-md);
-        padding-top: calc(var(--topbar-height) + var(--spacing-md));
+        padding: var(--spacing-xl);
     }
     
     .data-table-header {
@@ -2907,8 +2814,16 @@
     }
     
     .sidebar.open .sidebar-logo {
-        justify-content: flex-start !important;
+        justify-content: center !important;
         padding: 16px 24px !important;
+    }
+
+    .sidebar.open .sidebar-logo-icon-expanded {
+        display: block !important;
+    }
+
+    .sidebar.open .sidebar-logo-icon-collapsed {
+        display: none !important;
     }
     
     .sidebar.open .nav-item {
@@ -2930,11 +2845,6 @@
         padding: 16px 12px !important;
     }
     
-    /* Hide collapse button on mobile */
-    .sidebar-collapse-btn {
-        display: none !important;
-    }
-    
     .menu-btn {
         display: flex;
     }
@@ -2950,8 +2860,7 @@
     }
     
     .content-area {
-        padding: 16px;
-        padding-top: calc(var(--topbar-height) + 16px);
+        padding: clamp(16px, 4vw, 22px);
     }
 
     .page-header-dashboard {
@@ -3017,15 +2926,19 @@
 /* Mobile portrait (480px and below) */
 @media (max-width: 480px) {
     .page-title {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .topbar-title {
         font-size: var(--font-size-sm);
     }
 
+    .topbar .header-right {
+        gap: 0;
+    }
+
     .topbar-actions {
-        gap: var(--spacing-sm);
+        gap: 24px;
     }
 
     .kpi-card {
@@ -3149,7 +3062,7 @@
     }
 
     .topbar-actions {
-        gap: var(--spacing-sm);
+        gap: 24px;
     }
 
     .topbar .btn-icon,

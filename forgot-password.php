@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RentIT - Reset your password. Receive a recovery code to regain access.">
-    <title>RentIT - Forgot Password</title>
+    <meta name="description" content="Rentertain - Reset your password. Receive a recovery code to regain access.">
+    <title>Rentertain - Forgot Password</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,8 +42,8 @@
         <div class="auth-left">
             <div class="auth-left-content">
                 <div class="auth-logo">
-                    <img src="assets/images/rIT_logo_tp.png" alt="RentIT Logo" class="auth-logo-icon">
-                    <div class="auth-logo-text">RentIT</div>
+                    <img src="assets/images/rIT_logo_tp.png" alt="Rentertain Logo" class="auth-logo-icon">
+                    <div class="auth-logo-text">Rentertain</div>
                 </div>
                 <h1>Reset your<br>access.</h1>
                 <p>Enter your email address and we will send a recovery code to get you back in.</p>
@@ -62,8 +62,8 @@
 
         <div class="auth-right">
             <div class="mobile-logo stagger-child">
-                <img src="assets/images/rIT_logo_tp.png" alt="RentIT Logo" class="mobile-logo-icon">
-                <div class="mobile-logo-text">RentIT</div>
+                <img src="assets/images/rIT_logo_tp.png" alt="Rentertain Logo" class="mobile-logo-icon">
+                <div class="mobile-logo-text">Rentertain</div>
             </div>
 
             <div class="auth-card">
