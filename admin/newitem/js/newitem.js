@@ -116,7 +116,7 @@ async function loadItemForEdit(itemId) {
         }
 
         // Update browser title
-        document.title = 'Edit Item - RentIt Admin';
+        document.title = 'Edit Item - Rentertain';
 
         // Populate form fields
         setVal('itemName', item.item_name);
@@ -526,3 +526,4 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+

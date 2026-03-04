@@ -12,8 +12,8 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     <script src="admin/shared/js/admin-theme.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RentIt Admin - Dispatch Management">
-    <title>Dispatch - RentIt Admin</title>
+    <meta name="description" content="Rentertain Admin - Dispatch Management">
+    <title>Dispatch - Rentertain</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
@@ -122,8 +122,8 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
                 <!-- Dispatch Stats -->
                 <section class="dispatch-stats">
-                    <div class="stat-card">
-                        <div class="stat-icon delivery">
+                    <div class="kpi-card">
+                        <div class="kpi-icon accent">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="1" y="3" width="15" height="13"/>
                                 <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
@@ -131,46 +131,46 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
                                 <circle cx="18.5" cy="18.5" r="2.5"/>
                             </svg>
                         </div>
-                        <div class="stat-content">
-                            <span class="stat-value" id="deliveryCount">8</span>
-                            <span class="stat-label">Deliveries Today</span>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="deliveryCount">8</div>
+                            <div class="kpi-label">Deliveries Today</div>
                         </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon pickup">
+                    <div class="kpi-card">
+                        <div class="kpi-icon info">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
                                 <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
                                 <line x1="12" y1="22.08" x2="12" y2="12"/>
                             </svg>
                         </div>
-                        <div class="stat-content">
-                            <span class="stat-value" id="pickupCount">5</span>
-                            <span class="stat-label">Pickups Today</span>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="pickupCount">5</div>
+                            <div class="kpi-label">Pickups Today</div>
                         </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon pending">
+                    <div class="kpi-card">
+                        <div class="kpi-icon warning">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="12" cy="12" r="10"/>
                                 <polyline points="12 6 12 12 16 14"/>
                             </svg>
                         </div>
-                        <div class="stat-content">
-                            <span class="stat-value" id="pendingCount">3</span>
-                            <span class="stat-label">Pending Assignment</span>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="pendingCount">3</div>
+                            <div class="kpi-label">Pending Assignment</div>
                         </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon completed">
+                    <div class="kpi-card">
+                        <div class="kpi-icon success">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <polyline points="22 4 12 14.01 9 11.01"/>
                             </svg>
                         </div>
-                        <div class="stat-content">
-                            <span class="stat-value" id="completedCount">12</span>
-                            <span class="stat-label">Completed Today</span>
+                        <div class="kpi-content">
+                            <div class="kpi-value" id="completedCount">12</div>
+                            <div class="kpi-label">Completed Today</div>
                         </div>
                     </div>
                 </section>
@@ -251,6 +251,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     </script>
 </body>
 </html>
+
 
 
 

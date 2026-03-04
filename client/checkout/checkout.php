@@ -69,8 +69,8 @@ $grand_total = $total_subtotal + $delivery_fee + $service_fee;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RentIt - Checkout">
-    <title>RentIt - Checkout</title>
+    <meta name="description" content="Rentertain - Checkout">
+    <title>Checkout - Rentertain</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -66,7 +66,7 @@ $favoritesCount = $result->num_rows;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RentIt - My Favorites</title>
+    <title>My Favorites - Rentertain</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">

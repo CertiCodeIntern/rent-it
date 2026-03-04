@@ -130,7 +130,7 @@ function updateProductDisplay(product) {
     if (breadcrumbItem) breadcrumbItem.textContent = product.name;
 
     // Update page title
-    document.title = `RentIt - ${product.name}`;
+    document.title = `${product.name} - Rentertain`;
 
     // Update product info
     const productTitle = document.getElementById('productTitle');
@@ -341,8 +341,8 @@ function handleShare() {
 
     if (navigator.share) {
         navigator.share({
-            title: `RentIt - ${productTitle}`,
-            text: `Check out ${productTitle} on RentIt!`,
+            title: `Rentertain - ${productTitle}`,
+            text: `Check out ${productTitle} on Rentertain!`,
             url: url
         }).catch(err => console.log('Share failed:', err));
     } else {

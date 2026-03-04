@@ -142,8 +142,8 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RentIt - <?php echo htmlspecialchars($item['item_name']); ?>">
-    <title>RentIt - <?php echo htmlspecialchars($item['item_name']); ?></title>
+    <meta name="description" content="Rentertain - <?php echo htmlspecialchars($item['item_name']); ?>">
+    <title><?php echo htmlspecialchars($item['item_name']); ?> - Rentertain</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -636,7 +636,7 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
             btnShare.addEventListener('click', function() {
                 const url = window.location.href;
                 if (navigator.share) {
-                    navigator.share({ title: 'RentIt - ' + itemName, url: url }).catch(() => {});
+                    navigator.share({ title: 'Rentertain - ' + itemName, url: url }).catch(() => {});
                 } else {
                     navigator.clipboard.writeText(url).then(() => {
                         showToast('Link copied to clipboard!', 'success');

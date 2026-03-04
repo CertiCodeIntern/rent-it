@@ -12,8 +12,8 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     <script src="admin/shared/js/admin-theme.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RentIt Admin - Item Catalog">
-    <title>Items - RentIt Admin</title>
+    <meta name="description" content="Rentertain Admin - Item Catalog">
+    <title>Items - Rentertain</title>
     <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
     <link rel="apple-touch-icon" href="assets/images/rIT_logo_tp.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -191,3 +191,4 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 </script>
 </body>
 </html>
+

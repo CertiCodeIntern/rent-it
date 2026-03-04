@@ -132,8 +132,8 @@ function formatCurrency($amount) {
     <script src="admin/shared/js/admin-theme.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RentIt Admin Dashboard - Manage your videoke rental business">
-    <title>Dashboard - RentIt Admin</title>
+    <meta name="description" content="Rentertain Admin Dashboard - Manage your videoke rental business">
+    <title>Dashboard - Rentertain</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
@@ -652,7 +652,7 @@ function formatCurrency($amount) {
             doc.setTextColor(...white);
             doc.setFontSize(22);
             doc.setFont('helvetica', 'bold');
-            doc.text('RentIt Dashboard Report', margin, 18);
+            doc.text('Rentertain Dashboard Report', margin, 18);
             doc.setFontSize(10);
             doc.setFont('helvetica', 'normal');
             const now = new Date();
@@ -833,17 +833,18 @@ function formatCurrency($amount) {
                 doc.setFontSize(7);
                 doc.setFont('helvetica', 'normal');
                 doc.setTextColor(...gray);
-                doc.text('RentIt Admin Dashboard Report \u2022 Confidential', margin, pageH - 6);
+                doc.text('Rentertain Admin Dashboard Report \u2022 Confidential', margin, pageH - 6);
                 doc.text('Page ' + p + ' of ' + pageCount, pageWidth - margin, pageH - 6, { align: 'right' });
             }
 
             // Save
-            const filename = 'RentIt_Dashboard_' + now.toISOString().slice(0, 10) + '.pdf';
+            const filename = 'Rentertain_Dashboard_' + now.toISOString().slice(0, 10) + '.pdf';
             doc.save(filename);
         }
     </script>
 </body>
 </html>
+
 
 
 

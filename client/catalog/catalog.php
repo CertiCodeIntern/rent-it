@@ -30,8 +30,8 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RentIt Catalog - Browse our selection of videoke and karaoke equipment for rent.">
-    <title>RentIt - Browse Catalog</title>
+    <meta name="description" content="Rentertain Catalog - Browse our selection of videoke and karaoke equipment for rent.">
+    <title>Browse Catalog - Rentertain</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -592,3 +592,4 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
         </script>
 </body>
 </html>
+

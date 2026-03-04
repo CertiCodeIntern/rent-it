@@ -12,7 +12,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     <script src="admin/shared/js/admin-theme.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Late Fees Tracker | Admin Portal</title>
+    <title>Late Fees Tracker - Rentertain</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -464,5 +464,6 @@ Sound Rental Team</textarea>
     <script src="admin/latefees/latefees.js"></script>
 </body>
 </html>
+
 
 

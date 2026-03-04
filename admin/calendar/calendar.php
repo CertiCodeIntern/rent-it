@@ -12,8 +12,8 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     <script src="admin/shared/js/admin-theme.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RentIt Calendar Master View - Visual booking and availability grid">
-    <title>Calendar - RentIt Admin</title>
+    <meta name="description" content="Rentertain Calendar Master View - Visual booking and availability grid">
+    <title>Calendar - Rentertain</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
@@ -325,6 +325,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     <script src="admin/calendar/calendar.js"></script>
 </body>
 </html>
+
 
 
 

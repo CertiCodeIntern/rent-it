@@ -155,7 +155,7 @@ $member_since = $user_data['created_at'] ? date('F Y', strtotime($user_data['cre
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RentIt - Dashboard</title>
+    <title>Dashboard - Rentertain</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -360,3 +360,4 @@ $member_since = $user_data['created_at'] ? date('F Y', strtotime($user_data['cre
     <script src="../dashboard/dashboard.js"></script>
 </body>
 </html>
+
