@@ -45,7 +45,7 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
     <link rel="stylesheet" href="catalog.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="/rent-it/assets/images/Logo%20LMode.svg">
 </head>
 <body>
     <div class="page-skeleton-overlay" aria-hidden="true">
@@ -138,13 +138,16 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
                 <!-- Catalog Layout -->
                 <div class="catalog-container">
                     <!-- Filter Sidebar -->
-                    <aside class="filter-sidebar">
+                    <aside class="filter-sidebar" id="catalogFilters" aria-hidden="false">
                         <div class="filter-header">
                             <div class="filter-header-info">
                                 <h2 class="filter-title">Filters</h2>
                                 <p class="filter-subtitle">Find the perfect machine</p>
                             </div>
-                            <button class="reset-filters" title="Reset all filters to default">Reset All</button>
+                            <div class="filter-header-actions">
+                                <button class="reset-filters" title="Reset all filters to default">Reset All</button>
+                                <button class="filters-close-btn" id="filtersCloseBtn" type="button" title="Close filters" aria-label="Close filters">Close</button>
+                            </div>
                         </div>
 
                         <!-- Category Filter -->
@@ -295,6 +298,7 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
                             </p>
                         </div>
                     </aside>
+                    <div class="filters-backdrop" id="filtersBackdrop" aria-hidden="true"></div>
 
                     <!-- Products Section -->
                     <section class="products-section">
@@ -303,14 +307,24 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
                                 Browsing Machines
                                 <span class="products-count">(6 models found)</span>
                             </h2>
-                            <div class="products-sort">
-                                <span class="sort-label">Sort by:</span>
-                                <select class="sort-select" id="sortSelect" title="Sort products by criteria">
-                                    <option value="popular">Most Popular</option>
-                                    <option value="price-low">Price: Low to High</option>
-                                    <option value="price-high">Price: High to Low</option>
-                                    <option value="name">Name A-Z</option>
-                                </select>
+                            <div class="products-actions">
+                                <button class="filters-toggle-btn" id="filtersToggleBtn" type="button" aria-controls="catalogFilters" aria-expanded="false" title="Open filters">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="4" y1="6" x2="20" y2="6"/>
+                                        <line x1="7" y1="12" x2="17" y2="12"/>
+                                        <line x1="10" y1="18" x2="14" y2="18"/>
+                                    </svg>
+                                    Filters
+                                </button>
+                                <div class="products-sort">
+                                    <span class="sort-label">Sort by:</span>
+                                    <select class="sort-select" id="sortSelect" title="Sort products by criteria">
+                                        <option value="popular">Most Popular</option>
+                                        <option value="price-low">Price: Low to High</option>
+                                        <option value="price-high">Price: High to Low</option>
+                                        <option value="name">Name A-Z</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 

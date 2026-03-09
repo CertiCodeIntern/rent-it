@@ -29,7 +29,7 @@ include '../../shared/php/db_connection.php';
     <!-- Theme Script (Prevents flash of wrong theme) -->
     <script src="../../shared/js/theme.js"></script>
     
-    <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="/rent-it/assets/images/Logo%20LMode.svg">
 </head>
 <body>
     <div class="page-skeleton-overlay" aria-hidden="true">

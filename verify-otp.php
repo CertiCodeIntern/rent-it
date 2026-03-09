@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="client/auth/css/auth.css">
 
     <script src="shared/js/theme.js"></script>
-    <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="assets/images/Logo%20LMode.svg">
 
     <style>
         /* OTP-specific overrides */

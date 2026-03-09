@@ -18,7 +18,7 @@ include '../../shared/php/auth_check.php';
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-    <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="/rent-it/assets/images/Logo%20LMode.svg">
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/shared/css/theme.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/shared/css/globals.css">

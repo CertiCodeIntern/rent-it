@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="assets/images/Logo%20LMode.svg">
 
     <!-- Stylesheets (Order: Theme → Layout) -->
     <link rel="stylesheet" href="shared/css/theme.css">
@@ -96,20 +96,81 @@
                     <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                     </svg>
-                </button>                <a href="client/auth/login.php#login" class="btn btn-outline">Login</a>
+                </button>
+                <a href="client/auth/login.php#login" class="mobile-profile-link" aria-label="Profile">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 21a8 8 0 0 0-16 0"></path>
+                        <circle cx="12" cy="8" r="4"></circle>
+                    </svg>
+                </a>
+                <a href="client/auth/login.php#login" class="btn btn-outline">Login</a>
                 <a href="client/auth/login.php#register" class="btn btn-primary">Register</a>
             </div>
         </div>
         
         <!-- Mobile Navigation -->
-        <nav class="mobile-nav" id="mobileNav">
-            <a href="index.php" class="mobile-link">Home</a>
-            <a href="index.php#machines" class="mobile-link">Rentals</a>
-            <a href="index.php#pricing" class="mobile-link">Pricing</a>
-            <a href="pages/aboutus.html" class="mobile-link">About</a>
-            <a href="pages/contactus.html" class="mobile-link">Contact</a>
-            <div class="mobile-actions">
-                <a href="client/auth/login.php#login" class="btn btn-primary" style="width: 100%;">Login</a>
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+            <div class="sidebar-logo">
+                <a href="index.php" class="sidebar-logo-link">
+                    <img
+                        src="assets/images/Logo%20with%20Text%20LMode.svg"
+                        alt="Rentertain"
+                        class="sidebar-logo-icon brand-logo-img"
+                        data-light-src="assets/images/Logo%20with%20Text%20LMode.svg"
+                        data-dark-src="assets/images/Logo%20with%20Text%20DMode.svg"
+                        data-mobile-light-src="assets/images/Logo%20with%20Text%20LMode.svg"
+                        data-mobile-dark-src="assets/images/Logo%20with%20Text%20DMode.svg"
+                    >
+                </a>
+            </div>
+            <div class="sidebar-nav">
+                <a href="index.php" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M3 10.5 12 3l9 7.5"></path>
+                            <path d="M5 9.5V21h14V9.5"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Home</span>
+                </a>
+                <a href="index.php#machines" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="4" y="5" width="16" height="14" rx="2"></rect>
+                            <path d="M8 9h8"></path>
+                            <path d="M8 13h5"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Rentals</span>
+                </a>
+                <a href="index.php#pricing" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 1v22"></path>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Pricing</span>
+                </a>
+                <a href="pages/aboutus.html" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M12 10v6"></path>
+                            <path d="M12 7h.01"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">About</span>
+                </a>
+                <a href="pages/contactus.html" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 6h16v12H4z"></path>
+                            <path d="m4 7 8 6 8-6"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Contact</span>
+                </a>
             </div>
         </nav>
     </header>
@@ -152,16 +213,27 @@
     <footer class="site-footer">
         <div class="container">
             <div class="footer-inner">
-                <!-- Brand Column -->                <div class="footer-brand">
+                <!-- Brand Column -->
+                <div class="footer-brand">
                     <div class="logo-drawer">
-                        <img src="assets/images/rIT_logo_tp.png" alt="Rentertain Logo">
+                        <img
+                            src="assets/images/Logo%20LMode.svg"
+                            alt="Rentertain Logo"
+                            class="footer-logo-img footer-logo-light"
+                        >
+                        <img
+                            src="assets/images/Logo%20DMode.svg"
+                            alt="Rentertain Logo"
+                            class="footer-logo-img footer-logo-dark"
+                        >
                     </div>
                     <div class="brand-text">
                         <h4 class="brand-title">Rentertain</h4>
                         <p class="brand-sub">
                             Making celebrations louder and more memorable with premium videoke rentals since 2026.
                         </p>
-                        <p class="powered-by">Powered by <a href="https://www.certicode.tech/" target="_blank" rel="noopener">CertiCode</a></p>                        <div class="social-links">
+                        <p class="powered-by">Powered by <a href="https://www.certicode.tech/" target="_blank" rel="noopener">CertiCode</a></p>
+                        <div class="social-links">
                             <a href="https://www.facebook.com/CertiCode" class="social" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
@@ -183,8 +255,10 @@
                             </a>
                         </div>
                     </div>
-                </div>                <!-- Company Links -->
-                <div class="footer-col">
+                </div>
+
+                <!-- Company Links -->
+                <div class="footer-col footer-links">
                     <h5>Company</h5>
                     <nav class="footer-nav">
                         <a href="pages/aboutus.html" class="footer-link">About Us</a>
@@ -193,13 +267,24 @@
                     </nav>
                 </div>
 
-                <!-- Admin Links -->
-                <div class="footer-col">
+                <div class="footer-col footer-support">
+                    <h5>Support</h5>
+                    <nav class="footer-nav" aria-label="Support">
+                        <a href="#" class="footer-link">How it works</a>
+                        <a href="#" class="footer-link">Pricing Packages</a>
+                        <a href="#" class="footer-link">Safety Guidelines</a>
+                        <a href="#" class="footer-link">Delivery areas</a>
+                    </nav>
+                </div>
+
+                <!-- Admin Links
+                <div class="footer-col footer-admin">
                     <h5>Admin</h5>
                     <nav class="footer-nav">
                         <a href="admin/auth/login.php" class="footer-link">Admin Login</a>
                     </nav>
                 </div>
+                -->
             </div>
 
             <div class="footer-divider"></div>

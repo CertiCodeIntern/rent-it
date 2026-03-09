@@ -21,19 +21,37 @@
     function initMobileNav() {
         if (!hamburger || !mobileNav) return;
 
+        const menuIcon = '' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+                '<line x1="3" y1="6" x2="21" y2="6"></line>' +
+                '<line x1="3" y1="12" x2="21" y2="12"></line>' +
+                '<line x1="3" y1="18" x2="21" y2="18"></line>' +
+            '</svg>';
+        const closeIcon = '' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+                '<line x1="18" y1="6" x2="6" y2="18"></line>' +
+                '<line x1="6" y1="6" x2="18" y2="18"></line>' +
+            '</svg>';
+
+        function setHamburgerState(isExpanded) {
+            hamburger.setAttribute('aria-expanded', String(isExpanded));
+            hamburger.setAttribute('aria-label', isExpanded ? 'Close menu' : 'Open menu');
+            hamburger.innerHTML = isExpanded ? closeIcon : menuIcon;
+        }
+
         function openNav() {
-            hamburger.setAttribute('aria-expanded', 'true');
-            hamburger.innerHTML = '✕';
+            setHamburgerState(true);
             mobileNav.classList.add('open');
             document.body.style.overflow = 'hidden';
         }
 
         function closeNav() {
-            hamburger.setAttribute('aria-expanded', 'false');
-            hamburger.innerHTML = '☰';
+            setHamburgerState(false);
             mobileNav.classList.remove('open');
             document.body.style.overflow = '';
         }
+
+        setHamburgerState(false);
 
         hamburger.addEventListener('click', function() {
             const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
@@ -57,7 +75,8 @@
         // Close on outside click
         document.addEventListener('click', function(e) {
             if (!mobileNav.classList.contains('open')) return;
-            const isInside = mobileNav.contains(e.target) || hamburger.contains(e.target);
+            const eventPath = typeof e.composedPath === 'function' ? e.composedPath() : [];
+            const isInside = eventPath.includes(mobileNav) || eventPath.includes(hamburger);
             if (!isInside) closeNav();
         });
     }
@@ -446,6 +465,361 @@
     }
 
     // ============================
+    // MACHINE FILTER TABS
+    // ============================
+    function initMachineFilters() {
+        const filterButtons = document.querySelectorAll('.machine-filter-btn');
+        const machineCards = document.querySelectorAll('#landingProductsGrid .product-card');
+
+        if (filterButtons.length === 0 || machineCards.length === 0) return;
+
+        filterButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const selectedFilter = button.dataset.filter || 'all';
+
+                filterButtons.forEach((btn) => {
+                    const isActive = btn === button;
+                    btn.classList.toggle('active', isActive);
+                    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+
+                machineCards.forEach((card) => {
+                    const cardType = card.dataset.machineType || 'standard';
+                    const shouldShow = selectedFilter === 'all' || selectedFilter === cardType;
+                    card.classList.toggle('is-hidden', !shouldShow);
+                });
+            });
+        });
+    }
+
+    // ============================
+    // HOT DEALS CAROUSEL
+    // ============================
+    function initDealsCarousel() {
+        const carousels = document.querySelectorAll('.deals-carousel');
+
+        if (carousels.length === 0) return;
+
+        carousels.forEach(function(carousel) {
+            const viewport = carousel.querySelector('.deals-viewport');
+            const grid = carousel.querySelector('.deals-grid');
+            const cards = grid ? Array.from(grid.querySelectorAll('.deal-card')) : [];
+            const controls = carousel.querySelector('.deals-carousel-controls');
+            const prevBtn = carousel.querySelector('.deals-carousel-btn.prev');
+            const nextBtn = carousel.querySelector('.deals-carousel-btn.next');
+            const dotsWrap = carousel.querySelector('.deals-carousel-dots');
+
+            if (!viewport || !grid || cards.length === 0 || !controls || !prevBtn || !nextBtn || !dotsWrap) return;
+
+            let pageStarts = [];
+            let currentPage = 0;
+            let resizeFrame = null;
+            let scrollFrame = null;
+            let settleFrame = null;
+            let activePointerId = null;
+            let dragStartX = 0;
+            let dragStartY = 0;
+            let dragStartScrollLeft = 0;
+            let dragVelocityX = 0;
+            let dragLastX = 0;
+            let dragLastTime = 0;
+            let dragStartPage = 0;
+            let isDragging = false;
+
+            function isCarouselMode() {
+                return window.innerWidth <= 1024;
+            }
+
+            function getCardsPerPage() {
+                return window.innerWidth <= 640 ? 1 : 2;
+            }
+
+            function getClosestPageIndex() {
+                if (pageStarts.length === 0) return 0;
+
+                const currentScroll = viewport.scrollLeft;
+                let closestIndex = 0;
+                let closestDistance = Infinity;
+
+                pageStarts.forEach(function(start, index) {
+                    const distance = Math.abs(start - currentScroll);
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestIndex = index;
+                    }
+                });
+
+                return closestIndex;
+            }
+
+            function updateControls() {
+                if (!isCarouselMode() || pageStarts.length <= 1) {
+                    controls.hidden = true;
+                    prevBtn.disabled = true;
+                    nextBtn.disabled = true;
+                    viewport.classList.remove('is-draggable', 'is-dragging', 'is-settling');
+                    return;
+                }
+
+                controls.hidden = false;
+                viewport.classList.add('is-draggable');
+                currentPage = getClosestPageIndex();
+                prevBtn.disabled = currentPage === 0;
+                nextBtn.disabled = currentPage === pageStarts.length - 1;
+
+                Array.from(dotsWrap.children).forEach(function(dot, index) {
+                    const isActive = index === currentPage;
+                    dot.classList.toggle('active', isActive);
+                    dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+                });
+            }
+
+            function cancelSettleAnimation() {
+                if (settleFrame !== null) {
+                    cancelAnimationFrame(settleFrame);
+                    settleFrame = null;
+                }
+
+                viewport.classList.remove('is-settling');
+            }
+
+            function animateScrollTo(targetScroll) {
+                cancelSettleAnimation();
+
+                const startScroll = viewport.scrollLeft;
+                const distance = targetScroll - startScroll;
+
+                if (Math.abs(distance) < 1) {
+                    viewport.scrollLeft = targetScroll;
+                    updateControls();
+                    return;
+                }
+
+                const duration = Math.max(180, Math.min(280, Math.abs(distance) * 0.45));
+                const startTime = performance.now();
+
+                viewport.classList.add('is-settling');
+
+                function step(now) {
+                    const progress = Math.min((now - startTime) / duration, 1);
+                    const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+                    viewport.scrollLeft = startScroll + (distance * easedProgress);
+                    updateControls();
+
+                    if (progress < 1) {
+                        settleFrame = requestAnimationFrame(step);
+                        return;
+                    }
+
+                    viewport.scrollLeft = targetScroll;
+                    viewport.classList.remove('is-settling');
+                    settleFrame = null;
+                    updateControls();
+                }
+
+                settleFrame = requestAnimationFrame(step);
+            }
+
+            function goToPage(index, smoothScroll) {
+                if (pageStarts.length === 0) return;
+
+                const boundedIndex = Math.max(0, Math.min(index, pageStarts.length - 1));
+                const targetScroll = pageStarts[boundedIndex];
+
+                currentPage = boundedIndex;
+
+                if (smoothScroll) {
+                    animateScrollTo(targetScroll);
+                } else {
+                    cancelSettleAnimation();
+                    viewport.scrollLeft = targetScroll;
+                }
+
+                updateControls();
+            }
+
+            function getSnapTargetIndex() {
+                const closestIndex = getClosestPageIndex();
+                const movedBy = viewport.scrollLeft - dragStartScrollLeft;
+                const moveThreshold = Math.max(48, viewport.clientWidth * 0.14);
+                const velocityThreshold = 0.35;
+
+                if (Math.abs(movedBy) < moveThreshold && Math.abs(dragVelocityX) < velocityThreshold) {
+                    return closestIndex;
+                }
+
+                if (movedBy > 0 || dragVelocityX < -velocityThreshold) {
+                    return Math.min(dragStartPage + 1, pageStarts.length - 1);
+                }
+
+                if (movedBy < 0 || dragVelocityX > velocityThreshold) {
+                    return Math.max(dragStartPage - 1, 0);
+                }
+
+                return closestIndex;
+            }
+
+            function stopDragging(shouldSnap) {
+                if (activePointerId === null) return;
+
+                if (viewport.hasPointerCapture && viewport.hasPointerCapture(activePointerId)) {
+                    viewport.releasePointerCapture(activePointerId);
+                }
+
+                activePointerId = null;
+                viewport.classList.remove('is-dragging');
+
+                if (shouldSnap) {
+                    goToPage(getSnapTargetIndex(), true);
+                }
+            }
+
+            function handlePointerDown(event) {
+                if (!isCarouselMode() || pageStarts.length <= 1) return;
+                if (event.pointerType === 'mouse' && event.button !== 0) return;
+
+                cancelSettleAnimation();
+                activePointerId = event.pointerId;
+                dragStartX = event.clientX;
+                dragStartY = event.clientY;
+                dragStartScrollLeft = viewport.scrollLeft;
+                dragStartPage = getClosestPageIndex();
+                dragVelocityX = 0;
+                dragLastX = event.clientX;
+                dragLastTime = performance.now();
+                isDragging = false;
+
+                if (viewport.setPointerCapture) {
+                    viewport.setPointerCapture(activePointerId);
+                }
+            }
+
+            function handlePointerMove(event) {
+                if (activePointerId !== event.pointerId || !isCarouselMode() || pageStarts.length <= 1) return;
+
+                const deltaX = event.clientX - dragStartX;
+                const deltaY = event.clientY - dragStartY;
+                const now = performance.now();
+                const elapsed = Math.max(now - dragLastTime, 1);
+
+                if (!isDragging && Math.abs(deltaX) < 8) {
+                    return;
+                }
+
+                if (Math.abs(deltaY) > Math.abs(deltaX)) {
+                    stopDragging(false);
+                    return;
+                }
+
+                if (!isDragging) {
+                    isDragging = true;
+                    viewport.classList.add('is-dragging');
+                }
+
+                event.preventDefault();
+                dragVelocityX = (event.clientX - dragLastX) / elapsed;
+                dragLastX = event.clientX;
+                dragLastTime = now;
+                viewport.scrollLeft = dragStartScrollLeft - deltaX;
+                updateControls();
+            }
+
+            function handlePointerUp(event) {
+                if (activePointerId !== event.pointerId) return;
+
+                const shouldSnap = isDragging;
+                isDragging = false;
+                stopDragging(shouldSnap);
+            }
+
+            function buildDots() {
+                dotsWrap.innerHTML = '';
+
+                pageStarts.forEach(function(_, index) {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'deals-carousel-dot';
+                    dot.setAttribute('aria-label', 'Go to hot deals page ' + (index + 1));
+                    dot.setAttribute('aria-current', 'false');
+                    dot.addEventListener('click', function() {
+                        goToPage(index, true);
+                    });
+                    dotsWrap.appendChild(dot);
+                });
+            }
+
+            function rebuildCarousel() {
+                if (!isCarouselMode()) {
+                    pageStarts = [];
+                    currentPage = 0;
+                    dotsWrap.innerHTML = '';
+                    controls.hidden = true;
+                    prevBtn.disabled = true;
+                    nextBtn.disabled = true;
+                    cancelSettleAnimation();
+                    viewport.classList.remove('is-draggable', 'is-dragging');
+                    viewport.scrollLeft = 0;
+                    return;
+                }
+
+                const cardsPerPage = getCardsPerPage();
+                pageStarts = [];
+
+                for (let index = 0; index < cards.length; index += cardsPerPage) {
+                    pageStarts.push(cards[index].offsetLeft);
+                }
+
+                buildDots();
+                currentPage = Math.min(currentPage, Math.max(pageStarts.length - 1, 0));
+                goToPage(currentPage, false);
+            }
+
+            prevBtn.addEventListener('click', function() {
+                goToPage(currentPage - 1, true);
+            });
+
+            nextBtn.addEventListener('click', function() {
+                goToPage(currentPage + 1, true);
+            });
+
+            viewport.addEventListener('scroll', function() {
+                if (!isCarouselMode() || pageStarts.length <= 1) return;
+
+                if (scrollFrame) {
+                    cancelAnimationFrame(scrollFrame);
+                }
+
+                scrollFrame = requestAnimationFrame(function() {
+                    updateControls();
+                    scrollFrame = null;
+                });
+            }, { passive: true });
+
+            viewport.addEventListener('pointerdown', handlePointerDown);
+            window.addEventListener('pointermove', handlePointerMove, { passive: false });
+            window.addEventListener('pointerup', handlePointerUp);
+            window.addEventListener('pointercancel', handlePointerUp);
+
+            window.addEventListener('resize', function() {
+                if (resizeFrame) {
+                    cancelAnimationFrame(resizeFrame);
+                }
+
+                resizeFrame = requestAnimationFrame(function() {
+                    isDragging = false;
+                    stopDragging(false);
+                    cancelSettleAnimation();
+                    rebuildCarousel();
+                    resizeFrame = null;
+                });
+            });
+
+            rebuildCarousel();
+        });
+    }
+
+    // ============================
     // INITIALIZE ALL
     // ============================
     function init() {
@@ -453,6 +827,8 @@
         initSmoothScroll();
         initScrollAnimations();
         initDeliveryEstimator();
+        initMachineFilters();
+        initDealsCarousel();
         initActiveNavHighlight();
         initHeaderScroll();
         initStatCounters();

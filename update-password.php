@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="shared/css/theme.css">
     <script src="shared/js/theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="assets/images/Logo%20LMode.svg">
 
     <style>
         body {

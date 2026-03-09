@@ -23,9 +23,9 @@ $userName = $_SESSION['user_name'] ?? '';
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?= BASE_URL ?>/assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="<?= BASE_URL ?>/assets/images/Logo%20LMode.svg">
 
-    <!-- Stylesheets (Order: Theme → Layout) -->
+    <!-- Stylesheets (Order: Theme -> Layout) -->
     <link rel="stylesheet" href="<?= BASE_URL ?>/shared/css/theme.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/landingpage/css/index.css">
     
@@ -70,14 +70,19 @@ $userName = $_SESSION['user_name'] ?? '';
     <header class="site-header">
         <div class="container header-inner">
             <!-- Hamburger (Mobile) -->
-            <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">&#9776;</button>
             
             <!-- Brand -->
             <a href="<?= BASE_URL ?>/" class="brand">
-                <div class="logo-drawer">
-                    <img src="<?= BASE_URL ?>/assets/images/rIT_logo_tp.png" alt="Rentertain Logo">
-                </div>
-                <span class="brand-name">Rent<span class="accent">It</span></span>
+                <img
+                    src="<?= BASE_URL ?>/assets/images/Logo%20with%20Text%20LMode.svg"
+                    alt="Rentertain"
+                    class="brand-logo-img"
+                    data-light-src="<?= BASE_URL ?>/assets/images/Logo%20with%20Text%20LMode.svg"
+                    data-dark-src="<?= BASE_URL ?>/assets/images/Logo%20with%20Text%20DMode.svg"
+                    data-mobile-light-src="<?= BASE_URL ?>/assets/images/Logo%20LMode.svg"
+                    data-mobile-dark-src="<?= BASE_URL ?>/assets/images/Logo%20DMode.svg"
+                >
             </a>
             
             <!-- Desktop Navigation -->
@@ -108,309 +113,280 @@ $userName = $_SESSION['user_name'] ?? '';
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                     </svg>
                 </button>
+                <a href="<?= BASE_URL ?>/client/auth/login.php#login" class="mobile-profile-link" aria-label="Profile">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 21a8 8 0 0 0-16 0"></path>
+                        <circle cx="12" cy="8" r="4"></circle>
+                    </svg>
+                </a>
 
-                <?php if ($isLoggedIn): ?>
-                    <a href="<?= BASE_URL ?>/client/dashboard/dashboard.php" class="btn btn-primary">Dashboard</a>
-                <?php else: ?>
-                    <a href="<?= BASE_URL ?>/client/auth/login.php#login" class="btn btn-outline">Login</a>
-                    <a href="<?= BASE_URL ?>/client/auth/login.php#register" class="btn btn-primary">Register</a>
-                <?php endif; ?>
+                <a href="<?= BASE_URL ?>/client/auth/login.php#login" class="btn btn-outline">Login</a>
+                <a href="<?= BASE_URL ?>/client/auth/login.php#register" class="btn btn-primary">Register</a>
             </div>
         </div>
         
         <!-- Mobile Navigation -->
-        <nav class="mobile-nav" id="mobileNav">
-            <a href="http://localhost:5173/" class="mobile-link">Home</a>
-            <a href="#machines" class="mobile-link">Rentals</a>
-            <a href="#pricing" class="mobile-link">Pricing</a>
-            <a href="http://localhost:5173/about" class="mobile-link">About</a>
-            <a href="http://localhost:5173/contact" class="mobile-link">Contact</a>
-            <div class="mobile-actions">
-                <?php if ($isLoggedIn): ?>
-                    <a href="<?= BASE_URL ?>/client/dashboard/dashboard.php" class="btn btn-primary" style="width: 100%;">Dashboard</a>
-                <?php else: ?>
-                    <a href="<?= BASE_URL ?>/client/auth/login.php#login" class="btn btn-primary" style="width: 100%;">Login</a>
-                <?php endif; ?>
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+            <div class="sidebar-logo">
+                <a href="<?= BASE_URL ?>/" class="sidebar-logo-link">
+                    <img
+                        src="<?= BASE_URL ?>/assets/images/Logo%20with%20Text%20LMode.svg"
+                        alt="Rentertain"
+                        class="sidebar-logo-icon brand-logo-img"
+                        data-light-src="<?= BASE_URL ?>/assets/images/Logo%20with%20Text%20LMode.svg"
+                        data-dark-src="<?= BASE_URL ?>/assets/images/Logo%20with%20Text%20DMode.svg"
+                        data-mobile-light-src="<?= BASE_URL ?>/assets/images/Logo%20with%20Text%20LMode.svg"
+                        data-mobile-dark-src="<?= BASE_URL ?>/assets/images/Logo%20with%20Text%20DMode.svg"
+                    >
+                </a>
+            </div>
+            <div class="sidebar-nav">
+                <a href="<?= BASE_URL ?>/" class="mobile-link sidebar-nav-item active">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M3 10.5 12 3l9 7.5"></path>
+                            <path d="M5 9.5V21h14V9.5"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Home</span>
+                </a>
+                <a href="#machines" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="4" y="5" width="16" height="14" rx="2"></rect>
+                            <path d="M8 9h8"></path>
+                            <path d="M8 13h5"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Rentals</span>
+                </a>
+                <a href="#pricing" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 1v22"></path>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Pricing</span>
+                </a>
+                <a href="<?= BASE_URL ?>/pages/aboutus.html" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M12 10v6"></path>
+                            <path d="M12 7h.01"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">About</span>
+                </a>
+                <a href="<?= BASE_URL ?>/pages/contactus.html" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 6h16v12H4z"></path>
+                            <path d="m4 7 8 6 8-6"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Contact</span>
+                </a>
             </div>
         </nav>
     </header>
 
-    <main>
-        <!-- ============================
-             HERO SECTION
-             ============================ -->
-        <section class="hero">
+        <main>
+        <section class="landing-search-section">
             <div class="container">
-                <div class="hero-inner">
-                    <span class="pill">New Arrivals: Gen 5 Systems</span>
-                    <h1 class="hero-title">Bring the Party <span class="accent">Home</span></h1>
-                    <p class="hero-sub">
-                        High-quality videoke machines with 50k+ songs and wireless mics delivered to your doorstep. Crystal clear sound, professional setup.
-                    </p>
-                    <div class="hero-cta">
-                        <a href="#machines" class="btn btn-primary">Browse Machines</a>
-                        <a href="#pricing" class="btn btn-outline">View Packages</a>
-                    </div>
+                <div class="landing-search-bar animate-on-scroll" role="search" aria-label="Search machine models">
+                    <svg class="landing-search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="20" y1="20" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="search" class="landing-search-input" placeholder="Search machine models..." aria-label="Search machine models" autocomplete="off">
                 </div>
             </div>
         </section>
-
-        <!-- ============================
-             CHOOSE YOUR MACHINE
-             ============================ -->
-        <section id="machines" class="choose">
+        <section class="landing-banner-section">
             <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-title">Choose Your Machine</h2>
-                    <p class="section-subtitle">Select from our range of high-performance videoke setups.</p>
-                </div>
-
-                <div class="cards">
-                    <!-- Card 1: Mini Star -->
-                    <article class="card animate-on-scroll animate-delay-1">
-                        <div class="card-media">
-                            <img src="<?= BASE_URL ?>/assets/images/ministar.jpg" alt="Mini Star Videoke Machine">
-                        </div>
-                        <div class="card-body">
-                            <div class="card-head">
-                                <div>
-                                    <h3 class="card-title">Mini Star</h3>
-                                    <p class="card-subtitle">Budget friendly & compact</p>
-                                </div>
-                                <div class="card-price">
-                                    <div class="price-amount">₱800</div>
-                                    <div class="price-label">Starting Price</div>
-                                </div>
-                            </div>
-                            <ul class="card-specs">
-                                <li>30,000+ Classic Songs</li>
-                                <li>2 Wired Microphones</li>
-                                <li>Portable 8" Speaker</li>
-                                <li>Connect to your own TV</li>
-                            </ul>
-                            <div class="card-footer">
-                                <a href="<?= BASE_URL ?>/client/auth/login.php" class="btn btn-primary">Rent Mini Star</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Card 2: Platinum Pro -->
-                    <article class="card animate-on-scroll animate-delay-2">
-                        <div class="card-media">
-                            <img src="<?= BASE_URL ?>/assets/images/platinumpro.webp" alt="Platinum Pro Videoke Machine">
-                        </div>
-                        <div class="card-body">
-                            <div class="card-head">
-                                <div>
-                                    <h3 class="card-title">Platinum Pro</h3>
-                                    <p class="card-subtitle">Crystal clear acoustics</p>
-                                </div>
-                                <div class="card-price">
-                                    <div class="price-amount">₱1,500</div>
-                                    <div class="price-label">Starting Price</div>
-                                </div>
-                            </div>
-                            <ul class="card-specs">
-                                <li>50,000+ Songs (Updated Monthly)</li>
-                                <li>2 UHF Wireless Microphones</li>
-                                <li>12" Active Speaker System</li>
-                                <li>24" LED TV Display Included</li>
-                            </ul>
-                            <div class="card-footer">
-                                <a href="<?= BASE_URL ?>/client/auth/login.php" class="btn btn-primary">Rent Platinum Pro</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Card 3: Party Box X -->
-                    <article class="card animate-on-scroll animate-delay-3">
-                        <div class="card-media">
-                            <img src="<?= BASE_URL ?>/assets/images/partyboxx.webp" alt="Party Box X Videoke Machine">
-                        </div>
-                        <div class="card-body">
-                            <div class="card-head">
-                                <div>
-                                    <h3 class="card-title">Party Box X</h3>
-                                    <p class="card-subtitle">For large gatherings</p>
-                                </div>
-                                <div class="card-price">
-                                    <div class="price-amount">₱2,500</div>
-                                    <div class="price-label">Starting Price</div>
-                                </div>
-                            </div>
-                            <ul class="card-specs">
-                                <li>70,000+ Songs (Full HD Video)</li>
-                                <li>4 UHF Wireless Microphones</li>
-                                <li>Dual 15" Speakers + Subwoofer</li>
-                                <li>43" Smart TV on Stand</li>
-                            </ul>
-                            <div class="card-footer">
-                                <a href="<?= BASE_URL ?>/client/auth/login.php" class="btn btn-primary">Rent Party Box X</a>
-                            </div>
-                        </div>
-                    </article>
+                <div class="landing-banner animate-on-scroll">
+                    <img src="<?= BASE_URL ?>/assets/images/Banner.jpg" alt="Rentertain promo banner">
                 </div>
             </div>
         </section>
 
-        <!-- ============================
-             DELIVERY & ESTIMATOR
-             ============================ -->
-        <section id="pricing" class="delivery">
-            <div class="container delivery-grid">
-                <!-- Left Column -->
-                <div class="delivery-left animate-on-scroll">
-                    <h2>Fast & Reliable Delivery</h2>
-                    <p class="delivery-sub">
-                        We deliver, set up, and test the equipment for you. Enter your location to get an instant estimate of delivery fees and setup times.
-                    </p>
-
-                    <div class="feature-stack">
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                                </svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-label">Setup Time</div>
-                                <div class="feature-value">15 mins</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-box">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 3h15v13H1zM16 8h4l3 4v5h-7V8zM5.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM18.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
-                                </svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-label">Avg Delivery</div>
-                                <div class="feature-value">45 mins</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column - Delivery Illustration -->
-                <div class="delivery-right animate-on-scroll">
-                    <div class="delivery-illustration">
-                        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" class="delivery-truck-icon">
-                            <!-- Road -->
-                            <rect x="0" y="130" width="200" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
-                            <rect x="20" y="132" width="18" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
-                            <rect x="60" y="132" width="30" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
-                            <rect x="120" y="132" width="14" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
-                            <rect x="155" y="132" width="24" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
-                            <!-- Truck body -->
-                            <rect x="50" y="70" width="80" height="55" rx="6" fill="currentColor" opacity="0.9"/>
-                            <!-- Cab -->
-                            <path d="M130 85 L155 85 L165 105 L165 125 L130 125 Z" fill="currentColor" opacity="0.75" rx="4"/>
-                            <!-- Windshield -->
-                            <path d="M133 88 L152 88 L160 104 L133 104 Z" fill="rgba(255,255,255,0.2)" rx="2"/>
-                            <!-- Cargo area detail -->
-                            <rect x="55" y="78" width="70" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
-                            <rect x="55" y="86" width="40" height="3" rx="1.5" fill="rgba(255,255,255,0.1)"/>
-                            <!-- Music notes floating from cargo -->
-                            <text x="72" y="60" font-size="16" fill="currentColor" opacity="0.7" class="note-1">♪</text>
-                            <text x="95" y="48" font-size="20" fill="currentColor" opacity="0.5" class="note-2">♫</text>
-                            <text x="110" y="55" font-size="14" fill="currentColor" opacity="0.6" class="note-3">♪</text>
-                            <!-- Headlight -->
-                            <circle cx="163" cy="115" r="4" fill="#FFC107" opacity="0.9"/>
-                            <circle cx="163" cy="115" r="6" fill="#FFC107" opacity="0.2"/>
-                            <!-- Wheels -->
-                            <circle cx="75" cy="130" r="12" fill="#1a1a2e" stroke="currentColor" stroke-width="3"/>
-                            <circle cx="75" cy="130" r="5" fill="currentColor" opacity="0.3"/>
-                            <circle cx="150" cy="130" r="12" fill="#1a1a2e" stroke="currentColor" stroke-width="3"/>
-                            <circle cx="150" cy="130" r="5" fill="currentColor" opacity="0.3"/>
-                            <!-- Speed lines -->
-                            <rect x="15" y="100" width="25" height="2" rx="1" fill="currentColor" opacity="0.3" class="speed-1"/>
-                            <rect x="10" y="110" width="30" height="2" rx="1" fill="currentColor" opacity="0.2" class="speed-2"/>
-                            <rect x="20" y="120" width="20" height="2" rx="1" fill="currentColor" opacity="0.25" class="speed-3"/>
-                            <!-- Package icon on truck -->
-                            <rect x="85" y="95" width="24" height="22" rx="3" fill="rgba(255,255,255,0.2)"/>
-                            <line x1="97" y1="95" x2="97" y2="117" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-                            <line x1="85" y1="106" x2="109" y2="106" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================
-             STATS SECTION
-             ============================ -->
-        <section class="stats">
-            <div class="container stats-grid">
-                <div class="stat animate-on-scroll">
-                    <div class="stat-num">5,000+</div>
-                    <div class="stat-label">Parties Hosted</div>
-                </div>
-                <div class="stat animate-on-scroll animate-delay-1">
-                    <div class="stat-num">4.9/5</div>
-                    <div class="stat-label">Customer Rating</div>
-                </div>
-                <div class="stat animate-on-scroll animate-delay-2">
-                    <div class="stat-num">24/7</div>
-                    <div class="stat-label">Live Support</div>
-                </div>
-                <div class="stat animate-on-scroll animate-delay-3">
-                    <div class="stat-num">100%</div>
-                    <div class="stat-label">Uptime Guarantee</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================
-             CTA SECTION - LOGIN/REGISTER
-             ============================ -->
-        <section class="cta-section">
+        <section class="landing-tagline-section">
             <div class="container">
-                <div class="cta-card animate-on-scroll">
-                    <div class="cta-content">
-                        <?php if ($isLoggedIn): ?>
-                            <h2 class="cta-title">Welcome Back, <?= htmlspecialchars($userName) ?>!</h2>
-                            <p class="cta-subtitle">
-                                Continue browsing our catalog and manage your bookings from your dashboard.
-                            </p>
-                            <div class="cta-actions">
-                                <a href="<?= BASE_URL ?>/client/catalog/catalog.php" class="btn btn-primary">Browse Catalog</a>
-                                <a href="<?= BASE_URL ?>/client/dashboard/dashboard.php" class="btn btn-outline">Go to Dashboard</a>
-                            </div>
-                        <?php else: ?>
-                            <h2 class="cta-title">Ready to Book Your Next Event?</h2>
-                            <p class="cta-subtitle">
-                                Create an account to access our full catalog, manage bookings, and enjoy exclusive member benefits. Already have an account? Sign in to continue where you left off.
-                            </p>
-                            <div class="cta-actions">
-                                <a href="<?= BASE_URL ?>/client/auth/login.php#register" class="btn btn-primary">Create Account</a>
-                                <a href="<?= BASE_URL ?>/client/auth/login.php#login" class="btn btn-outline">Sign In</a>
-                            </div>
-                        <?php endif; ?>
-                        <div class="cta-benefits">
-                            <div class="cta-benefit">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                                <span>Priority Booking</span>
-                            </div>
-                            <div class="cta-benefit">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                                <span>Member Discounts</span>
-                            </div>
-                            <div class="cta-benefit">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                                <span>Booking History</span>
+                <div class="landing-tagline-wrap animate-on-scroll">
+                    <span class="landing-arrival-pill">New Arrivals: Gen 5 Systems</span>
+                    <h1 class="landing-tagline">Bring the Party <span class="landing-tagline-accent">Home</span></h1>
+                    <p class="landing-tagline-subtitle">High-quality videoke machines with 50k+ songs and wireless mics delivered to your doorstep. Crystal clear sound, professional setup.</p>
+                </div>
+            </div>
+        </section>
+        <section id="pricing" class="hot-deals-section">
+            <div class="container">
+                <div class="landing-section-shell">
+                    <div class="section-header animate-on-scroll">
+                        <h2 class="section-title">Hot Deals</h2>
+                        <p class="section-subtitle">Top picks this week with the best value for home parties.</p>
+                    </div>
+                    <div class="deals-carousel" data-carousel="hot-deals">
+                        <div class="deals-viewport">
+                            <div class="deals-grid">
+                                <article class="deal-card animate-on-scroll animate-delay-1">
+                                    <div class="deal-image-wrap">
+                                        <img src="<?= BASE_URL ?>/assets/images/items/Platinum%20Pro.png" alt="Platinum Pro">
+                                    </div>
+                                    <div class="deal-content">
+                                        <h3 class="deal-title">Platinum Pro</h3>
+                                        <div class="deal-price">&#8369;1,500</div>
+                                        <div class="deal-rating"><span class="deal-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>(124)</span></div>
+                                    </div>
+                                </article>
+                                <article class="deal-card animate-on-scroll animate-delay-2">
+                                    <div class="deal-image-wrap">
+                                        <img src="<?= BASE_URL ?>/assets/images/items/Party%20Box%20X.png" alt="Party Box X">
+                                    </div>
+                                    <div class="deal-content">
+                                        <h3 class="deal-title">Party Box X</h3>
+                                        <div class="deal-price">&#8369;1,500</div>
+                                        <div class="deal-rating"><span class="deal-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>(124)</span></div>
+                                    </div>
+                                </article>
+                                <article class="deal-card animate-on-scroll animate-delay-3">
+                                    <div class="deal-image-wrap">
+                                        <img src="<?= BASE_URL ?>/assets/images/items/Mini%20Star.png" alt="Mini Star">
+                                    </div>
+                                    <div class="deal-content">
+                                        <h3 class="deal-title">Mini Star</h3>
+                                        <div class="deal-price">&#8369;800</div>
+                                        <div class="deal-rating"><span class="deal-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>(124)</span></div>
+                                    </div>
+                                </article>
+                                <article class="deal-card animate-on-scroll animate-delay-4">
+                                    <div class="deal-image-wrap">
+                                        <img src="<?= BASE_URL ?>/assets/images/items/Platinum%20Pro.png" alt="Platinum Pro Plus">
+                                    </div>
+                                    <div class="deal-content">
+                                        <h3 class="deal-title">Platinum Pro Plus</h3>
+                                        <div class="deal-price">&#8369;1,800</div>
+                                        <div class="deal-rating"><span class="deal-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>(124)</span></div>
+                                    </div>
+                                </article>
                             </div>
                         </div>
+                        <div class="deals-carousel-controls" aria-label="Hot deals carousel controls" hidden>
+                            <button type="button" class="deals-carousel-btn prev" aria-label="Previous deals">&#8592;</button>
+                            <div class="deals-carousel-dots" aria-label="Hot deals carousel pagination"></div>
+                            <button type="button" class="deals-carousel-btn next" aria-label="Next deals">&#8594;</button>
+                        </div>
                     </div>
-                    <div class="cta-visual">
-                        <div class="cta-icon">🎤</div>
+                </div>
+            </div>
+        </section>
+        <section id="machines" class="choose-machine-section">
+            <div class="container">
+                <div class="landing-section-shell">
+                    <div class="section-header section-header-row animate-on-scroll">
+                        <div>
+                            <h2 class="section-title">Choose Your Machine</h2>
+                            <p class="section-subtitle">Select from our range of high-performance videoke setups.</p>
+                        </div>
+                        <div class="machine-filters" role="tablist" aria-label="Machine type filters">
+                            <button type="button" class="machine-filter-btn active" data-filter="all" role="tab" aria-selected="true">All Machines</button>
+                            <button type="button" class="machine-filter-btn" data-filter="standard" role="tab" aria-selected="false">Standard</button>
+                            <button type="button" class="machine-filter-btn" data-filter="premium" role="tab" aria-selected="false">Premium</button>
+                        </div>
                     </div>
+                    <div class="products-grid landing-products-grid" id="landingProductsGrid">
+                        <article class="product-card animate-on-scroll animate-delay-1" data-machine-type="standard">
+                            <div class="product-image-wrap">
+                                <img src="<?= BASE_URL ?>/assets/images/items/Mini%20Star.png" alt="Mini Star" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-name">Mini Star</h3>
+                                <div class="product-price">&#8369;800</div>
+                                <div class="product-rating"><span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-count">(124)</span></div>
+                            </div>
+                        </article>
+                        <article class="product-card animate-on-scroll animate-delay-2" data-machine-type="premium">
+                            <div class="product-image-wrap">
+                                <img src="<?= BASE_URL ?>/assets/images/items/Platinum%20Pro.png" alt="Platinum Pro" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-name">Platinum Pro</h3>
+                                <div class="product-price">&#8369;1,500</div>
+                                <div class="product-rating"><span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-count">(124)</span></div>
+                            </div>
+                        </article>
+                        <article class="product-card animate-on-scroll animate-delay-3" data-machine-type="premium">
+                            <div class="product-image-wrap">
+                                <img src="<?= BASE_URL ?>/assets/images/items/Party%20Box%20X.png" alt="Party Box X" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-name">Party Box X</h3>
+                                <div class="product-price">&#8369;1,500</div>
+                                <div class="product-rating"><span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-count">(124)</span></div>
+                            </div>
+                        </article>
+                        <article class="product-card animate-on-scroll animate-delay-4" data-machine-type="standard">
+                            <div class="product-image-wrap">
+                                <img src="<?= BASE_URL ?>/assets/images/items/Mini%20Star.png" alt="Mini Star" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-name">Mini Star</h3>
+                                <div class="product-price">&#8369;800</div>
+                                <div class="product-rating"><span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-count">(124)</span></div>
+                            </div>
+                        </article>
+                        <article class="product-card animate-on-scroll animate-delay-1" data-machine-type="premium">
+                            <div class="product-image-wrap">
+                                <img src="<?= BASE_URL ?>/assets/images/items/Platinum%20Pro.png" alt="Platinum Pro" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-name">Platinum Pro</h3>
+                                <div class="product-price">&#8369;1,500</div>
+                                <div class="product-rating"><span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-count">(124)</span></div>
+                            </div>
+                        </article>
+                        <article class="product-card animate-on-scroll animate-delay-2" data-machine-type="premium">
+                            <div class="product-image-wrap">
+                                <img src="<?= BASE_URL ?>/assets/images/items/Party%20Box%20X.png" alt="Party Box X" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-name">Party Box X</h3>
+                                <div class="product-price">&#8369;1,500</div>
+                                <div class="product-rating"><span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-count">(124)</span></div>
+                            </div>
+                        </article>
+                        <article class="product-card animate-on-scroll animate-delay-3" data-machine-type="standard">
+                            <div class="product-image-wrap">
+                                <img src="<?= BASE_URL ?>/assets/images/items/Mini%20Star.png" alt="Mini Star" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-name">Mini Star</h3>
+                                <div class="product-price">&#8369;800</div>
+                                <div class="product-rating"><span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-count">(124)</span></div>
+                            </div>
+                        </article>
+                        <article class="product-card animate-on-scroll animate-delay-4" data-machine-type="premium">
+                            <div class="product-image-wrap">
+                                <img src="<?= BASE_URL ?>/assets/images/items/Platinum%20Pro.png" alt="Platinum Pro" class="product-image">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-name">Platinum Pro</h3>
+                                <div class="product-price">&#8369;1,500</div>
+                                <div class="product-rating"><span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="rating-count">(124)</span></div>
+                            </div>
+                        </article>
+                    </div>
+                    <nav class="landing-pagination animate-on-scroll" aria-label="Machine pagination">
+                        <button type="button" class="pagination-btn" aria-label="Previous page" disabled>&lt;</button>
+                        <button type="button" class="pagination-btn active" aria-current="page">1</button>
+                        <button type="button" class="pagination-btn">2</button>
+                        <button type="button" class="pagination-btn">3</button>
+                        <span class="pagination-dots">...</span>
+                        <button type="button" class="pagination-btn">8</button>
+                        <button type="button" class="pagination-btn" aria-label="Next page">&gt;</button>
+                    </nav>
                 </div>
             </div>
         </section>
@@ -425,7 +401,16 @@ $userName = $_SESSION['user_name'] ?? '';
                 <!-- Brand Column -->
                 <div class="footer-brand">
                     <div class="logo-drawer">
-                        <img src="<?= BASE_URL ?>/assets/images/rIT_logo_tp.png" alt="Rentertain Logo">
+                        <img
+                            src="<?= BASE_URL ?>/assets/images/Logo%20LMode.svg"
+                            alt="Rentertain Logo"
+                            class="footer-logo-img footer-logo-light"
+                        >
+                        <img
+                            src="<?= BASE_URL ?>/assets/images/Logo%20DMode.svg"
+                            alt="Rentertain Logo"
+                            class="footer-logo-img footer-logo-dark"
+                        >
                     </div>
                     <div class="brand-text">
                         <h4 class="brand-title">Rentertain</h4>
@@ -447,7 +432,7 @@ $userName = $_SESSION['user_name'] ?? '';
                                     <path d="M12 3a12 12 0 0 1 0 18"/>
                                 </svg>
                             </a>
-                            <a href="http://localhost:5173/contact" class="social" aria-label="Contact">
+                            <a href="<?= BASE_URL ?>/pages/contactus.html" class="social" aria-label="Contact">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                     <polyline points="22,6 12,13 2,6"/>
@@ -458,7 +443,7 @@ $userName = $_SESSION['user_name'] ?? '';
                 </div>
 
                 <!-- Company Links -->
-                <div class="footer-col">
+                <div class="footer-col footer-links">
                     <h5>Company</h5>
                     <nav class="footer-nav">
                         <a href="<?= BASE_URL ?>/pages/aboutus.html" class="footer-link">About Us</a>
@@ -467,19 +452,30 @@ $userName = $_SESSION['user_name'] ?? '';
                     </nav>
                 </div>
 
-                <!-- Admin Links -->
-                <div class="footer-col">
+                <div class="footer-col footer-support">
+                    <h5>Support</h5>
+                    <nav class="footer-nav" aria-label="Support">
+                        <a href="#" class="footer-link">How it works</a>
+                        <a href="#" class="footer-link">Pricing Packages</a>
+                        <a href="#" class="footer-link">Safety Guidelines</a>
+                        <a href="#" class="footer-link">Delivery areas</a>
+                    </nav>
+                </div>
+
+                <!-- Admin Links
+                <div class="footer-col footer-admin">
                     <h5>Admin</h5>
                     <nav class="footer-nav">
                         <a href="<?= BASE_URL ?>/admin/auth/login.php" class="footer-link">Admin Login</a>
                     </nav>
                 </div>
+                -->
             </div>
 
             <div class="footer-divider"></div>
 
             <div class="footer-bottom">
-                <p class="copyright">© 2026 Rentertain Videoke Rentals • v2.4.0</p>
+                <p class="copyright">&copy; 2026 Rentertain Videoke Rentals &bull; v2.4.0</p>
                 <div class="policy-links">
                     <a href="<?= BASE_URL ?>/pages/privacy-policy.html" class="policy-link">Privacy Policy</a>
                     <a href="<?= BASE_URL ?>/pages/cookie-policy.html" class="policy-link">Cookie Policy</a>

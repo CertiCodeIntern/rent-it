@@ -1404,7 +1404,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-xl);
     position: fixed;
     top: 0;
     left: var(--sidebar-width);
@@ -1758,7 +1758,7 @@
     }
     
     .topbar {
-        padding: 0 var(--spacing-md);
+        padding: 0 var(--spacing-xl);
         left: 0 !important;
         width: 100% !important;
     }
@@ -2850,7 +2850,7 @@
     }
     
     .topbar {
-        padding: 0 var(--spacing-md);
+        padding: 0 clamp(16px, 4vw, 22px);
         left: 0 !important;
         width: 100% !important;
     }
@@ -3054,7 +3054,7 @@
 @media (max-width: 375px) {
     .topbar {
         height: 56px;
-        padding: 0 var(--spacing-sm);
+        padding: 0 clamp(16px, 4vw, 22px);
     }
 
     .topbar-title {

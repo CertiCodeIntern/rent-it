@@ -154,7 +154,7 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
     <link rel="stylesheet" href="../../client/dashboard/dashboard.css">
     <link rel="stylesheet" href="itemdescription.css">
     
-    <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="/rent-it/assets/images/Logo%20LMode.svg">
 </head>
 <body>
     <div class="page-skeleton-overlay" aria-hidden="true">

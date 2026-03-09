@@ -41,7 +41,7 @@ $total_records = mysqli_num_rows($history_result);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="/rent-it/assets/images/Logo%20LMode.svg">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="<?= BASE_URL ?>/shared/css/theme.css">

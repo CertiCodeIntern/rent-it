@@ -10,6 +10,7 @@
         initCatalog();
     });
     function initCatalog() {
+        initMobileFilterDrawer();
         initCatalogTabs();
         initCategoryFilters();
         initStatusFilters();
@@ -22,6 +23,57 @@
         initPagination();
         initCatalogEmptyState();
         updateProductCount();
+    }
+
+    function initMobileFilterDrawer() {
+        const body = document.body;
+        const toggleBtn = document.getElementById('filtersToggleBtn');
+        const closeBtn = document.getElementById('filtersCloseBtn');
+        const filterSidebar = document.getElementById('catalogFilters');
+        const backdrop = document.getElementById('filtersBackdrop');
+
+        if (!toggleBtn || !filterSidebar || !backdrop) return;
+
+        const mobileQuery = window.matchMedia('(max-width: 768px)');
+
+        const setState = (isOpen) => {
+            body.classList.toggle('filters-open', isOpen && mobileQuery.matches);
+            toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            filterSidebar.setAttribute('aria-hidden', isOpen ? 'false' : String(mobileQuery.matches));
+            backdrop.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        };
+
+        const openDrawer = () => setState(true);
+        const closeDrawer = () => setState(false);
+        const toggleDrawer = () => {
+            const isOpen = body.classList.contains('filters-open');
+            if (isOpen) {
+                closeDrawer();
+                return;
+            }
+            openDrawer();
+        };
+
+        toggleBtn.addEventListener('click', toggleDrawer);
+        closeBtn?.addEventListener('click', closeDrawer);
+        backdrop.addEventListener('click', closeDrawer);
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && body.classList.contains('filters-open')) {
+                closeDrawer();
+            }
+        });
+
+        mobileQuery.addEventListener('change', (event) => {
+            if (!event.matches) {
+                closeDrawer();
+                filterSidebar.setAttribute('aria-hidden', 'false');
+                return;
+            }
+            closeDrawer();
+        });
+
+        closeDrawer();
     }
 
     // Normalize status strings so filters and badges stay in sync

@@ -136,7 +136,7 @@ function formatCurrency($amount) {
     <title>Dashboard - Rentertain</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="assets/images/Logo%20LMode.svg">
     <link rel="apple-touch-icon" href="assets/images/rIT_logo_tp.png">
     
     <!-- Google Fonts -->
@@ -844,7 +844,3 @@ function formatCurrency($amount) {
     </script>
 </body>
 </html>
-
-
-
-

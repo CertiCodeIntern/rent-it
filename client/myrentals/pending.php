@@ -47,7 +47,7 @@ while ($row = $result->fetch_assoc()) {
     <link rel="stylesheet" href="<?= BASE_URL ?>/shared/css/globals.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/client/dashboard/dashboard.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/client/myrentals/myrentals.css">
-    <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="/rent-it/assets/images/Logo%20LMode.svg">
     <script src="<?= BASE_URL ?>/shared/js/theme.js"></script>
 
     <style>

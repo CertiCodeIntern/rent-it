@@ -7,7 +7,7 @@ http_response_code(404);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found | Rentertain</title>
-    <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="/rent-it/assets/images/Logo%20LMode.svg">
     <link rel="stylesheet" href="/rent-it/shared/css/theme.css">
     <style>
         * { box-sizing: border-box; }

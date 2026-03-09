@@ -22,10 +22,34 @@
     // THEME TOGGLE INITIALIZATION
     // Sets up click handler after DOM is ready
     // ============================
+    function syncBrandLogos() {
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+
+        document.querySelectorAll('.brand-logo-img').forEach((img) => {
+            const lightSrc = img.dataset.lightSrc || img.getAttribute('src') || '';
+            const darkSrc = img.dataset.darkSrc || lightSrc;
+            const mobileLightSrc = img.dataset.mobileLightSrc || lightSrc;
+            const mobileDarkSrc = img.dataset.mobileDarkSrc || darkSrc;
+            const nextSrc = isMobile
+                ? (currentTheme === 'dark' ? mobileDarkSrc : mobileLightSrc)
+                : (currentTheme === 'dark' ? darkSrc : lightSrc);
+
+            if (nextSrc && img.getAttribute('src') !== nextSrc) {
+                img.setAttribute('src', nextSrc);
+            }
+        });
+    }
+
     function initThemeToggle() {
         const themeToggle = document.getElementById('themeToggle');
         
-        if (!themeToggle) return;
+        syncBrandLogos();
+
+        if (!themeToggle) {
+            window.addEventListener('resize', syncBrandLogos, { passive: true });
+            return;
+        }
 
         themeToggle.addEventListener('click', function() {
             // Get current theme
@@ -39,11 +63,15 @@
             
             // Save to localStorage
             localStorage.setItem('rentit-theme', newTheme);
+
+            syncBrandLogos();
             
             // Announce change for accessibility
             const announcement = newTheme === 'dark' ? 'Dark mode enabled' : 'Light mode enabled';
             themeToggle.setAttribute('aria-label', announcement);
         });
+
+        window.addEventListener('resize', syncBrandLogos, { passive: true });
     }
 
     function initPageSkeleton() {

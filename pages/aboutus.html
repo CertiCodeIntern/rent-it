@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="assets/images/Logo%20LMode.svg">
 
     <!-- Stylesheets (Order: Theme → Layout → Page-specific) -->
     <link rel="stylesheet" href="shared/css/theme.css">
@@ -61,14 +61,25 @@
     <header class="site-header">
         <div class="container header-inner">
             <!-- Hamburger (Mobile) -->
-            <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
             
             <!-- Brand -->
             <a href="index.php" class="brand">
-                <div class="logo-drawer">
-                    <img src="assets/images/rIT_logo_tp.png" alt="Rentertain Logo">
-                </div>
-                <span class="brand-name">Rent<span class="accent">It</span></span>
+                <img
+                    src="assets/images/Logo with Text LMode.svg"
+                    alt="Rentertain"
+                    class="brand-logo-img"
+                    data-light-src="assets/images/Logo with Text LMode.svg"
+                    data-dark-src="assets/images/Logo with Text DMode.svg"
+                    data-mobile-light-src="assets/images/Logo LMode.svg"
+                    data-mobile-dark-src="assets/images/Logo DMode.svg"
+                >
             </a>
             
             <!-- Desktop Navigation -->
@@ -98,20 +109,81 @@
                     <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                     </svg>
-                </button>                <a href="client/auth/login.php#login" class="btn btn-outline">Login</a>
+                </button>
+                <a href="client/auth/login.php#login" class="mobile-profile-link" aria-label="Profile">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 21a8 8 0 0 0-16 0"></path>
+                        <circle cx="12" cy="8" r="4"></circle>
+                    </svg>
+                </a>
+                <a href="client/auth/login.php#login" class="btn btn-outline">Login</a>
                 <a href="client/auth/login.php#register" class="btn btn-primary">Register</a>
             </div>
         </div>
         
         <!-- Mobile Navigation -->
-        <nav class="mobile-nav" id="mobileNav">
-            <a href="index.php" class="mobile-link">Home</a>
-            <a href="index.php#machines" class="mobile-link">Rentals</a>
-            <a href="index.php#pricing" class="mobile-link">Pricing</a>
-            <a href="pages/aboutus.html" class="mobile-link active">About</a>
-            <a href="pages/contactus.html" class="mobile-link">Contact</a>
-            <div class="mobile-actions">
-                <a href="client/auth/login.php#login" class="btn btn-primary" style="width: 100%;">Login</a>
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+            <div class="sidebar-logo">
+                <a href="index.php" class="sidebar-logo-link">
+                    <img
+                        src="assets/images/Logo%20with%20Text%20LMode.svg"
+                        alt="Rentertain"
+                        class="sidebar-logo-icon brand-logo-img"
+                        data-light-src="assets/images/Logo%20with%20Text%20LMode.svg"
+                        data-dark-src="assets/images/Logo%20with%20Text%20DMode.svg"
+                        data-mobile-light-src="assets/images/Logo%20with%20Text%20LMode.svg"
+                        data-mobile-dark-src="assets/images/Logo%20with%20Text%20DMode.svg"
+                    >
+                </a>
+            </div>
+            <div class="sidebar-nav">
+                <a href="index.php" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M3 10.5 12 3l9 7.5"></path>
+                            <path d="M5 9.5V21h14V9.5"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Home</span>
+                </a>
+                <a href="index.php#machines" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="4" y="5" width="16" height="14" rx="2"></rect>
+                            <path d="M8 9h8"></path>
+                            <path d="M8 13h5"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Rentals</span>
+                </a>
+                <a href="index.php#pricing" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 1v22"></path>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Pricing</span>
+                </a>
+                <a href="pages/aboutus.html" class="mobile-link sidebar-nav-item active">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M12 10v6"></path>
+                            <path d="M12 7h.01"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">About</span>
+                </a>
+                <a href="pages/contactus.html" class="mobile-link sidebar-nav-item">
+                    <span class="sidebar-nav-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 6h16v12H4z"></path>
+                            <path d="m4 7 8 6 8-6"></path>
+                        </svg>
+                    </span>
+                    <span class="sidebar-nav-label">Contact</span>
+                </a>
             </div>
         </nav>
     </header>
@@ -126,12 +198,27 @@
                     <div class="about-hero-content">
                         <span class="since-badge animate-fade-up delay-1">Since 2026</span>
                         <h1 class="about-hero-title animate-fade-up delay-2">Elevating Events with Professional Sound</h1>
-                        <p class="about-hero-desc animate-fade-up delay-3">
-                            What started as a small garage project in 2026 has grown into the city's premier videoke rental service. Our mission is to provide high-quality entertainment through professional-grade videoke systems. From intimate family gatherings to grand corporate events, we ensure your voice is heard in crystal clear quality.
-                        </p>
-                        <p class="about-hero-desc animate-fade-up delay-4">
-                            With years of experience and thousands of successful events, Rentertain has become the trusted name for videoke rentals in Metro Manila and surrounding areas. Our commitment to quality equipment, professional service, and customer satisfaction sets us apart.
-                        </p>
+                        <div class="about-hero-details" id="aboutHeroDetails">
+                            <p class="about-hero-desc animate-fade-up delay-3">
+                                What started as a small garage project in 2026 has grown into the city's premier videoke rental service. Our mission is to provide high-quality entertainment through professional-grade videoke systems. From intimate family gatherings to grand corporate events, we ensure your voice is heard in crystal clear quality.
+                            </p>
+                            <p class="about-hero-desc animate-fade-up delay-4">
+                                With years of experience and thousands of successful events, Rentertain has become the trusted name for videoke rentals in Metro Manila and surrounding areas. Our commitment to quality equipment, professional service, and customer satisfaction sets us apart.
+                            </p>
+                        </div>
+                        <button
+                            class="about-hero-toggle animate-fade-up delay-3"
+                            id="aboutHeroToggle"
+                            type="button"
+                            aria-controls="aboutHeroDetails"
+                            aria-expanded="false"
+                            aria-label="Show full about text"
+                        >
+                            <span class="sr-only">Show full about text</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
                         <div class="about-hero-cta animate-fade-up delay-5">
                             <a href="#team" class="btn-team">
                                 Our Team
@@ -145,9 +232,7 @@
                         </div>
                     </div>
                     <div class="about-hero-image animate-fade-right delay-3">
-                        <a href="assets/images/team/RentIT.png" target="_blank" rel="noopener">
-                            <img src="assets/images/team/RentIT.png" alt="Rentertain Team" onerror="this.closest('a').replaceWith(Object.assign(document.createElement('div'),{style:'font-size:64px',textContent:'🎤'}))">
-                        </a>
+                        <img src="assets/images/new_logo.svg" alt="Rentertain logo" onerror="this.remove()">
                     </div>
                 </div>
             </div>
@@ -163,49 +248,48 @@
                     <div class="core-values-underline"></div>
                 </div>
 
-                <div class="about-values-grid">
-                    <!-- Quality Sound -->
-                    <article class="value-card animate-fade-up delay-1">
-                        <div class="value-icon blue">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                                <line x1="12" y1="19" x2="12" y2="23"/>
-                                <line x1="8" y1="23" x2="16" y2="23"/>
+                <div class="accordion values-accordion">
+                    <div class="accordion-item animate-fade-up delay-1">
+                        <button class="accordion-header active" data-accordion="quality" aria-expanded="true">
+                            <span class="accordion-title">Quality Sound</span>
+                            <svg class="accordion-chevron" viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9"/>
                             </svg>
+                        </button>
+                        <div class="accordion-content show">
+                            <p>
+                                We use only top-tier audio equipment and calibrated speakers to ensure studio-grade vocals at every venue. Our systems are regularly maintained and updated with the latest technology to deliver crystal-clear sound that makes every performance shine.
+                            </p>
                         </div>
-                        <h3 class="value-title">Quality Sound</h3>
-                        <p class="value-desc">
-                            We use only top-tier audio equipment and calibrated speakers to ensure studio-grade vocals at every venue. Our systems are regularly maintained and updated with the latest technology to deliver crystal-clear sound that makes every performance shine.
-                        </p>
-                    </article>
+                    </div>
 
-                    <!-- Reliable Service -->
-                    <article class="value-card animate-fade-up delay-2">
-                        <div class="value-icon orange">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    <div class="accordion-item animate-fade-up delay-2">
+                        <button class="accordion-header" data-accordion="service" aria-expanded="false">
+                            <span class="accordion-title">Reliable Service</span>
+                            <svg class="accordion-chevron" viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9"/>
                             </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>
+                                Prompt delivery and expert setup. Our technical team is on standby to ensure your party never skips a beat. We arrive on time, every time, and provide full support throughout your event. Our 24/7 hotline means help is always just a call away.
+                            </p>
                         </div>
-                        <h3 class="value-title">Reliable Service</h3>
-                        <p class="value-desc">
-                            Prompt delivery and expert setup. Our technical team is on standby to ensure your party never skips a beat. We arrive on time, every time, and provide full support throughout your event. Our 24/7 hotline means help is always just a call away.
-                        </p>
-                    </article>
+                    </div>
 
-                    <!-- Customer Joy -->
-                    <article class="value-card animate-fade-up delay-3">
-                        <div class="value-icon red">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    <div class="accordion-item animate-fade-up delay-3">
+                        <button class="accordion-header" data-accordion="joy" aria-expanded="false">
+                            <span class="accordion-title">Customer Joy</span>
+                            <svg class="accordion-chevron" viewBox="0 0 24 24">
+                                <polyline points="6 9 12 15 18 9"/>
                             </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <p>
+                                We do not just rent machines; we facilitate memories. Customer happiness is our ultimate success metric. From the moment you book to the final pickup, we are dedicated to making your experience seamless, enjoyable, and truly unforgettable.
+                            </p>
                         </div>
-                        <h3 class="value-title">Customer Joy</h3>
-                        <p class="value-desc">
-                            We don't just rent machines; we facilitate memories. Customer happiness is our ultimate success metric. From the moment you book to the final pickup, we're dedicated to making your experience seamless, enjoyable, and truly unforgettable.
-                        </p>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -221,9 +305,8 @@
                 </div>
 
                 <div class="team-grid">
-                    <!-- CEO -->
-                    <article class="team-card animate-fade-up delay-1">
-                        <div class="team-photo">👨‍💼</div>
+                    <article class="team-card team-card-spotlight animate-fade-up delay-1">
+                        <div class="team-photo" data-initials="TO"></div>
                         <div class="team-info">
                             <h3 class="team-name">Tom Oliver</h3>
                             <div class="team-role">Chief Executive Officer</div>
@@ -231,9 +314,8 @@
                         </div>
                     </article>
 
-                    <!-- Project Manager -->
-                    <article class="team-card animate-fade-up delay-2">
-                        <div class="team-photo">👨‍💼</div>
+                    <article class="team-card team-card-mobile-featured animate-fade-up delay-2">
+                        <div class="team-photo" data-initials="AA"></div>
                         <div class="team-info">
                             <h3 class="team-name">Aaron Raven Aramil</h3>
                             <div class="team-role">Project Manager</div>
@@ -241,9 +323,8 @@
                         </div>
                     </article>
 
-                    <!-- Lead Dev / Frontend -->
-                    <article class="team-card animate-fade-up delay-3">
-                        <div class="team-photo">👨‍💻</div>
+                    <article class="team-card team-card-featured animate-fade-up delay-3">
+                        <div class="team-photo" data-initials="MP"></div>
                         <div class="team-info">
                             <h3 class="team-name">Marc Steeven Parubrub</h3>
                             <div class="team-role">Lead Developer / Frontend Developer</div>
@@ -251,9 +332,8 @@
                         </div>
                     </article>
 
-                    <!-- Full Stack Devs -->
-                    <article class="team-card animate-fade-up delay-4">
-                        <div class="team-photo">👨‍💻</div>
+                    <article class="team-card team-card-featured animate-fade-up delay-4">
+                        <div class="team-photo" data-initials="MM"></div>
                         <div class="team-info">
                             <h3 class="team-name">Miguel Ansano Sta. Maria</h3>
                             <div class="team-role">Full Stack Developer</div>
@@ -262,7 +342,7 @@
                     </article>
 
                     <article class="team-card animate-fade-up delay-1">
-                        <div class="team-photo">👨‍💻</div>
+                        <div class="team-photo" data-initials="VM"></div>
                         <div class="team-info">
                             <h3 class="team-name">Von Asley Malilos</h3>
                             <div class="team-role">Full Stack Developer</div>
@@ -270,9 +350,8 @@
                         </div>
                     </article>
 
-                    <!-- Frontend Dev -->
                     <article class="team-card animate-fade-up delay-2">
-                        <div class="team-photo">👨‍💻</div>
+                        <div class="team-photo" data-initials="JV"></div>
                         <div class="team-info">
                             <h3 class="team-name">Jude Vincent</h3>
                             <div class="team-role">Frontend Developer</div>
@@ -280,9 +359,8 @@
                         </div>
                     </article>
 
-                    <!-- Backend Devs -->
                     <article class="team-card animate-fade-up delay-3">
-                        <div class="team-photo">👨‍💻</div>
+                        <div class="team-photo" data-initials="LO"></div>
                         <div class="team-info">
                             <h3 class="team-name">Leander Ochea</h3>
                             <div class="team-role">Backend Developer</div>
@@ -291,7 +369,7 @@
                     </article>
 
                     <article class="team-card animate-fade-up delay-4">
-                        <div class="team-photo">👨‍💻</div>
+                        <div class="team-photo" data-initials="SB"></div>
                         <div class="team-info">
                             <h3 class="team-name">Sean Rey Beltran</h3>
                             <div class="team-role">Backend Developer</div>
@@ -300,7 +378,7 @@
                     </article>
 
                     <article class="team-card animate-fade-up delay-1">
-                        <div class="team-photo">👩‍💻</div>
+                        <div class="team-photo" data-initials="VU"></div>
                         <div class="team-info">
                             <h3 class="team-name">Via Umali</h3>
                             <div class="team-role">Backend Developer</div>
@@ -308,11 +386,10 @@
                         </div>
                     </article>
 
-                    <!-- UI/UX Designers -->
                     <article class="team-card animate-fade-up delay-2">
-                        <div class="team-photo">
+                        <div class="team-photo has-image" data-initials="JC">
                             <a href="assets/images/team/JOAQUIN GABRIEL CAMANGEG_UIUX.jpg" target="_blank" rel="noopener">
-                                <img src="assets/images/team/JOAQUIN GABRIEL CAMANGEG_UIUX.jpg" alt="Joaquin Gabriel Camangeg" onerror="this.closest('.team-photo').innerHTML='🎨'">
+                                <img src="assets/images/team/JOAQUIN GABRIEL CAMANGEG_UIUX.jpg" alt="Joaquin Gabriel Camangeg" onerror="this.closest('.team-photo').classList.remove('has-image'); this.closest('.team-photo').querySelector('a').remove();">
                             </a>
                         </div>
                         <div class="team-info">
@@ -323,9 +400,9 @@
                     </article>
 
                     <article class="team-card animate-fade-up delay-3">
-                        <div class="team-photo">
+                        <div class="team-photo has-image" data-initials="VB">
                             <a href="assets/images/team/VEENY BAUTISTA_UI_UX.png" target="_blank" rel="noopener">
-                                <img src="assets/images/team/VEENY BAUTISTA_UI_UX.png" alt="Veeny Bautista" onerror="this.closest('.team-photo').innerHTML='🎨'">
+                                <img src="assets/images/team/VEENY BAUTISTA_UI_UX.png" alt="Veeny Bautista" onerror="this.closest('.team-photo').classList.remove('has-image'); this.closest('.team-photo').querySelector('a').remove();">
                             </a>
                         </div>
                         <div class="team-info">
@@ -336,7 +413,7 @@
                     </article>
 
                     <article class="team-card animate-fade-up delay-4">
-                        <div class="team-photo">👨‍🎨</div>
+                        <div class="team-photo" data-initials="AN"></div>
                         <div class="team-info">
                             <h3 class="team-name">Andrei</h3>
                             <div class="team-role">UI/UX Designer</div>
@@ -345,7 +422,7 @@
                     </article>
 
                     <article class="team-card animate-fade-up delay-1">
-                        <div class="team-photo">👩‍🎨</div>
+                        <div class="team-photo" data-initials="PJ"></div>
                         <div class="team-info">
                             <h3 class="team-name">Pauline Jayme</h3>
                             <div class="team-role">UI/UX Designer</div>
@@ -353,11 +430,10 @@
                         </div>
                     </article>
 
-                    <!-- Multimedia -->
                     <article class="team-card animate-fade-up delay-2">
-                        <div class="team-photo">
+                        <div class="team-photo has-image" data-initials="RL">
                             <a href="assets/images/team/ROXANNE LAZO_MULTIMEDIA.jpg" target="_blank" rel="noopener">
-                                <img src="assets/images/team/ROXANNE LAZO_MULTIMEDIA.jpg" alt="Roxanne Lazo" onerror="this.closest('.team-photo').innerHTML='🎬'">
+                                <img src="assets/images/team/ROXANNE LAZO_MULTIMEDIA.jpg" alt="Roxanne Lazo" onerror="this.closest('.team-photo').classList.remove('has-image'); this.closest('.team-photo').querySelector('a').remove();">
                             </a>
                         </div>
                         <div class="team-info">
@@ -368,7 +444,7 @@
                     </article>
 
                     <article class="team-card animate-fade-up delay-3">
-                        <div class="team-photo">👨‍🎬</div>
+                        <div class="team-photo" data-initials="FC"></div>
                         <div class="team-info">
                             <h3 class="team-name">Franz Dela Cruz</h3>
                             <div class="team-role">Multimedia Specialist</div>
@@ -376,9 +452,8 @@
                         </div>
                     </article>
 
-                    <!-- QA -->
                     <article class="team-card animate-fade-up delay-4">
-                        <div class="team-photo">👨‍🔧</div>
+                        <div class="team-photo" data-initials="AB"></div>
                         <div class="team-info">
                             <h3 class="team-name">Aaron Briones</h3>
                             <div class="team-role">Quality Assurance</div>
@@ -387,7 +462,7 @@
                     </article>
 
                     <article class="team-card animate-fade-up delay-1">
-                        <div class="team-photo">👨‍🔧</div>
+                        <div class="team-photo" data-initials="PM"></div>
                         <div class="team-info">
                             <h3 class="team-name">Prince Darrell Malunay Masa</h3>
                             <div class="team-role">Quality Assurance</div>
@@ -395,9 +470,8 @@
                         </div>
                     </article>
 
-                    <!-- Data Analyst -->
                     <article class="team-card animate-fade-up delay-2">
-                        <div class="team-photo">👩‍💻</div>
+                        <div class="team-photo" data-initials="ST"></div>
                         <div class="team-info">
                             <h3 class="team-name">Samantha Faith Tan</h3>
                             <div class="team-role">Data Analyst</div>
@@ -405,11 +479,10 @@
                         </div>
                     </article>
 
-                    <!-- IT Support -->
                     <article class="team-card animate-fade-up delay-3">
-                        <div class="team-photo">
+                        <div class="team-photo has-image" data-initials="HT">
                             <a href="assets/images/team/TAN HUMPBREY NEIL A.- IT SUPPORT.jpg" target="_blank" rel="noopener">
-                                <img src="assets/images/team/TAN HUMPBREY NEIL A.- IT SUPPORT.jpg" alt="Humpbrey Neil Tan" onerror="this.closest('.team-photo').innerHTML='🛠️'">
+                                <img src="assets/images/team/TAN HUMPBREY NEIL A.- IT SUPPORT.jpg" alt="Humpbrey Neil Tan" onerror="this.closest('.team-photo').classList.remove('has-image'); this.closest('.team-photo').querySelector('a').remove();">
                             </a>
                         </div>
                         <div class="team-info">
@@ -587,7 +660,16 @@
                 <!-- Brand Column -->
                 <div class="footer-brand">
                     <div class="logo-drawer">
-                        <img src="assets/images/rIT_logo_tp.png" alt="Rentertain Logo">
+                        <img
+                            src="assets/images/Logo%20LMode.svg"
+                            alt="Rentertain Logo"
+                            class="footer-logo-img footer-logo-light"
+                        >
+                        <img
+                            src="assets/images/Logo%20DMode.svg"
+                            alt="Rentertain Logo"
+                            class="footer-logo-img footer-logo-dark"
+                        >
                     </div>
                     <div class="brand-text">
                         <h4 class="brand-title">Rentertain</h4>
@@ -619,7 +701,7 @@
                 </div>
 
                 <!-- Company Links -->
-                <div class="footer-col">
+                <div class="footer-col footer-links">
                     <h5>Company</h5>
                     <nav class="footer-nav">
                         <a href="pages/aboutus.html" class="footer-link">About Us</a>
@@ -628,13 +710,24 @@
                     </nav>
                 </div>
 
-                <!-- Admin Links -->
-                <div class="footer-col">
+                <div class="footer-col footer-support">
+                    <h5>Support</h5>
+                    <nav class="footer-nav" aria-label="Support">
+                        <a href="#" class="footer-link">How it works</a>
+                        <a href="#" class="footer-link">Pricing Packages</a>
+                        <a href="#" class="footer-link">Safety Guidelines</a>
+                        <a href="#" class="footer-link">Delivery areas</a>
+                    </nav>
+                </div>
+
+                <!-- Admin Links
+                <div class="footer-col footer-admin">
                     <h5>Admin</h5>
                     <nav class="footer-nav">
                         <a href="admin/auth/login.php" class="footer-link">Admin Login</a>
                     </nav>
                 </div>
+                -->
             </div>
 
             <div class="footer-divider"></div>
@@ -653,23 +746,78 @@
     <script src="landingpage/js/index.js"></script>
     <script>
         // Accordion functionality
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const isActive = header.classList.contains('active');
-                
-                // Close all accordions
-                document.querySelectorAll('.accordion-header').forEach(h => {
-                    h.classList.remove('active');
-                    h.nextElementSibling.classList.remove('show');
-                });
+        document.querySelectorAll('.accordion').forEach((accordion, accordionIndex) => {
+            const headers = accordion.querySelectorAll('.accordion-header');
 
-                // Open clicked one (if it wasn't already open)
-                if (!isActive) {
-                    header.classList.add('active');
-                    header.nextElementSibling.classList.add('show');
-                }
+            const setAccordionState = (header, isOpen) => {
+                const content = header.nextElementSibling;
+                if (!content) return;
+
+                header.classList.toggle('active', isOpen);
+                header.setAttribute('aria-expanded', String(isOpen));
+                content.classList.toggle('show', isOpen);
+                content.hidden = !isOpen;
+            };
+
+            headers.forEach((header, headerIndex) => {
+                const content = header.nextElementSibling;
+                if (!content) return;
+
+                const panelId = header.dataset.accordion
+                    ? `accordion-panel-${header.dataset.accordion}`
+                    : `accordion-panel-${accordionIndex}-${headerIndex}`;
+
+                content.id = panelId;
+                header.setAttribute('aria-controls', panelId);
+                setAccordionState(header, header.classList.contains('active'));
+
+                header.addEventListener('click', () => {
+                    const shouldOpen = !header.classList.contains('active');
+
+                    headers.forEach(item => setAccordionState(item, false));
+
+                    if (shouldOpen) {
+                        setAccordionState(header, true);
+                    }
+                });
             });
         });
+
+        const heroToggle = document.getElementById('aboutHeroToggle');
+        const heroDetails = document.getElementById('aboutHeroDetails');
+
+        if (heroToggle && heroDetails) {
+            const mobileHeroQuery = window.matchMedia('(max-width: 768px)');
+
+            const setHeroDetailsState = (isExpanded) => {
+                heroToggle.setAttribute('aria-expanded', String(isExpanded));
+                heroToggle.classList.toggle('is-expanded', isExpanded);
+                heroDetails.classList.toggle('is-expanded', isExpanded);
+            };
+
+            const syncHeroDetailsState = () => {
+                if (mobileHeroQuery.matches) {
+                    const isExpanded = heroToggle.getAttribute('aria-expanded') === 'true';
+                    setHeroDetailsState(isExpanded);
+                    return;
+                }
+
+                heroDetails.classList.add('is-expanded');
+            };
+
+            heroToggle.addEventListener('click', () => {
+                const isExpanded = heroToggle.getAttribute('aria-expanded') === 'true';
+                setHeroDetailsState(!isExpanded);
+            });
+
+            syncHeroDetailsState();
+
+            if (typeof mobileHeroQuery.addEventListener === 'function') {
+                mobileHeroQuery.addEventListener('change', syncHeroDetailsState);
+            } else {
+                mobileHeroQuery.addListener(syncHeroDetailsState);
+            }
+        }
 
         // Scroll-triggered animations using Intersection Observer
         const observerOptions = {

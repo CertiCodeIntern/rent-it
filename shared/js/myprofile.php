@@ -36,7 +36,7 @@ $member_since = $user['created_at'] ? date('F Y', strtotime($user['created_at'])
     <link rel="stylesheet" href="/rent-it/client/dashboard/dashboard.css">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/rent-it/assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="/rent-it/assets/images/Logo%20LMode.svg">
 
     <style>
         /* ===== PROFILE PAGE STYLES ===== */

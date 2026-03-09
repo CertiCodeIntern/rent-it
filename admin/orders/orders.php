@@ -16,7 +16,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     <title>Orders - Rentertain</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/rIT_logo_tp.png">
+    <link rel="icon" type="image/svg+xml" href="assets/images/Logo%20LMode.svg">
     <link rel="apple-touch-icon" href="assets/images/rIT_logo_tp.png">
     
     <!-- Google Fonts -->
@@ -281,7 +281,3 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     </script>
 </body>
 </html>
-
-
-
-
