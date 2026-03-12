@@ -1,2 +1,0 @@
-# Custom 404 handler for RentIT
-ErrorDocument 404 /rent-it/404.php
