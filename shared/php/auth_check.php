@@ -6,6 +6,7 @@
  * - Prevents browser from caching protected pages (fixes back-button-after-logout)
  * - Redirects to login if session is not authenticated
  */
+require_once __DIR__ . '/../../env.php';
 
 // Prevent browser caching of protected pages
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
@@ -14,7 +15,7 @@ header("Pragma: no-cache");
 header("Expires: 0");
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: /rent-it/client/auth/login.php");
+    header("Location: " . BASE_URL . "/client/auth/login.php");
     exit();
 }
 ?>

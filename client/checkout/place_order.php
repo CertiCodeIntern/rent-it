@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once($_SERVER['DOCUMENT_ROOT'] . '/rent-it/shared/php/db_connection.php');
+include_once __DIR__ . '/../../shared/php/db_connection.php';
 
 header('Content-Type: application/json');
 

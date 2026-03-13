@@ -3,7 +3,7 @@ session_start();
 include '../../shared/php/db_connection.php';
 
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: http://localhost:5173');
+header('Access-Control-Allow-Origin: ' . CORS_ORIGIN);
 header('Access-Control-Allow-Credentials: true');
 
 if (!isset($_SESSION['user_id'])) {

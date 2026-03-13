@@ -3,7 +3,8 @@
  * One-time setup script to create admin_accounts table
  * Run this once, then delete it
  */
-$conn = mysqli_connect('localhost', 'root', '', 'rental_system');
+require_once __DIR__ . '/../../env.php';
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if (!$conn) { die('Connection failed: ' . mysqli_connect_error()); }
 
 // Create table

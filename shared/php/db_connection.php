@@ -1,22 +1,11 @@
 <?php
-// filepath: c:\xampp\htdocs\rent-it\shared\php\db_connection.php
-
-// ===== DYNAMIC BASE URL CONFIGURATION =====
-if (!defined('BASE_URL')) {
-    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-    // Localhost (XAMPP) = /rent-it, Production = empty or custom
-    define('BASE_URL', (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false) ? '/rent-it' : '');
-}
+require_once __DIR__ . '/../../env.php';
 
 // ===== DATABASE CONNECTION =====
-$host = "localhost";
-$user = "root";
-$pass = "";
-$dbname = "rental_system";
 
 // Try to connect with error handling
 try {
-    $conn = new mysqli($host, $user, $pass, $dbname);
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     $conn->set_charset("utf8mb4");
 } catch (mysqli_sql_exception $e) {
     // Check if it's a server connection issue

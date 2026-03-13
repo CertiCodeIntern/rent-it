@@ -18,7 +18,7 @@ if (isset($_GET['format']) && $_GET['format'] === 'json') {
     }
 
     // Allow React dev server to call this endpoint with cookies
-    header('Access-Control-Allow-Origin: http://localhost:5173');
+    header('Access-Control-Allow-Origin: ' . CORS_ORIGIN);
     header('Access-Control-Allow-Credentials: true');
     header('Content-Type: application/json');
     echo json_encode(['items' => $items]);

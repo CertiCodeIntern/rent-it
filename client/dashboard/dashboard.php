@@ -100,7 +100,7 @@ $history = [];
 }
 $member_status = $user_data['membership_level'] ?? 'Bronze';
     $member_since = $user_data['created_at'] ? date('F Y', strtotime($user_data['created_at'])) : null;
-header('Access-Control-Allow-Origin: http://localhost:5173');
+header('Access-Control-Allow-Origin: ' . CORS_ORIGIN);
 header('Access-Control-Allow-Credentials: true');
 header('Content-Type: application/json');
 echo json_encode([

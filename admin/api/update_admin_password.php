@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Database connection
-$conn = mysqli_connect("localhost", "root", "", "rental_system");
+require_once __DIR__ . '/../../config.php';
 if (!$conn) {
     http_response_code(503);
     echo json_encode(["success" => false, "message" => "Database connection failed"]);

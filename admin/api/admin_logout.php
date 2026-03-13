@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../../env.php';
+
 /**
  * Admin Logout API Endpoint
  * Destroys admin session and redirects to login
@@ -22,6 +24,6 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 }
 
 // Otherwise redirect to login
-header("Location: /rent-it/admin/auth/login.php");
+header("Location: " . BASE_URL . "/admin/auth/login.php");
 exit;
 ?>

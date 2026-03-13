@@ -1,10 +1,7 @@
 <?php
+require_once __DIR__ . '/../../env.php';
+
 class Database {
-    private $host = "localhost";
-    private $db_name = "rental_system";
-    private $username = "root"; // XAMPP default username
-    private $password = ""; // XAMPP default password (empty)
-    private $port = 3306; // XAMPP default port
     public $conn;
 
     public function getConnection() {
@@ -12,11 +9,10 @@ class Database {
 
         try {
             $this->conn = new mysqli(
-                $this->host,
-                $this->username,
-                $this->password,
-                $this->db_name,
-                $this->port
+                DB_HOST,
+                DB_USER,
+                DB_PASS,
+                DB_NAME
             );
             
             // Check connection

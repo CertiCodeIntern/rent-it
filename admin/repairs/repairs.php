@@ -1,14 +1,15 @@
 <?php
+require_once __DIR__ . '/../../env.php';
 session_start();
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header('Location: /rent-it/admin/auth/login.php');
+    header('Location: ' . BASE_URL . '/admin/auth/login.php');
     exit();
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="/rent-it/">
+    <base href="<?= BASE_URL ?>/">
     <script src="admin/shared/js/admin-theme.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

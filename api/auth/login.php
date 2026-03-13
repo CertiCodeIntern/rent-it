@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../env.php';
+
 // 1. Session start dapat nasa pinakataas at ISANG BESES lang.
 session_start();
 
@@ -7,7 +9,7 @@ error_reporting(0);
 ini_set('display_errors', 0);
 
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Origin: http://localhost:5173"); // React dev server origin
+header("Access-Control-Allow-Origin: " . CORS_ORIGIN); // per-environment origin
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Credentials: true"); // Mahalaga ito para sa Sessions
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");

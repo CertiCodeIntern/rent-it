@@ -41,7 +41,7 @@ if (isset($_GET['code'])) {
 
         $_SESSION['user_name'] = $g_name;
         $_SESSION['user_email'] = $g_email;
-        header("Location: /rent-it/client/dashboard/loggedin.php");
+        header("Location: " . BASE_URL . "/client/dashboard/loggedin.php");
         exit();
     }
 }

@@ -3,7 +3,7 @@ session_start();
 include '../php/db_connection.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /rent-it/client/auth/login.php');
+    header('Location: ' . BASE_URL . '/client/auth/login.php');
     exit;
 }
 

@@ -39,7 +39,7 @@ if (isset($_GET['code'])) {
         $_SESSION['user_email'] = $email;
 
        
-        header("Location: /rent-it/client/dashboard");
+        header("Location: " . BASE_URL . "/client/dashboard");
         exit();
 
     } else {
@@ -47,7 +47,7 @@ if (isset($_GET['code'])) {
     }
 } else {
    
-    header("Location: /rent-it/fb-callback.php");
+    header("Location: " . BASE_URL . "/fb-callback.php");
     exit();
 }
 ?>
