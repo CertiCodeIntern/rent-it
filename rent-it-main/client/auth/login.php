@@ -79,7 +79,7 @@ include '../../shared/php/db_connection.php';
         </div>
     </div>
     <div class="auth-section">
-        <a href="/rent-it/index.php" class="back-to-home" title="Back to home">← Home</a>
+        <a href="/rent-it/index.php" class="back-to-home" title="Back to home">Home</a>
         
         <!-- Theme Toggle -->
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">

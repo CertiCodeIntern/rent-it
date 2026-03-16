@@ -137,7 +137,7 @@ function ClientLoginPage() {
     <MainLayout>
       <section className="auth-section">
         <a href="/rent-it/" className="back-to-home" title="Back to home">
-          ← Home
+          Home
         </a>
 
         <button className="auth-theme-toggle" id="themeToggle" aria-label="Toggle theme">

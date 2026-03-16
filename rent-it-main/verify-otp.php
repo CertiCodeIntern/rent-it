@@ -82,7 +82,7 @@
 </head>
 <body>
     <div class="auth-section">
-        <a href="/rent-it/index.php" class="back-to-home" title="Back to home">← Home</a>
+        <a href="/rent-it/index.php" class="back-to-home" title="Back to home">Home</a>
 
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
             <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
