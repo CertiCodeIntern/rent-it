@@ -32,50 +32,39 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
     <link rel="icon" type="image/svg+xml" href="assets/images/Logo%20LMode.svg">
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <button class="theme-toggle auth-theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-        </svg>
-        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
-    </button>
-
-    <div class="admin-login-container">
+    <div class="admin-login-container admin-auth-login">
         <!-- Left Panel - Branding -->
         <div class="admin-branding">
             <div class="branding-content">
                 <div class="admin-logo">
-                    <span class="logo-icon">🎤</span>
-                    <span class="logo-text">Rentertain</span>
+                    <img
+                        src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                        alt="Rentertain"
+                        class="auth-logo-icon brand-logo-img"
+                        data-light-src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                        data-dark-src="/rent-it/assets/images/Logo%20with%20Text%20DMode.svg"
+                        data-mobile-light-src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                        data-mobile-dark-src="/rent-it/assets/images/Logo%20with%20Text%20DMode.svg"
+                    >
                 </div>
                 <h1 class="branding-title">Admin Portal</h1>
                 <p class="branding-subtitle">Manage your videoke rental business with powerful tools and insights.</p>
                 
                 <div class="branding-features">
                     <div class="feature">
-                        <span class="feature-icon">📊</span>
+                        <span class="feature-icon">+</span>
                         <span>Real-time Analytics</span>
                     </div>
                     <div class="feature">
-                        <span class="feature-icon">🎯</span>
+                        <span class="feature-icon">+</span>
                         <span>Booking Management</span>
                     </div>
                     <div class="feature">
-                        <span class="feature-icon">🚚</span>
+                        <span class="feature-icon">+</span>
                         <span>Delivery Tracking</span>
                     </div>
                     <div class="feature">
-                        <span class="feature-icon">🎤</span>
+                        <span class="feature-icon">+</span>
                         <span>Inventory Control</span>
                     </div>
                 </div>
@@ -87,7 +76,45 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
 
         <!-- Right Panel - Login Form -->
         <div class="admin-form-panel">
+            <a href="/rent-it/" class="back-to-home" title="Back to home">Home</a>
+
+            <!-- Theme Toggle -->
+            <button class="theme-toggle auth-theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+
+            <div class="admin-mobile-hero">
+                <img
+                    src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                    alt="Rentertain"
+                    class="admin-mobile-logo brand-logo-img"
+                    data-light-src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                    data-dark-src="/rent-it/assets/images/Logo%20with%20Text%20DMode.svg"
+                    data-mobile-light-src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                    data-mobile-dark-src="/rent-it/assets/images/Logo%20with%20Text%20DMode.svg"
+                >
+                <h1>Admin Portal</h1>
+                <p>Manage your videoke rental business with powerful tools and insights.</p>
+            </div>
+
             <div class="form-wrapper">
+                <div class="admin-sheet-handle" aria-hidden="true">
+                    <span></span>
+                </div>
+
                 <div class="form-header">
                     <div class="admin-badge">
                         <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
@@ -148,11 +175,9 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
                         </div>
                     </div>
 
-                    <div class="form-options">
-                        <label class="remember-me">
-                            <input type="checkbox" id="rememberMe" name="rememberMe">
-                            <span class="checkmark"></span>
-                            <span>Remember me</span>
+                    <div class="auth-remember">
+                        <label>
+                            <input type="checkbox" id="rememberMe" name="rememberMe"> Remember me
                         </label>
                         <a href="admin/auth/forgot-password.php" class="forgot-link">Forgot password?</a>
                     </div>
@@ -167,11 +192,11 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
                 </form>
 
                 <div class="form-footer">
-                    <p>Not an admin? <a href="index.php">Return to main site</a></p>
+                    <p>Not an admin? <a href="client/auth/login.php">Login as a user instead</a></p>
                 </div>
 
                 <!-- Demo Credentials -->
-                <div class="demo-credentials">
+                <!-- <div class="demo-credentials">
                     <p class="demo-title">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
                             <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
@@ -182,7 +207,7 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
                         <p><strong>Username:</strong> admin1</p>
                         <p><strong>Password:</strong> admin1</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -191,6 +216,3 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
     <script src="admin/auth/js/auth.js"></script>
 </body>
 </html>
-
-
-

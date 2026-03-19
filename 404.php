@@ -28,13 +28,13 @@ http_response_code(404);
         }
         .card {
             width: min(900px, 100%);
-            background: linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)), var(--bg-card);
+            /* background: linear-gradient(140deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)), var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-xl);
+            border-radius: var(--radius-xl); */
             padding: 36px;
-            position: relative;
+            /* position: relative; */
             overflow: hidden;
-            box-shadow: var(--shadow-xl);
+            /* box-shadow: var(--shadow-xl); */
         }
         .card::before {
             content: "";
@@ -52,15 +52,16 @@ http_response_code(404);
             margin-bottom: 22px;
         }
         .logo {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius);
-            background: linear-gradient(135deg, var(--brand-primary), var(--brand-primary-light));
-            display: grid;
-            place-items: center;
-            box-shadow: 0 12px 30px rgba(1, 58, 99, 0.28);
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
         }
-        .logo img { width: 32px; height: 32px; object-fit: contain; }
+        .logo img {
+            width: clamp(168px, 26vw, 230px);
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
         .title {
             margin: 0;
             font-size: 24px;
@@ -154,19 +155,22 @@ http_response_code(404);
             .btn { width: 100%; }
         }
     </style>
-    <script>
-        (() => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || savedTheme === 'light') {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-            }
-        })();
-    </script>
+    <script src="/rent-it/shared/js/theme.js"></script>
 </head>
 <body>
     <div class="card">
         <div class="header">
-            <div class="logo"><img src="/rent-it/assets/images/rIT_logo_tp.png" alt="Rentertain logo"></div>
+            <div class="logo">
+                <img
+                    src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                    alt="Rentertain"
+                    class="brand-logo-img"
+                    data-light-src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                    data-dark-src="/rent-it/assets/images/Logo%20with%20Text%20DMode.svg"
+                    data-mobile-light-src="/rent-it/assets/images/Logo%20LMode.svg"
+                    data-mobile-dark-src="/rent-it/assets/images/Logo%20DMode.svg"
+                >
+            </div>
             <div>
                 <p class="title">You seem a bit lost</p>
                 <p class="subtitle">We’ll guide you back in a second</p>

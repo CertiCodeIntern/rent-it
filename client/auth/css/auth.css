@@ -154,7 +154,6 @@
     height: 24px;
     border-radius: 999px;
     display: inline-flex;
-    align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.12);
     color: #ffb57a;
@@ -820,7 +819,6 @@
     .auth-section.sheet-open .auth-card {
         bottom: 0;
         height: min(78dvh, 700px);
-        /* border-radius: 28px 28px 0 0; */
         box-shadow: 0 -24px 56px rgba(15, 23, 42, 0.2);
     }
 
@@ -991,4 +989,27 @@
 
 [data-theme="dark"] .auth-sheet-handle span {
     background: rgba(148, 163, 184, 0.38);
+}
+
+@media (max-width: 768px) {
+    .auth-section.auth-forgot .auth-card {
+        height: auto;
+        max-height: calc(100dvh - 110px);
+    }
+
+    .auth-section.auth-forgot .auth-sheet-content {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .auth-section.auth-forgot .auth-footer {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .auth-section.auth-forgot .auth-footer-text {
+        align-items: center;
+    }
 }

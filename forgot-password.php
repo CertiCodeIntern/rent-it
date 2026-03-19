@@ -18,42 +18,30 @@
     <script src="shared/js/theme.js"></script>
     <link rel="icon" type="image/svg+xml" href="assets/images/Logo%20LMode.svg">
 </head>
-<body>
-    <div class="auth-section">
-        <a href="/rent-it/index.php" class="back-to-home" title="Back to home">Home</a>
-
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"/>
-                <line x1="12" y1="1" x2="12" y2="3"/>
-                <line x1="12" y1="21" x2="12" y2="23"/>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                <line x1="1" y1="12" x2="3" y2="12"/>
-                <line x1="21" y1="12" x2="23" y2="12"/>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-            </svg>
-            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-        </button>
-
+ <body>
+    <div class="auth-section auth-forgot">
         <div class="auth-left">
             <div class="auth-left-content">
                 <div class="auth-logo">
-                    <img src="assets/images/rIT_logo_tp.png" alt="Rentertain Logo" class="auth-logo-icon">
-                    <div class="auth-logo-text">Rentertain</div>
+                    <img
+                        src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                        alt="Rentertain"
+                        class="auth-logo-icon brand-logo-img"
+                        data-light-src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                        data-dark-src="/rent-it/assets/images/Logo%20with%20Text%20DMode.svg"
+                        data-mobile-light-src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                        data-mobile-dark-src="/rent-it/assets/images/Logo%20with%20Text%20DMode.svg"
+                    >
                 </div>
                 <h1>Reset your<br>access.</h1>
                 <p>Enter your email address and we will send a recovery code to get you back in.</p>
                 <div class="auth-features">
                     <div class="auth-feature">
-                        <div class="auth-feature-icon">◉</div>
+                        <div class="auth-feature-icon">+</div>
                         <span>Secure verification</span>
                     </div>
                     <div class="auth-feature">
-                        <div class="auth-feature-icon">◉</div>
+                        <div class="auth-feature-icon">+</div>
                         <span>10-minute expiry code</span>
                     </div>
                 </div>
@@ -61,37 +49,69 @@
         </div>
 
         <div class="auth-right">
-            <div class="mobile-logo stagger-child">
-                <img src="assets/images/rIT_logo_tp.png" alt="Rentertain Logo" class="mobile-logo-icon">
-                <div class="mobile-logo-text">Rentertain</div>
+            <a href="/rent-it/index.php" class="back-to-home" title="Back to home">Home</a>
+
+            <button class="auth-theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+
+            <div class="auth-mobile-hero">
+                <img
+                    src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                    alt="Rentertain"
+                    class="auth-mobile-logo brand-logo-img"
+                    data-light-src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                    data-dark-src="/rent-it/assets/images/Logo%20with%20Text%20DMode.svg"
+                    data-mobile-light-src="/rent-it/assets/images/Logo%20with%20Text%20LMode.svg"
+                    data-mobile-dark-src="/rent-it/assets/images/Logo%20with%20Text%20DMode.svg"
+                >
+                <h1>Reset your<br>access.</h1>
+                <p>Enter your email address and we will send a recovery code to get you back in.</p>
             </div>
 
             <div class="auth-card">
-                <div class="auth-header stagger-child">
-                    <h2>Forgot Password</h2>
-                    <p>Enter your email address and we will send you a recovery code.</p>
+                <div class="auth-sheet-handle" aria-hidden="true">
+                    <span></span>
                 </div>
-
-                <form action="process-forgot.php" method="POST" class="fade-in">
-                    <div class="auth-form-group stagger-child">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="name@domain.com" required>
+                <div class="auth-sheet-content">
+                    <div class="auth-header stagger-child">
+                        <h2>Forgot Password</h2>
+                        <p>Enter your email address and we will send you a recovery code.</p>
                     </div>
 
-                    <button type="submit" class="auth-btn stagger-child">Send Code →</button>
-                </form>
+                    <form action="process-forgot.php" method="POST" class="fade-in">
+                        <div class="auth-form-group stagger-child">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="name@domain.com" required>
+                        </div>
 
-                <div class="auth-footer stagger-child">
-                    <div class="auth-footer-icon">🔐</div>
-                    <div class="auth-footer-text">
-                        <span class="auth-footer-label">Remember your password?</span>
-                        <span class="auth-footer-links">
-                            <a href="/rent-it/client/auth/login.php">Back to login</a>
-                        </span>
+                        <button type="submit" class="auth-btn stagger-child">Send Code →</button>
+                    </form>
+
+                    <div class="auth-footer stagger-child">
+                        <div class="auth-footer-text">
+                            <span class="auth-footer-label">Remember your password?</span>
+                            <span class="auth-footer-links">
+                                <a href="/rent-it/client/auth/login.php">Back to login</a>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
+ </body>
 </html>
