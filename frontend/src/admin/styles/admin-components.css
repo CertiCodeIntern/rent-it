@@ -1254,7 +1254,7 @@
     display: flex;
     align-items: center;
     gap: var(--admin-spacing-md);
-    padding: var(--admin-spacing-lg);
+    padding: 10px;
     border-bottom: 1px solid var(--admin-border-color);
 }
 

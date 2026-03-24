@@ -365,6 +365,7 @@ function ClientShellLayout({ children, showFooter = true }) {
                       {user.email && <div className="email">{user.email}</div>}
                     </div>
                   </div>
+                  <div className="profile-divider" />
                   <nav className="profile-menu">
                     <NavLink to="/client/dashboard" className="profile-menu-item">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -1129,6 +1129,7 @@ button.dropdown-item {
     border: 1px solid var(--admin-border-color);
     border-radius: var(--admin-radius-lg);
     box-shadow: var(--admin-shadow-dropdown);
+    padding-bottom: 8px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px) scale(0.95);
@@ -1189,8 +1190,7 @@ button.dropdown-item {
     display: flex;
     align-items: center;
     gap: var(--admin-spacing-md);
-    padding: var(--admin-spacing-lg);
-    border-bottom: 1px solid var(--admin-border-color);
+    padding: 10px;
 }
 
 .profile-avatar-lg {

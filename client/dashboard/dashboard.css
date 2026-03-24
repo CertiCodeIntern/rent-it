@@ -2042,8 +2042,7 @@
 .profile-header {
     display: flex;
     flex-direction: column;
-    padding: 16px;
-    border-bottom: 1px solid var(--border-color);
+    padding: 10px;
 }
 
 .profile-info .name {

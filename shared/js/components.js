@@ -667,6 +667,7 @@ container.innerHTML = `
                         <div class="email">${user.email || 'user@example.com'}</div>
                     </div>
                 </div>
+                <div class="profile-divider"></div>
                 <nav class="profile-menu">
                     <a href="/rent-it/client/dashboard/dashboard.php" class="profile-menu-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
